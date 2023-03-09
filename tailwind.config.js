@@ -1,24 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./vistas/*.html"],
+  content: ["./vistas/*.html","./node_modules/flowbite/*.js"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primario': '#334257',
+        'btn-hover': '#548CA8',
+      },
+    },
   },
-  plugins: [],
-}
-
-module.exports = {
-
   plugins: [
-      require('flowbite/plugin')
-  ]
-
+    require('flowbite/plugin'),
+  ],
 }
 
-module.exports = {
 
-  content: [
-      "./node_modules/flowbite/**/*.js"
-  ]
 
-}
+
+
+
