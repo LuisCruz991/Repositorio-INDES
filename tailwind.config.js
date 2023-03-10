@@ -6,6 +6,9 @@ module.exports = {
       colors: {
         'primario': '#334257',
         'btn-hover': '#548CA8',
+        'azul-3': '#548CA8',
+        'azul-2': '#476072'
+
       },
     },
   },
