@@ -6,9 +6,11 @@ module.exports = {
       colors: {
         'primario': '#334257',
         'btn-hover': '#548CA8',
-        'azul-3': '#548CA8',
-        'azul-2': '#476072'
-
+        'azul-1': '#6B728E',
+        'azul-2': '#476072',
+      },
+      fontFamily:{
+        overpass:['overpass']
       },
     },
   },
@@ -16,7 +18,6 @@ module.exports = {
     require('flowbite/plugin'),
   ],
 }
-
 
 
 

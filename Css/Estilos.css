@@ -1,19 +1,32 @@
-body{
-    background-color: #F7F7F7;
+.login-body{
+  background-color: #404258;
 }
 
 hr{
-    border-color: #334257 ;
+  border-color: #6B728E ;
 }
 
-@layer components{
-    .sidebar{
-      transition:all .4s ease-in-out;
-    }
+@layer components {
+  .sidebar{
+    transition:all .4s ease-in-out;
   }
+}
 
-  .card-section{
-
-    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-
+@media (min-width: 428px){
+  .contenedor{
+    width: 580px;
+    height: 760px;
   }
+}
+
+@media (min-width:768px ){
+.seccion-2{
+  margin-left: 20%;
+  margin-top: 150px;
+
+}
+}
+
+.boton{
+background-color: #50577A;
+}
