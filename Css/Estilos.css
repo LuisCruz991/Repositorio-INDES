@@ -1,5 +1,10 @@
+
 .login-body{
   background-color: #404258;
+}
+
+.dashboard-body{
+  background-color: white;
 }
 
 hr{
@@ -15,7 +20,7 @@ hr{
 @media (min-width: 428px){
   .contenedor{
     width: 580px;
-    height: 760px;
+    height: 780px;
   }
 }
 
