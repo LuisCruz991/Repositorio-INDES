@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <title>Atletas_crud</title>
+  <title>Entrenadores</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/css/tailwind.css" rel="stylesheet">
@@ -117,7 +117,7 @@
         <section class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
           <div class="container flex flex-wrap items-center justify-between mx-auto">
             <h1 class="titulo-navbar self-center text-4xl font-overpass font-normal whitespace-nowrap dark:text-white">
-              Atletas</h1>
+              Entrenadores</h1>
             </a>
             <div class="flex items-center md:order-2">
               <button class="notificacion mr-4 w-10 h-10 bg-azul-opaco flex justify-center items-center rounded-full"
@@ -275,7 +275,10 @@
                       Nombre
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nacimiento
+                      Apellido
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Telefono
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Genero
@@ -283,23 +286,14 @@
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Direccion
                     </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                    <th scope="col" class=" uppercase px-6 normal-case font-poppins text-white py-3">
                       Dui
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Telefono-Domiciliar
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Correo
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Responsable
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Deporte
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Entrenador
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
@@ -322,34 +316,27 @@
                   </td>
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <p class="text-base">Jimmy Mateo</p>
-                    <p class="text-base ">Valdez Aguilar</p>
                   </th>
-                  <td class="px-6 py-4">
-                    2004/12/20
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <p class="text-base">Valdez Aguilar</p>
+                  </th>
+                  <td  class="px-6 py-4">
+                    <p class=" text-center  w-14 rounded-xl">7777-7777</p>
                   </td>
                   <td class="px-6 py-4">
-                    <p class="text-center  w-14 rounded-xl">Masculino</p>
-                  </td>
-                  <td class="px-6 py-4">
-                    San Benito
+                    Masculino 
                   </td>
                   <td class=" px-6 py-4">
-                    123478-9
+                    San Benito 
                   </td>
                   <td class="px-6 py-4">
-                    7777-7777
+                    123478-9
                   </td>
                   <td class="px-6 py-4">
                     jimmy@gmail.com
                   </td>
                   <td class="px-6 py-4">
-                    Victor Zelada
-                  </td>
-                  <td class="px-6 py-4">
                     Futbol
-                  </td>
-                  <td class="px-6 py-4">
-                    Diego Parada
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
@@ -373,42 +360,37 @@
                   </td>
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <p class="text-base">Jimmy Mateo</p>
-                    <p class="text-base ">Valdez Aguilar</p>
                   </th>
-                  <td class="px-6 py-4">
-                    2004/12/20
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <p class="text-base">Valdez Aguilar</p>
+                  </th>
+                  <td  class="px-6 py-4">
+                    <p class=" text-center  w-14 rounded-xl">7777-7777</p>
                   </td>
                   <td class="px-6 py-4">
-                    <p class="text-center  w-14 rounded-xl">Masculino</p>
-                  </td>
-                  <td class="px-6 py-4">
-                    San Benito
+                    Masculino 
                   </td>
                   <td class=" px-6 py-4">
-                    123478-9
+                    San Benito 
                   </td>
                   <td class="px-6 py-4">
-                    7777-7777
+                    123478-9
                   </td>
                   <td class="px-6 py-4">
                     jimmy@gmail.com
                   </td>
                   <td class="px-6 py-4">
-                    Victor Zelada
-                  </td>
-                  <td class="px-6 py-4">
                     Futbol
-                  </td>
-                  <td class="px-6 py-4">
-                    Diego Parada
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    </button>
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    </button>
                   </td>
                 </tr>
                 <tr
@@ -422,42 +404,37 @@
                   </td>
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <p class="text-base">Jimmy Mateo</p>
-                    <p class="text-base ">Valdez Aguilar</p>
                   </th>
-                  <td class="px-6 py-4">
-                    2004/12/20
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <p class="text-base">Valdez Aguilar</p>
+                  </th>
+                  <td  class="px-6 py-4">
+                    <p class=" text-center  w-14 rounded-xl">7777-7777</p>
                   </td>
                   <td class="px-6 py-4">
-                    <p class="text-center  w-14 rounded-xl">Masculino</p>
-                  </td>
-                  <td class="px-6 py-4">
-                    San Benito
+                    Masculino 
                   </td>
                   <td class=" px-6 py-4">
-                    123478-9
+                    San Benito 
                   </td>
                   <td class="px-6 py-4">
-                    7777-7777
+                    123478-9
                   </td>
                   <td class="px-6 py-4">
                     jimmy@gmail.com
                   </td>
                   <td class="px-6 py-4">
-                    Victor Zelada
-                  </td>
-                  <td class="px-6 py-4">
                     Futbol
-                  </td>
-                  <td class="px-6 py-4">
-                    Diego Parada
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    </button>
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    </button>
                   </td>
                 </tr>
                 <tr
@@ -471,42 +448,37 @@
                   </td>
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <p class="text-base">Jimmy Mateo</p>
-                    <p class="text-base ">Valdez Aguilar</p>
                   </th>
-                  <td class="px-6 py-4">
-                    2004/12/20
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <p class="text-base">Valdez Aguilar</p>
+                  </th>
+                  <td  class="px-6 py-4">
+                    <p class=" text-center  w-14 rounded-xl">7777-7777</p>
                   </td>
                   <td class="px-6 py-4">
-                    <p class="text-center  w-14 rounded-xl">Masculino</p>
-                  </td>
-                  <td class="px-6 py-4">
-                    San Benito
+                    Masculino 
                   </td>
                   <td class=" px-6 py-4">
-                    123478-9
+                    San Benito 
                   </td>
                   <td class="px-6 py-4">
-                    7777-7777
+                    123478-9
                   </td>
                   <td class="px-6 py-4">
                     jimmy@gmail.com
                   </td>
                   <td class="px-6 py-4">
-                    Victor Zelada
-                  </td>
-                  <td class="px-6 py-4">
                     Futbol
-                  </td>
-                  <td class="px-6 py-4">
-                    Diego Parada
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    </button>
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    </button>
                   </td>
                 </tr>
                 <tr
@@ -520,42 +492,37 @@
                   </td>
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <p class="text-base">Jimmy Mateo</p>
-                    <p class="text-base ">Valdez Aguilar</p>
                   </th>
-                  <td class="px-6 py-4">
-                    2004/12/20
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <p class="text-base">Valdez Aguilar</p>
+                  </th>
+                  <td  class="px-6 py-4">
+                    <p class=" text-center  w-14 rounded-xl">7777-7777</p>
                   </td>
                   <td class="px-6 py-4">
-                    <p class="text-center  w-14 rounded-xl">Masculino</p>
-                  </td>
-                  <td class="px-6 py-4">
-                    San Benito
+                    Masculino 
                   </td>
                   <td class=" px-6 py-4">
-                    123478-9
+                    San Benito 
                   </td>
                   <td class="px-6 py-4">
-                    7777-7777
+                    123478-9
                   </td>
                   <td class="px-6 py-4">
                     jimmy@gmail.com
                   </td>
                   <td class="px-6 py-4">
-                    Victor Zelada
-                  </td>
-                  <td class="px-6 py-4">
                     Futbol
-                  </td>
-                  <td class="px-6 py-4">
-                    Diego Parada
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    </button>
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    </button>
                   </td>
                 </tr>
                 <tr
@@ -569,42 +536,37 @@
                   </td>
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <p class="text-base">Jimmy Mateo</p>
-                    <p class="text-base ">Valdez Aguilar</p>
                   </th>
-                  <td class="px-6 py-4">
-                    2004/12/20
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <p class="text-base">Valdez Aguilar</p>
+                  </th>
+                  <td  class="px-6 py-4">
+                    <p class=" text-center  w-14 rounded-xl">7777-7777</p>
                   </td>
                   <td class="px-6 py-4">
-                    <p class="text-center  w-14 rounded-xl">Masculino</p>
-                  </td>
-                  <td class="px-6 py-4">
-                    San Benito
+                    Masculino 
                   </td>
                   <td class=" px-6 py-4">
-                    123478-9
+                    San Benito 
                   </td>
                   <td class="px-6 py-4">
-                    7777-7777
+                    123478-9
                   </td>
                   <td class="px-6 py-4">
                     jimmy@gmail.com
                   </td>
                   <td class="px-6 py-4">
-                    Victor Zelada
-                  </td>
-                  <td class="px-6 py-4">
                     Futbol
-                  </td>
-                  <td class="px-6 py-4">
-                    Diego Parada
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    </button>
                   </td>
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    </button>
                   </td>
                 </tr>
               </tbody>

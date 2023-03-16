@@ -1128,6 +1128,10 @@ input:checked + .toggle-bg {
   display: table;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
