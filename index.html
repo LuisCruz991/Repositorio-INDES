@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/tailwind.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/estilos.css">
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&family=Quicksand:wght@700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="login-body">
+
+  <main>
+    <div class="md:flex items-center justify-center  px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      </a>
+      <div
+        class="contenedor bg-azul-1 rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <hr>
+          <hr>
+          <h1
+            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+            Iniciar sesion
+          </h1>
+          <hr>
+          <hr>
+          <form class="space-y-4 md:space-y-6" action="#">
+            <div class="py-4">
+              <label for="email" class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
+              <input type="email" name="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="example@mail.com" required="">
+            </div>
+            <div class="py-6">
+              <label for="password" class="block mb-2 text-lg font-medium text-white dark:text-white">Contraseña</label>
+              <input type="password" name="password" id="password" placeholder="••••••••"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required="">
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <p class="text-sm font-bold text-white dark:text-gray-400">
+                    <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Olvidastes tu
+                      contraseña? </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center py-4">
+              <a href="dashboard.html" type="submit"
+              class="boton text-white w-72 text-black bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar
+              sesion</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <section class="mt-8 seccion-2 mb-48 flex flex-col items-center">
+        <div>
+        <h2 class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+            Bienvenido!
+          </h2>
+        </div>
+        <div>
+          <img class="w-96" src="/imagenes/logo-indes.png" alt="">
+        </div>
+      </section>
+    </div>
+  </main>
+
+
+  <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+
+</body>
+
+</html>
