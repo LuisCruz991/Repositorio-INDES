@@ -11,13 +11,18 @@ module.exports = {
         'azul-3': '#50577A',
         'azul-opaco': '#E2E8F0',
         'tabla-color-2': '#F9FAFC',
+        'btnactualizar-color': '#C9F7F5',
+        'btnactualizar-texto': '#1BC5BD',
+        
         
         
       },
       fontFamily:{
         overpass:['overpass'],
-        jakarta:['plus jakarta sans']
+        jakarta:['plus jakarta sans'],
+        poppins:['poppins'],
       },
+      
       width: {
         '124': '28rem',
         '126': '30rem',
