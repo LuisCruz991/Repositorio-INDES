@@ -12,10 +12,32 @@ hr{
   border-color: #6B728E ;
 }
 
-@layer components {
-  .sidebar{
-    transition:all .4s ease-in-out;
-  }
+
+
+@media (max-width: 428px ){
+    .titulo-navbar{
+      font-size: 20px;
+    }
+
+    .pfp{
+      width: 36px;
+      height: 36px;
+    }
+    #btn-sidebar{
+      width: 40px;
+      height: 40px
+    }
+
+    .grafico-2{
+      width: auto;
+    }
+}
+
+@media (max-width: 390px ){
+    .notificacion{
+      width: 32px;
+      height: 32px;
+    }
 }
 
 @media (min-width: 428px){

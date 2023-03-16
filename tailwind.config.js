@@ -8,8 +8,10 @@ module.exports = {
         'btn-hover': '#548CA8',
         'azul-1': '#6B728E',
         'azul-2': '#476072',
+        'azul-3': '#50577A',
         'azul-opaco': '#E2E8F0',
         'tabla-color-2': '#F9FAFC',
+        
         
       },
       fontFamily:{
