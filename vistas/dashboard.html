@@ -26,54 +26,87 @@
       <nav class="sidebar sm:block hidden min-h-screen w-36  overflow-hidden border-r  bg-azul-1 hover:shadow-lg">
         <div class="flex h-screen flex-col justify-between mt-12 pb-6">
           <div class="flex flex-col items-center">
-              <button id="boton"> <img src="/imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
-          <div id="sidebar-content">
-            <ul class=" mt-10 space-y-10 tracking-wide">
-              <li class="min-w-max">
-                <a href="/vistas/dashboard.html" aria-label="dashboard" class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class=" w-7 h-7 bi bi-house-door-fill"
-                    viewBox="0 0 16 16">
-                    <path
-                      d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
-                  </svg>
-                  <span class=" text-sm font-medium">Dashboard</span>
-                </a>
-              </li>
-              <li class="min-w-max">
-                <a href="/vistas/atletas_crud.html" class=" space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
-                  <svg class="h-10  w-10" fill="currentcolor"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>run</title><path d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z" /></svg>
-                  <span class="text-sm  font-medium">Atletas</span>                
-                </a>
-              </li>
-              <li class="min-w-max">
-                <a href="/vistas/agenda.html" class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="w-8 h-8 bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
-                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
-                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
-                  </svg>
-                  <span class="text-sm font-medium">Agenda</span>
-                </a>
-              </li>
-              <li class="min-w-max">
-                <a href="/vistas/pruebas_crud.html" class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 bi bi-award-fill" viewBox="0 0 16 16">
-                    <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                  </svg>
-                  <span class="text-sm font-medium">Competencia</span>
-                </a>
-              </li>
-              <li class="min-w-max">
-                <a href="#" class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg"fill="currentColor" class="w-7 h-7 bi bi-gear-fill" viewBox="0 0 16 16">
-                    <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
-                  </svg>
-                  <span class="text-sm font-medium">Configuracion</span>
-                </a>
-              </li>
-            </ul>
-           </div>
+            <button id="boton"> <img src="/imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
+            <div id="sidebar-content">
+              <ul class=" mt-10 space-y-10 tracking-wide">
+                <li class="min-w-max">
+                  <a href="/vistas/dashboard.html" aria-label="dashboard"
+                    class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class=" w-7 h-7 bi bi-house-door-fill"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+                    </svg>
+                    <span class=" text-sm font-medium">Dashboard</span>
+                  </a>
+                </li>
+                <li class="min-w-max">
+                  <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
+                    class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
+                    <svg class="h-10  w-10" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>run</title>
+                      <path
+                        d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z" />
+                    </svg>
+                    <span class="text-sm  font-medium">Atletas</span>
+                  </button>
+                </li>
+                <!-- Dropdown menu -->
+                <div id="dropdownDots"
+                  class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <li>
+                      <a href="#" class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
+                    </li>
+                    <li>
+                      <a href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Presupuesto</a>
+                    </li>
+                    <li>
+                      <a href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                    </li>
+                  </ul>
+                </div>
+                <li class="min-w-max">
+                  <a href="/vistas/agenda.html"
+                    class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                      class="w-8 h-8 bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z" />
+                      <path
+                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                      <path
+                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                    </svg>
+                    <span class="text-sm font-medium">Agenda</span>
+                  </a>
+                </li>
+                <li class="min-w-max">
+                  <a href="#"
+                    class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 bi bi-award-fill"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
+                      <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                    </svg>
+                    <span class="text-sm font-medium">Competencia</span>
+                  </a>
+                </li>
+                <li class="min-w-max">
+                  <a href="#"
+                    class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-7 h-7 bi bi-gear-fill"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                    </svg>
+                    <span class="text-sm font-medium">Configuracion</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="w-max -mb-3">
             <a href="#" class="group flex items-center space-x-4 rounded-full px-4 py-3 text-white">
@@ -99,7 +132,8 @@
         <!-- Comienzo del navbar -->
         <section class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
           <div class="container flex flex-wrap items-center justify-between mx-auto">
-            <h1 class="titulo-navbar self-center text-4xl font-overpass font-normal whitespace-nowrap dark:text-white">Dashboard</h1>
+            <h1 class="titulo-navbar self-center text-4xl font-overpass font-normal whitespace-nowrap dark:text-white">
+              Dashboard</h1>
             </a>
             <div class="flex items-center md:order-2">
               <button class="mr-4 w-10 h-10 bg-azul-opaco flex justify-center items-center rounded-full"
@@ -150,7 +184,8 @@
                   </li>
                 </ul>
               </div>
-              <button class="sm:hidden block " id="btn-sidebar"> <img src="/imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
+              <button class="sm:hidden block " id="btn-sidebar"> <img src="/imagenes/logo-indes-recortado.png"
+                  class="w-14" alt=""></button>
             </div>
         </section>
         <!-- Finalizacion del navbar -->
@@ -171,7 +206,7 @@
             <div class="flex items-center justify-center" id="chart2"></div>
           </div>
           <!-- Finalizacion de los graficos -->
-          
+
         </main>
       </div>
     </div>
