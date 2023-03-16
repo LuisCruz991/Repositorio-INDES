@@ -9,6 +9,8 @@ module.exports = {
         'azul-1': '#6B728E',
         'azul-2': '#476072',
         'azul-opaco': '#E2E8F0',
+        'tabla-color-2': '#F9FAFC',
+        
       },
       fontFamily:{
         overpass:['overpass'],

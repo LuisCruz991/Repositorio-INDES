@@ -1,3 +1,6 @@
+
+
+
 var options = {
     series: [{
     name: 'Net Profit',
@@ -71,4 +74,13 @@ var options = {
 
   var chart = new ApexCharts(document.querySelector("#chart2"), options);
   chart.render();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+  
 
