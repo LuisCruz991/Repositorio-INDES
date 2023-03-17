@@ -42,16 +42,33 @@
                   </a>
                 </li>
                 <li class="min-w-max">
-                  <a href="/vistas/atletas_crud.html"
-                    class=" space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
+                  <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
+                    class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
                     <svg class="h-10  w-10" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                       <title>run</title>
                       <path
                         d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z" />
                     </svg>
                     <span class="text-sm  font-medium">Atletas</span>
-                  </a>
+                  </button>
                 </li>
+                <!-- Dropdown menu -->
+                <div id="dropdownDots"
+                  class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <li>
+                      <a href="/vistas/atletas_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
+                    </li>
+                    <li>
+                      <a href="/vistas/presupuesto.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Presupuesto</a>
+                    </li>
+                    <li>
+                      <a href="/vistas/entrenadores_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Entrenadores</a>
+                    </li>
+                  </ul>
+                </div>
                 <li class="min-w-max">
                   <a href="/vistas/agenda.html"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -67,34 +84,35 @@
                   </a>
                 </li>
                 <li class="min-w-max">
-                    <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
-                      class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 bi bi-award-fill"
-                        viewBox="0 0 16 16">
-                        <path
-                          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
-                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-                      </svg>
-                      <span class="text-sm  font-medium">Competencia</span>
-                    </button>
-                  </li>
-                  <!-- Dropdown menu -->
-                  <div id="dropdowncomp"
-                    class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
-                      <li>
-                        <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
-                      </li>
-                      <li>
-                        <a href="cantidad_titulo_crud.html"
-                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantidad de Titulos</a>
-                      </li>
-                      <li>
-                        <a href="pruebas_crud.html"
-                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
+                    class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 bi bi-award-fill"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
+                      <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                    </svg>
+                    <span class="text-sm  font-medium">Competencia</span>
+                  </button>
+                </li>
+                <!-- Dropdown menu -->
+                <div id="dropdowncomp"
+                  class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <li>
+                      <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
+                    </li>
+                    <li>
+                      <a href="cantidad_titulo_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantidad
+                        de Titulos</a>
+                    </li>
+                    <li>
+                      <a href="pruebas_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
+                    </li>
+                  </ul>
+                </div>
                 <li class="min-w-max">
                   <a href="#"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -216,7 +234,7 @@
                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="filter-radio-example-1"
                         class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">A - Z
-                        </label>
+                      </label>
                     </div>
                   </li>
                   <li>
@@ -225,7 +243,7 @@
                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="filter-radio-example-2"
                         class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Z - A
-                        </label>
+                      </label>
                     </div>
                   </li>
                 </ul>
@@ -272,7 +290,7 @@
                       Marca Obtenida
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                        Fechas
+                      Fechas
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
@@ -296,7 +314,7 @@
                   <!-- Campos de la tabla -->
                   <td class="px-6 py-4">
                     Copa Nacional sub-18
-                  </th>
+                    </th>
                   <td class="px-6 py-4">
                     Walter
                   </td>
@@ -306,7 +324,7 @@
                   <td class="px-6 py-4">
                     5-10-2022
                   </td>
-                  
+
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
@@ -319,74 +337,74 @@
                   </td>
                 </tr>
                 <tr
-                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                    <input id="checkbox-table-search-1" type="checkbox"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                  </div>
-                </td>
-                <!-- Campos de la tabla -->
-                <td class="px-6 py-4">
-                  Copa Nacional sub-18
-                </th>
-                <td class="px-6 py-4">
-                  Walter
-                </td>
-                <td class="px-6 py-4">
-                  19s
-                </td>
-                <td class="px-6 py-4">
-                  5-10-2022
-                </td>
-                
-                <td class="px-6 py-4">
-                  <button href="#"
-                    class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
-                  </button>
-                </td>
-                <td class="px-6 py-4">
-                  <button href="#"
-                    class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                  </button>
-                </td>
-              </tr>
-              <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="w-4 p-4">
-                <div class="flex items-center">
-                  <input id="checkbox-table-search-1" type="checkbox"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                </div>
-              </td>
-              <!-- Campos de la tabla -->
-              <td class="px-6 py-4">
-                Copa Nacional sub-18
-              </th>
-              <td class="px-6 py-4">
-                Walter
-              </td>
-              <td class="px-6 py-4">
-                19s
-              </td>
-              <td class="px-6 py-4">
-                5-10-2022
-              </td>
-              
-              <td class="px-6 py-4">
-                <button href="#"
-                  class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
-                </button>
-              </td>
-              <td class="px-6 py-4">
-                <button href="#"
-                  class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                </button>
-              </td>
-            </tr>
-               
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <td class="w-4 p-4">
+                    <div class="flex items-center">
+                      <input id="checkbox-table-search-1" type="checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                    </div>
+                  </td>
+                  <!-- Campos de la tabla -->
+                  <td class="px-6 py-4">
+                    Copa Nacional sub-18
+                    </th>
+                  <td class="px-6 py-4">
+                    Walter
+                  </td>
+                  <td class="px-6 py-4">
+                    19s
+                  </td>
+                  <td class="px-6 py-4">
+                    5-10-2022
+                  </td>
+
+                  <td class="px-6 py-4">
+                    <button href="#"
+                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button href="#"
+                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <td class="w-4 p-4">
+                    <div class="flex items-center">
+                      <input id="checkbox-table-search-1" type="checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                    </div>
+                  </td>
+                  <!-- Campos de la tabla -->
+                  <td class="px-6 py-4">
+                    Copa Nacional sub-18
+                    </th>
+                  <td class="px-6 py-4">
+                    Walter
+                  </td>
+                  <td class="px-6 py-4">
+                    19s
+                  </td>
+                  <td class="px-6 py-4">
+                    5-10-2022
+                  </td>
+
+                  <td class="px-6 py-4">
+                    <button href="#"
+                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    </button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button href="#"
+                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    </button>
+                  </td>
+                </tr>
+
               </tbody>
             </table>
           </div>
