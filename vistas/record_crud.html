@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <title>Pruebas_crud</title>
+  <title>record_crud</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/css/tailwind.css" rel="stylesheet">
@@ -67,34 +67,34 @@
                   </a>
                 </li>
                 <li class="min-w-max">
-                  <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
-                    class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 bi bi-award-fill"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
-                      <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-                    </svg>
-                    <span class="text-sm  font-medium">Competencia</span>
-                  </button>
-                </li>
-                <!-- Dropdown menu -->
-                <div id="dropdowncomp"
-                  class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                  <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
-                    <li>
-                      <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
-                    </li>
-                    <li>
-                      <a href="cantidad_titulo_crud.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantidad de Titulos</a>
-                    </li>
-                    <li>
-                      <a href="pruebas_crud.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
-                    </li>
-                  </ul>
-                </div>
+                    <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
+                      class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 bi bi-award-fill"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                      </svg>
+                      <span class="text-sm  font-medium">Competencia</span>
+                    </button>
+                  </li>
+                  <!-- Dropdown menu -->
+                  <div id="dropdowncomp"
+                    class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                      <li>
+                        <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
+                      </li>
+                      <li>
+                        <a href="cantidad_titulo_crud.html"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantidad de Titulos</a>
+                      </li>
+                      <li>
+                        <a href="pruebas_crud.html"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
+                      </li>
+                    </ul>
+                  </div>
                 <li class="min-w-max">
                   <a href="#"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -134,7 +134,7 @@
         <section class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
           <div class="container flex flex-wrap items-center justify-between mx-auto">
             <h1 class="titulo-navbar self-center text-4xl font-overpass font-normal whitespace-nowrap dark:text-white">
-              Pruebas</h1>
+              Records</h1>
             </a>
             <div class="flex items-center md:order-2">
               <button class="notificacion mr-4 w-10 h-10 bg-azul-opaco flex justify-center items-center rounded-full"
@@ -263,13 +263,16 @@
                   <!-- Columnas de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre de la prueba
+                      Prueba
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Deporte
+                      Atleta
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Evento
+                      Marca Obtenida
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                        Fechas
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
@@ -292,14 +295,18 @@
                   </td>
                   <!-- Campos de la tabla -->
                   <td class="px-6 py-4">
-                    Prueba de 100m
+                    Copa Nacional sub-18
                   </th>
                   <td class="px-6 py-4">
-                    Atletismo
+                    Walter
                   </td>
                   <td class="px-6 py-4">
-                    Evento internacional de atletismo
+                    19s
                   </td>
+                  <td class="px-6 py-4">
+                    5-10-2022
+                  </td>
+                  
                   <td class="px-6 py-4">
                     <button href="#"
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
@@ -312,140 +319,74 @@
                   </td>
                 </tr>
                 <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td class="w-4 p-4">
-                    <div class="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    Prueba de 100m
-                  </th>
-                  <td class="px-6 py-4">
-                    Atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    Evento internacional de atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                  </td>
-                </tr>
-                <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td class="w-4 p-4">
-                    <div class="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    Prueba de 100m
-                  </th>
-                  <td class="px-6 py-4">
-                    Atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    Evento internacional de atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                  </td>
-                </tr>
-                <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td class="w-4 p-4">
-                    <div class="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    Prueba de 100m
-                  </th>
-                  <td class="px-6 py-4">
-                    Atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    Evento internacional de atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                  </td>
-                </tr>
-                <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td class="w-4 p-4">
-                    <div class="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    Prueba de 100m
-                  </th>
-                  <td class="px-6 py-4">
-                    Atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    Evento internacional de atletismo
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                  </td>
-                </tr>
-                <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td class="w-4 p-4">
-                    <div class="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
-                    <td class="px-6 py-4">
-                      Prueba de 100m
-                    </th>
-                    <td class="px-6 py-4">
-                      Atletismo
-                    </td>
-                    <td class="px-6 py-4">
-                      Evento internacional de atletismo
-                    </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
-                  </td>
-                  <td class="px-6 py-4">
-                    <button href="#"
-                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                  </td>
-                </tr>
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="w-4 p-4">
+                  <div class="flex items-center">
+                    <input id="checkbox-table-search-1" type="checkbox"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                  </div>
+                </td>
+                <!-- Campos de la tabla -->
+                <td class="px-6 py-4">
+                  Copa Nacional sub-18
+                </th>
+                <td class="px-6 py-4">
+                  Walter
+                </td>
+                <td class="px-6 py-4">
+                  19s
+                </td>
+                <td class="px-6 py-4">
+                  5-10-2022
+                </td>
+                
+                <td class="px-6 py-4">
+                  <button href="#"
+                    class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                  </button>
+                </td>
+                <td class="px-6 py-4">
+                  <button href="#"
+                    class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                  </button>
+                </td>
+              </tr>
+              <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td class="w-4 p-4">
+                <div class="flex items-center">
+                  <input id="checkbox-table-search-1" type="checkbox"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                </div>
+              </td>
+              <!-- Campos de la tabla -->
+              <td class="px-6 py-4">
+                Copa Nacional sub-18
+              </th>
+              <td class="px-6 py-4">
+                Walter
+              </td>
+              <td class="px-6 py-4">
+                19s
+              </td>
+              <td class="px-6 py-4">
+                5-10-2022
+              </td>
+              
+              <td class="px-6 py-4">
+                <button href="#"
+                  class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                </button>
+              </td>
+              <td class="px-6 py-4">
+                <button href="#"
+                  class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                </button>
+              </td>
+            </tr>
+               
               </tbody>
             </table>
           </div>
