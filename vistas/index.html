@@ -1,8 +1,11 @@
 <!doctype html>
+<!-- Idioma del sitio -->
 <html lang="es">
 
 <head>
+  <!-- Titulo -->
   <title>Login</title>
+  <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Css de tailwind -->
@@ -31,6 +34,7 @@
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <hr>
           <hr>
+          <!-- Titulo -->
           <h1
             class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
             Iniciar sesion
@@ -38,18 +42,21 @@
           <hr>
           <hr>
           <form class="space-y-4 md:space-y-6" action="#">
+            <!-- Campo para ingresar usuario -->
             <div class="py-4">
               <label for="email" class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
               <input type="email" name="email" id="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="example@mail.com" required="">
             </div>
+            <!-- Campo para ingresar la clave -->
             <div class="py-6">
               <label for="password" class="block mb-2 text-lg font-medium text-white dark:text-white">Contraseña</label>
               <input type="password" name="password" id="password" placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required="">
             </div>
+            <!-- Acceder a recuperacion de clave -->
             <div class="flex items-center justify-between py-2">
               <div class="flex items-start">
                 <div class="flex items-center h-5">
@@ -60,6 +67,7 @@
                 </div>
               </div>
             </div>
+            <!-- Boton para iniciar sesion -->
             <div class="flex flex-col items-center py-4">
               <a href="dashboard.html" type="submit"
                 class="boton text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar
