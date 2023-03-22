@@ -1,13 +1,20 @@
 <!doctype html>
+<!-- Idioma del sitio -->
 <html lang="es">
 
 <head>
+  <!-- Titulo -->
   <title>Cantidad_titulos_crud</title>
+  <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Css de de tailwind -->
   <link href="/css/tailwind.css" rel="stylesheet">
+  <!-- Cdn de flowbite -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+  <!-- Css del proyecto -->
   <link rel="stylesheet" href="/css/estilos.css">
+  <!-- Fuentes del proyecto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -30,6 +37,7 @@
             <button id="boton"> <img src="/imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
             <div id="sidebar-content">
               <ul class=" mt-10 space-y-10 tracking-wide">
+                <!-- Boton para acceder a dashboard -->
                 <li class="min-w-max">
                   <a href="/vistas/dashboard.html" aria-label="dashboard"
                     class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -41,6 +49,7 @@
                     <span class=" text-sm font-medium">Dashboard</span>
                   </a>
                 </li>
+                <!-- Boton para acceder a atletas -->
                 <li class="min-w-max">
                   <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
                     class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
@@ -52,23 +61,27 @@
                     <span class="text-sm  font-medium">Atletas</span>
                   </button>
                 </li>
-                <!-- Dropdown menu -->
+                <!-- Dropdown menu de boton de atletas -->
                 <div id="dropdownDots"
                   class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <!-- Boton para acceder a SCRUD de atletas -->
                     <li>
                       <a href="/vistas/atletas_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
                     </li>
+                    <!-- Boton para acceder a SCRUD de presupuesto  -->
                     <li>
                       <a href="/vistas/presupuesto.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Presupuesto</a>
                     </li>
+                    <!-- Boton para acceder a SCRUD de entrenadores -->
                     <li>
                       <a href="/vistas/entrenadores_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Entrenadores</a>
                     </li>
                   </ul>
                 </div>
+                <!-- Boton para acceder a vista de agenda -->
                 <li class="min-w-max">
                   <a href="/vistas/agenda.html"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -83,6 +96,7 @@
                     <span class="text-sm font-medium">Agenda</span>
                   </a>
                 </li>
+                <!-- Boton para acceder a competencias -->
                 <li class="min-w-max">
                   <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
                     class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
@@ -95,24 +109,28 @@
                     <span class="text-sm  font-medium">Competencia</span>
                   </button>
                 </li>
-                <!-- Dropdown menu -->
+                <!-- Dropdown menu de boton competencias -->
                 <div id="dropdowncomp"
                   class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <!-- Boton para acceder al SCRUD de records -->
                     <li>
                       <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
                     </li>
+                    <!-- Boton para acceder al SCRUD de titulos -->
                     <li>
                       <a href="cantidad_titulo_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantidad
                         de Titulos</a>
                     </li>
+                    <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
                       <a href="pruebas_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
                     </li>
                   </ul>
                 </div>
+                <!-- Boton para acceder a configuracion -->
                 <li class="min-w-max">
                   <a href="#"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -228,6 +246,7 @@
                 style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
                 <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
                   aria-labelledby="dropdownRadioButton">
+                  <!-- Filtro alfabetico -->
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                       <input id="filter-radio-example-1" type="radio" value="" name="filter-radio"
@@ -237,6 +256,7 @@
                       </label>
                     </div>
                   </li>
+                  <!-- Filtro alfabetico -->
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                       <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio"
@@ -248,6 +268,7 @@
                   </li>
                 </ul>
               </div>
+              <!-- Busqueda -->
               <label for="table-search" class="sr-only">Search</label>
               <div class=" relative mt-1">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -263,15 +284,18 @@
                   placeholder="Buscar...">
               </div>
             </div>
+            <!-- Boton para agregar -->
             <button href="#"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 hover:underline">Agregar</a>
             </button>
           </div>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <!-- Titulos de la tabal -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="p-4">
+                    <!-- Checkbox para seleccionar uno o mas campos -->
                     <div class="flex items-center">
                       <input id="checkbox-all-search" type="checkbox"
                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
