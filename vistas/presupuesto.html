@@ -1,8 +1,11 @@
 <!doctype html>
+<!-- Idioma del sitio -->
 <html lang="es">
 
 <head>
+  <!-- Titulo -->
   <title>Presupuesto</title>
+  <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Css de de tailwind -->
@@ -35,6 +38,7 @@
             <button id="boton"> <img src="/imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
             <div id="sidebar-content">
               <ul class=" mt-10 space-y-10 tracking-wide">
+                <!-- Boton para acceder a dashboard -->
                 <li class="min-w-max">
                   <a href="/vistas/dashboard.html" aria-label="dashboard"
                     class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -46,6 +50,7 @@
                     <span class=" text-sm font-medium">Dashboard</span>
                   </a>
                 </li>
+                <!-- Boton para acceder a atletas -->
                 <li class="min-w-max">
                   <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
                     class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
@@ -57,24 +62,28 @@
                     <span class="text-sm  font-medium">Atletas</span>
                   </button>
                 </li>
-                <!-- Dropdown menu -->
+                <!-- Dropdown menu de boton de atletas -->
                 <div id="dropdownDots"
                   class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <!-- Boton para acceder a SCRUD de atletas -->
                     <li>
                       <a href="/vistas/atletas_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
                     </li>
+                    <!-- Boton para acceder a SCRUD de presupuesto  -->
                     <li>
                       <a href="/vistas/presupuesto.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Presupuesto</a>
                     </li>
+                    <!-- Boton para acceder a SCRUD de entrenadores -->
                     <li>
                       <a href="/vistas/entrenadores_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Entrenadores</a>
                     </li>
                   </ul>
                 </div>
+                <!-- Boton para acceder a vista de agenda -->
                 <li class="min-w-max">
                   <a href="/vistas/agenda.html"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -89,6 +98,7 @@
                     <span class="text-sm font-medium">Agenda</span>
                   </a>
                 </li>
+                <!-- Boton para acceder a competencias -->
                 <li class="min-w-max">
                   <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
                     class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
@@ -101,23 +111,27 @@
                     <span class="text-sm  font-medium">Competencia</span>
                   </button>
                 </li>
-                <!-- Dropdown menu -->
+                <!-- Dropdown menu de boton competencias -->
                 <div id="dropdowncomp"
                   class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <!-- Boton para acceder al SCRUD de records -->
                     <li>
                       <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
                     </li>
+                    <!-- Boton para acceder al SCRUD de titulos -->
                     <li>
                       <a href="cantidad_titulo_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantidad de Titulos</a>
                     </li>
+                    <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
                       <a href="pruebas_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
                     </li>
                   </ul>
                 </div>
+                <!-- Boton para acceder a configuracion -->
                 <li class="min-w-max">
                   <a href="#"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
@@ -280,8 +294,7 @@
                   </li>
                 </ul>
               </div>
-              <!-- Dropdown menu -->
-
+              <!-- Buscador -->
               <label for="table-search" class="sr-only">Search</label>
               <div class=" relative mt-1">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -297,6 +310,7 @@
                   placeholder="Buscar...">
               </div>
             </div>
+            <!-- Boton para agregar -->
             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 hover:underline">Agregar</a>
             </button>
@@ -308,6 +322,7 @@
                 <!-- Modal header -->
                 <form>
                   <div class="grid gap-6 m-5 md:grid-cols-2">
+                    <!-- Campo para ingresar -->
                     <div>
                       <label for="first_name"
                         class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atleta</label>
@@ -315,6 +330,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Nombre" required>
                     </div>
+                    <!-- Campo para seleccionar la categoria de presupuesto -->
                     <div>
                       <label for="Categoria"
                         class="block mb-2 mt-5 text-sm font-medium text-gray-900 dark:text-white">Categoria de
@@ -343,6 +359,7 @@
 
                     </div>
                   </div>
+                  <!-- Boton para crear registro -->
                   <button type="submit"
                     class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Agregar</button>
                 </form>
@@ -352,8 +369,10 @@
           </div>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <!-- Titulos de la tabla -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                  <!-- Checkbox para seleccionar uno o mas registros -->
                   <th scope="col" class="p-4">
                     <div class="flex items-center">
                       <input id="checkbox-all-search" type="checkbox"
