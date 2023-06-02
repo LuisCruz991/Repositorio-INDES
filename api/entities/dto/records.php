@@ -4,7 +4,7 @@ require_once('../../entities/dao/records_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad RECORDS.
 */
-class Records extends RecordsQueries
+class Record extends RecordQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
@@ -107,7 +107,7 @@ class Records extends RecordsQueries
 
     public function getPosicion()
     {
-        
+
         return $this->posicion;
     }
 }

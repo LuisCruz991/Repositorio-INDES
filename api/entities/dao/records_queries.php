@@ -37,7 +37,7 @@ class RecordQueries
         $sql = 'SELECT idrecord, marca_obtenida, idunidad_medida, idatleta, idprueba, posicion
                 FROM records 
                 WHERE idrecord = ?';
-        $params = array($this->id);
+        $params = array($this->id, $this->marca_obtenida, $this->unidad_medida, $this->atleta, $this->prueba, $this->posicion);
         return Database::getRow($sql, $params);
     }
 
@@ -45,7 +45,7 @@ class RecordQueries
     {
         $sql = 'INSERT INTO records(marca_obtenida, idunidad_medida, idatleta, idprueba, posicion)
                 VALUES(?)';
-        $params = array($this->numero);
+        $params = array($this->marca_obtenida, $this->unidad_medida, $this->atleta, $this->prueba, $this->posicion);
         return Database::executeRow($sql, $params);
     }
 
@@ -55,7 +55,7 @@ class RecordQueries
         $sql = 'UPDATE records
                 SET marca_obtenida = ? 
                 WHERE idrecord = ?';
-        $params = array($this->estado, $this->id);
+        $params = array($this->marca_obtenida, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -72,7 +72,7 @@ class RecordQueries
                 FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
                 WHERE idunidad_medida = ? 
                 ORDER BY nombre_medida';
-        $params = array($this->id);
+        $params = array($this->id, $this->marca_obtenida, $this->posicion);
         return Database::getRows($sql, $params);
     }
 }
