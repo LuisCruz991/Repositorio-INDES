@@ -15,7 +15,8 @@ class RecordQueries
         WHERE nombre_usuario
         
         
-         ILIKE ? OR nombre_medida ILIKE ? OR posicion ILIKE ?
+         LIKE ? OR nombre_medida LIKE ? OR posicion 
+         LIKE ?
         ORDER BY idrecord';
         $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
