@@ -22,7 +22,7 @@ class ClasificacionDeporteQueries
     {
         $sql = 'INSERT INTO clasificacion_deporte(nombre_clasificacion)
                 VALUES(?)';
-        $params = array($this->numero);
+        $params = array($this->nombre);
         return Database::executeRow($sql, $params);
     }
 
@@ -48,7 +48,7 @@ class ClasificacionDeporteQueries
         $sql = 'UPDATE clasificacion_deporte
                 SET nombre_clasificacion = ?
                 WHERE idclasificacion_deporte = ?';
-        $params = array($this->numero, $this->id);
+        $params = array($this->nombre, $this->id);
         return Database::executeRow($sql, $params);
     }
 

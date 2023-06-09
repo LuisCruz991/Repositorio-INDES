@@ -39,49 +39,49 @@ if (isset($_GET['action'])) {
                     break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$clasificacion->setNumero($_POST['numero'])) {
-                    $result['exception'] = 'Numero incorrecto';
+                if (!$clasificacion->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
                 }  elseif ($clasificacion->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Talla creada correctamente';
+                    $result['message'] = 'Clasificacion creada correctamente';
                 } else {
                     $result['exception'] = Database::getException();;
                 }
                 break;
             case 'readOne':
-                if (!$clasificacion->setId($_POST['idtalla'])) {
-                    $result['exception'] = 'Talla incorrecta';
+                if (!$clasificacion->setId($_POST['idclasificacion_deporte'])) {
+                    $result['exception'] = 'Clasificacion incorrecta';
                 } elseif ($result['dataset'] = $clasificacion->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Talla inexistente';
+                    $result['exception'] = 'Clasificacion inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$clasificacion->setId($_POST['id'])) {
-                    $result['exception'] = 'Talla incorrecta';
+                    $result['exception'] = 'Clasificacion incorrecta';
                 } elseif (!$data = $clasificacion->readOne()) {
-                    $result['exception'] = 'Talla inexistente';
-                } elseif (!$clasificacion->setNumero($_POST['numero'])) {
-                    $result['exception'] = 'Numero incorrecto';
+                    $result['exception'] = 'Clasificacion inexistente';
+                } elseif (!$clasificacion->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Clasificacion incorrecta';
                 }  elseif ($clasificacion->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Talla modificada correctamente';
+                    $result['message'] = 'Clasificacion modificada correctamente';
                 }else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$clasificacion->setId($_POST['idtalla'])) {
-                    $result['exception'] = 'Talla incorrecta';
+                if (!$clasificacion->setId($_POST['idclasificacion_deporte'])) {
+                    $result['exception'] = 'Clasificacion incorrecta';
                 } elseif (!$clasificacion->readOne()) {
-                    $result['exception'] = 'Talla inexistente';
+                    $result['exception'] = 'Clasificacion inexistente';
                 } elseif ($clasificacion->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Talla eliminada correctamente';
+                    $result['message'] = 'Clasificacion eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
