@@ -33,7 +33,7 @@ class ResponsableQueries
         $sql = 'SELECT idresponsable, nombre_madre, direccion_madre, telefono_madre, nombre_padre, direccion_padre, telefono_padre
                 FROM responsables
                 WHERE idresponsable = ?';
-        $params = array($this->id, $this->marca_obtenida, $this->unidad_medida, $this->atleta, $this->prueba, $this->posicion);
+        $params = array($this->id, $this->nombre_madre, $this->direccion_madre, $this->telefono_madre, $this->nombre_padre, $this->direccion_padre, $this->telefono_padre);
         return Database::getRow($sql, $params);
     }
 
