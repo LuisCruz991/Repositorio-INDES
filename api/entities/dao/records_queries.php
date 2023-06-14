@@ -66,12 +66,33 @@ class RecordQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
     public function readUnidadMedida()
     {
         $sql = 'SELECT idrecord, marca_obtenida, posicion
                 FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
                 WHERE idunidad_medida = ? 
                 ORDER BY nombre_medida';
+        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+        return Database::getRows($sql, $params);
+    }
+
+    public function readAtletas()
+    {
+        $sql = 'SELECT idrecord, marca_obtenida, posicion
+                FROM records INNER JOIN nombre_atleta USING (idatleta)
+                WHERE idatleta = ? 
+                ORDER BY nombre_atleta';
+        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+        return Database::getRows($sql, $params);
+    }
+
+    public function readPruebas()
+    {
+        $sql = 'SELECT idrecord, marca_obtenida, posicion
+                FROM records INNER JOIN nombre_prueba USING (idprueba)
+                WHERE idprueba = ? 
+                ORDER BY nombre_prueba';
         $params = array($this->id, $this->marca_obtenida, $this->posicion);
         return Database::getRows($sql, $params);
     }

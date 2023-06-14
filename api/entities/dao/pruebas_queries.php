@@ -10,20 +10,22 @@ class PruebasQueries
     */
     public function searchRows($value)
     {
-        $sql = ' SELECT idprueba, nombre_prueba, iddeporte, idevento
-        FROM pruebas
+        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento
+        FROM pruebas INNER JOIN deportes USING (iddeporte)
+        INNER JOIN eventos USING(idevento)
         WHERE nombre_prueba LIKE ?
         ORDER BY idprueba';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
  
     public function readAll()
     {
-        $sql = ' SELECT idprueba, nombre_prueba, iddeporte, idevento
-        FROM pruebas
-        WHERE marca_obtenida ILIKE ? OR nombre_medida ILIKE ? OR posicion ILIKE ?
+        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento
+        FROM pruebas INNER JOIN deportes USING (iddeporte)
+        INNER JOIN eventos USING(idevento)
+        WHERE nombre_prueba LIKE ?
         ORDER BY idprueba';
         return Database::getRows($sql);
     }
@@ -33,15 +35,15 @@ class PruebasQueries
         $sql = 'SELECT idprueba, nombre_prueba, iddeporte, idevento
                 FROM pruebas
                 WHERE idprueba = ?';
-        $params = array($this->id, $this->nombre_madre, $this->direccion_madre, $this->telefono_madre, $this->nombre_padre, $this->direccion_padre, $this->telefono_padre);
+        $params = array($this->id, $this->nombre, $this->deporte, $this->evento);
         return Database::getRow($sql, $params);
     }
 
     public function createRow()
     {
         $sql = 'INSERT INTO pruebas(nombre_prueba, iddeporte, idevento)
-                VALUES(?,?,?,?,?,?)';
-        $params = array($this->nombre_madre, $this->direccion_madre, $this->telefono_madre, $this->nombre_padre, $this->direccion_padre, $this->telefono_padre);
+                VALUES(?,?,?)';
+        $params = array($this->nombre, $this->deporte, $this->evento);
         return Database::executeRow($sql, $params);
     }
 
@@ -49,9 +51,9 @@ class PruebasQueries
     {
        
         $sql = 'UPDATE pruebas
-                SET nombre_madre = ?, direccion_madre = ?, telefono_madre = ?, nombre_padre = ?, direccion_padre = ?, telefono_padre = ?
+                SET nombre_prueba = ?
                 WHERE idprueba = ?';
-        $params = array($this->nombre_madre, $this->direccion_madre, $this->telefono_madre, $this->nombre_padre, $this->direccion_padre, $this->telefono_padre, $this->id);
+        $params = array($this->nombre, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -61,5 +63,25 @@ class PruebasQueries
                 WHERE idprueba = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    public function readDeportes()
+    {
+        $sql = 'SELECT idprueba, nombre_prueba
+                FROM pruebas INNER JOIN deportes USING (iddeporte)
+                WHERE idprueba = ? 
+                ORDER BY nombre_prueba';
+        $params = array($this->id, $this->nombre);
+        return Database::getRows($sql, $params);
+    }
+    
+    public function readEvento()
+    {
+        $sql = 'SELECT idprueba, nombre_prueba
+                FROM pruebas INNER JOIN eventos USING (idevento)
+                WHERE idprueba = ? 
+                ORDER BY nombre_prueba';
+        $params = array($this->id, $this->nombre);
+        return Database::getRows($sql, $params);
     }
 }
