@@ -1,5 +1,5 @@
 <?php
-require_once('../../helpers/database.php');
+require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad ADMIN.
 */
@@ -32,7 +32,7 @@ class AdminQueries
         $sql = 'SELECT idadministrador, nombre_usuario, clave_usuario, idgeneros
                 FROM administradores
                 WHERE idadministrador = ?';
-        $params = array($this->id);
+        $params = array($this->id, $this->nombre, $this->clave, $this->genero);
         return Database::getRow($sql, $params);
     }
 
@@ -40,14 +40,14 @@ class AdminQueries
     {
         $sql = 'INSERT INTO administradores(nombre_usuario, clave_usuario, idgeneros)
                 VALUES(?)';
-        $params = array($this->numero);
+        $params = array($this->nombre, $this->clave, $this->genero);
         return Database::executeRow($sql, $params);
     }
 
     public function updateRow()
     {
        
-        $sql = 'UPDATE records
+        $sql = 'UPDATE administradores
                 SET marca_obtenida =  ?
                 WHERE idrecord = ?';
         $params = array($this->estado, $this->id);
