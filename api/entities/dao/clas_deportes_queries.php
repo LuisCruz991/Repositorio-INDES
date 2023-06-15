@@ -39,7 +39,7 @@ class ClasificacionDeporteQueries
         $sql = 'SELECT idclasificacion_deporte, nombre_clasificacion
                 FROM clasificacion_deporte
                 WHERE idclasificacion_deporte = ?';
-        $params = array($this->id);
+        $params = array($this->id, $this->nombre);
         return Database::getRow($sql, $params);
     }
 
