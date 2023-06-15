@@ -37,13 +37,17 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$record->setProducto($_POST['producto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                }  elseif (!$record->setTalla($_POST['talla'])) {
-                    $result['exception'] = 'Talla incorrecta';
-                }  elseif (!$record->setExistencia($_POST['existencia1'])) {
-                    $result['exception'] = 'Existencia incorrecta';
-                }   elseif ($record->createRow()) {
+                if (!$record->setMarcaObtenida($_POST['marca_obtenida'])) {
+                    $result['exception'] = 'Marca incorrecta';
+                }  elseif (!$record->setUnidadMedida($_POST['unidad_medida'])) {
+                    $result['exception'] = 'Unidad de medida incorrecta';
+                }  elseif (!$record->setAtleta($_POST['atleta'])) {
+                    $result['exception'] = 'Atleta incorrecto';
+                }   elseif (!$record->setPrueba($_POST['prueba'])) {
+                    $result['exception'] = 'Prueba incorrecta';
+                }  elseif (!$record->setPosicion($_POST['posicion'])) {
+                    $result['exception'] = 'Posicion incorrecta';
+                }  elseif ($record->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle creado correctamente';
                 } else {
