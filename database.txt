@@ -1,0 +1,406 @@
+--
+-- Estructura de tabla para la tabla `administradores`
+--
+
+CREATE TABLE `administradores` (
+  `idadministrador` bigint(20) UNSIGNED NOT NULL COMMENT 'ID del administrador',
+  `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
+  `clave_usuario` varchar(25) NOT NULL COMMENT 'Clave del administrador',
+  `idgenero` int(11) NOT NULL COMMENT 'Genero del administrador '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `atletas`
+--
+
+CREATE TABLE `atletas` (
+  `idatleta` int(11) NOT NULL COMMENT 'Numero de atleta',
+  `nombre_atleta` varchar(50) NOT NULL COMMENT 'Nombre del atleta',
+  `apellido_atleta` varchar(50) NOT NULL COMMENT 'Apellido del atleta',
+  `nacimiento` date NOT NULL COMMENT 'Fecha de nacimiento del atleta',
+  `idgenero` int(11) NOT NULL COMMENT 'Genero del atleta',
+  `estatura` decimal(3,2) NOT NULL COMMENT 'Estatura del atleta',
+  `peso` decimal(3,2) NOT NULL COMMENT 'Peso del atleta',
+  `talla_camisa` varchar(5) NOT NULL COMMENT 'Talla de camisa del atleta',
+  `talla_short` varchar(5) NOT NULL COMMENT 'Talla del short del atleta',
+  `direccion` varchar(200) NOT NULL COMMENT 'Direccion del atleta',
+  `dui` varchar(10) DEFAULT NULL COMMENT 'DUI del atleta',
+  `celular` varchar(9) NOT NULL COMMENT 'Numero de teléfono del atleta',
+  `telefono_casa` varchar(9) NOT NULL COMMENT 'Teléfono fijo del atleta',
+  `correo` varchar(50) NOT NULL COMMENT 'Dirección de correo del atleta',
+  `facebook` varchar(50) DEFAULT NULL COMMENT 'Facebook del atleta',
+  `instagram` varchar(50) DEFAULT NULL COMMENT 'Instagram del atleta',
+  `twitter` varchar(50) DEFAULT NULL COMMENT 'Twitter del atleta',
+  `idresponsable` int(11) NOT NULL COMMENT 'Padre o/y madre del atleta',
+  `iddeporte` int(11) NOT NULL COMMENT 'Deporte practicado por el atleta',
+  `identrenador` int(11) NOT NULL COMMENT 'Entrenador encargado del atleta',
+  `clave` varchar(50) NOT NULL COMMENT 'Contraseña'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria_inversion`
+--
+
+CREATE TABLE `categoria_inversion` (
+  `idcateg_inversion` int(11) NOT NULL COMMENT 'Numero de categoria de inversion',
+  `anual_mensual` tinyint(1) NOT NULL COMMENT 'Tipo de inversion mensual o anual'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clasificacion_deporte`
+--
+
+CREATE TABLE `clasificacion_deporte` (
+  `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte',
+  `nombre_clasificacion` varchar(50) NOT NULL COMMENT 'Nombre de la clasificacion del deporte'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `deportes`
+--
+
+CREATE TABLE `deportes` (
+  `iddeporte` int(11) NOT NULL COMMENT 'Numero de deporte',
+  `nombre_deporte` varchar(50) NOT NULL COMMENT 'Nombre del deporte',
+  `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte',
+  `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Numero de modalidad del deporte'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `entrenadores`
+--
+
+CREATE TABLE `entrenadores` (
+  `id_entrenador` int(11) NOT NULL COMMENT 'Numero del entrenador',
+  `nombre` varchar(50) NOT NULL COMMENT 'Nombre del entrenador',
+  `apellido` varchar(50) NOT NULL COMMENT 'Apellido del entrenador',
+  `telefono` varchar(9) NOT NULL COMMENT 'Numero de teléfono del entrenador ',
+  `idgenero` int(11) NOT NULL COMMENT 'Genero del entrenador',
+  `direccion` varchar(200) NOT NULL COMMENT 'Direccion del entrenador',
+  `dui` varchar(10) NOT NULL COMMENT 'Numero de DUI del entrenador ',
+  `correo` varchar(50) NOT NULL COMMENT 'Direccion de correo del entrenador '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `idevento` int(11) NOT NULL COMMENT 'Numero de evento',
+  `nombre_evento` varchar(80) NOT NULL COMMENT 'Nombre del evento',
+  `descripcion` varchar(500) NOT NULL COMMENT 'Descripcion del evento',
+  `fecha_evento` date NOT NULL COMMENT 'Fecha del evento',
+  `imagen_sede` varchar(200) NOT NULL COMMENT 'Foto del lugar del evento',
+  `sede_evento` varchar(200) NOT NULL COMMENT 'Sitio de realizacion del evento',
+  `direccion_sede` varchar(500) NOT NULL COMMENT 'Direccion del evento',
+  `hora_inicio` time NOT NULL COMMENT 'Hora de inicio del evento',
+  `hora_cierre` time NOT NULL COMMENT 'Hora de cierre del evento',
+  `idtipo_evento` int(11) NOT NULL COMMENT 'Tipo de evento'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `generos`
+--
+
+CREATE TABLE `generos` (
+  `idgenero` int(11) NOT NULL COMMENT 'Numero de genero',
+  `nombre_genero` varchar(25) DEFAULT NULL COMMENT 'Genero '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `modalidades_deportivas`
+--
+
+CREATE TABLE `modalidades_deportivas` (
+  `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Numero de modalidad deportiva',
+  `nombre_modalidad` varchar(50) NOT NULL COMMENT 'Nombre de la modalidad deportiva'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `presupuesto`
+--
+
+CREATE TABLE `presupuesto` (
+  `idpresupuesto` int(11) NOT NULL COMMENT 'Numero de presupuesto',
+  `idcateg_inversion` int(11) NOT NULL COMMENT 'Tipo de inversión',
+  `estimulos` decimal(6,2) DEFAULT NULL COMMENT 'Remuneración monetaria por cumplimiento de objetivos ',
+  `preparacion_fogues` decimal(6,2) DEFAULT NULL COMMENT 'Apoyo monetario para sus fogueos ',
+  `ayuda_extranjera` decimal(6,2) DEFAULT NULL COMMENT 'Dinero de apoyo para viajes al extranjero',
+  `equipamiento` decimal(6,2) DEFAULT NULL COMMENT 'Dinero para artículos esenciales para el atleta',
+  `otros` decimal(6,2) DEFAULT NULL COMMENT 'Ayuda económica de diferentes gastos ',
+  `patrocinadores` decimal(6,2) DEFAULT NULL COMMENT 'Dinero de apoyo de patrocinadores ',
+  `obsevaciones` varchar(500) NOT NULL COMMENT 'Observaciones dadas o realizadas al atleta ',
+  `idatleta` int(11) NOT NULL COMMENT 'Numero del atleta'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pruebas`
+--
+
+CREATE TABLE `pruebas` (
+  `idprueba` int(11) NOT NULL COMMENT 'Numero de prueba',
+  `nombre_prueba` varchar(100) NOT NULL COMMENT 'Nombre de la prueba',
+  `iddeporte` int(11) NOT NULL COMMENT 'Numero del deporte',
+  `idevento` int(11) NOT NULL COMMENT 'Numero de evento al que pertenece'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `records`
+--
+
+CREATE TABLE `records` (
+  `idrecord` int(11) NOT NULL COMMENT 'Numero de récord ',
+  `marca_obtenida` decimal(5,2) NOT NULL COMMENT 'Marca del record obtenida en la prueba',
+  `idunidad_medida` int(11) NOT NULL COMMENT 'Unidad de medida utilizada para medir la marca obtenida ',
+  `idatleta` int(11) NOT NULL COMMENT 'Atleta que obtuvo esa marca',
+  `idprueba` int(11) NOT NULL COMMENT 'Prueba en la que se realizo la marca',
+  `posicion` int(11) DEFAULT NULL COMMENT 'Posición en la que quedo el atleta dentro de la prueba'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `responsables`
+--
+
+CREATE TABLE `responsables` (
+  `idresponsable` int(11) NOT NULL COMMENT 'ID de padre o/y madre del atleta',
+  `nombre_madre` varchar(50) DEFAULT NULL COMMENT 'Nombre de la madre del atleta',
+  `direccion_madre` varchar(200) DEFAULT NULL COMMENT 'Direccion de la madre del atleta',
+  `telefono_madre` varchar(9) DEFAULT NULL COMMENT 'Telefono movil de la madre del atleta',
+  `nombre_padre` varchar(50) DEFAULT NULL COMMENT 'Nombre del padre del atleta',
+  `direccion_padre` varchar(200) DEFAULT NULL COMMENT 'Direccion del padre del atleta',
+  `telefono_padre` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del padre del atleta'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_evento`
+--
+
+CREATE TABLE `tipo_evento` (
+  `idtipo_evento` int(11) NOT NULL COMMENT 'ID del tipo del evento',
+  `nombre` varchar(80) NOT NULL COMMENT 'Nombre del tipo del evento '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `unidades_medidas`
+--
+
+CREATE TABLE `unidades_medidas` (
+  `idunidad_medida` int(11) NOT NULL COMMENT 'ID de la unidad de medida',
+  `nombre_medida` varchar(30) NOT NULL COMMENT 'Nombre de la unidad de medida utilizada'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  ADD PRIMARY KEY (`idadministrador`),
+  ADD KEY `genero_admin` (`idgenero`);
+
+--
+-- Indices de la tabla `atletas`
+--
+ALTER TABLE `atletas`
+  ADD PRIMARY KEY (`idatleta`),
+  ADD UNIQUE KEY `correo_atleta_unique` (`correo`),
+  ADD UNIQUE KEY `celular_atleta_unique` (`celular`),
+  ADD UNIQUE KEY `dui_atleta_unique` (`dui`),
+  ADD KEY `atleta_genero` (`idgenero`),
+  ADD KEY `atleta_resposable` (`idresponsable`),
+  ADD KEY `atleta_deporte` (`iddeporte`);
+
+--
+-- Indices de la tabla `categoria_inversion`
+--
+ALTER TABLE `categoria_inversion`
+  ADD PRIMARY KEY (`idcateg_inversion`);
+
+--
+-- Indices de la tabla `clasificacion_deporte`
+--
+ALTER TABLE `clasificacion_deporte`
+  ADD PRIMARY KEY (`idclasificacion_deporte`);
+
+--
+-- Indices de la tabla `deportes`
+--
+ALTER TABLE `deportes`
+  ADD PRIMARY KEY (`iddeporte`),
+  ADD KEY `deporte_clasificacion` (`idclasificacion_deporte`),
+  ADD KEY `deporte_modalidad` (`idmodalidad_deporte`);
+
+--
+-- Indices de la tabla `entrenadores`
+--
+ALTER TABLE `entrenadores`
+  ADD PRIMARY KEY (`id_entrenador`),
+  ADD UNIQUE KEY `dui_unique` (`dui`),
+  ADD UNIQUE KEY `correo_unique` (`correo`),
+  ADD KEY `entrenador_genero` (`idgenero`);
+
+--
+-- Indices de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`idevento`),
+  ADD KEY `evento_tipo` (`idtipo_evento`);
+
+--
+-- Indices de la tabla `generos`
+--
+ALTER TABLE `generos`
+  ADD PRIMARY KEY (`idgenero`);
+
+--
+-- Indices de la tabla `modalidades_deportivas`
+--
+ALTER TABLE `modalidades_deportivas`
+  ADD PRIMARY KEY (`idmodalidad_deporte`);
+
+--
+-- Indices de la tabla `presupuesto`
+--
+ALTER TABLE `presupuesto`
+  ADD PRIMARY KEY (`idpresupuesto`),
+  ADD KEY `atleta_presupuesto` (`idatleta`),
+  ADD KEY `categoria_presupuesto` (`idcateg_inversion`);
+
+--
+-- Indices de la tabla `pruebas`
+--
+ALTER TABLE `pruebas`
+  ADD PRIMARY KEY (`idprueba`),
+  ADD KEY `prueba_deporte` (`iddeporte`),
+  ADD KEY `prueba_evento` (`idevento`);
+
+--
+-- Indices de la tabla `records`
+--
+ALTER TABLE `records`
+  ADD PRIMARY KEY (`idrecord`),
+  ADD KEY `records_unidad` (`idunidad_medida`),
+  ADD KEY `atleta_record` (`idatleta`),
+  ADD KEY `record_prueba` (`idprueba`);
+
+--
+-- Indices de la tabla `responsables`
+--
+ALTER TABLE `responsables`
+  ADD PRIMARY KEY (`idresponsable`);
+
+--
+-- Indices de la tabla `tipo_evento`
+--
+ALTER TABLE `tipo_evento`
+  ADD PRIMARY KEY (`idtipo_evento`);
+
+--
+-- Indices de la tabla `unidades_medidas`
+--
+ALTER TABLE `unidades_medidas`
+  ADD PRIMARY KEY (`idunidad_medida`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  MODIFY `idadministrador` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador';
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  ADD CONSTRAINT `genero_admin` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `atletas`
+--
+ALTER TABLE `atletas`
+  ADD CONSTRAINT `atleta_deporte` FOREIGN KEY (`iddeporte`) REFERENCES `deportes` (`iddeporte`),
+  ADD CONSTRAINT `atleta_genero` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`),
+  ADD CONSTRAINT `atleta_resposable` FOREIGN KEY (`idresponsable`) REFERENCES `responsables` (`idresponsable`);
+
+--
+-- Filtros para la tabla `deportes`
+--
+ALTER TABLE `deportes`
+  ADD CONSTRAINT `deporte_clasificacion` FOREIGN KEY (`idclasificacion_deporte`) REFERENCES `clasificacion_deporte` (`idclasificacion_deporte`),
+  ADD CONSTRAINT `deporte_modalidad` FOREIGN KEY (`idmodalidad_deporte`) REFERENCES `modalidades_deportivas` (`idmodalidad_deporte`);
+
+--
+-- Filtros para la tabla `entrenadores`
+--
+ALTER TABLE `entrenadores`
+  ADD CONSTRAINT `entrenador_genero` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`);
+
+--
+-- Filtros para la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD CONSTRAINT `evento_tipo` FOREIGN KEY (`idtipo_evento`) REFERENCES `tipo_evento` (`idtipo_evento`);
+
+--
+-- Filtros para la tabla `presupuesto`
+--
+ALTER TABLE `presupuesto`
+  ADD CONSTRAINT `atleta_presupuesto` FOREIGN KEY (`idatleta`) REFERENCES `atletas` (`idatleta`),
+  ADD CONSTRAINT `categoria_presupuesto` FOREIGN KEY (`idcateg_inversion`) REFERENCES `categoria_inversion` (`idcateg_inversion`);
+
+--
+-- Filtros para la tabla `pruebas`
+--
+ALTER TABLE `pruebas`
+  ADD CONSTRAINT `prueba_deporte` FOREIGN KEY (`iddeporte`) REFERENCES `deportes` (`iddeporte`),
+  ADD CONSTRAINT `prueba_evento` FOREIGN KEY (`idevento`) REFERENCES `eventos` (`idevento`);
+
+--
+-- Filtros para la tabla `records`
+--
+ALTER TABLE `records`
+  ADD CONSTRAINT `atleta_record` FOREIGN KEY (`idatleta`) REFERENCES `atletas` (`idatleta`),
+  ADD CONSTRAINT `record_prueba` FOREIGN KEY (`idprueba`) REFERENCES `pruebas` (`idprueba`),
+  ADD CONSTRAINT `records_unidad` FOREIGN KEY (`idunidad_medida`) REFERENCES `unidades_medidas` (`idunidad_medida`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
