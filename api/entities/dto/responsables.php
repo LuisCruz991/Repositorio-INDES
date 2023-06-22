@@ -1,6 +1,6 @@
 <?php
-require_once('../../helpers/validator.php');
-require_once('../../entities/dao/responsable_queries.php');
+require_once('../helpers/validator.php');
+require_once('../entities/dao/responsable_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad RESPONSABLES.
 */

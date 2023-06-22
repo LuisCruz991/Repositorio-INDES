@@ -1,6 +1,6 @@
 <?php
-require_once('../../helpers/validator.php');
-require_once('../../entities/dao/evento_queries.php');
+require_once('../helpers/validator.php');
+require_once('../entities/dao/evento_queries.php');
 
 
 class Event extends EventQueries  {

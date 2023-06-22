@@ -1,6 +1,6 @@
 <?php
-require_once('../../helpers/validator.php');
-require_once('../../entities/dao/modalida_queries.php');
+require_once('../helpers/validator.php');
+require_once('../entities/dao/modalida_queries.php');
 
 
 class modalidad extends ModalidadQueries  {
