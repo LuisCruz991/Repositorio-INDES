@@ -8,8 +8,6 @@ class Usuario extends UsuarioQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nombres = null;
-    protected $apellidos = null;
     protected $correo = null;
     protected $alias = null;
     protected $clave = null;
@@ -27,25 +25,6 @@ class Usuario extends UsuarioQueries
         }
     }
 
-    public function setNombres($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setApellidos($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->apellidos = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function setCorreo($value)
     {
@@ -85,16 +64,7 @@ class Usuario extends UsuarioQueries
         return $this->id;
     }
 
-    public function getNombres()
-    {
-        return $this->nombres;
-    }
-
-    public function getApellidos()
-    {
-        return $this->apellidos;
-    }
-
+  
     public function getCorreo()
     {
         return $this->correo;

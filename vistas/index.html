@@ -9,11 +9,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Css de tailwind -->
-  <link href="/css/tailwind.css" rel="stylesheet">
+  <link rel="stylesheet" href="../Css/tailwind.css">
   <!-- Cdn de flowbite -->
-  <link href="/node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
-        <!-- Css del proyecto -->
-  <link rel="stylesheet" href="/css/estilos.css">
+  <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
+  <!-- Css del proyecto -->
+  <link rel="stylesheet" href="../Css/Estilos.css">
   <!-- Fuentes del proyecto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,8 @@
   <main>
 
     <!--Inicio del Login -->
-    <div class="md:flex items-center justify-center  px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="hidden"  id="login-contenedor">
+    <div class="md:flex items-center  justify-center  px-6 py-8 mx-auto md:h-screen lg:py-0" id="login-contenedor">
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
       </a>
       <div
@@ -41,7 +42,7 @@
           </h1>
           <hr>
           <hr>
-          <form class="space-y-4 md:space-y-6" action="#">
+          <form class="space-y-4 md:space-y-6" id="login-form" action="#">
             <!-- Campo para ingresar usuario -->
             <div class="py-4">
               <label for="email" class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
@@ -87,19 +88,99 @@
           </h2>
         </div>
         <div>
-          <img class="w-96" src="/imagenes/logo-indes.png" alt="">
+          <img class="w-96" src="../imagenes/logo-indes.png" alt="">
         </div>
       </section>
       <!-- Titulo y logo de la empresa -->
 
     </div>
+   </div>
+
+    <!--Inicio del registro -->
+    <div class="hidden"  id="signup-contenedor">
+    <div class="md:flex items-center  justify-center  px-6 py-8 mx-auto md:h-screen lg:py-0" id="signup-contenedor">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      </a>
+      <div
+        class="contenedor bg-azul-1 rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <hr>
+          <hr>
+          <!-- Titulo -->
+          <h1
+            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+            Iniciar sesion
+          </h1>
+          <hr>
+          <hr>
+          <form class="space-y-4 md:space-y-6" id="signup-form" action="#">
+            <!-- Campo para ingresar usuario -->
+            <div class="py-4">
+              <label for="correo" class="block mb-2 text-lg font-medium text-white dark:text-white">Correo</label>
+              <input type="email" name="correo" id="correo"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Correo electronico" required>
+            </div>
+            <div class="py-4">
+              <label for="usuario" class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
+              <input type="text" name="usuario" id="usuario"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Usuario" required>
+            </div>
+            <!-- Campo para ingresar la clave -->
+            <div class="py-4">
+              <label for="codigo" class="block mb-2 text-lg font-medium text-white dark:text-white">Clave</label>
+              <input type="password" name="codigo" id="codigo" placeholder="••••••••"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+            </div>
+            <div class="py-4">
+              <label for="confirmar" class="block mb-2 text-lg font-medium text-white dark:text-white">Clave confirmar clave</label>
+              <input type="password" name="confirmar" id="confirmar" placeholder="••••••••"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+            </div>
+            <!-- Boton para iniciar sesion -->
+            <div class="flex flex-col items-center py-4">
+              <button type="submit"
+                class="boton tooltipped text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Guardar
+                datos</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--Finalizacion del Login -->
+
+      <!-- Titulo y logo de la empresa -->
+      <section class="mt-8 seccion-2 mb-48 flex flex-col items-center">
+        <div>
+          <h2
+            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+            Bienvenido!
+          </h2>
+        </div>
+        <div>
+          <img class="w-96" src="../imagenes/logo-indes.png" alt="">
+        </div>
+      </section>
+      <!-- Titulo y logo de la empresa -->
+
+    </div>
+  </div>
+
+
+
   </main>
 
   <!-- Finalizacion del codigo -->
 
 
   <!-- Js de flowbite -->
-  <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="../Js/sweetalert.min.js"></script>
+  <script src="../controllers/components.js"></script>
+  <script src="../controllers/dashboard/account.js"></script>
+  <script src="../controllers/dashboard/index.js"></script>
 
 </body>
 

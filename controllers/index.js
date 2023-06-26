@@ -10,15 +10,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si existe una sesión, de lo contrario se sigue con el flujo normal.
     if (JSON.session) {
         // Se direcciona a la página web de bienvenida.
-        location.href = 'main.html';
+        location.href = 'dashboard.html';
     } else if (JSON.status) {
         // Se muestra el formulario para iniciar sesión.
-        document.getElementById('login-container').classList.remove('hide');
+        document.getElementById('login-contenedor').classList.remove('hidden');
         sweetAlert(4, JSON.message, true);
     } else {
         // Se muestra el formulario para registrar el primer usuario.
-        document.getElementById('signup-container').classList.remove('hide');
+        document.getElementById('signup-contenedor').classList.remove('hidden');
         sweetAlert(4, JSON.exception, true);
+
     }
 });
 
@@ -48,7 +49,7 @@ LOGIN_FORM.addEventListener('submit', async (event) => {
     const JSON = await dataFetch(USER_API, 'login', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'main.html');
+        sweetAlert(1, JSON.message, true, 'producto_admin.html');
     } else {
         sweetAlert(2, JSON.exception, false);
     }

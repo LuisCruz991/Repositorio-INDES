@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/usuario.php');
+require_once('../entities/dto/usuario.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -10,14 +10,14 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['idadministrador'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['alias_usuario'])) {
+                if (isset($_SESSION['nombre_usuario'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['alias_usuario'];
+                    $result['username'] = $_SESSION['nombre_usuario'];
                 } else {
                     $result['exception'] = 'Alias de usuario indefinido';
                 }
@@ -178,11 +178,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
+                if  (!$usuario->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$usuario->setAlias($_POST['usuario'])) {
                     $result['exception'] = 'Alias incorrecto';
