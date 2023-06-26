@@ -8,13 +8,13 @@ class UsuarioQueries
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
-    public function checkUser($alias)
+    public function checkUser($nombres)
     {
         $sql = 'SELECT idadministrador FROM administradores WHERE nombre_usuario = ?';
-        $params = array($alias);
+        $params = array($nombres);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idadministrador'];
-            $this->alias = $alias;
+            $this->nombres = $nombres;
             return true;
         } else {
             return false;

@@ -195,13 +195,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->checkUser($_POST['alias'])) {
-                    $result['exception'] = 'Alias incorrecto';
+                if (!$usuario->checkUser($_POST['nombres'])) {
+                    $result['exception'] = 'Usuario incorrecto';
                 } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
-                    $_SESSION['id_usuario'] = $usuario->getId();
-                    $_SESSION['alias_usuario'] = $usuario->getAlias();
+                    $_SESSION['idadministrador'] = $usuario->getId();
+                    $_SESSION['nombre_usuario'] = $usuario->getNombre();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

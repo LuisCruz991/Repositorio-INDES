@@ -46,14 +46,14 @@
             <!-- Campo para ingresar usuario -->
             <div class="py-4">
               <label for="email" class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
-              <input type="email" name="email" id="email"
+              <input type="text" name="nombres" id="nombres"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="example@mail.com" required="">
             </div>
             <!-- Campo para ingresar la clave -->
             <div class="py-6">
               <label for="password" class="block mb-2 text-lg font-medium text-white dark:text-white">Contraseña</label>
-              <input type="password" name="password" id="password" placeholder="••••••••"
+              <input type="password" name="clave" id="clave" placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required="">
             </div>
@@ -70,9 +70,9 @@
             </div>
             <!-- Boton para iniciar sesion -->
             <div class="flex flex-col items-center py-4">
-              <a href="dashboard.html" type="submit"
-                class="boton text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar
-                sesion</a>
+              <button type="submit"
+              class="boton tooltipped text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Guardar
+              datos</button>
             </div>
           </form>
         </div>
@@ -179,8 +179,8 @@
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
-  <script src="../controllers/dashboard/account.js"></script>
-  <script src="../controllers/dashboard/index.js"></script>
+  <script src="../controllers/account.js"></script>
+  <script src="../controllers/index.js"></script>
 
 </body>
 

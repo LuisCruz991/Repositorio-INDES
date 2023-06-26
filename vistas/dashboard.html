@@ -9,11 +9,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Css de de tailwind -->
-  <link href="/css/tailwind.css" rel="stylesheet">
+  <link rel="stylesheet" href="../Css/tailwind.css">
   <!-- Cdn de flowbite -->
-  <link href="/node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
+  <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
   <!-- Css del proyecto -->
-  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="stylesheet" href="../Css/Estilos.css">
   <!-- Fuentes del proyecto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
       <nav class="sidebar sm:block hidden min-h-screen w-36  overflow-hidden border-r  bg-azul-1 hover:shadow-lg">
         <div class="flex h-screen flex-col justify-between mt-12 pb-6">
           <div class="flex flex-col items-center">
-            <button id="boton"> <img src="/imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
+            <button id="boton"> <img src="../imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
             <div id="sidebar-content">
               <ul class=" mt-10 space-y-10 tracking-wide">
                 <!-- Boton para acceder a dashboard -->
@@ -68,7 +68,7 @@
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
                     <!-- Boton para acceder a SCRUD de atletas -->
                     <li>
-                      <a href="/vistas/atletas_crud.html"
+                      <a href="../vistas/atletas_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
                     </li>
                     <!-- Boton para acceder a SCRUD de presupuesto  -->
@@ -193,69 +193,15 @@
     <!-- Finalizacion del sidebar -->
 
     <!-- Comienzo del dashboard -->
+    
     <div class="h-screen w-full overflow-y-auto">
       <div class="p-4">
 
-        <!-- Comienzo del navbar -->
-        <section class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-          <div class="container flex flex-wrap items-center justify-between mx-auto">
-            <h1 class="titulo-navbar self-center text-4xl font-overpass font-normal whitespace-nowrap dark:text-white">
-              Dashboard</h1>
-            </a>
-            <div class="flex items-center md:order-2">
-              <button class="mr-4 w-10 h-10 bg-azul-opaco flex justify-center items-center rounded-full"
-                aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray"
-                  class="bi bi-bell w-8 h-8 rounded-full" viewBox="0 0 16 16">
-                  <path
-                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                </svg>
-              </button>
-              <div class="flex flex-col mr-2">
-                <h5 class="font-jakarta">Gato persa</h5>
-                <h6 class="font-jakarta text-gray-600">Atleta</h6>
-              </div>
-              <button type="button"
-                class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                data-dropdown-placement="bottom">
-                <span class="sr-only">Open user menu</span>
-                <img class="w-11 h-11  rounded-full" src="/imagenes/gato-persa.jpg" alt="user photo">
-              </button>
-              <!-- Dropdown menu -->
-              <div
-                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                id="user-dropdown">
-                <div class="px-4 py-3">
-                  <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                  <span
-                    class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
-                </div>
-                <ul class="py-2" aria-labelledby="user-menu-button">
-                  <li>
-                    <a href="#"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-                  </li>
-                  <li>
-                    <a href="/vistas/index.html"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                      out</a>
-                  </li>
-                </ul>
-              </div>
-              <button class="sm:hidden block " id="btn-sidebar"> <img src="/imagenes/logo-indes-recortado.png"
-                  class="w-14" alt=""></button>
-            </div>
-        </section>
-        <!-- Finalizacion del navbar -->
+        <!-- Comienzo del header -->
+        <HEADER class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+         
+          </HEADER>
+        <!-- Finalizacion del header -->
 
         <main class="flex flex-col">
           <!-- Grafico para ritmo de entrenamiento -->
@@ -282,12 +228,15 @@
   </div>
   <!-- Finalizacion del codigo -->
 
-  <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../Js/sweetalert.min.js"></script>
+  <script src="../controllers/components.js"></script>
+  <script src="../controllers/account.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <script src="/js/script.js"></script>
-  <script src="/js/charts.js"></script>
+  <script src="../js/charts.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  
 </body>
 
 </html>

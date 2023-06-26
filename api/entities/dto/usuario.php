@@ -9,7 +9,7 @@ class Usuario extends UsuarioQueries
     // Declaración de atributos (propiedades).
     protected $id = null;
     protected $correo = null;
-    protected $alias = null;
+    protected $nombres = null;
     protected $clave = null;
 
     /*
@@ -36,10 +36,10 @@ class Usuario extends UsuarioQueries
         }
     }
 
-    public function setAlias($value)
+    public function setNombre($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->alias = $value;
+            $this->nombres = $value;
             return true;
         } else {
             return false;
@@ -70,9 +70,9 @@ class Usuario extends UsuarioQueries
         return $this->correo;
     }
 
-    public function getAlias()
+    public function getNombre()
     {
-        return $this->alias;
+        return $this->nombres;
     }
 
     public function getClave()
