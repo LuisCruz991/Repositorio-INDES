@@ -48,26 +48,18 @@ class AdminQueries
     {
        
         $sql = 'UPDATE administradores
-                SET marca_obtenida =  ?
-                WHERE idrecord = ?';
-        $params = array($this->estado, $this->id);
+                SET nombre_usuario =  ?, clave_usuario = ?, idgenero = ?
+                WHERE idadministrador = ?';
+        $params = array($this->nombre, $this->clave, $this-> genero, $this->id );
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM records
-                WHERE idrecord = ?';
+        $sql = 'DELETE FROM administradores
+                WHERE idadministrador = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-    public function readUnidadMedida()
-    {
-        $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
-                WHERE idunidad_medida = ? 
-                ORDER BY nombre_medida';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-    }
+    
 }
