@@ -16,7 +16,6 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $atleta->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -118,17 +117,51 @@ if (isset($_GET['action'])) {
                 break;
                 case 'update':
                     $_POST = Validator::validateForm($_POST);
-                    if (!$deporte->setId($_POST['id'])) {
+                    if (!$atleta->setId($_POST['id'])) {
                         $result['exception'] = 'Deporte invalido';
-                    } elseif (!$data = $deporte->readOne()) {
+                    } elseif (!$data = $atleta->readOne()) {
                         $result['exception'] = 'Ocurrió un problema al leer el deporte';
-                    } elseif (!$deporte->setDeporte($_POST['deporte'])) {
-                        $result['exception'] = 'Nombre del deporte no valido';
-                    } elseif (!$deporte->setClasificacion($_POST['clasificacion'])) {
-                        $result['exception'] = 'Clasificacion no valida';
-                    } elseif (!$deporte->setModalidad($_POST['modalidad'])) {
-                        $result['exception'] = 'Modalidad deportiva no valida';
-                    } elseif ($deporte->updateRow()) {
+                    } elseif (!$atleta->setNombre($_POST['nombre'])) {
+                        $result['exception'] = 'Nombre del atleta no valido';
+                    }  elseif (!$atleta->setApellido($_POST['apellido'])) {
+                        $result['exception'] = 'Apellido del atleta no valido';
+                    } elseif (!$atleta->setNacimiento($_POST['nacimiento'])) {
+                        $result['exception'] = 'Nacimiento del atleta no valido';
+                    }elseif (!isset($_POST['genero'])) {
+                        $result['exception'] = 'Seleccione un genero';
+                    } elseif (!$atleta->setGenero($_POST['genero'])) {
+                        $result['exception'] = 'Genero no valida';
+                    }  elseif (!$atleta->setEstatura($_POST['estatura'])) {
+                        $result['exception'] = 'Estatura del atleta no valido';
+                    } elseif (!$atleta->setPeso($_POST['peso'])) {
+                        $result['exception'] = 'Peso del atleta no valido';
+                    } elseif (!$atleta->setCamisa($_POST['camisa'])) {
+                        $result['exception'] = 'Camisa del atleta no valido';
+                    } elseif (!$atleta->setShort($_POST['short'])) {
+                        $result['exception'] = 'Short del atleta no valido';
+                    } elseif (!$atleta->setDireccion($_POST['direccion'])) {
+                        $result['exception'] = 'Direccion del atleta no valido';
+                    } elseif (!$atleta->setDUI($_POST['dui'])) {
+                        $result['exception'] = 'Dui del atleta no valido';
+                    } elseif (!$atleta->setCelular($_POST['celular'])) {
+                        $result['exception'] = 'Celular del atleta no valido';
+                    } elseif (!$atleta->setTelefono($_POST['telefono'])) {
+                        $result['exception'] = 'telefono del atleta no valido';
+                    } elseif (!$atleta->setCorreo($_POST['correo'])) {
+                        $result['exception'] = 'Correo del atleta no valido';
+                    }elseif (!isset($_POST['nombre_madre'])) {
+                        $result['exception'] = 'Seleccione un responsable';
+                    } elseif (!$atleta->setNombreMadre($_POST['nombre_madre'])) {
+                        $result['exception'] = 'Responsable no valida';
+                    }  elseif (!isset($_POST['deporte'])) {
+                        $result['exception'] = 'Seleccione el deporte';
+                    } elseif (!$atleta->setDeporte($_POST['deporte'])) {
+                        $result['exception'] = 'Deporte no valida';
+                    } elseif (!isset($_POST['entrenador'])) {
+                        $result['exception'] = 'Seleccione el entrenador';
+                    } elseif (!$atleta->setEntrenador($_POST['entrenador'])) {
+                        $result['exception'] = 'Entrenador no valida';
+                    }  elseif ($atleta->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Deporte actualizado exitosamente';
                     } else {

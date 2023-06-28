@@ -87,7 +87,7 @@ class Atleta extends AtletaQueries  {
      }
 
     public function setPeso($value) {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateMoney($value)) {
             $this->peso = $value;
             return true;
         } else {

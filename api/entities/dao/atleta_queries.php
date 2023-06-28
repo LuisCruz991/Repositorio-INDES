@@ -6,11 +6,14 @@ class atletaqueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
-                 FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
-                               INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
-                 WHERE nombre_deporte  LIKE ?';
-         $params = array("%$value%");
+         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_madre, nombre_deporte, nombre, atletas.clave
+         FROM atletas
+         INNER JOIN generos USING(idgenero)
+         INNER JOIN responsables USING(idresponsable)
+         INNER JOIN deportes USING(iddeporte)
+         INNER JOIN entrenadores USING(identrenador)
+                 WHERE nombre_atleta  ILIKE ? or nombre_madre  ILIKE ? ';
+         $params = array("%$value%", "%$value%" );
          return Database::getRows($sql, $params);
      }
  
@@ -85,10 +88,10 @@ class atletaqueries {
      public function updateRow()
      {
          $sql = 'UPDATE atletas
-         SET nombre_atleta = ?, apellido_atleta = ?, nacimiento = ?, idgenero = ?, estatura = ?, peso = ?, talla_camisa = ?, talla_short = ?, direccion = ?, dui = ?, celular = ?, telefono_casa = ?, correo = ?, facebook = ?, instagram = ?, twitter = ?, idresponsable = ?, iddeporte = ?, identrenador = ?, clave = ?
+         SET nombre_atleta = ?, apellido_atleta = ?, nacimiento = ?, idgenero = ?, estatura = ?, peso = ?, talla_camisa = ?, talla_short = ?, direccion = ?, dui = ?, celular = ?, telefono_casa = ?, correo = ?, idresponsable = ?, iddeporte = ?, identrenador = ?
          WHERE idatleta = ?';
-         $params = array($this->nombre, $this->apellido, $this->nacimiento,$this->genero, $this->estatura, $this->peso,$this->camisa, $this->short, $this->direccion,$this->dui, $this->celular, $this->telefono,$this->correo, $this->facebook, $this->insta,$this->twitter, $this->nombre_madre
-         , $this->deporte,$this->entrenador, $this->clave,  $this->id);
+         $params = array($this->nombre, $this->apellido, $this->nacimiento,$this->genero, $this->estatura, $this->peso,$this->camisa, $this->short, $this->direccion,$this->dui, $this->celular, $this->telefono,$this->correo, $this->nombre_madre
+         , $this->deporte,$this->entrenador,  $this->id);
          return Database::executeRow($sql, $params);
      }
  

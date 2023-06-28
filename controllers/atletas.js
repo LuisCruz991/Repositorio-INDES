@@ -12,14 +12,11 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
+
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
 
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = document.getElementById('save-modal');
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,6 +49,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
 
@@ -151,12 +149,12 @@ async function fillTable(form = null) {
 
                   </td>
                   <td class="px-6 py-4">
-                    <a onclick="openUpdate(${row.idatleta})" data-modal-target="save-modal" data-modal-toggle="save-modal"
-                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
+                    <button onclick="openUpdate(${row.idatleta})" 
+                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
                   </td>
                   <td class="px-6 py-4">
-                    <a onclick="openDelete(${row.idatleta})" 
-                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
+                    <button onclick="openDelete(${row.idatleta})" 
+                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
                 </tr>
 
@@ -200,6 +198,7 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
+        SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
@@ -208,7 +207,7 @@ async function openUpdate(id) {
         document.getElementById('nombre').value = JSON.dataset.nombre_atleta;
         document.getElementById('apellido').value = JSON.dataset.apellido_atleta;
         document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
-        document.getElementById('genero').value = JSON.dataset.idgenero;
+        fillSelect(ATLETA_API, 'readGenero', 'genero', JSON.dataset.idgenero);
         document.getElementById('estatura').value = JSON.dataset.estatura;
         document.getElementById('peso').value = JSON.dataset.peso;
         document.getElementById('camisa').value = JSON.dataset.talla_camisa;
@@ -217,10 +216,10 @@ async function openUpdate(id) {
         document.getElementById('dui').value = JSON.dataset.dui;
         document.getElementById('celular').value = JSON.dataset.celular;
         document.getElementById('telefono').value = JSON.dataset.telefono_casa;
-        document.getElementById('correo').value = JSON.dataset.celular;
-        document.getElementById('nombre_madre').value = JSON.dataset.nombre_madre;
-        document.getElementById('deporte').value = JSON.dataset.nombre_deporte;
-        document.getElementById('entrenador').value = JSON.dataset.nombre;
+        document.getElementById('correo').value = JSON.dataset.correo;
+        fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre', JSON.dataset.idresponsable);
+        fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
+        fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
         document.getElementById('clave').disabled = true ;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
