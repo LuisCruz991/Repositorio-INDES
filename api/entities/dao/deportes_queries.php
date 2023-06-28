@@ -33,6 +33,8 @@ class SportsQueries {
          return Database::getRows($sql);
      }
 
+     
+
      public function readClasificacion()
      {
          $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad

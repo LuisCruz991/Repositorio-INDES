@@ -19,10 +19,7 @@ class Atleta extends AtletaQueries  {
     protected $celular = null ;
     protected $telefono = null;
     protected $correo = null;
-    protected $facebook = null ;
-    protected $insta = null ;
-    protected $twitter = null;
-    protected $responsable = null;
+    protected $nombre_madre = null;
     protected $deporte = null ;
     protected $entrenador = null ;
     protected $clave = null ;
@@ -53,7 +50,7 @@ class Atleta extends AtletaQueries  {
 
    
 
-    public function setApellido($apellido) {
+    public function setApellido($value) {
         if (Validator::validateString($value, 1,50)) {
         $this->apellido = $value;
         return true;
@@ -62,7 +59,7 @@ class Atleta extends AtletaQueries  {
         }
     }
 
-    public function setNacimiento($nacimiento) {
+    public function setNacimiento($value) {
         if (Validator::validateDate($value)) {
             $this->nacimiento = $value;
             return true;
@@ -71,7 +68,7 @@ class Atleta extends AtletaQueries  {
         }
     }
 
-    public function setGenero($genero) {
+    public function setGenero($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->genero = $value;
             return true;
@@ -80,8 +77,8 @@ class Atleta extends AtletaQueries  {
         }    
     }
 
-    public function setEstatura($estatura) {
-        if (Validator::validateNaturalNumber($value)) {
+    public function setEstatura($value) {
+        if (Validator::validateMoney($value)) {
             $this->estatura = $value;
             return true;
         } else {
@@ -89,7 +86,7 @@ class Atleta extends AtletaQueries  {
         }   
      }
 
-    public function setPeso($peso) {
+    public function setPeso($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->peso = $value;
             return true;
@@ -98,7 +95,7 @@ class Atleta extends AtletaQueries  {
         }    
     }
 
-    public function setCamisa($camisa) {
+    public function setCamisa($value) {
         if (Validator::validateString($value, 1,5)) {
             $this->camisa = $value;
             return true;
@@ -107,7 +104,7 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
-    public function setShort($short) {
+    public function setShort($value) {
         if (Validator::validateString($value, 1,5)) {
             $this->short = $value;
             return true;
@@ -116,7 +113,7 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
-    public function setDireccion($direccion) {
+    public function setDireccion($value) {
         if (Validator::validateString($value, 1,200)) {
             $this->direccion = $value;
             return true;
@@ -125,8 +122,8 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
-    public function setDui($dui) {
-        if (Validator::validateString($value, 1,10)) {
+    public function setDUI($value) {
+        if (Validator::validateDUI($value)) {
             $this->dui = $value;
             return true;
             } else {
@@ -134,8 +131,8 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
-    public function setCelular($celular) {
-        if (Validator::validateString($value, 1,9)) {
+    public function setCelular($value) {
+        if (Validator::validatePhone($value)) {
             $this->celular = $value;
             return true;
             } else {
@@ -143,8 +140,8 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
-    public function setTelefono($telefono) {
-        if (Validator::validateString($value, 1,9)) {
+    public function setTelefono($value) {
+        if (Validator::validatePhone($value)) {
             $this->telefono = $value;
             return true;
             } else {
@@ -152,8 +149,8 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
-    public function setCorreo($correo) {
-        if (Validator::validateString($value, 1,50)) {
+    public function setCorreo($value) {
+        if (Validator::validateEmail($value)) {
             $this->correo = $value;
             return true;
             } else {
@@ -161,43 +158,19 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
-    public function setFacebook($facebook) {
-        if (Validator::validateString($value, 1,50)) {
-            $this->facebook = $value;
-            return true;
-            } else {
-                return false;
-            }    
-        }
 
-    public function setInsta($insta) {
-        if (Validator::validateString($value, 1,50)) {
-            $this->insta = $value;
-            return true;
-            } else {
-                return false;
-            }    
-        }
-
-    public function setTwitter($twitter) {
-        if (Validator::validateString($value, 1,50)) {
-            $this->twitter = $value;
-            return true;
-            } else {
-                return false;
-            }    
-        }
-
-    public function setResponsable($responsable) {
+    public function setNombreMadre($value) {
         if (Validator::validateNaturalNumber($value)) {
-            $this->responsable = $value;
+            $this->nombre_madre = $value;
             return true;
         } else {
             return false;
         }    
     }
 
-    public function setDeporte($deporte) {
+    
+
+    public function setDeporte($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->deporte = $value;
             return true;
@@ -206,7 +179,7 @@ class Atleta extends AtletaQueries  {
         }    
     }
 
-    public function setEntrenador($entrenador) {
+    public function setEntrenador($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->entrenador = $value;
             return true;
@@ -214,7 +187,7 @@ class Atleta extends AtletaQueries  {
             return false;
         }    
     }
-    public function setClave($clave) {
+    public function setClave($value) {
         if (Validator::validateString($value, 1,50)) {
             $this->clave = $value;
             return true;
@@ -263,7 +236,7 @@ class Atleta extends AtletaQueries  {
         return $this->direccion;
     }
 
-    public function getDui() {
+    public function getDUI() {
         return $this->dui;
     }
 
@@ -279,20 +252,8 @@ class Atleta extends AtletaQueries  {
         return $this->correo;
     }
 
-    public function getFacebook() {
-        return $this->facebook;
-    }
-
-    public function getInstagram() {
-        return $this->instagram;
-    }
-
-    public function getTwitter() {
-        return $this->twitter;
-    }
-
-    public function getResponsable() {
-        return $this->responsable;
+    public function getNombreMadre() {
+        return $this->nombre_madre;
     }
 
     public function getDeporte() {

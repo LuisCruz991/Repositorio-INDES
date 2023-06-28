@@ -1,5 +1,8 @@
 // Constante para completar la ruta de la API.
-const ATLETA_API = 'business/dashboard/atleta.php';
+const ATLETA_API = 'business/atleta.php';
+const RESPONSABLE_API = 'business/responsable.php';
+const DEPORTE_API = 'business/deporte.php';
+
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -43,7 +46,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(RESPONSABLE_API, action, FORM);
+    const JSON = await dataFetch(ATLETA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -85,7 +88,7 @@ async function fillTable(form = null) {
                     </div>
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre.atleta}
+                  ${row.nombre_atleta}
                   </td>
                   <td class="px-6 py-4">
                   ${row.apellido_atleta}
@@ -116,11 +119,11 @@ async function fillTable(form = null) {
 
                   </td>
                   <td class="px-6 py-4">
-                  ${row.atletas.direccion}
+                  ${row.direccion}
 
                   </td>
                   <td class="px-6 py-4">
-                  ${row.atletas.dui}
+                  ${row.dui}
 
                   </td>
                   <td class="px-6 py-4">
@@ -136,18 +139,6 @@ async function fillTable(form = null) {
 
                   </td>
                   <td class="px-6 py-4">
-                  ${row.facebook}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.instagram}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.twitter}
-
-                  </td>
-                  <td class="px-6 py-4">
                   ${row.nombre_madre}
 
                   </td>
@@ -160,21 +151,19 @@ async function fillTable(form = null) {
 
                   </td>
                   <td class="px-6 py-4">
-                    <button data-modal-target="staticModal" data-modal-toggle="staticModal"
-                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
-                    <!-- Inicio del modal -->
+                    <a onclick="openUpdate(${row.idatleta})" data-modal-target="save-modal" data-modal-toggle="save-modal"
+                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</a>
                   </td>
                   <td class="px-6 py-4">
-                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                    <a onclick="openDelete(${row.idatleta})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</a>
-                    </button>
                   </td>
                 </tr>
 
             `;
         });
-        // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-
+        // Se   inicializa el componente Tooltip para que funcionen las sugerencias textuales.
+        RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -189,9 +178,12 @@ function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
 
     // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
+    SAVE_FORM.reset
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Ingresar responsable';
+    fillSelect(ATLETA_API, 'readGenero', 'genero');
+    fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre');
+    fillSelect(DEPORTE_API, 'readAll', 'deporte');
+    fillSelect(ATLETA_API, 'readEntrenador', 'entrenador');
 }
 
 /*
@@ -202,24 +194,34 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idresponsable', id);
+    FORM.append('idatleta', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(RESPONSABLE_API, 'readOne', FORM);
+    const JSON = await dataFetch(ATLETA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar responsables';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idresponsable;
+        document.getElementById('id').value = JSON.dataset.idatleta;
+        document.getElementById('nombre').value = JSON.dataset.nombre_atleta;
+        document.getElementById('apellido').value = JSON.dataset.apellido_atleta;
+        document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
+        document.getElementById('genero').value = JSON.dataset.idgenero;
+        document.getElementById('estatura').value = JSON.dataset.estatura;
+        document.getElementById('peso').value = JSON.dataset.peso;
+        document.getElementById('camisa').value = JSON.dataset.talla_camisa;
+        document.getElementById('short').value = JSON.dataset.talla_short;
+        document.getElementById('direccion').value = JSON.dataset.direccion;
+        document.getElementById('dui').value = JSON.dataset.dui;
+        document.getElementById('celular').value = JSON.dataset.celular;
+        document.getElementById('telefono').value = JSON.dataset.telefono_casa;
+        document.getElementById('correo').value = JSON.dataset.celular;
         document.getElementById('nombre_madre').value = JSON.dataset.nombre_madre;
-        document.getElementById('direccion_madre').value = JSON.dataset.direccion_madre;
-        document.getElementById('telefono_madre').value = JSON.dataset.telefono_madre;
-        document.getElementById('nombre_padre').value = JSON.dataset.nombre_padre;
-        document.getElementById('direccion_padre').value = JSON.dataset.direccion_padre;
-        document.getElementById('telefono_padre').value = JSON.dataset.telefono_padre;
+        document.getElementById('deporte').value = JSON.dataset.nombre_deporte;
+        document.getElementById('entrenador').value = JSON.dataset.nombre;
+        document.getElementById('clave').disabled = true ;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -238,9 +240,9 @@ async function openDelete(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idresponsable', id);
+        FORM.append('idatleta', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(RESPONSABLE_API, 'delete', FORM);
+        const JSON = await dataFetch(ATLETA_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

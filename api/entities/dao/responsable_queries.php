@@ -22,9 +22,7 @@ class ResponsableQueries
     public function readAll()
     {
         $sql = ' SELECT idresponsable, nombre_madre, direccion_madre, telefono_madre, nombre_padre, direccion_padre, telefono_padre
-        FROM responsables
-        WHERE marca_obtenida ILIKE ? OR nombre_medida ILIKE ? OR posicion ILIKE ?
-        ORDER BY idrecord';
+        FROM responsables';
         return Database::getRows($sql);
     }
 

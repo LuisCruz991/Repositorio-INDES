@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['idadministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
@@ -23,6 +23,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                case 'readGenero':
+                    if ($result['dataset'] = $atleta->readGenero()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;
+                    case 'readEntrenador':
+                        if ($result['dataset'] = $atleta->readEntrenador()) {
+                            $result['status'] = 1;
+                        } elseif (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay datos registrados';
+                        }
+                        break;
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -58,7 +76,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Short del atleta no valido';
                 } elseif (!$atleta->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion del atleta no valido';
-                } elseif (!$atleta->setDui($_POST['dui'])) {
+                } elseif (!$atleta->setDUI($_POST['dui'])) {
                     $result['exception'] = 'Dui del atleta no valido';
                 } elseif (!$atleta->setCelular($_POST['celular'])) {
                     $result['exception'] = 'Celular del atleta no valido';
@@ -66,21 +84,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'telefono del atleta no valido';
                 } elseif (!$atleta->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo del atleta no valido';
-                } elseif (!$atleta->setFacebook($_POST['facebook'])) {
-                    $result['exception'] = 'facebook del atleta no valido';
-                } elseif (!$atleta->setInsta($_POST['insta'])) {
-                    $result['exception'] = 'insta del atleta no valido';
-                } elseif (!$atleta->setTwitter($_POST['twitter'])) {
-                    $result['exception'] = 'twitter del atleta no valido';
-                }elseif (!isset($_POST['responsable'])) {
+                }elseif (!isset($_POST['nombre_madre'])) {
                     $result['exception'] = 'Seleccione un responsable';
-                } elseif (!$atleta->setResponsable($_POST['responsable'])) {
+                } elseif (!$atleta->setNombreMadre($_POST['nombre_madre'])) {
                     $result['exception'] = 'Responsable no valida';
                 }  elseif (!isset($_POST['deporte'])) {
                     $result['exception'] = 'Seleccione el deporte';
                 } elseif (!$atleta->setDeporte($_POST['deporte'])) {
                     $result['exception'] = 'Deporte no valida';
-                } elseif (!isset($_POST['entreneador'])) {
+                } elseif (!isset($_POST['entrenador'])) {
                     $result['exception'] = 'Seleccione el entrenador';
                 } elseif (!$atleta->setEntrenador($_POST['entrenador'])) {
                     $result['exception'] = 'Entrenador no valida';
@@ -94,14 +106,14 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$deporte->setId($_POST['id'])) {
-                    $result['exception'] = 'Deporte invalido';
-                } elseif ($result['dataset'] = $deporte->readOne()) {
+                if (!$atleta->setId($_POST['idatleta'])) {
+                    $result['exception'] = 'Atleta invalido';
+                } elseif ($result['dataset'] = $atleta->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Ocurrió un problema al leer el deporte';
+                    $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
                 case 'update':
@@ -124,13 +136,13 @@ if (isset($_GET['action'])) {
                     }
                     break;
                     case 'delete':
-                        if (!$deporte->setId($_POST['id'])) {
-                            $result['exception'] = 'Deporte invalido';
-                        } elseif (!$data = $deporte->readOne()) {
-                            $result['exception'] = 'Ocurrió un problema al leer el deporte';
-                        } elseif ($deporte->deleteRow()) {
+                        if (!$atleta->setId($_POST['idatleta'])) {
+                            $result['exception'] = 'Atleta invalido';
+                        } elseif (!$data = $atleta->readOne()) {
+                            $result['exception'] = 'Ocurrió un problema al leer el atleta';
+                        } elseif ($atleta->deleteRow()) {
                             $result['status'] = 1;
-                            $result['message'] = 'Deporte descartado exitosamente';
+                            $result['message'] = 'Atleta descartado exitosamente';
                         } else {
                             $result['exception'] = Database::getException();
                         }
