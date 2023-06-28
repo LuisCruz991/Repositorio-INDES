@@ -134,9 +134,9 @@
                     </li>
                     <!-- Boton para acceder al SCRUD de titulos -->
                     <li>
-                      <a href="cantidad_titulo_crud.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantidad
-                        de Titulos</a>
+                      <a href="unidades_medidas.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Unidades
+                        de medidas</a>
                     </li>
                     <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
@@ -284,7 +284,7 @@
                 </ul>
               </div>
               <!-- Busqueda -->
-              <label for="table-search" class="sr-only">Search</label>
+              <label for="table-search" class="sr-only" id="search-form">Search</label>
               <div class=" relative mt-1">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor"
@@ -296,15 +296,17 @@
                 </div>
                 <input type="text" id="table-search"
                   class="block p-2 pl-10 text-sm shadow-lg text-gray-900 border border-gray-300 rounded-lg w-80 bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Buscar...">
+                  button type="submit" placeholder="Buscar...">
               </div>
             </div>
+
             <!-- Boton para agregar registros-->
             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-              class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 hover:underline">Agregar</a>
+              class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 hover:underline"
+              onclick="window.openCreate()" data-bs-toggle="modal" data-bs-target="#save-modal">Agregar</a>
             </button>
             <!-- Main modal -->
-            <div id="defaultModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+            <div id="defaultModal" id="save-modal"  aria-labelledby="modal-title" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
               <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
                 <!-- Modal content -->
@@ -312,7 +314,7 @@
                   <!-- Modal header -->
                   <form>
                     <div class="grid gap-6 m-5 md:grid-cols-2">
-                      <div>
+                      <div id="save-form">
                         <input class="invisible" type="number" id="id" name="id">
                         <!-- Campo para ingresar nombre -->
                         <label for="first_name"
@@ -337,6 +339,7 @@
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <!-- Columnas de la tabla -->
+                  <tr id="records"></tr>
                   <div class="titulos-tabla-crud  bg-azul-3">
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">ID</th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
@@ -362,7 +365,6 @@
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
-  <script src="../controllers/account.js"></script>
   <script src="../controllers/unidades.js"></script>
 
 </body>

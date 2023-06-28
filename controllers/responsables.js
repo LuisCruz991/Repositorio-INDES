@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const RESPONSABLE_API = 'business/dashboard/responsable.php';
+const RESPONSABLE_API = 'business/responsable.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
