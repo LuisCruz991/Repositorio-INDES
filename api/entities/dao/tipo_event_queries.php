@@ -39,7 +39,7 @@ class TipoEventoQueries
         $sql = 'SELECT idtipo_evento, nombre
                 FROM tipo_evento
                 WHERE idtipo_evento = ?';
-        $params = array($this->id, $this->tipo);
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
@@ -48,7 +48,7 @@ class TipoEventoQueries
         $sql = 'UPDATE tipo_evento
                 SET nombre = ?
                 WHERE idtipo_evento = ?';
-        $params = array($this->tipo, $this->id);
+        $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 
