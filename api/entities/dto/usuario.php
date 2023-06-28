@@ -10,6 +10,7 @@ class Usuario extends UsuarioQueries
     protected $id = null;
     protected $correo = null;
     protected $nombres = null;
+    protected $alias = null;
     protected $clave = null;
 
     /*
@@ -46,6 +47,17 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    public function setAlias($value)
+    {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
+            $this->alias = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {
@@ -76,6 +88,11 @@ class Usuario extends UsuarioQueries
     }
 
     public function getClave()
+    {
+        return $this->clave;
+    }
+    
+    public function getAlias()
     {
         return $this->clave;
     }
