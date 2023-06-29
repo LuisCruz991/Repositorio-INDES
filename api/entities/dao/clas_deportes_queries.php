@@ -12,7 +12,7 @@ class ClasifDeporteQueries
     {
         $sql = 'SELECT idclasificacion_deporte, nombre_clasificacion
                 FROM clasificacion_deporte
-                WHERE nombre_clasificacion ILIKE ?
+                WHERE nombre_clasificacion LIKE ?
                 ORDER BY nombre_clasificacion';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
