@@ -56,54 +56,54 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();;
                 }
                 break;
-            case 'readOne':
-                if (!$responsable->setId($_POST['id'])) {
-                    $result['exception'] = 'Responsable incorrecto';
-                } elseif ($result['dataset'] = $responsable->readOne()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'Responsable inexistente';
-                }
-                break;
-            case 'update':
-                $_POST = Validator::validateForm($_POST);
-                if (!$responsable->setId($_POST['id'])) {
-                    $result['exception'] = 'Prueba incorrecta';
-                } elseif (!$data = $responsable->readOne()) {
-                    $result['exception'] = 'Prueba inexistente';
-                } elseif (!$responsable->setNombreMadre($_POST['nombre_madre'])) {
-                    $result['exception'] = 'Nombre de la madre incorrecto';
-                } elseif (!$responsable->setDireccionMadre($_POST['direccion_madre'])) {
-                    $result['exception'] = 'Direccion incorrecta';
-                } elseif (!$responsable->setTelefonoMadre($_POST['telefono_madre'])) {
-                    $result['exception'] = 'Telefono incorrecito';
-                } elseif (!$responsable->setNombrePadre($_POST['nombre_padre'])) {
-                    $result['exception'] = 'Nombre del padre incorrecto';
-                } elseif (!$responsable->setDireccionPadre($_POST['direccion_padre'])) {
-                    $result['exception'] = 'Nombre de la madre incorrecto';
-                } elseif (!$responsable->setTelefonoPadre($_POST['telefono_padre'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } elseif ($responsable->updateRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Responsables modificados correctamente';
-                }else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            case 'delete':
-                if (!$responsable->setId($_POST['idresponsable'])) {
-                    $result['exception'] = 'Responsable incorrecto';
-                } elseif (!$responsable->readOne()) {
-                    $result['exception'] = 'Responsable inexistente';
-                } elseif ($responsable->deleteRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Responsables eliminados correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+                case 'readOne':
+                    if (!$responsable->setId($_POST['idresponsable'])) {
+                        $result['exception'] = 'Responsables invalidos';
+                    } elseif ($result['dataset'] = $responsable->readOne()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Ocurrió un problema al leer los responsables';
+                    }
+                    break;
+                case 'update':
+                    $_POST = Validator::validateForm($_POST);
+                    if (!$responsable->setId($_POST['id'])) {
+                        $result['exception'] = 'Responsables invalidos';
+                    } elseif (!$data = $responsable->readOne()) {
+                        $result['exception'] = 'Ocurrió un problema al leer los responsables';
+                    } elseif (!$responsable->setNombreMadre($_POST['nombre_madre'])) {
+                        $result['exception'] = 'Nombre de la madre incorrecto';
+                    } elseif (!$responsable->setDireccionMadre($_POST['direccion_madre'])) {
+                        $result['exception'] = 'Direccion incorrecta';
+                    } elseif (!$responsable->setTelefonoMadre($_POST['telefono_madre'])) {
+                        $result['exception'] = 'Telefono incorrecito';
+                    } elseif (!$responsable->setNombrePadre($_POST['nombre_padre'])) {
+                        $result['exception'] = 'Nombre del padre incorrecto';
+                    } elseif (!$responsable->setDireccionPadre($_POST['direccion_padre'])) {
+                        $result['exception'] = 'Nombre de la madre incorrecto';
+                    } elseif (!$responsable->setTelefonoPadre($_POST['telefono_padre'])) {
+                        $result['exception'] = 'Telefono incorrecto';
+                    } elseif ($responsable->updateRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Responsables actualizados exitosamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
+                    case 'delete':
+                        if (!$responsable->setId($_POST['idresponsable'])) {
+                            $result['exception'] = 'Responsables invalidos';
+                        } elseif (!$data = $responsable->readOne()) {
+                            $result['exception'] = 'Ocurrió un problema al leer los responsables';
+                        } elseif ($responsable->deleteRow()) {
+                            $result['status'] = 1;
+                            $result['message'] = 'Responsables descartados exitosamente';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                        break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

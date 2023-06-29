@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idusuario'])) {
+    if ((isset($_SESSION['idadministrador'])) ){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
@@ -28,7 +28,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ingrese un valor para buscar';
                 } elseif ($result['dataset'] = $prueba->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -51,7 +51,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$prueba->setId($_POST['id'])) {
+                if (!$prueba->setId($_POST['idprueba'])) {
                     $result['exception'] = 'Prueba incorrecta';
                 } elseif ($result['dataset'] = $prueba->readOne()) {
                     $result['status'] = 1;
@@ -77,7 +77,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$prueba->setId($_POST['idrecord'])) {
+                if (!$prueba->setId($_POST['idprueba'])) {
                     $result['exception'] = 'Prueba incorrecta';
                 } elseif (!$prueba->readOne()) {
                     $result['exception'] = 'Prueba inexistente';

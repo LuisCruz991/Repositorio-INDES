@@ -13,7 +13,7 @@ class PruebasQueries
         $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
-        WHERE nombre_prueba LIKE ?
+        WHERE nombre_prueba ILIKE ?
         ORDER BY idprueba';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -25,7 +25,7 @@ class PruebasQueries
         $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
-        WHERE nombre_prueba LIKE ?
+        WHERE nombre_prueba ILIKE ?
         ORDER BY idprueba';
         return Database::getRows($sql);
     }
