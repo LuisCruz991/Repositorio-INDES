@@ -50,7 +50,7 @@ class AdminQueries
         $sql = 'UPDATE administradores
                 SET nombre_usuario =  ?, clave_usuario = ?, idgenero = ?
                 WHERE idadministrador = ?';
-        $params = array($this->id );
+        $params = array($this->nombre, $this->clave, $this->genero, $this->id);
         return Database::executeRow($sql, $params);
     }
 
