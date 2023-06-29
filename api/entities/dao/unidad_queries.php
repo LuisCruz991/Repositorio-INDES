@@ -12,7 +12,7 @@ class UnidadesQueries
     {
         $sql = 'SELECT idunidad_medida, nombre_medida
                 FROM unidades_medidas
-                WHERE nombre_medida ILIKE ?
+                WHERE nombre_medida LIKE ?
                 ORDER BY nombre_medida';
         $params = array("%$value%");
         return Database::getRows($sql, $params);

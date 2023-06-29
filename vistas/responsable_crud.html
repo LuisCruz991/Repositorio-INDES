@@ -282,7 +282,7 @@
             </div>
 
 
-            <!-- Boton para agregar unidades -->
+            <!-- Boton para agregar responsables -->
 
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
@@ -297,10 +297,11 @@
                   <form id="save-form">
 
                     <div class="grid gap-6 m-5 md:grid-cols-2">
-                      <!-- Campo para ingresar nombre -->
+                      <!-- Campo para almacenar el id -->
                       <input class="hidden" type="number" id="id" name="id">
 
                       <div>
+                        <!-- Campo para ingresar un nombre de madre en la tabla -->
                         <label for="nombre_madre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de Mamá</label>
                         <input type="text" id="nombre_madre" name="nombre_madre"
@@ -308,6 +309,7 @@
                           placeholder="Nombre de Mamá" required>
                       </div>
                       <div>
+                        <!-- Campo para ingresar una direccion de madre en la tabla -->
                         <label for="direccion_madre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion de Mamá</label>
                         <input type="text" id="direccion_madre" name="direccion_madre"
@@ -315,6 +317,7 @@
                           placeholder="Direccion de Mamá" required>
                       </div>
                       <div>
+                        <!-- Campo para ingresar un telefono de madre en la tabla -->
                         <label for="telefono_madre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono de Mamá</label>
                         <input type="tel" id="telefono_madre" name="telefono_madre"
@@ -322,6 +325,7 @@
                           placeholder="0000-0000" required>
                       </div>
                       <div>
+                        <!-- Campo para ingresar un nombre de padre en la tabla -->
                         <label for="nombre_padre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de Papá</label>
                         <input type="text" id="nombre_padre" name="nombre_padre"
@@ -329,6 +333,7 @@
                           placeholder="Nombre de Papá" required>
                       </div>
                       <div>
+                        <!-- Campo para ingresar una direccion de padre en la tabla -->
                         <label for="direccion_padre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion de Papá</label>
                         <input type="text" id="direccion_padre" name="direccion_padre"
@@ -336,6 +341,7 @@
                           placeholder="Direccion de Papá" required>
                       </div>
                       <div>
+                        <!-- Campo para ingresar un telefono de padre en la tabla -->
                         <label for="telefono_padre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono de Papá</label>
                         <input type="tel" id="telefono_padre" name="telefono_padre"
@@ -361,37 +367,46 @@
                 <tr>
                   <!-- Titulos de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
+                    <!-- Campo de ID en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       ID
                     </th>
 
+                    <!-- Campo de nombre madre en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Nombre Mamá
                     </th>
 
+                    <!-- Campo de direccion madre en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Dirección Mamá
                     </th>
 
+                    <!-- Campo de telefono madre en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Telefono Mamá
                     </th>
 
+                    <!-- Campo de nombre padre en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Nombre Papá
                     </th>
 
+                    <!-- Campo de direccion padre en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Dirección Papá
                     </th>
 
+                    <!-- Campo de telefono padre en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Telefono Papá
                     </th>
 
+                    <!-- Campo de actualizar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
+                    <!-- Campo de eliminar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
