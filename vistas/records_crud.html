@@ -287,6 +287,7 @@
                       <input class="hidden" type="number" id="id" name="id">
 
                       <div>
+                        <!-- Campo para ingresar una marca obtenida en la tabla -->
                         <label for="marca_obtenida"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca obtenida</label>
                         <input type="text" id="marca_obtenida" name="marca_obtenida"
@@ -294,6 +295,7 @@
                           placeholder="Marca obtenida" required>
                       </div>
                       <div>
+                        <!-- Campo para ingresar una unidad de medida en la tabla -->
                         <label for="unidad"
                           class="block  text-sm font-medium text-gray-900 dark:text-white">Unidad</label>
                         <select id="unidad" name="unidad"
@@ -302,6 +304,7 @@
                         </select>
                       </div>
                       <div>
+                        <!-- Campo para ingresar un atleta en la tabla -->
                         <label for="atleta"
                           class="block  text-sm font-medium text-gray-900 dark:text-white">Atleta</label>
                         <select id="atleta" name="atleta"
@@ -310,6 +313,7 @@
                         </select>
                       </div>
                       <div>
+                        <!-- Campo para ingresar una prueba en la tabla -->
                         <label for="prueba"
                           class="block  text-sm font-medium text-gray-900 dark:text-white">Prueba</label>
                         <select id="prueba" name="prueba"
@@ -318,6 +322,7 @@
                         </select>
                       </div>
                       <div>
+                        <!-- Campo para ingresar una posicion en la tabla -->
                         <label for="posicion"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posicion</label>
                         <input type="text" id="posicion" name="posicion"
@@ -342,40 +347,47 @@
                 <tr>
                   <!-- Titulos de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
+                    <!-- Campo de ID en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       ID
                     </th>
 
+                    <!-- Campo de marca obtenida en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Marca obtenida
                     </th>
 
+                    <!-- Campo de unidad de medida en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Unidad de medida
                     </th>
 
+                    <!-- Campo de atleta en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Atleta
                     </th>
 
+                    <!-- Campo de prueba en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Prueba
                     </th>
 
+                    <!-- Campo de posicion en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Posicion
                     </th>
 
+                    <!-- Campo de actualizar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
+                    <!-- Campo de eliminar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
                   </div>
                 </tr>
               </thead>
-              <!-- Titulos de la tabla -->
               <!-- Datos de la tabla -->
               <tbody id="tbody-rows">
               </tbody>

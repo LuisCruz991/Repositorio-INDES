@@ -273,7 +273,7 @@
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
           </a>
-            <!-- Modal para agregar -->
+            <!-- Modal para agregar pruebas-->
             <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
               <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
@@ -283,10 +283,11 @@
                   <form id="save-form">
                    
                     <div class="grid gap-6 m-5 md:grid-cols-2">
-                      <!-- Campo para ingresar nombre -->
+                      <!-- Campo para almacenar el id -->
                       <input class="hidden" type="number" id="id" name="id">
 
                       <div>
+                        <!-- Campo para ingresar un nombre de la prueba en la tabla -->
                         <label for="nombre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
                         <input type="text" id="nombre" name="nombre"
@@ -294,6 +295,7 @@
                           placeholder="Nombre" required>
                       </div>
                       <div>
+                        <!-- Campo para ingresar un deporte en la tabla -->
                         <label for="deporte"
                           class="block  text-sm font-medium text-gray-900 dark:text-white">Deporte</label>
                         <select id="deporte" name="deporte"
@@ -302,6 +304,7 @@
                         </select>
                       </div>
                       <div>
+                        <!-- Campo para ingresar un evento en la tabla -->
                         <label for="evento"
                           class="block  text-sm font-medium text-gray-900 dark:text-white">Evento</label>
                         <select id="evento" name="evento"
@@ -327,32 +330,37 @@
                 <tr>
                   <!-- Titulos de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
+                    <!-- Campo de ID en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       ID
                     </th>
 
+                    <!-- Campo de nombre de prueba en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Nombre
                     </th>
 
+                    <!-- Campo de deporte en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Deporte
                     </th>
 
+                    <!-- Campo de evento en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Evento
                     </th>
 
+                    <!-- Campo de actualizar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
+                    <!-- Campo de eliminar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
                   </div>
                 </tr>
               </thead>
-              <!-- Titulos de la tabla -->
               <!-- Datos de la tabla -->
               <tbody id="tbody-rows">
               </tbody>
