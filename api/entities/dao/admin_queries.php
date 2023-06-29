@@ -12,9 +12,8 @@ class AdminQueries
     {
         $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, nombre_genero
         FROM administradores INNER JOIN generos USING (idgenero)
-        WHERE nombre_usuario LIKE ? OR clave_usuario   
-        ORDER BY idadministrador';
-        $params = array("%$value%", "%$value%");
+        WHERE nombre_usuario LIKE ? ';   
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
@@ -22,7 +21,6 @@ class AdminQueries
     {
         $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, nombre_genero
         FROM administradores INNER JOIN generos USING (idgenero)
-        WHERE nombre_usuario LIKE ? OR clave_usuario   
         ORDER BY idadministrador';
         return Database::getRows($sql);
     }

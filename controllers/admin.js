@@ -17,7 +17,7 @@ const OPTIONS = {
 }
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = document.getElementById('save-modal');
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -105,7 +105,7 @@ async function fillTable(form = null) {
                 class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
             </td>
             <td class="px-6 py-4">
-              <button onclick="openDelete(${row.idadministrdor})" 
+              <button onclick="openDelete(${row.idadministrador})" 
                 class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
             </td>
           </tr>
@@ -150,10 +150,10 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
+        SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna el título para la caja de diálogo (modal).
-        MODAL_TITLE.textContent = 'Actualizar evento';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idadministrador;
         document.getElementById('nombre').value = JSON.dataset.nombre_usuario;
@@ -193,3 +193,4 @@ async function openDelete(id) {
         }
     }
 }
+

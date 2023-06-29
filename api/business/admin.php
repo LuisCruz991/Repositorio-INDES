@@ -57,7 +57,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un genero';
                 } elseif (!$admin->setGenero($_POST['genero'])) {
                     $result['exception'] = 'Genero no valido';
-                } 
+                } elseif (!$admin->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Correo del administrador no valido';
+                }elseif ($admin->createRow()) {
+                $result['status'] = 1;
+                $result['message'] = 'administrador guardada correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
                 break;
 
             case 'readOne':
@@ -86,17 +93,24 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Seleccione un genero';
                     } elseif (!$admin->setGenero($_POST['genero'])) {
                         $result['exception'] = 'Genero no valido';
-                    }  
+                    } elseif (!$admin->setCorreo($_POST['correo'])) {
+                        $result['exception'] = 'Correo del administrador no valido';
+                    } elseif ($admin->updateRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Deporte actualizado exitosamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
                     break;
 
                     case 'delete':
                         if (!$admin->setId($_POST['idadministrador'])) {
-                            $result['exception'] = 'Administrador invalido';
+                            $result['exception'] = 'Admin invalida';
                         } elseif (!$data = $admin->readOne()) {
-                            $result['exception'] = 'Ocurrió un problema al leer el administrador';
+                            $result['exception'] = 'Ocurrió un problema al leer la unidad';
                         } elseif ($admin->deleteRow()) {
                             $result['status'] = 1;
-                            $result['message'] = 'Administrador descartado exitosamente';
+                            $result['message'] = 'Admin descartada exitosamente';
                         } else {
                             $result['exception'] = Database::getException();
                         }

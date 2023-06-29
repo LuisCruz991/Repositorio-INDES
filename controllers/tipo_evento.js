@@ -46,6 +46,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
 
@@ -126,8 +127,7 @@ async function openUpdate(id) {
         SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
-        // Se cierra la caja de diálogo.
-        SAVE_MODAL.toggle();
+        // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
             document.getElementById('id').value = JSON.dataset.idtipo_evento;
             document.getElementById('tipo_evento').value = JSON.dataset.nombre;
