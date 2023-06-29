@@ -1,7 +1,5 @@
-// Constantes para completar las rutas de la API.
-const ADMIN_API = 'business/admin.php';
-const GENERO_API = 'business/.php';
-
+// Constante para completar la ruta de la API.
+const DEPORTE_API = 'business/deporte.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -11,11 +9,9 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
+
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
+
 // Constante para establecer la modal de guardar.
 const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
@@ -44,14 +40,16 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(ADMIN_API, action, FORM);
+    const JSON = await dataFetch(UNIDADES_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
+
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -69,51 +67,31 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(ADMIN_API, action, form);
+    const JSON = await dataFetch(UNIDADES_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-
-        // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
+        // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td class="w-4 p-4">
-              <div class="flex items-center">
-                <input id="checkbox-table-search-1" type="checkbox"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-              </div>
-            </td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            ${row.nombre_usuario}
-            </td>
-            <td class="px-6 py-4">
-            ${row.correo_usuario}
-            </td>
-            <td class="px-6 py-4">
-            ${row.clave_usuario}
+                <tr>
+                  <td>${row.idunidad_medida}</td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.nombre_medida}
+                  </td>
+                  <td class="px-6 py-4">
+                    <button onclick="openUpdate(${row.idunidad_medida})" 
+                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button onclick="openDelete(${row.idunidad_medida})" 
+                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
+                  </td>
+                </tr>
 
-            </td>
-            <td class="px-6 py-4">
-            ${row.nombre_genero}
-
-
-            </td>
-            <td class="px-6 py-4">
-              <button onclick="openUpdate(${row.idadministrador})" 
-                class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
-            </td>
-            <td class="px-6 py-4">
-              <button onclick="openDelete(${row.idadministrador})" 
-                class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
-            </td>
-          </tr>
             `;
         });
-        // Se inicializa el componente Material Box para que funcione el efecto Lightbox.
-        // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-        // Se muestra un mensaje de acuerdo con el resultado.
+        // Se   inicializa el componente Tooltip para que funcionen las sugerencias textuales.
         RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
@@ -127,13 +105,9 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
+    
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
-    // Se asigna el título a la caja de diálogo.
-    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(ADMIN_API, 'readGenero', 'genero');
-
-
 }
 
 /*
@@ -142,29 +116,25 @@ function openCreate() {
 *   Retorno: ninguno.
 */
 async function openUpdate(id) {
-    // Se define un objeto con los datos del registro seleccionado.
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idadministrador', id);
+    FORM.append('idunidad_medida', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(ADMIN_API, 'readOne', FORM);
+    const JSON = await dataFetch(UNIDADES_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
-        // Se asigna el título para la caja de diálogo (modal).
+        // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idadministrador;
-        document.getElementById('nombre').value = JSON.dataset.nombre_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('clave').value = JSON.dataset.clave_usuario;
-        fillSelect(ADMIN_API, 'readGenero', 'genero', JSON.dataset.idgenero);
-
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
+            document.getElementById('id').value = JSON.dataset.idunidad_medida;
+            document.getElementById('nombre').value = JSON.dataset.nombre_medida;
+            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
 }
 
 /*
@@ -174,14 +144,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el administrador de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la unidad de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idadministrador', id);
+        FORM.append('idunidad_medida', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(ADMIN_API, 'delete', FORM);
+        const JSON = await dataFetch(UNIDADES_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
@@ -193,4 +163,3 @@ async function openDelete(id) {
         }
     }
 }
-
