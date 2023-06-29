@@ -4,21 +4,24 @@
 
 <head>
   <!-- Titulo -->
-  <title>Unidades medidas</title>
+  <title>Unidades de Medida</title>
   <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Css de tailwind -->
-  <link rel="stylesheet" href="../Css/tailwind.css">
+  <!-- Css de de tailwind -->
+  <link href="../css/tailwind.css" rel="stylesheet">
   <!-- Cdn de flowbite -->
   <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
   <!-- Css del proyecto -->
-  <link rel="stylesheet" href="../Css/Estilos.css">
+  <link rel="stylesheet" href="../css/estilos.css">
   <!-- Fuentes del proyecto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&family=Quicksand:wght@700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;300&family=Plus+Jakarta+Sans&family=Quicksand:wght@700&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- Fuentes del proyecto -->
 </head>
 
 <body class="dashboard-body">
@@ -65,8 +68,7 @@
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
                     <!-- Boton para acceder a SCRUD de atletas -->
                     <li>
-                      <a href="/vistas/atletas_crud.html"
-                        class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
+                      <a href="/vistas/atletas_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
                     </li>
                     <!-- Boton para acceder a SCRUD de presupuesto  -->
                     <li>
@@ -82,11 +84,10 @@
                 </div>
                 <!-- Boton para acceder a vista de agenda -->
                 <li class="min-w-max">
-                  <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncalendar"
+                  <a href="/vistas/agenda.html"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                       class="w-8 h-8 bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
-                      <title>run</title>
                       <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z" />
                       <path
                         d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
@@ -94,23 +95,8 @@
                         d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                     </svg>
                     <span class="text-sm font-medium">Agenda</span>
-                  </button>
+                  </a>
                 </li>
-                <!-- Dropdown menu de boton de agenda -->
-                <div id="dropdowncalendar"
-                  class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                  <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
-                    <!-- Boton para acceder a la agenda -->
-                    <li>
-                      <a href="/vistas/agenda.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Agenda</a>
-                    </li>
-                    <!-- Boton para acceder a SCRUD de eventos  -->
-                    <li>
-                      <a href="/vistas/eventos_crud.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Evento</a>
-                    </li>
-                  </ul>
-                </div>
                 <!-- Boton para acceder a competencias -->
                 <li class="min-w-max">
                   <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
@@ -131,12 +117,6 @@
                     <!-- Boton para acceder al SCRUD de records -->
                     <li>
                       <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
-                    </li>
-                    <!-- Boton para acceder al SCRUD de titulos -->
-                    <li>
-                      <a href="unidades_medidas.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Unidades
-                        de medidas</a>
                     </li>
                     <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
@@ -283,8 +263,9 @@
                   </li>
                 </ul>
               </div>
+
               <!-- Busqueda -->
-              <label for="table-search" class="sr-only" id="search-form">Search</label>
+              <label for="table-search" class="sr-only">Search</label>
               <div class=" relative mt-1">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor"
@@ -294,56 +275,80 @@
                       clip-rule="evenodd"></path>
                   </svg>
                 </div>
-                <input type="text" id="table-search"
-                  class="block p-2 pl-10 text-sm shadow-lg text-gray-900 border border-gray-300 rounded-lg w-80 bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  button type="submit" placeholder="Buscar...">
+                <form method="post" class="flex items-center" id="search-form">   
+                  <label for="search-form" class="sr-only">buscar</label>
+                  <div class="relative w-full">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                      </div>
+                      <input type="text" id="search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscar" required>
+                  </div>
+                  <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                      <span class="sr-only">buscar</span>
+                  </button>
+                </form>
               </div>
             </div>
 
-            <!-- Boton para agregar registros-->
-            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-              class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 hover:underline"
-              onclick="window.openCreate()" data-bs-toggle="modal" data-bs-target="#save-modal">Agregar</a>
-            </button>
-            <!-- Main modal -->
-            <div id="defaultModal" id="save-modal"  aria-labelledby="modal-title" tabindex="-1" aria-hidden="true"
+            <!-- Boton para agregar atleta -->
+          
+            <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
+              class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
+          </a>
+            <!-- Modal para agregar -->
+            <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
               <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <!-- Modal header -->
-                  <form>
+                  <form id="save-form">
+                   
                     <div class="grid gap-6 m-5 md:grid-cols-2">
-                      <div id="save-form">
-                        <input class="invisible" type="number" id="id" name="id">
-                        <!-- Campo para ingresar nombre -->
-                        <label for="first_name"
+                      <!-- Campo para ingresar nombre -->
+                      <input class="hidden" type="number" id="id" name="id">
+
+                      <div>
+                        <label for="nombre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                        <input type="text" id="nombre"
+                        <input type="text" id="nombre" name="nombre"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Nombre" required>
                       </div>
                     </div>
                     <!-- Boton para crear registro -->
                     <button type="submit"
-                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Crear</button>
+                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar datos</button>
                   </form>
                 </div>
               </div>
             </div>
+          </div>
 
           </div>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabal -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
+                <tr id="records"></tr>
                 <tr>
-                  <!-- Columnas de la tabla -->
-                  <tr id="records"></tr>
+                  <th scope="col" class="p-4">
+                    <!-- Checkbox para seleccionar uno o mas registros -->
+                    <div class="flex items-center">
+                      <input id="checkbox-all-search" type="checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                    </div>
+                  </th>
+                  <!-- Titulos de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">ID</th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Nombre de la unidad
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                     </th>
                   </div>
                 </tr>
@@ -363,8 +368,10 @@
   <!-- Finalizacion del codigo -->
 
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="../js/script.js"></script>
   <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
+  <script src="../controllers/account.js"></script>
   <script src="../controllers/unidades.js"></script>
 
 </body>
