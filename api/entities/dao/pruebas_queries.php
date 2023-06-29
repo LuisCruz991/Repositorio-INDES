@@ -35,7 +35,7 @@ class PruebasQueries
         $sql = 'SELECT idprueba, nombre_prueba, iddeporte, idevento
                 FROM pruebas
                 WHERE idprueba = ?';
-        $params = array($this->id, $this->nombre, $this->deporte, $this->evento);
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 

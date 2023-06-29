@@ -55,7 +55,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$record->setId($_POST['id'])) {
+                if (!$record->setId($_POST['idrecord'])) {
                     $result['exception'] = 'Record incorrecto';
                 } elseif ($result['dataset'] = $record->readOne()) {
                     $result['status'] = 1;

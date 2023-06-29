@@ -37,7 +37,7 @@ class RecordQueries
         $sql = 'SELECT idrecord, marca_obtenida, idunidad_medida, idatleta, idprueba, posicion
                 FROM records 
                 WHERE idrecord = ?';
-        $params = array($this->id, $this->marca_obtenida, $this->unidad_medida, $this->atleta, $this->prueba, $this->posicion);
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 

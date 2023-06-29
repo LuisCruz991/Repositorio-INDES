@@ -4,7 +4,7 @@
 
 <head>
   <!-- Titulo -->
-  <title>Atletas_crud</title>
+  <title>Records</title>
   <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,22 +116,17 @@
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
                     <!-- Boton para acceder al SCRUD de records -->
                     <li>
-                      <a href="../vistas/records_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
+                      <a href="record_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
                     </li>
                     <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
-                      <a href="../vistas/unidad_crud.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Unidad</a>
+                      <a href="../vistas/clasif_deportes.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Clasif. Deporte</a>
                     </li>
                     <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
                       <a href="../vistas/prueba_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
-                    </li>
-                    <!-- Boton para acceder al SCRUD de pruebas -->
-                    <li>
-                      <a href="../vistas/clasif_deportes.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">clasif_deportes</a>
                     </li>
                   </ul>
                 </div>
@@ -273,7 +268,7 @@
             </div>
 
 
-            <!-- Boton para agregar atleta -->
+            <!-- Boton para agregar unidades -->
           
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
@@ -292,157 +287,42 @@
                       <input class="hidden" type="number" id="id" name="id">
 
                       <div>
-                        <label for="nombre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                        <input type="text" id="nombre" name="nombre"
+                        <label for="marca_obtenida"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca obtenida</label>
+                        <input type="text" id="marca_obtenida" name="marca_obtenida"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Nombre" required>
+                          placeholder="Marca obtenida" required>
                       </div>
-
                       <div>
-                        <label for="apellido"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
-                        <input type="text" id="apellido" name="apellido"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Apellido" required>
-                      </div>
-                      <!-- Calendario para fecha de nacimiento -->
-                      <div>
-                        <label for="nacimiento"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nacimiento</label>
-                        <div class="relative max-w-sm">
-                          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd"
-                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clip-rule="evenodd"></path>
-                            </svg>
-                          </div>
-                          <input datepicker type="date" id="nacimiento" name="nacimiento"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="yyyy-mm-dd">
-                        </div>
-                      </div>
-                      <!-- Campo para seleccionar genero -->
-                      <div>
-                        <label for="genero"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genero</label>
-                        <select id="genero" name="genero"
+                        <label for="unidad"
+                          class="block  text-sm font-medium text-gray-900 dark:text-white">Unidad</label>
+                        <select id="unidad" name="unidad"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           
                         </select>
                       </div>
                       <div>
-                        <label for="estatura"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estatura</label>
-                        <input type="number" step="any" id="estatura" name="estatura"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Estatura en metros" required>
-                      </div>
-                      <div>
-                        <label for="peso"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso</label>
-                        <input type="number" step="any" id="peso" name="peso"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Peso en libras" required>
-                      </div>
-                      <div>
-                        <label for="camisa"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Camisa</label>
-                        <select id="camisa" name="camisa"
-                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          <option selected>S</option>
-                          <option >L</option>
-                          <option >M</option>
-                          <option >XL</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label for="short"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">short</label>
-                        <select id="short" name="short"
-                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          <option selected>S</option>
-                          <option >L</option>
-                          <option >M</option>
-                          <option >XL</option>
-                        </select>
-                      </div>
-                      <!-- Campo para ingresar direccion -->
-                      <div>
-                        <label for="direccion"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion</label>
-                        <input type="text" id="direccion" name="direccion"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Direccion" required>
-                      </div>
-                      <!-- Campo para ingresar DUI -->
-                      <div>
-                        <label for="dui"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DUI</label>
-                        <input type="tel" id="dui" name="dui"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="7419782-2" required>
-                      </div>
-                      <!-- Campo para ingresar telefono -->
-                      <div>
-                        <label for="Celular"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
-                        <input type="tel" id="celular" name="celular"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="2222-7777" required>
-                      </div>
-                      <div>
-                        <label for="telefono"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono-domiciliar</label>
-                        <input type="tel" id="telefono" name="telefono"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="2222-7777" required>
-                      </div>
-                    </div>
-                    <div class="grid gap-6 m-5 md:grid-cols-2">
-                      <!-- Campo para ingresar correo -->
-                      <div class="mb-6">
-                        <label for="correo"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
-                        <input type="email" id="correo" name="correo"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="example@gmail.com" required>
-                      </div>
-                      <!-- Campo para ingresar al responsable en caso que el atleta sea menor de edad -->
-                      <div>
-                        <label for="nombre_madre"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Responsable</label>
-                        <select id="nombre_madre" name="nombre_madre"
-                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        </select>
-                      </div>
-                      <!-- Campo para seleccionar el deporte -->
-                      <div class="deporte">
-                        <label for="deporte"
-                          class="block  text-sm font-medium text-gray-900 dark:text-white">Deporte</label>
-                        <select id="deporte" name="deporte"
+                        <label for="atleta"
+                          class="block  text-sm font-medium text-gray-900 dark:text-white">Atleta</label>
+                        <select id="atleta" name="atleta"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           
                         </select>
                       </div>
-                      <!-- Campo para seleccionar el entrenador -->
                       <div>
-                        <label for="entrenador"
-                          class="block  text-sm font-medium text-gray-900 dark:text-white">Entrenador</label>
-                        <select id="entrenador" name="entrenador"
+                        <label for="prueba"
+                          class="block  text-sm font-medium text-gray-900 dark:text-white">Prueba</label>
+                        <select id="prueba" name="prueba"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           
                         </select>
                       </div>
-
                       <div>
-                        <label for="clave"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave</label>
-                        <input type="password" id="clave" name="clave"
+                        <label for="posicion"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posicion</label>
+                        <input type="text" id="posicion" name="posicion"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Clave" required>
+                          placeholder="Posicion" required>
                       </div>
                     </div>
                     <!-- Boton para crear registro -->
@@ -460,62 +340,30 @@
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
                 <tr id="records"></tr>
                 <tr>
-                  <th scope="col" class="p-4">
-                    <!-- Checkbox para seleccionar uno o mas registros -->
-                    <div class="flex items-center">
-                      <input id="checkbox-all-search" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                    </div>
-                  </th>
                   <!-- Titulos de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre
+                      ID
                     </th>
+
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Apellido
+                      Marca obtenida
                     </th>
+
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nacimiento
+                      Unidad de medida
                     </th>
+
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Genero
+                      Atleta
                     </th>
+
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Estatura
+                      Prueba
                     </th>
+
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Peso
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Talla camisa
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Talla short
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Direccion
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Dui
-                    </th>  <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Celular
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Telefono casa
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Correo
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Responsable
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Deporte
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Entrenador
+                      Posicion
                     </th>
 
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
@@ -528,7 +376,6 @@
                 </tr>
               </thead>
               <!-- Titulos de la tabla -->
-
               <!-- Datos de la tabla -->
               <tbody id="tbody-rows">
               </tbody>
@@ -553,7 +400,7 @@
   <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
   <script src="../controllers/account.js"></script>
-  <script src="../controllers/atletas.js"></script>
+  <script src="../controllers/records.js"></script>
 
 
 
