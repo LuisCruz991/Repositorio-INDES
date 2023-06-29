@@ -45,8 +45,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Clave no valida';
                 } elseif (!isset($_POST['genero'])) {
                     $result['exception'] = 'Seleccione un genero';
-                } elseif (!$atleta->setGenero($_POST['genero'])) {
-                    $result['exception'] = 'Genero no valida';
+                } elseif (!$admin->setGenero($_POST['genero'])) {
+                    $result['exception'] = 'Genero no valido';
                 } 
                 break;
 
@@ -75,7 +75,7 @@ if (isset($_GET['action'])) {
                     } elseif (!isset($_POST['genero'])) {
                         $result['exception'] = 'Seleccione un genero';
                     } elseif (!$atleta->setGenero($_POST['genero'])) {
-                        $result['exception'] = 'Genero no valida';
+                        $result['exception'] = 'Genero no valido';
                     }  
                     break;
 
