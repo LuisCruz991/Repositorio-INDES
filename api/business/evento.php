@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['idadministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
@@ -44,9 +44,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Descripcion no valida';
                 } elseif (!$evento->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion del evento no valido';
+                } elseif (!$evento->setSede($_POST['sede'])) {
+                    $result['exception'] = 'sede del evento no valida';
                 } elseif (!isset($_POST['tipo'])) {
                     $result['exception'] = 'Seleccione una categoria para el evento';
-                } elseif (!$evento->setTipoEvento($_POST['evento'])) {
+                } elseif (!$evento->setTipoEvento($_POST['tipo'])) {
                     $result['exception'] = 'Categoria no valida';
                 } elseif (!$evento->setFecha($_POST['fecha'])) {
                     $result['exception'] = 'Fecha no valida';
@@ -124,13 +126,13 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$evento->setId($_POST['id'])) {
+                if (!$evento->setId($_POST['idevento'])) {
                     $result['exception'] = 'Evento no valido';
                 }elseif (!$data = $evento->readOne()) {
                     $result['exception'] = 'Hubó un error al tratar de leer el evento';
                 }  elseif ($evento->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($evento->getRuta(), $data['imagen'])) {
+                    if (Validator::deleteFile($evento->getRuta(), $data['imagen_sede'])) {
                         $result['message'] = 'Evento descartado de forma satisfactoría';
                     } else {
                         $result['message'] = 'Ocurrió un problema al tratar de descartar el evento';

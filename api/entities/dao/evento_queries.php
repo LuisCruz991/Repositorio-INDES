@@ -7,7 +7,7 @@ class EventQueries {
      public function searchRows($value)
      {
          $sql = 'SELECT idevento,nombre_evento , descripcion,nombre, fecha_evento, sede_evento,direccion_sede, imagen_sede, hora_inicio, hora_cierre
-                 FROM eventos INNER JOIN tipo_eventos USING(idtipo_evento)
+                 FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                  WHERE nombre_evento  LIKE ?';
          $params = array("%$value%");
          return Database::getRows($sql, $params);
@@ -26,7 +26,7 @@ class EventQueries {
      public function readAll()
      {
          $sql = 'SELECT idevento,nombre_evento , descripcion,nombre, fecha_evento, sede_evento,direccion_sede, imagen_sede, hora_inicio, hora_cierre
-                 FROM eventos INNER JOIN tipo_eventos USING(idtipo_evento)';
+                 FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)';
          return Database::getRows($sql);
      }
 
@@ -44,7 +44,7 @@ class EventQueries {
      public function readOne()
      {
          $sql = 'SELECT idevento,nombre_evento , descripcion,nombre, fecha_evento, sede_evento,direccion_sede, imagen_sede, hora_inicio, hora_cierre
-                 FROM eventos INNER JOIN tipo_eventos USING(idtipo_evento)
+                 FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                  WHERE idevento = ?';
          $params = array($this->id);
          return Database::getRow($sql, $params);
