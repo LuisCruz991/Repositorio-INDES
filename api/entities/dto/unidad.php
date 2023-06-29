@@ -25,7 +25,7 @@ class Unidades extends UnidadesQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 50)) {
             $this->nombre = $value;
             return true;
         } else {
