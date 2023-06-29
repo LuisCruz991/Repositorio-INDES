@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const TIPOS_API = 'business/unidad.php';
+const TIPOE_API = 'business/tipo_event.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -40,7 +40,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(TIPOS_API, action, FORM);
+    const JSON = await dataFetch(TIPOE_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -66,21 +66,15 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(TIPOS_API, action, form);
+    const JSON = await dataFetch(TIPOE_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td class="w-4 p-4">
-                    <div class="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
+                <tr>
+                  <td>${row.idtipo_evento}</td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.nombre}
                   </td>
@@ -125,21 +119,22 @@ async function openUpdate(id) {
     const FORM = new FormData();
     FORM.append('idtipo_evento', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(TIPOS_API, 'readOne', FORM);
+    const JSON = await dataFetch(TIPOE_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
-        // Se asigna título a la caja de diálogo.
+        // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idtipo_evento;
-        document.getElementById('tipo evento').value = JSON.dataset.nombre;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
+            document.getElementById('id').value = JSON.dataset.idtipo_evento;
+            document.getElementById('tipo_evento').value = JSON.dataset.nombre;
+            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
 }
 
 /*
@@ -149,14 +144,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la unidad de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el tipo de evento de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idunidad_medida', id);
+        FORM.append('idtipo_evento', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(TIPOS_API, 'delete', FORM);
+        const JSON = await dataFetch(TIPOE_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
