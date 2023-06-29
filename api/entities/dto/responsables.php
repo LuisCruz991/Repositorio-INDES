@@ -96,29 +96,33 @@ class Responsable extends ResponsableQueries
         return $this->id;
     }
 
-    public function getMarcaObtenida()
+    public function getNombreMadre()
     {
-        return $this->marca_obtenida;
+        return $this->nombre_madre;
     }
 
-    public function getUnidadMedida()
+    public function getDireccionMadre()
     {
-        return $this->unidad_medida;
+        return $this->direccion_madre;
     }
 
-    public function getAtleta()
+    public function getTelefonoMadre()
     {
-        return $this->atleta;
+        return $this->telefono_madre;
     }
 
-    public function getPrueba()
+    public function getNombrePadre()
     {
-        return $this->prueba;
+        return $this->nombre_padre;
     }
 
-    public function getPosicion()
+    public function getDireccionPadre()
     {
+        return $this->direccion_padre;
+    }
 
-        return $this->posicion;
+    public function getTelefonoPadre()
+    {
+        return $this->telefono_padre;
     }
 }
