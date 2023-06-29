@@ -28,7 +28,7 @@ class SportsQueries {
      {
          $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
                  FROM deportes
-                 INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
+                 INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
                  INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)';
          return Database::getRows($sql);
      }

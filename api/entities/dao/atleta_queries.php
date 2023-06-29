@@ -12,7 +12,7 @@ class atletaqueries {
          INNER JOIN responsables USING(idresponsable)
          INNER JOIN deportes USING(iddeporte)
          INNER JOIN entrenadores USING(identrenador)
-                 WHERE nombre_atleta  ILIKE ? or nombre_madre  ILIKE ? ';
+                 WHERE nombre_atleta  LIKE ? or nombre_madre  LIKE ? ';
          $params = array("%$value%", "%$value%" );
          return Database::getRows($sql, $params);
      }
