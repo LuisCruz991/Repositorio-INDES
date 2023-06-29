@@ -73,14 +73,8 @@ async function fillTable(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td class="w-4 p-4">
-                    <div class="flex items-center">
-                      <input id="checkbox-table-search-1" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
+                <tr>
+                  <td>${row.idunidad_medida}</td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.nombre_medida}
                   </td>
@@ -134,12 +128,12 @@ async function openUpdate(id) {
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idunidad_medida;
-        document.getElementById('nombre').value = JSON.dataset.nombre_medida;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
+            document.getElementById('id').value = JSON.dataset.idunidad_medida;
+            document.getElementById('nombre').value = JSON.dataset.nombre_medida;
+            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
 }
 
 /*

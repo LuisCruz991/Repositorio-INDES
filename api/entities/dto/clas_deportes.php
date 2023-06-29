@@ -4,7 +4,7 @@ require_once('../entities/dao/clas_deportes_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad ClasificacionDeporte.
 */
-class Clasificacion extends ClasificacionDeporteQueries
+class Clasificacion extends ClasifDeporteQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
@@ -25,7 +25,7 @@ class Clasificacion extends ClasificacionDeporteQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 50)) {
             $this->nombre = $value;
             return true;
         } else {

@@ -3,7 +3,7 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad ClasificacionDeportes.
 */
-class ClasificacionDeporteQueries
+class ClasifDeporteQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -12,7 +12,7 @@ class ClasificacionDeporteQueries
     {
         $sql = 'SELECT idclasificacion_deporte, nombre_clasificacion
                 FROM clasificacion_deporte
-                WHERE nombre_clasificacion LIKE ?
+                WHERE nombre_clasificacion ILIKE ?
                 ORDER BY nombre_clasificacion';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -39,7 +39,7 @@ class ClasificacionDeporteQueries
         $sql = 'SELECT idclasificacion_deporte, nombre_clasificacion
                 FROM clasificacion_deporte
                 WHERE idclasificacion_deporte = ?';
-        $params = array($this->id, $this->nombre);
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 

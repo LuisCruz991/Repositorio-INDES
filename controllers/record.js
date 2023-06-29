@@ -1,5 +1,9 @@
 // Constante para completar la ruta de la API.
-const DEPORTEC_API = 'business/clas_deporte.php';
+const RECORD_API = 'business/record.php';
+const UNIDADES_API = 'business/unidad.php';
+const ATLETA_API = 'business/atleta.php';
+const PRUEBA_API = 'business/prueba.php';
+
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -40,12 +44,13 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(DEPORTEC_API, action, FORM);
+    const JSON = await dataFetch(ATLETA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
 
@@ -66,7 +71,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(DEPORTEC_API, action, form);
+    const JSON = await dataFetch(ATLETA_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -82,14 +87,74 @@ async function fillTable(form = null) {
                     </div>
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_clasificacion}
+                  ${row.nombre_atleta}
                   </td>
                   <td class="px-6 py-4">
-                    <button onclick="openUpdate(${row.idclasificacion_deporte})" 
+                  ${row.apellido_atleta}
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.nacimiento}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.nombre_genero}
+
+                  </td>
+                  <td class=" px-6 py-4">
+                  ${row.estatura}
+
+                  </td>
+
+                  <td class="px-6 py-4">
+                  ${row.peso}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.talla_camisa}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.talla_short}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.direccion}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.dui}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.celular}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.telefono_casa}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.correo}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.nombre_madre}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.nombre_deporte}
+
+                  </td>
+                  <td class="px-6 py-4">
+                  ${row.nombre}
+
+                  </td>
+                  <td class="px-6 py-4">
+                    <button onclick="openUpdate(${row.idatleta})" 
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
                   </td>
                   <td class="px-6 py-4">
-                    <button onclick="openDelete(${row.idclasificacion_deporte})" 
+                    <button onclick="openDelete(${row.idatleta})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
                 </tr>
@@ -110,9 +175,14 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-    
+
     // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
+    SAVE_FORM.reset
+    // Se asigna título a la caja de diálogo.
+    fillSelect(ATLETA_API, 'readGenero', 'genero');
+    fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre');
+    fillSelect(DEPORTE_API, 'readAll', 'deporte');
+    fillSelect(ATLETA_API, 'readEntrenador', 'entrenador');
 }
 
 /*
@@ -123,9 +193,9 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idclasificacion_deporte', id);
+    FORM.append('idatleta', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(DEPORTEC_API, 'readOne', FORM);
+    const JSON = await dataFetch(ATLETA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -134,8 +204,24 @@ async function openUpdate(id) {
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idclasificacion_deporte;
-        document.getElementById('nombre').value = JSON.dataset.nombre_clasificacion;
+        document.getElementById('id').value = JSON.dataset.idatleta;
+        document.getElementById('nombre').value = JSON.dataset.nombre_atleta;
+        document.getElementById('apellido').value = JSON.dataset.apellido_atleta;
+        document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
+        fillSelect(ATLETA_API, 'readGenero', 'genero', JSON.dataset.idgenero);
+        document.getElementById('estatura').value = JSON.dataset.estatura;
+        document.getElementById('peso').value = JSON.dataset.peso;
+        document.getElementById('camisa').value = JSON.dataset.talla_camisa;
+        document.getElementById('short').value = JSON.dataset.talla_short;
+        document.getElementById('direccion').value = JSON.dataset.direccion;
+        document.getElementById('dui').value = JSON.dataset.dui;
+        document.getElementById('celular').value = JSON.dataset.celular;
+        document.getElementById('telefono').value = JSON.dataset.telefono_casa;
+        document.getElementById('correo').value = JSON.dataset.correo;
+        fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre', JSON.dataset.idresponsable);
+        fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
+        fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
+        document.getElementById('clave').disabled = true ;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -149,14 +235,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la clasificacion del deporte de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar los responsables de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idclasificacion_deporte', id);
+        FORM.append('idatleta', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(DEPORTEC_API, 'delete', FORM);
+        const JSON = await dataFetch(ATLETA_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

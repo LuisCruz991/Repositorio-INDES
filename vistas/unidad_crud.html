@@ -120,6 +120,11 @@
                     </li>
                     <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
+                      <a href="../vistas/clasif_deportes.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Clasif. Deporte</a>
+                    </li>
+                    <!-- Boton para acceder al SCRUD de pruebas -->
+                    <li>
                       <a href="pruebas_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
                     </li>
@@ -280,7 +285,7 @@
                     <div class="grid gap-6 m-5 md:grid-cols-2">
                       <!-- Campo para ingresar nombre -->
                       <input class="hidden" type="number" id="id" name="id">
-
+                      
                       <div>
                         <label for="nombre"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
@@ -304,16 +309,12 @@
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
                 <tr id="records"></tr>
                 <tr>
-                  <th scope="col" class="p-4">
-                    <!-- Checkbox para seleccionar uno o mas registros -->
-                    <div class="flex items-center">
-                      <input id="checkbox-all-search" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                    </div>
-                  </th>
                   <!-- Titulos de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      ID
+                    </th>
+
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Nombre
                     </th>
@@ -328,7 +329,6 @@
                 </tr>
               </thead>
               <!-- Titulos de la tabla -->
-
               <!-- Datos de la tabla -->
               <tbody id="tbody-rows">
               </tbody>

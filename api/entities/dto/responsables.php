@@ -30,7 +30,7 @@ class Responsable extends ResponsableQueries
 
     public function setNombreMadre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 50)) {
             $this->nombre_madre = $value;
             return true;
         } else {
@@ -40,7 +40,7 @@ class Responsable extends ResponsableQueries
 
     public function setDireccionMadre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 50)) {
             $this->direccion_madre = $value;
             return true;
         } else {
@@ -50,7 +50,7 @@ class Responsable extends ResponsableQueries
 
     public function setTelefonoMadre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validatePhone($value, 1, 50)) {
             $this->telefono_madre = $value;
             return true;
         } else {
@@ -60,7 +60,7 @@ class Responsable extends ResponsableQueries
 
     public function setNombrePadre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 50)) {
             $this->nombre_padre = $value;
             return true;
         } else {
@@ -70,7 +70,7 @@ class Responsable extends ResponsableQueries
 
     public function setDireccionPadre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 50)) {
             $this->direccion_padre = $value;
             return true;
         } else {
@@ -80,7 +80,7 @@ class Responsable extends ResponsableQueries
 
     public function setTelefonoPadre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validatePhone($value, 1, 50)) {
             $this->telefono_padre = $value;
             return true;
         } else {
