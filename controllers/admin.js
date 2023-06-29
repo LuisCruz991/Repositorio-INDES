@@ -1,6 +1,6 @@
 // Constantes para completar las rutas de la API.
-const EVENTO_API = 'business/evento.php';
-const TIPOEVENTO_API = 'business/.php';
+const EVENTO_API = 'business/admin.php';
+const GENERO_API = 'business/.php';
 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');

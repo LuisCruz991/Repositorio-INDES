@@ -135,7 +135,7 @@ async function openUpdate(id) {
         // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idtipo_evento;
-        document.getElementById('tipo evento').value = JSON.dataset.nombre;
+        document.getElementById('tipo_evento').value = JSON.dataset.nombre;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -149,12 +149,12 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la unidad de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el tipo de evento de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idunidad_medida', id);
+        FORM.append('idtipo_evento', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(TIPOS_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
