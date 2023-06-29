@@ -9,14 +9,11 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
+
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
 
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = document.getElementById('save-modal');
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -76,28 +73,31 @@ async function fillTable(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
-                <tr>
-                    <td>${row.idunidad_medida}</td>
-                    <td>${row.nombre_medida}</td>
-                    <td>
-                        <a onclick="openUpdate(${row.idunidad_medida})" data-bs-toggle="modal" data-bs-target="#save-modal" class="btn btn-primary tooltipped" data-tooltip="Actualizar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
-                        <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
-                        </svg>
-                        </a>
-                    </td> 
-                    <td>
-                        <a onclick="openDelete(${row.idunidad_medida})" class="btn btn-danger tooltipped" data-tooltip="Eliminar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                        </svg>
-                        </a>
-                    </td> 
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <td class="w-4 p-4">
+                    <div class="flex items-center">
+                      <input id="checkbox-table-search-1" type="checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                    </div>
+                  </td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.nombre_medida}
+                  </td>
+                  <td class="px-6 py-4">
+                    <button onclick="openUpdate(${row.idunidad_medida})" 
+                      class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
+                  </td>
+                  <td class="px-6 py-4">
+                    <button onclick="openDelete(${row.idunidad_medida})" 
+                      class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
+                  </td>
                 </tr>
+
             `;
         });
-        // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-     
+        // Se   inicializa el componente Tooltip para que funcionen las sugerencias textuales.
+        RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -113,8 +113,6 @@ function openCreate() {
     
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
-    // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Ingresar una unidad de medida';
 }
 
 /*
@@ -131,10 +129,10 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
+        SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar unidad de medida';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idunidad_medida;
         document.getElementById('nombre').value = JSON.dataset.nombre_medida;
@@ -151,7 +149,7 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la unidad de medida de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la unidad de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.

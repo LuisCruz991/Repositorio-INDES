@@ -1,7 +1,7 @@
 <?php
 require_once('../helpers/database.php');
 /*
-*	Clase para manejar el acceso a datos de la entidad ClasificacionDeportes.
+*	Clase para manejar el acceso a datos de la entidad UnidadesMedidas.
 */
 class UnidadesQueries
 {

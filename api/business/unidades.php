@@ -1,5 +1,5 @@
 <?php
-require_once('../entities/dto/unidades_medida.php');
+require_once('../entities/dto/unidades.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
