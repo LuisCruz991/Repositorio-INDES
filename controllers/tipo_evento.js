@@ -126,7 +126,8 @@ async function openUpdate(id) {
         SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
-        // Se asigna título a la caja de diálogo.
+        // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se inicializan los campos del formulario.
             document.getElementById('id').value = JSON.dataset.idtipo_evento;
             document.getElementById('tipo_evento').value = JSON.dataset.nombre;
