@@ -28,7 +28,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ingrese un valor para buscar';
                 } elseif ($result['dataset'] = $prueba->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {

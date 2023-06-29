@@ -116,6 +116,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <a href="../vistas/atletas_crud.html"
                       class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
                   </li>
+                  <!-- Boton para acceder a SCRUD de responsables -->
+                  <li>
+                    <a href="../vistas/responsable_crud.html"
+                      class="block px-4 py-2 hover:bg-gray-100  text-red">Responsables</a>
+                  </li>
                   <!-- Boton para acceder a SCRUD de presupuesto  -->
                   <li>
                     <a href="../vistas/presupuesto.html"

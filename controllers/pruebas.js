@@ -12,13 +12,11 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
+
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
+
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = document.getElementById('save-modal');
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,8 +49,10 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
+
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -114,13 +114,12 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
+    
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(DEPORTE_API, 'readAll', 'deporte');
     fillSelect(EVENTO_API, 'readAll', 'evento');
-
-
 }
 
 /*

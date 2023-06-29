@@ -12,14 +12,11 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
+
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
 
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = document.getElementById('save-modal');
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -136,6 +133,7 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
+        SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
