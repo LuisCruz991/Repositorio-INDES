@@ -25,7 +25,6 @@ class PruebasQueries
         $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
-        WHERE nombre_prueba LIKE ?
         ORDER BY idprueba';
         return Database::getRows($sql);
     }
@@ -49,7 +48,6 @@ class PruebasQueries
 
     public function updateRow()
     {
-       
         $sql = 'UPDATE pruebas
                 SET nombre_prueba = ?
                 WHERE idprueba = ?';
@@ -69,9 +67,9 @@ class PruebasQueries
     {
         $sql = 'SELECT idprueba, nombre_prueba
                 FROM pruebas INNER JOIN deportes USING (iddeporte)
-                WHERE idprueba = ? 
-                ORDER BY nombre_prueba';
-        $params = array($this->id, $this->nombre);
+                WHERE deportes = ? 
+                ORDER BY idprueba';
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
     
@@ -79,9 +77,9 @@ class PruebasQueries
     {
         $sql = 'SELECT idprueba, nombre_prueba
                 FROM pruebas INNER JOIN eventos USING (idevento)
-                WHERE idprueba = ? 
-                ORDER BY nombre_prueba';
-        $params = array($this->id, $this->nombre);
+                WHERE eventos = ? 
+                ORDER BY idprueba';
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 }

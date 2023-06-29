@@ -14,12 +14,22 @@ class Event extends EventQueries  {
     protected $horaCierre = null ;
     protected $tipoEvento = null ;
     protected $imagenSede = null;
-    protected $ruta = '../../imagenes/eventos/';
+    protected $ruta = '../imagenes/eventos/';
+    protected $sede = null ;
 
+    public function setSede($value)
+    {
+        if (Validator::validateAlphabetic($value ,1, 50)) {
+            $this->sede = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function setImagen($file)
     {
-        if (Validator::validateImageFile($file, 500, 500)) {
+        if (Validator::validateImageFile($file, 2000, 2000)) {
             $this->imagenSede = Validator::getFileName();
             return true;
         } else {
@@ -151,6 +161,10 @@ class Event extends EventQueries  {
 
     public function getImagen() {
         return $this-> imagenSede;
+    }
+
+    public function getSede() {
+        return $this-> sede;
     }
 
 }

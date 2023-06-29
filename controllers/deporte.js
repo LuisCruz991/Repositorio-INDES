@@ -1,8 +1,5 @@
-// Constantes para completar las rutas de la API.
-const PRUEBA_API = 'business/prueba.php';
+// Constante para completar la ruta de la API.
 const DEPORTE_API = 'business/deporte.php';
-const EVENTO_API = 'business/evento.php';
-
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -43,7 +40,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(PRUEBA_API, action, FORM);
+    const JSON = await dataFetch(UNIDADES_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -70,7 +67,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(PRUEBA_API, action, form);
+    const JSON = await dataFetch(UNIDADES_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -78,22 +75,16 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                  <td>${row.idprueba}</td>
+                  <td>${row.idunidad_medida}</td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_prueba}
-                  </td>
-                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_deporte}
-                  </td>
-                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_evento}
+                  ${row.nombre_medida}
                   </td>
                   <td class="px-6 py-4">
-                    <button onclick="openUpdate(${row.idprueba})" 
+                    <button onclick="openUpdate(${row.idunidad_medida})" 
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
                   </td>
                   <td class="px-6 py-4">
-                    <button onclick="openDelete(${row.idprueba})" 
+                    <button onclick="openDelete(${row.idunidad_medida})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
                 </tr>
@@ -117,9 +108,6 @@ function openCreate() {
     
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
-    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(DEPORTE_API, 'readAll', 'deporte');
-    fillSelect(EVENTO_API, 'readAll', 'evento');
 }
 
 /*
@@ -130,9 +118,9 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idprueba', id);
+    FORM.append('idunidad_medida', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(PRUEBA_API, 'readOne', FORM);
+    const JSON = await dataFetch(UNIDADES_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -141,15 +129,12 @@ async function openUpdate(id) {
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idprueba;
-        document.getElementById('nombre').value = JSON.dataset.nombre_prueba;
-        fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
-        fillSelect(EVENTO_API, 'readAll', 'evento', JSON.dataset.idevento);
-
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
+            document.getElementById('id').value = JSON.dataset.idunidad_medida;
+            document.getElementById('nombre').value = JSON.dataset.nombre_medida;
+            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
 }
 
 /*
@@ -159,14 +144,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la prueba de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la unidad de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idprueba', id);
+        FORM.append('idunidad_medida', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(PRUEBA_API, 'delete', FORM);
+        const JSON = await dataFetch(UNIDADES_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
