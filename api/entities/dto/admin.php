@@ -11,6 +11,7 @@ class Admin extends AdminQueries
     protected $nombre = null;
     protected $clave = null;
     protected $genero = null;
+    protected $correo = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -27,7 +28,7 @@ class Admin extends AdminQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 50)) {
             $this->nombre = $value;
             return true;
         } else {
@@ -55,6 +56,15 @@ class Admin extends AdminQueries
         }
     }
 
+    public function setCorreo($value) {
+        if (Validator::validateEmail($value)) {
+            $this->correo = $value;
+            return true;
+            } else {
+                return false;
+            }    
+        }
+
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -77,6 +87,10 @@ class Admin extends AdminQueries
     public function getGenero()
     {
         return $this->genero;
+    }
+
+    public function getCorreo() {
+        return $this->correo;
     }
 
     

@@ -22,6 +22,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+
+                case 'readGenero':
+                    if ($result['dataset'] = $admin->readGenero()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;
                 
             case 'search':
                 $_POST = Validator::validateForm($_POST);
@@ -74,7 +84,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Clave no valida';
                     } elseif (!isset($_POST['genero'])) {
                         $result['exception'] = 'Seleccione un genero';
-                    } elseif (!$atleta->setGenero($_POST['genero'])) {
+                    } elseif (!$admin->setGenero($_POST['genero'])) {
                         $result['exception'] = 'Genero no valido';
                     }  
                     break;
