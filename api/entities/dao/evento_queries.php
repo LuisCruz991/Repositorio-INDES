@@ -26,7 +26,7 @@ class EventQueries {
      public function readAll()
      {
          $sql = 'SELECT idevento,nombre_evento , descripcion,nombre, fecha_evento, sede_evento,direccion_sede, imagen_sede, hora_inicio, hora_cierre
-                 FROM eventos INNER JOIN tipo_eventos USING(idtipo_evento)';
+                 FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)';
          return Database::getRows($sql);
      }
 
