@@ -29,7 +29,7 @@ class Presupuesto extends PresupuestoQueries  {
         }
     }
 
-    public function setCategoria($categoria) {
+    public function setCategoria($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->categoria = $value;
             return true;
@@ -38,7 +38,7 @@ class Presupuesto extends PresupuestoQueries  {
         }    
     }
 
-    public function setEstimulos($estimulo) {
+    public function setEstimulos($value) {
         if (Validator::validateMoney($value)) {
             $this->estimulo = $value;
             return true;
@@ -47,7 +47,7 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-     public function setPreparacionFogues($preparacion) {
+     public function setPreparacionFogues($value) {
         if (Validator::validateMoney($value)) {
             $this->preparacion = $value;
             return true;
@@ -56,7 +56,7 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-     public function setAyudaExtranjera($ayuda) {
+     public function setAyudaExtranjera($value) {
         if (Validator::validateMoney($value)) {
             $this->ayuda = $value;
             return true;
@@ -65,7 +65,7 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-     public function setEquipamiento($equipamiento) {
+     public function setEquipamiento($value) {
         if (Validator::validateMoney($value)) {
             $this->equipamiento = $value;
             return true;
@@ -74,7 +74,7 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-     public function setOtros($otro) {
+     public function setOtros($value) {
         if (Validator::validateMoney($value)) {
             $this->otro = $value;
             return true;
@@ -83,7 +83,7 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-     public function setPatrocinadores($patrocinador) {
+     public function setPatrocinadores($value) {
         if (Validator::validateMoney($value)) {
             $this->patrocinador = $value;
             return true;
@@ -92,7 +92,7 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-    public function setObservaciones($observacion)
+    public function setObservaciones($value)
     {
         if (Validator::validateString($value,1,500)) {
             $this->observacion = $value;
@@ -102,7 +102,7 @@ class Presupuesto extends PresupuestoQueries  {
         }
     }
 
-    public function setAtleta($atleta) {
+    public function setAtleta($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->atleta = $value;
             return true;

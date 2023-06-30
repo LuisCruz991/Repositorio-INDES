@@ -51,6 +51,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -105,13 +106,13 @@ async function fillTable(form = null) {
             ${row.patrocinadores}
             </td>
             <td class="px-6 py-4">
-            ${row.observaciones}
+            ${row.obsevaciones}
             </td>
             <td class="px-6 py-4">
-            ${row.categoria_insersion}
+            ${row.anual_mensual}
             </td>
             <td class="px-6 py-4">
-            ${row.atleta}
+            ${row.nombre_atleta}
             </td>
             <td class="px-6 py-4">
               <button onclick="openUpdate(${row.idpresupuesto})" 
@@ -174,11 +175,11 @@ async function openUpdate(id) {
         document.getElementById('preparacion').value = JSON.dataset.preparacion_fogues;
         document.getElementById('ayuda').value = JSON.dataset.ayuda_extranjera;
         document.getElementById('equipamiento').value = JSON.dataset.equipamiento;
-        document.getElementById('otro').value = JSON.dataset.otrosq;
+        document.getElementById('otro').value = JSON.dataset.otros;
         document.getElementById('patrocinador').value = JSON.dataset.patrocinadores;
-        document.getElementById('observacion').value = JSON.dataset.observaciones;
-        fillSelect(ADMIN_API, 'readCategoria', 'categoria', JSON.dataset.idcategoria);
-        fillSelect(ADMIN_API, 'readAtleta', 'atleta', JSON.dataset.idatleta);
+        document.getElementById('observacion').value = JSON.dataset.obsevaciones;
+        fillSelect(PRESUPUESTO_API, 'readCategoria', 'categoria', JSON.dataset.idcateg_inversion);
+        fillSelect(PRESUPUESTO_API, 'readAtleta', 'atleta', JSON.dataset.idatleta);
 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {

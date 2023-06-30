@@ -6,10 +6,10 @@ class PresupuestoQueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
 {
-    $sql = 'SELECT idpresupuesto, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones, categoria_inversion, atleta
-            FROM presupuesto INNER JOIN categoria_inversion USING(idcateg_inversion)
-                             INNER JOIN atleta USING(idatleta)
-            WHERE estimulos LIKE ? ';
+    $sql = 'SELECT idpresupuesto, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones, anual_mensual, nombre_atleta
+    FROM presupuesto INNER JOIN categoria_inversion USING(idcateg_inversion)
+                     INNER JOIN atletas USING(idatleta)
+            WHERE nombre_atleta LIKE ? ';
     $params = array("%$value%");
     return Database::getRows($sql, $params);
 }
@@ -19,7 +19,7 @@ class PresupuestoQueries {
      public function createRow()
      {
          $sql = 'INSERT INTO presupuesto(idcateg_inversion, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones, idatleta)
-                 VALUES(?,?,?,?,?,?,?,?,?,)';
+                 VALUES(?,?,?,?,?,?,?,?,?)';
          $params = array($this->categoria, $this->estimulo, $this->preparacion,$this->ayuda, $this->equipamiento, $this->otro, $this->patrocinador,$this->observacion, $this->atleta);
          return Database::executeRow($sql, $params);
      }
@@ -27,9 +27,9 @@ class PresupuestoQueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT idpresupuesto, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones
+         $sql = 'SELECT idpresupuesto, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones, anual_mensual, nombre_atleta
                  FROM presupuesto INNER JOIN categoria_inversion USING(idcateg_inversion)
-                                  INNER JOIN atleta USING(idatleta)';
+                                  INNER JOIN atletas USING(idatleta)';
          return Database::getRows($sql);
      }
 
@@ -65,7 +65,7 @@ class PresupuestoQueries {
      {
         
          $sql = 'UPDATE presupuesto
-                 SET idpresupuesto = ?, estimulos = ?, preparacion_fogues = ?, ayuda_extranjera = ?, equipamiento = ?, otros = ?, patrocinadores = ?, obsevaciones = ?                
+                 SET idcateg_inversion = ?, estimulos = ?, preparacion_fogues = ?, ayuda_extranjera = ?, equipamiento = ?, otros = ?, patrocinadores = ?, obsevaciones = ?, idatleta = ?                
                  WHERE idpresupuesto = ?';
          $params = array($this->categoria, $this->estimulo, $this->preparacion,$this->ayuda, $this->equipamiento, $this->otro, $this->patrocinador,$this->observacion, $this->atleta, $this->id);
          return Database::executeRow($sql, $params);

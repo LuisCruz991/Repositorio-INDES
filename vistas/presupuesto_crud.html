@@ -288,9 +288,20 @@
                   <form id="save-form">
                    
                     <div class="grid gap-6 m-5 md:grid-cols-2">
-                      <!-- Campo para ingresar Estimulos -->
+                      
                       <input class="hidden" type="number" id="id" name="id">
 
+                       <!-- Campo para seleccionar Categoria -->
+                       <div>
+                        <label for="categoria"
+                          class=" mt-5 
+                          block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
+                        <select id="categoria" name="categoria"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          
+                        </select>
+                      </div>
+                    <!-- Campo para ingresar Estimulos -->
                       <div>
                         <label for="estimulo"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estimulos</label>
@@ -353,16 +364,7 @@
                           placeholder="" required>
                       </div>
                       
-                      <!-- Campo para seleccionar Categoria -->
-                      <div>
-                        <label for="categoria"
-                          class=" mt-5 
-                          block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
-                        <select id="categoria" name="categoria"
-                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          
-                        </select>
-                      </div>
+                     
 
                        <!-- Campo para seleccionar Atleta -->
                        <div>

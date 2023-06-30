@@ -59,14 +59,14 @@ if (isset($_GET['action'])) {
 
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$presupuesto->setEstimulos($_POST['estimulo'])) {
-                    $result['exception'] = 'Estimulo no valido';
-                }  elseif (!$presupuesto->setPreparacionFogues($_POST['preparacion'])) {
-                    $result['exception'] = 'Preparacion Fogues no valido';
-                } elseif (!isset($_POST['categoria'])) {
+                if (!isset($_POST['categoria'])) {
                     $result['exception'] = 'Seleccione una categoria';
                 } elseif (!$presupuesto->setCategoria($_POST['categoria'])) {
                     $result['exception'] = 'Categoria no valida';
+                }elseif  (!$presupuesto->setEstimulos($_POST['estimulo'])) {
+                    $result['exception'] = 'Estimulo no valido';
+                }  elseif (!$presupuesto->setPreparacionFogues($_POST['preparacion'])) {
+                    $result['exception'] = 'Preparacion Fogues no valido';
                 } elseif (!$presupuesto->setAyudaExtranjera($_POST['ayuda'])) {
                     $result['exception'] = 'Ayuda Extranjera no valida';
                 } elseif (!$presupuesto->setEquipamiento($_POST['equipamiento'])) {
@@ -90,7 +90,7 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'readOne':
-                if (!$admin->setId($_POST['idpresupuesto'])) {
+                if (!$presupuesto->setId($_POST['idpresupuesto'])) {
                     $result['exception'] = 'Presupuesto invalido';
                 } elseif ($result['dataset'] = $presupuesto->readOne()) {
                     $result['status'] = 1;
