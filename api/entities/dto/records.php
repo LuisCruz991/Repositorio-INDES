@@ -29,7 +29,7 @@ class Record extends RecordQueries
 
     public function setMarcaObtenida($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateNaturalNumber($value, 1, 50)) {
             $this->marca_obtenida = $value;
             return true;
         } else {
