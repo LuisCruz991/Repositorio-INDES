@@ -12,7 +12,7 @@ class ResponsableQueries
     {
         $sql = ' SELECT idresponsable, nombre_madre, direccion_madre, telefono_madre, nombre_padre, direccion_padre, telefono_padre
         FROM responsables
-        WHERE nombre_madre ILIKE ? OR direccion_madre ILIKE ? OR telefono_madre ILIKE ? OR nombre_padre ILIKE ? OR direccion_padre ILIKE ? OR telefono_padre ILIKE ?
+        WHERE nombre_madre LIKE ? OR direccion_madre LIKE ? OR telefono_madre LIKE ? OR nombre_padre LIKE ? OR direccion_padre LIKE ? OR telefono_padre LIKE ?
         ORDER BY idresponsable';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);

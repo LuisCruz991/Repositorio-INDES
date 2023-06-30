@@ -11,7 +11,7 @@ const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
 // Constante para establecer la modal de guardar.
-// const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
+ //const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
