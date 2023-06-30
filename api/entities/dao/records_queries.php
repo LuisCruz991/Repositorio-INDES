@@ -51,9 +51,9 @@ class RecordQueries
     public function updateRow()
     {  
         $sql = 'UPDATE records
-                SET marca_obtenida = ? OR posicion = ?
+                SET marca_obtenida = ?, posicion = ?
                 WHERE idrecord = ?';
-        $params = array($this->marca_obtenida, $this->id);
+        $params = array($this->marca_obtenida, $this->posicion, $this->id);
         return Database::executeRow($sql, $params);
     }
 
