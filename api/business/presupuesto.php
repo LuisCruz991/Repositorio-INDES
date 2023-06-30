@@ -71,9 +71,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ayuda Extranjera no valida';
                 } elseif (!$presupuesto->setEquipamiento($_POST['equipamiento'])) {
                     $result['exception'] = 'Equipamiento no valido';
-                } elseif (!$presupuesto->setOtros($_POST['otros'])) {
+                } elseif (!$presupuesto->setOtros($_POST['otro'])) {
                     $result['exception'] = 'Otros no es valido';
-                } elseif (!$presupuesto->setPatrocinadores($_POST['patrocinadore'])) {
+                } elseif (!$presupuesto->setPatrocinadores($_POST['patrocinador'])) {
                     $result['exception'] = 'Patrocinador no valido';
                 } elseif (!$presupuesto->setObservaciones($_POST['observacion'])) {
                     $result['exception'] = 'Observacion no valida';
@@ -119,7 +119,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Ayuda Extranjera no valida';
                     }  elseif (!$presupuesto->setEquipamiento($_POST['equipamiento'])) {
                         $result['exception'] = 'Equipamiento no valido';
-                    } elseif (!$presupuesto->setOtros($_POST['otros'])) {
+                    } elseif (!$presupuesto->setOtros($_POST['otro'])) {
                         $result['exception'] = 'Otros no es valido';
                     } elseif (!$presupuesto->setPatrocinadores($_POST['patrocinador'])) {
                         $result['exception'] = 'Patrocinador no valido';
