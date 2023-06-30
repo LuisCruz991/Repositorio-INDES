@@ -13,6 +13,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idadministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            // Caso para leer todos los campos de la tabla
             case 'readAll':
                 if ($result['dataset'] = $deporte->readAll()) {
                     $result['status'] = 1;
@@ -22,6 +23,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Caso para buscar registros especificos
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -35,6 +37,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                // Campo para realizar una insercion de datos
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$deporte->setDeporte($_POST['nombre'])) {
@@ -54,6 +57,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Caso para leer un campo especifico 
             case 'readOne':
                 if (!$deporte->setId($_POST['id'])) {
                     $result['exception'] = 'Deporte invalido';
@@ -65,6 +69,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el deporte';
                 }
                 break;
+                // Caso para actualizar un registro 
                 case 'update':
                     $_POST = Validator::validateForm($_POST);
                     if (!$deporte->setId($_POST['id'])) {
@@ -84,6 +89,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = Database::getException();
                     }
                     break;
+                    // Caso para llevar acabo una eliminación de datos
                     case 'delete':
                         if (!$deporte->setId($_POST['id'])) {
                             $result['exception'] = 'Deporte invalido';
