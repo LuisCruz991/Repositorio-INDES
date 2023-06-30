@@ -43,7 +43,7 @@ class EventQueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT idevento,nombre_evento , descripcion,nombre, fecha_evento, sede_evento,direccion_sede, imagen_sede, hora_inicio, hora_cierre
+         $sql = 'SELECT idevento,nombre_evento , descripcion,nombre, fecha_evento, sede_evento,direccion_sede, imagen_sede, hora_inicio, hora_cierre , idtipo_evento
                  FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                  WHERE idevento = ?';
          $params = array($this->id);
@@ -53,7 +53,7 @@ class EventQueries {
      // Consulta para realizar la operacion "Update"
      public function updateRow($imagen)
      {
-        ($this->imagen) ? Validator::deleteFile($this->getRuta(), $imagen) : $this->imagen = $imagen;
+        ($this->imagenSede) ? Validator::deleteFile($this->getRuta(), $imagen) : $this->imagenSede = $imagen;
 
          $sql = 'UPDATE eventos  
                  SET  nombre_evento = ?, descripcion = ?, fecha_evento = ?, imagen_sede = ?, sede_evento = ?, direccion_sede = ?, hora_inicio = ?, hora_cierre = ?, idtipo_evento = ?
