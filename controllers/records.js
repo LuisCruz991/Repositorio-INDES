@@ -120,7 +120,7 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-
+    
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
