@@ -13,6 +13,15 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idadministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            case 'readGenero':
+                if ($result['dataset'] = $entrenador->readGenero()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
             case 'readAll':
                 if ($result['dataset'] = $entrenador->readAll()) {
                     $result['status'] = 1;

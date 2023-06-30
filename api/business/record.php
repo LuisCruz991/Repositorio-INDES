@@ -73,7 +73,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$record->setMarcaObtenida($_POST['marca_obtenida'])) {
                     $result['exception'] = 'Marca incorrecta';
                 }  elseif (!$record->setPosicion($_POST['posicion'])) {
-                    $result['exception'] = 'Marca incorrecta';
+                    $result['exception'] = 'Posicion incorrecta';
                 }  elseif ($record->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Record modificado correctamente';

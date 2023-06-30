@@ -1,9 +1,6 @@
 // Ruta de la API para los atletas.
-const ATLETA_API = 'business/atleta.php';
-// Ruta de la API para los responsables.
-const RESPONSABLE_API = 'business/responsable.php';
-// Ruta de la API para los deportes.
-const DEPORTE_API = 'business/deporte.php';
+const ENTRENADOR_API = 'business/entrenador.php';
+
 
 // Formulario de búsqueda.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -36,7 +33,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault(); // Evitar recargar la página web después de enviar el formulario.
     let action = (document.getElementById('id').value) ? 'update' : 'create'; // Verificar la acción a realizar.
     const FORM = new FormData(SAVE_FORM); // Datos del formulario.
-    const JSON = await dataFetch(ATLETA_API, action, FORM); // Guardar los datos del formulario.
+    const JSON = await dataFetch(ENTRENADOR_API, action, FORM); // Guardar los datos del formulario.
     if (JSON.status) {
         fillTable(); // Cargar la tabla nuevamente para visualizar los cambios.
         SAVE_MODAL.toggle(); // Cerrar la caja de diálogo.
@@ -54,7 +51,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(ATLETA_API, action, form);
+    const JSON = await dataFetch(ENTRENADOR_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -70,74 +67,32 @@ async function fillTable(form = null) {
                     </div>
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_atleta}
+                  ${row.nombre}
                   </td>
                   <td class="px-6 py-4">
-                  ${row.apellido_atleta}
+                  ${row.apellido}
                   </td>
                   <td class="px-6 py-4">
-                  ${row.nacimiento}
-
+                  ${row.telefono}
                   </td>
                   <td class="px-6 py-4">
                   ${row.nombre_genero}
-
-                  </td>
-                  <td class=" px-6 py-4">
-                  ${row.estatura}
-
-                  </td>
-
-                  <td class="px-6 py-4">
-                  ${row.peso}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.talla_camisa}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.talla_short}
-
                   </td>
                   <td class="px-6 py-4">
                   ${row.direccion}
-
                   </td>
                   <td class="px-6 py-4">
                   ${row.dui}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.celular}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.telefono_casa}
-
                   </td>
                   <td class="px-6 py-4">
                   ${row.correo}
-
                   </td>
                   <td class="px-6 py-4">
-                  ${row.nombre_madre}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.nombre_deporte}
-
-                  </td>
-                  <td class="px-6 py-4">
-                  ${row.nombre}
-
-                  </td>
-                  <td class="px-6 py-4">
-                    <button onclick="openUpdate(${row.idatleta})" 
+                    <button onclick="openUpdate(${row.identrenador})" 
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
                   </td>
                   <td class="px-6 py-4">
-                    <button onclick="openDelete(${row.idatleta})" 
+                    <button onclick="openDelete(${row.identrenador})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
                 </tr>
@@ -154,39 +109,26 @@ async function fillTable(form = null) {
 function openCreate() {
     // Abrir la caja de diálogo que contiene el formulario.
     SAVE_FORM.reset(); // Restaurar los elementos del formulario.
-    fillSelect(ATLETA_API, 'readGenero', 'genero');
-    fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre');
-    fillSelect(DEPORTE_API, 'readAll', 'deporte');
-    fillSelect(ATLETA_API, 'readEntrenador', 'entrenador');
+    fillSelect(ENTRENADOR_API, 'readGenero', 'genero');
 }
 
 // Preparar el formulario al momento de actualizar un registro.
 async function openUpdate(id) {
     const FORM = new FormData();
-    FORM.append('idatleta', id);
-    const JSON = await dataFetch(ATLETA_API, 'readOne', FORM); // Obtener los datos del registro seleccionado.
+    FORM.append('identrenador', id);
+    const JSON = await dataFetch(ENTRENADOR_API, 'readOne', FORM); // Obtener los datos del registro seleccionado.
     if (JSON.status) {
         SAVE_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
         SAVE_FORM.reset(); // Restaurar los elementos del formulario.
         // Inicializar los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idatleta;
-        document.getElementById('nombre').value = JSON.dataset.nombre_atleta;
-        document.getElementById('apellido').value = JSON.dataset.apellido_atleta;
-        document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
-        fillSelect(ATLETA_API, 'readGenero', 'genero', JSON.dataset.idgenero);
-        document.getElementById('estatura').value = JSON.dataset.estatura;
-        document.getElementById('peso').value = JSON.dataset.peso;
-        document.getElementById('camisa').value = JSON.dataset.talla_camisa;
-        document.getElementById('short').value = JSON.dataset.talla_short;
+        document.getElementById('id').value = JSON.dataset.identrenador;
+        document.getElementById('nombre').value = JSON.dataset.nombre;
+        document.getElementById('apellido').value = JSON.dataset.apellido;
+        document.getElementById('telefono').value = JSON.dataset.telefono;
+        fillSelect(ENTRENADOR_API, 'readGenero', 'genero', JSON.dataset.idgenero);
         document.getElementById('direccion').value = JSON.dataset.direccion;
         document.getElementById('dui').value = JSON.dataset.dui;
-        document.getElementById('celular').value = JSON.dataset.celular;
-        document.getElementById('telefono').value = JSON.dataset.telefono_casa;
         document.getElementById('correo').value = JSON.dataset.correo;
-        fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre', JSON.dataset.idresponsable);
-        fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
-        fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
-        document.getElementById('clave').disabled = true ;
     } else {
         sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
     }
@@ -194,11 +136,11 @@ async function openUpdate(id) {
 
 // Eliminar un registro.
 async function openDelete(id) {
-    const RESPONSE = await confirmAction('¿Desea eliminar los responsables de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar este entrenador de forma permanente?');
     if (RESPONSE) {
         const FORM = new FormData();
-        FORM.append('idatleta', id);
-        const JSON = await dataFetch(ATLETA_API, 'delete', FORM); // Eliminar el registro seleccionado.
+        FORM.append('identrenador', id);
+        const JSON = await dataFetch(ENTRENADOR_API, 'delete', FORM); // Eliminar el registro seleccionado.
         if (JSON.status) {
             fillTable(); // Cargar la tabla nuevamente para visualizar los cambios.
             sweetAlert(1, JSON.message, true); // Mostrar un mensaje de éxito.
