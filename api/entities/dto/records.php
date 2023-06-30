@@ -9,7 +9,7 @@ class Record extends RecordQueries
     // Declaración de atributos (propiedades).
     protected $id = null;
     protected $marca_obtenida = null;
-    protected $unidad_medida = null;
+    protected $unidad = null;
     protected $atleta = null;
     protected $prueba = null;
     protected $posicion = null;
@@ -40,7 +40,7 @@ class Record extends RecordQueries
     public function setUnidadMedida($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->unidad_medida = $value;
+            $this->unidad = $value;
             return true;
         } else {
             return false;
@@ -92,7 +92,7 @@ class Record extends RecordQueries
 
     public function getUnidadMedida()
     {
-        return $this->unidad_medida;
+        return $this->unidad;
     }
 
     public function getAtleta()
