@@ -43,16 +43,15 @@ class RecordQueries
     public function createRow()
     {
         $sql = 'INSERT INTO records(marca_obtenida, idunidad_medida, idatleta, idprueba, posicion)
-                VALUES(?)';
-        $params = array($this->marca_obtenida, $this->unidad_medida, $this->atleta, $this->prueba, $this->posicion);
+                VALUES(?,?,?,?,?)';
+        $params = array($this->marca_obtenida, $this->unidad, $this->atleta, $this->prueba, $this->posicion);
         return Database::executeRow($sql, $params);
     }
 
     public function updateRow()
-    {
-       
+    {  
         $sql = 'UPDATE records
-                SET marca_obtenida = ? 
+                SET marca_obtenida = ? OR posicion = ?
                 WHERE idrecord = ?';
         $params = array($this->marca_obtenida, $this->id);
         return Database::executeRow($sql, $params);
@@ -70,29 +69,29 @@ class RecordQueries
     {
         $sql = 'SELECT idrecord, marca_obtenida, posicion
                 FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
-                WHERE idunidad_medida = ? 
-                ORDER BY nombre_medida';
-        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+                WHERE unidades_medidas = ? 
+                ORDER BY idrecord';
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 
     public function readAtletas()
     {
         $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN nombre_atleta USING (idatleta)
-                WHERE idatleta = ? 
-                ORDER BY nombre_atleta';
-        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+                FROM records INNER JOIN atletas USING (idatleta)
+                WHERE atletas = ? 
+                ORDER BY idrecord';
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 
     public function readPruebas()
     {
         $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN nombre_prueba USING (idprueba)
-                WHERE idprueba = ? 
-                ORDER BY nombre_prueba';
-        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+                FROM records INNER JOIN pruebas USING (idprueba)
+                WHERE pruebas = ? 
+                ORDER BY idrecord';
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 }

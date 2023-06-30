@@ -28,7 +28,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ingrese un valor para buscar';
                 } elseif ($result['dataset'] = $record->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -39,7 +38,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$record->setMarcaObtenida($_POST['marca_obtenida'])) {
                     $result['exception'] = 'Marca incorrecta';
-                }  elseif (!$record->setUnidadMedida($_POST['unidad_medida'])) {
+                }  elseif (!$record->setUnidadMedida($_POST['unidad'])) {
                     $result['exception'] = 'Unidad de medida incorrecta';
                 }  elseif (!$record->setAtleta($_POST['atleta'])) {
                     $result['exception'] = 'Atleta incorrecto';
@@ -72,6 +71,8 @@ if (isset($_GET['action'])) {
                 } elseif (!$data = $record->readOne()) {
                     $result['exception'] = 'Record inexistente';
                 } elseif (!$record->setMarcaObtenida($_POST['marca_obtenida'])) {
+                    $result['exception'] = 'Marca incorrecta';
+                }  elseif (!$record->setPosicion($_POST['posicion'])) {
                     $result['exception'] = 'Marca incorrecta';
                 }  elseif ($record->updateRow()) {
                     $result['status'] = 1;

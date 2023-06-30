@@ -1,8 +1,8 @@
 // Constante para completar la ruta de la API.
-const RECORD_API = 'business/dashboard/record.php';
-const UNIDAD_API = 'business/dashboard/unidad.php';
-const ATLETA_API = 'business/dashboard/atleta.php';
-const PRUEBA_API = 'business/dashboard/prueba.php';
+const RECORD_API = 'business/record.php';
+const UNIDAD_API = 'business/unidad.php';
+const ATLETA_API = 'business/atleta.php';
+const PRUEBA_API = 'business/prueba.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -49,6 +49,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
 
@@ -76,29 +77,34 @@ async function fillTable(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
-                <tr>
-                    <td>${row.idrecord}</td>
-                    <td>${row.marca_obtenida}</td>
-                    <td>${row.nombre_medida}</td>
-                    <td>${row.nombre_atleta}</td>
-                    <td>${row.nombre_prueba}</td>
-                    <td>${row.posicion}</td>
-                    <td>
-                        <a onclick="openUpdate(${row.idrecord})" data-bs-toggle="modal" data-bs-target="#save-modal" class="btn btn-primary tooltipped" data-tooltip="Actualizar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
-                        <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
-                        </svg>
-                        </a>
-                    </td> 
-                    <td>
-                        <a onclick="openDelete(${row.idrecord})" class="btn btn-danger tooltipped" data-tooltip="Eliminar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                        </svg>
-                        </a>
-                    </td> 
-                </tr>
-            `;
+            <tr>
+            <td>${row.idrecord}</td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            ${row.marca_obtenida}
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            ${row.nombre_medida}
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            ${row.nombre_atleta}
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            ${row.nombre_prueba}
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            ${row.posicion}
+            </td>
+            <td class="px-6 py-4">
+              <button onclick="openUpdate(${row.idrecord})" 
+                class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
+            </td>
+            <td class="px-6 py-4">
+              <button onclick="openDelete(${row.idrecord})" 
+                class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
+            </td>
+          </tr>
+
+      `;
         });
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
 
@@ -114,9 +120,13 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-
+    
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
+    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
+    fillSelect(UNIDAD_API, 'readAll', 'unidad');
+    fillSelect(ATLETA_API, 'readAll', 'atleta');
+    fillSelect(PRUEBA_API, 'readAll', 'prueba');
 }
 
 /*
