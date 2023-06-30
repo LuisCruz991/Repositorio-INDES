@@ -13,13 +13,6 @@ const RECORDS = document.getElementById('records');
 // Constante para establecer la modal de guardar.
 // const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-  dismissible: false
-}
-
-
-
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
   // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -48,12 +41,12 @@ SAVE_FORM.addEventListener('submit', async (event) => {
   const JSON = await dataFetch(EVENTO_API, action, FORM);
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
-      // Se carga nuevamente la tabla para visualizar los cambios.
-      fillTable();
-      // Se muestra un mensaje de éxito.
-      sweetAlert(1, JSON.message, true);
+    // Se carga nuevamente la tabla para visualizar los cambios.
+    fillTable();
+    // Se muestra un mensaje de éxito.
+    sweetAlert(1, JSON.message, true);
   } else {
-      sweetAlert(2, JSON.exception, false);
+    sweetAlert(2, JSON.exception, false);
   }
 });
 /*
@@ -105,7 +98,7 @@ async function fillTable(form = null) {
              ${row.hora_cierre}
             </td>
             <td >
-              <button class="rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline" onclick="openUpdate(${row.idevento})">
+              <button data-modal-toggle = "save-modal" class="rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline" onclick="openUpdate(${row.idevento})">
                 Actualizar
               </button>
             <td class="px-6 py-4">
@@ -131,7 +124,7 @@ async function fillTable(form = null) {
 */
 function openCreate() {
   // Se abre la caja de diálogo que contiene el formulario.
-  
+
   // Se restauran los elementos del formulario.
   SAVE_FORM.reset();
   // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
@@ -151,24 +144,21 @@ async function openUpdate(id) {
   const JSON = await dataFetch(EVENTO_API, 'readOne', FORM);
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
-    // Se abre la caja de diálogo que contiene el formulario.
-    SAVE_MODAL.show();
+    // // Se abre la caja de diálogo que contiene el formulario.
+    // SAVE_MODAL.show();
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
-    // Se asigna el título para la caja de diálogo (modal).
-    MODAL_TITLE.textContent = 'Actualizar evento';
     // Se inicializan los campos del formulario.
     document.getElementById('id').value = JSON.dataset.idevento;
-    fillSelect(TIPOEVENTO_API, 'readAll', 'tipo', JSON.dataset.tipo);
+    fillSelect(TIPOEVENTO_API, 'readAll', 'tipo', JSON.dataset.idtipo_evento);
     document.getElementById('nombre').value = JSON.dataset.nombre_evento;
     document.getElementById('descripcion').value = JSON.dataset.descripcion;
     document.getElementById('fecha').value = JSON.dataset.fecha_evento;
-    document.getElementById('imagen').value = JSON.dataset.imagen_sede;
     document.getElementById('sede').value = JSON.dataset.sede_evento;
     document.getElementById('direccion').value = JSON.dataset.direccion_sede;
-    document.getElementById('inicio').value = JSON.dataset.hora_inicio;
-    document.getElementById('cierre').value = JSON.dataset.hora_cierre;
-
+    document.getElementById('horaI').value = JSON.dataset.hora_inicio;
+    document.getElementById('horaC').value = JSON.dataset.hora_cierre;
+    document.getElementById('archivo').required = false;
     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
   } else {
     sweetAlert(2, JSON.exception, false);
