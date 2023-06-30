@@ -1,5 +1,5 @@
 <?php
-require_once('../../helpers/database.php');
+require_once('../helpers/database.php');
 
 class ModalidadQueries {
 
@@ -44,7 +44,7 @@ class ModalidadQueries {
      public function updateRow()
      {
          $sql = 'UPDATE modalidades_deportivas  
-                 SET  modalidad_deporte = ? 
+                 SET  nombre_modalidad = ? 
                  WHERE idmodalidad_deporte = ?';
          $params = array($this->modalidad,$this->id);
          return Database::executeRow($sql, $params);
@@ -54,7 +54,7 @@ class ModalidadQueries {
      public function deleteRow()
      {
          $sql = 'DELETE FROM modalidades_deportivas 
-                 WHERE idmodadlidad_deportiva = ?';
+                 WHERE idmodalidad_deporte = ?';
          $params = array($this->id);
          return Database::executeRow($sql, $params);
      }

@@ -10,9 +10,10 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['idadministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            // Caso para cargar los datos de la base en la tabla
             case 'readAll':
                 if ($result['dataset'] = $modalidad->readAll()) {
                     $result['status'] = 1;
@@ -23,6 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Caso para buscar por medio de la modalidad deportiva
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -36,9 +38,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                // Caso pra ingresar datos
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$modalidad->setModalidad($_POST['modalidad'])) {
+                if (!$modalidad->setModalidad($_POST['nombre'])) {
                     $result['exception'] = 'Modalidad deportiva no valida';
                 } elseif ($modalidad->createRow()) {
                     $result['status'] = 1;
@@ -47,6 +50,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Caso para leer un registro 
             case 'readOne':
                 if (!$modalidad->setId($_POST['id'])) {
                     $result['exception'] = 'Modalidad no invalida';
@@ -58,13 +62,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer la modalidad';
                 }
                 break;
+                // Caso para actualizar los datos de un registro 
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$modalidad->setId($_POST['id'])) {
                     $result['exception'] = 'Modalidad invalida';
                 } elseif (!$data = $modalidad->readOne()) {
                     $result['exception'] = 'Ocurrió un problema al leer la modalidad';
-                }elseif (!$modalidad->setModalidad($_POST['modalidad'])) {
+                }elseif (!$modalidad->setModalidad($_POST['nombre'])) {
                     $result['exception'] = 'nombre de la modalidad invalida';
                 } elseif ($modalidad->updateRow()) {
                     $result['status'] = 1;
@@ -73,6 +78,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Caso para eliminer registros 
             case 'delete':
                 if (!$modalidad->setId($_POST['id'])) {
                     $result['exception'] = 'Modalidad invalida';
