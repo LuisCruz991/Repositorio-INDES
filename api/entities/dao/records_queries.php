@@ -71,7 +71,7 @@ class RecordQueries
                 FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
                 WHERE unidades_medidas = ? 
                 ORDER BY idrecord';
-        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 
@@ -81,7 +81,7 @@ class RecordQueries
                 FROM records INNER JOIN atletas USING (idatleta)
                 WHERE atletas = ? 
                 ORDER BY idrecord';
-        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 
@@ -91,7 +91,7 @@ class RecordQueries
                 FROM records INNER JOIN pruebas USING (idprueba)
                 WHERE pruebas = ? 
                 ORDER BY idrecord';
-        $params = array($this->id, $this->marca_obtenida, $this->posicion);
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 }
