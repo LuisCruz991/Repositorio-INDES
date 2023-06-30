@@ -40,7 +40,7 @@
               <ul class=" mt-10 space-y-10 tracking-wide">
                 <!-- Boton para acceder a dashboard -->
                 <li class="min-w-max">
-                  <a href="/vistas/dashboard.html" aria-label="dashboard"
+                  <a href="../vistas/dashboard.html" aria-label="dashboard"
                     class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class=" w-7 h-7 bi bi-house-door-fill"
                       viewBox="0 0 16 16">
@@ -68,23 +68,28 @@
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
                     <!-- Boton para acceder a SCRUD de atletas -->
                     <li>
-                      <a href="/vistas/atletas_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
+                      <a href="../vistas/atletas_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100  text-red">Atletas</a>
+                    </li><!-- Boton para acceder a SCRUD de atletas -->
+                    <li>
+                      <a href="../vistas/responsable_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100  text-red">Responsables</a>
                     </li>
                     <!-- Boton para acceder a SCRUD de presupuesto  -->
                     <li>
-                      <a href="/vistas/presupuesto.html"
+                      <a href="../vistas/presupuesto.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Presupuesto</a>
                     </li>
                     <!-- Boton para acceder a SCRUD de entrenadores -->
                     <li>
-                      <a href="/vistas/entrenadores_crud.html"
+                      <a href="../vistas/entrenadores_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Entrenadores</a>
                     </li>
                   </ul>
                 </div>
                 <!-- Boton para acceder a vista de agenda -->
                 <li class="min-w-max">
-                  <a href="/vistas/agenda.html"
+                  <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownagend"
                     class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                       class="w-8 h-8 bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
@@ -94,9 +99,31 @@
                       <path
                         d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                     </svg>
-                    <span class="text-sm font-medium">Agenda</span>
-                  </a>
+                    <span class="text-sm  font-medium">Agenda</span>
+                  </button>
                 </li>
+                <!-- Dropdown menu de boton agenda -->
+                <div id="dropdownagend"
+                  class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <!-- Boton para acceder al calendario -->
+                    <li>
+                      <a href="../vistas/agenda.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Calendario</a>
+                    </li>
+                    <!-- Boton para acceder al SCRUD de eventos -->
+                    <li>
+                      <a href="../vistas/eventosCrud.html"
+                        class="block px-4 py-2 hover:bg-gray-100  text-red">Eventos</a>
+                    </li>
+                    <!-- Boton para acceder al SCRUD de tipo de eventos -->
+                    <li>
+                      <a href="../vistas/tipo_event_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tipo
+                        Eventos</a>
+                    </li>
+                  </ul>
+                </div>
                 <!-- Boton para acceder a competencias -->
                 <li class="min-w-max">
                   <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
@@ -114,39 +141,68 @@
                 <div id="dropdowncomp"
                   class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
-                    <!-- Boton para acceder al SCRUD de records -->
-                    <li>
-                      <a href="../vistas/records_crud.html" class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
-                    </li>
-                    <!-- Boton para acceder al SCRUD de pruebas -->
-                    <li>
-                      <a href="../vistas/unidad_crud.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Unidad</a>
-                    </li>
                     <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
                       <a href="../vistas/prueba_crud.html"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pruebas</a>
                     </li>
+                    <!-- Boton para acceder al SCRUD de records -->
+                    <li>
+                      <a href="../vistas/records_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100  text-red">Records</a>
+                    </li>
                     <!-- Boton para acceder al SCRUD de pruebas -->
                     <li>
-                      <a href="../vistas/clasif_deportes.html"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">clasif_deportes</a>
+                      <a href="../vistas/unidad_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Unidades</a>
                     </li>
                   </ul>
                 </div>
-                <!-- Boton para acceder a configuracion -->
+                <!-- Boton para acceder a administradores -->
                 <li class="min-w-max">
-                  <a href="#"
-                    class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-7 h-7 bi bi-gear-fill"
+                  <a href="../vistas/admin_crud.html" aria-label="dashboard"
+                    class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class=" w-7 h-7 bi bi-house-door-fill"
                       viewBox="0 0 16 16">
                       <path
-                        d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
                     </svg>
-                    <span class="text-sm font-medium">Configuracion</span>
+                    <span class=" text-sm font-medium">Administrador</span>
                   </a>
                 </li>
+                <!-- Boton para acceder a deportes -->
+                <li class="min-w-max">
+                  <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownball"
+                    class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                      class="bi bi-trophy-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z" />
+                    </svg>
+                    <span class="text-sm  font-medium">Deporte</span>
+                  </button>
+                </li>
+                <!-- Dropdown menu de boton deportes -->
+                <div id="dropdownball"
+                  class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                    <!-- Boton para acceder al SCRUD de deportes -->
+                    <li>
+                      <a href="../vistas/deportes_crud.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Deportes</a>
+                    </li>
+                    <!-- Boton para acceder al SCRUD de clasificaciones de un deporte -->
+                    <li>
+                      <a href="../vistas/clasif_deportes.html"
+                        class="block px-4 py-2 hover:bg-gray-100  text-red">Clasificacion</a>
+                    </li>
+                    <!-- Boton para acceder al SCRUD de modalidades deportivas -->
+                    <li>
+                      <a href="../vistas/.html"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Modalidad</a>
+                    </li>
+                  </ul>
+                </div>
               </ul>
             </div>
           </div>
@@ -173,7 +229,7 @@
 
         <!-- Comienzo del navbar -->
         <HEADER class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-         
+
         </HEADER>
         <!-- Finalizacion del navbar -->
 
@@ -256,17 +312,29 @@
                       clip-rule="evenodd"></path>
                   </svg>
                 </div>
-                <form method="post" class="flex items-center" id="search-form">   
+                <form method="post" class="flex items-center" id="search-form">
                   <label for="search-form" class="sr-only">buscar</label>
                   <div class="relative w-full">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                          <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                      </div>
-                      <input type="text" id="search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscar" required>
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <input type="text" id="search" name="search"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="buscar" required>
                   </div>
-                  <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                      <span class="sr-only">buscar</span>
+                  <button type="submit"
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <span class="sr-only">buscar</span>
                   </button>
                 </form>
               </div>
@@ -274,10 +342,10 @@
 
 
             <!-- Boton para agregar atleta -->
-          
+
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
-          </a>
+            </a>
             <!-- Modal para agregar -->
             <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
@@ -286,7 +354,7 @@
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <!-- Modal header -->
                   <form id="save-form">
-                   
+
                     <div class="grid gap-6 m-5 md:grid-cols-2">
                       <!-- Campo para ingresar nombre -->
                       <input class="hidden" type="number" id="id" name="id">
@@ -299,8 +367,8 @@
                           placeholder="Nombre" required>
                       </div>
 
-                       <!-- Campo para ingresar correo -->
-                       <div>
+                      <!-- Campo para ingresar correo -->
+                      <div>
                         <label for="correo"
                           class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
                         <input type="email" id="correo" name="correo"
@@ -316,29 +384,29 @@
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Clave" required>
                       </div>
-                      
+
                       <!-- Campo para seleccionar genero -->
                       <div>
-                        <label for="genero"
-                          class=" mt-5 
+                        <label for="genero" class=" mt-5 
                           block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genero</label>
                         <select id="genero" name="genero"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          
+
                         </select>
                       </div>
-                  
+
                     </div>
-                    
+
                     <!-- Boton para crear registro -->
                     <button type="submit"
-                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar datos</button>
+                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
+                      datos</button>
                   </form>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
@@ -367,7 +435,7 @@
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Genero
                     </th>
-                   
+
 
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
