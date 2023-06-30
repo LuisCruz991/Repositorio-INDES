@@ -52,23 +52,7 @@ class atletaqueries {
          return Database::getRows($sql);
      }
 
-     public function readClasificacion()
-     {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
-                 FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
-                               INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-     }
-     public function readModalidad()
-     {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
-                 FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
-                               INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-     }
- 
+  
  
      // Consulta para cargar los datos de un solo registro
      public function readOne()
