@@ -5,9 +5,7 @@ require_once('../helpers/database.php');
 */
 class AdminQueries
 {
-    /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
-    */
+     // Consulta para realizar la operacion "Search"
     public function searchRows($value)
     {
         $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, nombre_genero
@@ -17,6 +15,7 @@ class AdminQueries
         return Database::getRows($sql, $params);
     }
 
+    // Consulta para realizar la operacion "Read"
     public function readAll()
     {
         $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, nombre_genero
@@ -25,6 +24,7 @@ class AdminQueries
         return Database::getRows($sql);
     }
 
+     // Consulta para cargar los datos de un solo registro
     public function readOne()
     {
         $sql = 'SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, idgenero
@@ -33,7 +33,8 @@ class AdminQueries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+ 
+    //  Consulta para leer los generos de administradores
     public function readGenero()
      {
          $sql = 'SELECT idgenero, nombre_genero
@@ -41,6 +42,7 @@ class AdminQueries
          return Database::getRows($sql);
      }
 
+     // Consulta para realizar la operacion "Create"
     public function createRow()
     {
         $sql = 'INSERT INTO administradores(nombre_usuario, clave_usuario, correo_usuario, idgenero)
@@ -49,6 +51,7 @@ class AdminQueries
         return Database::executeRow($sql, $params);
     }
 
+    // Consulta para realizar la operacion "Update"
     public function updateRow()
     {
        
@@ -59,6 +62,7 @@ class AdminQueries
         return Database::executeRow($sql, $params);
     }
 
+    // Consulta para realizar la operacion "Delete"
     public function deleteRow()
     {
         $sql = 'DELETE FROM administradores

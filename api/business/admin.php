@@ -97,7 +97,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Correo del administrador no valido';
                     } elseif ($admin->updateRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Deporte actualizado exitosamente';
+                        $result['message'] = 'Administrador actualizado exitosamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }
