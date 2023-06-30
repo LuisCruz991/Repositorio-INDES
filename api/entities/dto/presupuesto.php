@@ -7,13 +7,13 @@ class Presupuesto extends PresupuestoQueries  {
 
     protected $id = null;
     protected $categoria = null;
-    protected $estimulos = null ;
-    protected $preparacionFog = null ;
+    protected $estimulo = null ;
+    protected $preparacion = null ;
     protected $ayuda = null ;
     protected $equipamiento = null ;
-    protected $otros = null ;
-    protected $patrocinadores = null ;
-    protected $observaciones = null;
+    protected $otro = null ;
+    protected $patrocinador = null ;
+    protected $observacion = null;
     protected $atleta = null;
 
 
@@ -29,7 +29,7 @@ class Presupuesto extends PresupuestoQueries  {
         }
     }
 
-    public function setCategoria($categoria) {
+    public function setCategoria($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->categoria = $value;
             return true;
@@ -38,26 +38,26 @@ class Presupuesto extends PresupuestoQueries  {
         }    
     }
 
-    public function setEstimulos($estimulos) {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->estimulos = $value;
+    public function setEstimulos($value) {
+        if (Validator::validateMoney($value)) {
+            $this->estimulo = $value;
             return true;
         } else {
             return false;
         }   
      }
 
-     public function setPreparacionFogues($preparacionFog) {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->preparacionFog = $value;
+     public function setPreparacionFogues($value) {
+        if (Validator::validateMoney($value)) {
+            $this->preparacion = $value;
             return true;
         } else {
             return false;
         }   
      }
 
-     public function setAyudaExtranjera($ayuda) {
-        if (Validator::validateNaturalNumber($value)) {
+     public function setAyudaExtranjera($value) {
+        if (Validator::validateMoney($value)) {
             $this->ayuda = $value;
             return true;
         } else {
@@ -65,8 +65,8 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-     public function setEquipamiento($equipamiento) {
-        if (Validator::validateNaturalNumber($value)) {
+     public function setEquipamiento($value) {
+        if (Validator::validateMoney($value)) {
             $this->equipamiento = $value;
             return true;
         } else {
@@ -74,18 +74,18 @@ class Presupuesto extends PresupuestoQueries  {
         }   
      }
 
-     public function setOtros($otros) {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->otros = $value;
+     public function setOtros($value) {
+        if (Validator::validateMoney($value)) {
+            $this->otro = $value;
             return true;
         } else {
             return false;
         }   
      }
 
-     public function setPatrocinadores($estimulos) {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->patrocinadores = $value;
+     public function setPatrocinadores($value) {
+        if (Validator::validateMoney($value)) {
+            $this->patrocinador = $value;
             return true;
         } else {
             return false;
@@ -95,14 +95,14 @@ class Presupuesto extends PresupuestoQueries  {
     public function setObservaciones($value)
     {
         if (Validator::validateString($value,1,500)) {
-            $this->observaciones = $value;
+            $this->observacion = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setAtleta($atleta) {
+    public function setAtleta($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->atleta = $value;
             return true;
@@ -125,12 +125,12 @@ class Presupuesto extends PresupuestoQueries  {
 
     public function getEstimulos()
     {
-        return $this->estimulos;
+        return $this->estimulo;
     }
 
     public function getPreparacionFogues()
     {
-        return $this->preparacionFog;
+        return $this->preparacion;
     }
 
     public function getAyudaExtranjera()
@@ -145,16 +145,16 @@ class Presupuesto extends PresupuestoQueries  {
 
     public function getOtros()
     {
-        return $this->otros;
+        return $this->otro;
     }
 
     public function getPatrocinadores() 
     {
-        return $this->patrocinadores;
+        return $this->patrocinador;
     }
 
     public function getObservaciones() {
-        return $this->observciones ;
+        return $this->observcion ;
     }
 
     public function getAtleta() {

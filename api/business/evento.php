@@ -13,6 +13,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idadministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            // Caso pra leer todos los registros de la tabla
             case 'readAll':
                 if ($result['dataset'] = $evento->readAll()) {
                     $result['status'] = 1;
@@ -23,6 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Caso para usar el buscador 
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -36,6 +38,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                // Caso para realizar la insercion de datos
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$evento->setEvento($_POST['nombre'])) {
@@ -71,6 +74,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Caso para leer los datos de un unico registro
             case 'readOne':
                 if (!$evento->setId($_POST['id'])) {
                     $result['exception'] = 'Evento no valido';
@@ -82,6 +86,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Evento inexistente';
                 }
                 break;
+                // Caso para realizar la operacion de actualizar un registro 
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$evento->setId($_POST['id'])) {
@@ -94,9 +99,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Descripcion no valida';
                 } elseif (!$evento->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion del evento no valido';
+                } elseif (!$evento->setSede($_POST['sede'])) {
+                    $result['exception'] = 'sede del evento no valida';
                 } elseif (!isset($_POST['tipo'])) {
                     $result['exception'] = 'Seleccione una categoria para el evento';
-                } elseif (!$evento->setTipoEvento($_POST['evento'])) {
+                } elseif (!$evento->setTipoEvento($_POST['tipo'])) {
                     $result['exception'] = 'Categoria no valida';
                 } elseif (!$evento->setFecha($_POST['fecha'])) {
                     $result['exception'] = 'Fecha no valida';
@@ -108,7 +115,7 @@ if (isset($_GET['action'])) {
                 elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     if ($evento->updateRow($data['imagen_sede'])) {
                         $result['status'] = 1;
-                        $result['message'] = 'Imagen modificada correctamente';
+                        $result['message'] = 'Evento actualizado correctamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }
@@ -116,7 +123,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($evento->updateRow($data['imagen_sede'])) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $evento->getRuta(), $producto->getImagen())) {
+                    if (Validator::saveFile($_FILES['archivo'], $evento->getRuta(), $evento->getImagen())) {
                         $result['message'] = 'Evento actualizado correctamente';
                     } else {
                         $result['message'] = 'No fue posible actualizar la imagen';
@@ -125,6 +132,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Caso pra eliminar un registro 
             case 'delete':
                 if (!$evento->setId($_POST['idevento'])) {
                     $result['exception'] = 'Evento no valido';

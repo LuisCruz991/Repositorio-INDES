@@ -17,8 +17,8 @@ class entrenadorqueries {
      // Consulta para realizar la operacion "Create"
      public function createRow()
      {
-         $sql = 'INSERT INTO entrenadores (identrenador, nombre, apellido, telefono, nombre_genero, direccion, dui, correo)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+         $sql = 'INSERT INTO entrenadores (nombre, apellido, telefono, idgenero, direccion, dui, correo)
+         VALUES (?, ?, ?, ?, ?, ?, ?)';
          $params = array($this->nombre, $this->apellido, $this->telefono,$this->genero, $this->direccion, $this->dui,$this->correo);
          return Database::executeRow($sql, $params);
      }
@@ -55,7 +55,7 @@ class entrenadorqueries {
      public function updateRow()
      {
          $sql = 'UPDATE entrenadores
-         SET nombre = ?, apellido = ?, telefono = ?, nombre_genero = ?, direccion = ?, dui = ?, correo = ?
+         SET nombre = ?, apellido = ?, telefono = ?, idgenero = ?, direccion = ?, dui = ?, correo = ?
          WHERE identrenador = ?';
          $params = array($this->nombre, $this->apellido, $this->telefono,$this->genero, $this->direccion, $this->dui,$this->correo,$this->id);
          return Database::executeRow($sql, $params);
