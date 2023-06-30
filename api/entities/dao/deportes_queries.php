@@ -7,7 +7,7 @@ class SportsQueries {
      public function searchRows($value)
      {
          $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
-                 FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
+                 FROM deportes INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
                                INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
                  WHERE nombre_deporte  LIKE ?';
          $params = array("%$value%");
@@ -56,9 +56,9 @@ class SportsQueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad, idclasificacion_deporte, idmodalidad_deporte
                 FROM deportes
-                INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
+                INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
                 INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
                  WHERE iddeporte = ?';
          $params = array($this->id);

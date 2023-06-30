@@ -37,7 +37,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$deporte->setDeporte($_POST['deporte'])) {
+                if (!$deporte->setDeporte($_POST['nombre'])) {
                     $result['exception'] = 'Nombre del deporte no valido';
                 } elseif (!isset($_POST['clasificacion'])) {
                     $result['exception'] = 'Seleccione la clasificación del deporte';
@@ -45,7 +45,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Categoria no valida';
                 }  elseif (!isset($_POST['modalidad'])) {
                     $result['exception'] = 'Seleccione la modalidad del deporte';
-                } elseif (!$deporte->setModalidad($_POST['Modalidad'])) {
+                } elseif (!$deporte->setModalidad($_POST['modalidad'])) {
                     $result['exception'] = 'Modalidad no valida';
                 } elseif ($deporte->createRow()) {
                     $result['status'] = 1;
@@ -71,7 +71,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Deporte invalido';
                     } elseif (!$data = $deporte->readOne()) {
                         $result['exception'] = 'Ocurrió un problema al leer el deporte';
-                    } elseif (!$deporte->setDeporte($_POST['deporte'])) {
+                    } elseif (!$deporte->setDeporte($_POST['nombre'])) {
                         $result['exception'] = 'Nombre del deporte no valido';
                     } elseif (!$deporte->setClasificacion($_POST['clasificacion'])) {
                         $result['exception'] = 'Clasificacion no valida';

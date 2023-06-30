@@ -1,19 +1,16 @@
-// Constante para completar la ruta de la API.
+// Constantes para completar la ruta de la API's.
 const DEPORTE_API = 'business/deporte.php';
+const CLASificacion_API = 'business/clas_deportes.php';
+const MODALIDAD_API = 'business/modalidad.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
 const SAVE_FORM = document.getElementById('save-form');
-// Constante para establecer el título de la modal.
-const MODAL_TITLE = document.getElementById('modal-title');
+
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
-// Inicialización del componente Modal para que funcionen las cajas de diálogo.
-
-// Constante para establecer la modal de guardar.
-const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,13 +37,11 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(UNIDADES_API, action, FORM);
+    const JSON = await dataFetch(DEPORTE_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
-        // Se cierra la caja de diálogo.
-        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
 
@@ -67,7 +62,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(UNIDADES_API, action, form);
+    const JSON = await dataFetch(DEPORTE_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -75,16 +70,21 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                  <td>${row.idunidad_medida}</td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_medida}
+                  ${row.nombre_deporte}
+                  </td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.nombre_modalidad}
+                  </td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.nombre_clasificacion}
                   </td>
                   <td class="px-6 py-4">
-                    <button onclick="openUpdate(${row.idunidad_medida})" 
+                    <button data-modal-toggle = "save-modal" onclick="openUpdate(${row.iddeporte})" 
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
                   </td>
                   <td class="px-6 py-4">
-                    <button onclick="openDelete(${row.idunidad_medida})" 
+                    <button onclick="openDelete(${row.iddeporte})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
                 </tr>
@@ -103,11 +103,14 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate() {
-    // Se abre la caja de diálogo que contiene el formulario.
-    
+function openCreate() {    
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
+    // Se cargan laS modalidades deportivas
+    fillSelect(MODALIDAD_API, 'readAll', 'modalidad');
+    // Se cargan las clasidicaciones del los deportes 
+    fillSelect(CLASificacion_API, 'readAll', 'clasificacion');
+
 }
 
 /*
@@ -118,19 +121,19 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idunidad_medida', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(UNIDADES_API, 'readOne', FORM);
+    const JSON = await dataFetch(DEPORTE_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-        // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
-            document.getElementById('id').value = JSON.dataset.idunidad_medida;
-            document.getElementById('nombre').value = JSON.dataset.nombre_medida;
+            document.getElementById('id').value = JSON.dataset.iddeporte;
+            document.getElementById('nombre').value = JSON.dataset.nombre_deporte;
+            fillSelect(MODALIDAD_API, 'readAll', 'modalidad', JSON.dataset.idmodalidad_deporte);
+            fillSelect(CLASificacion_API, 'readAll', 'clasificacion', JSON.dataset.idclasificacion_deporte);
             // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         } else {
             sweetAlert(2, JSON.exception, false);
@@ -144,14 +147,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la unidad de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea descartar este deporte?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idunidad_medida', id);
+        FORM.append('id', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(UNIDADES_API, 'delete', FORM);
+        const JSON = await dataFetch(DEPORTE_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
