@@ -8,12 +8,10 @@ class Responsable extends ResponsableQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nombre_madre = null;
-    protected $direccion_madre = null;
-    protected $telefono_madre = null;
-    protected $nombre_padre = null;
-    protected $direccion_padre = null;
-    protected $telefono_padre = null;
+    protected $nombre = null;
+    protected $direccion = null;
+    protected $telefono = null;
+    protected $parentesco = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -28,60 +26,40 @@ class Responsable extends ResponsableQueries
         }
     }
 
-    public function setNombreMadre($value)
+    public function setNombre($value)
     {
         if (Validator::validateString($value, 1, 50)) {
-            $this->nombre_madre = $value;
+            $this->nombre = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setDireccionMadre($value)
+    public function setDireccion($value)
     {
         if (Validator::validateString($value, 1, 50)) {
-            $this->direccion_madre = $value;
+            $this->direccion = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setTelefonoMadre($value)
+    public function setTelefono($value)
     {
         if (Validator::validatePhone($value, 1, 50)) {
-            $this->telefono_madre = $value;
+            $this->telefono = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setNombrePadre($value)
+    public function setParentesco($value)
     {
-        if (Validator::validateString($value, 1, 50)) {
-            $this->nombre_padre = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setDireccionPadre($value)
-    {
-        if (Validator::validateString($value, 1, 50)) {
-            $this->direccion_padre = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setTelefonoPadre($value)
-    {
-        if (Validator::validatePhone($value, 1, 50)) {
-            $this->telefono_padre = $value;
+        if (Validator::validateNaturalNumber($value)) {
+            $this->parentesco = $value;
             return true;
         } else {
             return false;
@@ -96,33 +74,23 @@ class Responsable extends ResponsableQueries
         return $this->id;
     }
 
-    public function getNombreMadre()
+    public function getNombre()
     {
-        return $this->nombre_madre;
+        return $this->nombre;
     }
 
-    public function getDireccionMadre()
+    public function getDireccion()
     {
-        return $this->direccion_madre;
+        return $this->direccion;
     }
 
-    public function getTelefonoMadre()
+    public function getTelefono()
     {
-        return $this->telefono_madre;
+        return $this->telefono;
     }
 
-    public function getNombrePadre()
+    public function getParentesco()
     {
-        return $this->nombre_padre;
-    }
-
-    public function getDireccionPadre()
-    {
-        return $this->direccion_padre;
-    }
-
-    public function getTelefonoPadre()
-    {
-        return $this->telefono_padre;
+        return $this->parentesco;
     }
 }
