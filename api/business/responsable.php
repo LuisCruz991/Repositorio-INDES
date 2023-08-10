@@ -37,18 +37,14 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$responsable->setNombreMadre($_POST['nombre_madre'])) {
-                    $result['exception'] = 'Nombre de la madre incorrecto';
-                }  elseif (!$responsable->setDireccionMadre($_POST['direccion_madre'])) {
+                if (!$responsable->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
+                }  elseif (!$responsable->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecta';
-                }  elseif (!$responsable->setTelefonoMadre($_POST['telefono_madre'])) {
+                }  elseif (!$responsable->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Telefono incorrecto';
-                }  elseif (!$responsable->setNombrePadre($_POST['nombre_padre'])) {
-                    $result['exception'] = 'Nombre del padre incorrecto';
-                }  elseif (!$responsable->setDireccionPadre($_POST['direccion_padre'])) {
-                    $result['exception'] = 'Direccion incorrecta';
-                }  elseif (!$responsable->setTelefonoPadre($_POST['telefono_padre'])) {
-                    $result['exception'] = 'Telefono incorrecto';
+                }  elseif (!$responsable->setParentesco($_POST['parentesco'])) {
+                    $result['exception'] = 'Parentesco incorrecto';
                 }  elseif ($responsable->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Responsable agregado correctamente';
@@ -73,18 +69,14 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Responsables invalidos';
                     } elseif (!$data = $responsable->readOne()) {
                         $result['exception'] = 'Ocurrió un problema al leer los responsables';
-                    } elseif (!$responsable->setNombreMadre($_POST['nombre_madre'])) {
-                        $result['exception'] = 'Nombre de la madre incorrecto';
-                    } elseif (!$responsable->setDireccionMadre($_POST['direccion_madre'])) {
+                    } elseif (!$responsable->setNombre($_POST['nombre'])) {
+                        $result['exception'] = 'Nombre incorrecto';
+                    } elseif (!$responsable->setDireccion($_POST['direccion'])) {
                         $result['exception'] = 'Direccion incorrecta';
-                    } elseif (!$responsable->setTelefonoMadre($_POST['telefono_madre'])) {
+                    } elseif (!$responsable->setTelefono($_POST['telefono'])) {
                         $result['exception'] = 'Telefono incorrecito';
-                    } elseif (!$responsable->setNombrePadre($_POST['nombre_padre'])) {
-                        $result['exception'] = 'Nombre del padre incorrecto';
-                    } elseif (!$responsable->setDireccionPadre($_POST['direccion_padre'])) {
-                        $result['exception'] = 'Nombre de la madre incorrecto';
-                    } elseif (!$responsable->setTelefonoPadre($_POST['telefono_padre'])) {
-                        $result['exception'] = 'Telefono incorrecto';
+                    } elseif (!$responsable->setParentesco($_POST['parentesco'])) {
+                        $result['exception'] = 'Parentesco incorrecto';
                     } elseif ($responsable->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Responsables actualizados exitosamente';

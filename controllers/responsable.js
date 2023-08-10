@@ -1,5 +1,6 @@
 // Constante para completar la ruta de la API.
 const RESPONSABLE_API = 'business/responsable.php';
+const PARENTESCO_API = 'business/parentesco.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -76,22 +77,16 @@ async function fillTable(form = null) {
                 <tr>
                   <td>${row.idresponsable}</td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_madre}
+                  ${row.nombre}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.direccion_madre}
+                  ${row.direccion}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.telefono_madre}
+                  ${row.telefono}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre_padre}
-                  </td>
-                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.direccion_padre}
-                  </td>
-                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.telefono_padre}
+                  ${row.nombre_parentesco}
                   </td>
                   <td class="px-6 py-4">
                     <button onclick="openUpdate(${row.idresponsable})" 
@@ -122,6 +117,9 @@ function openCreate() {
     
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
+    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
+    fillSelect(PARENTESCO_API, 'readAll', 'parentesco');
+    
 }
 
 /*
@@ -144,13 +142,11 @@ async function openUpdate(id) {
         // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
             document.getElementById('id').value = JSON.dataset.idresponsable;
-            document.getElementById('nombre_madre').value = JSON.dataset.nombre_madre;
-            document.getElementById('direccion_madre').value = JSON.dataset.direccion_madre;
-            document.getElementById('telefono_madre').value = JSON.dataset.telefono_madre;
-            document.getElementById('nombre_padre').value = JSON.dataset.nombre_padre;
-            document.getElementById('direccion_padre').value = JSON.dataset.direccion_padre;
-            document.getElementById('telefono_padre').value = JSON.dataset.telefono_padre;
-            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+            document.getElementById('nombre').value = JSON.dataset.nombre;
+            document.getElementById('direccion').value = JSON.dataset.direccion;
+            document.getElementById('telefono').value = JSON.dataset.telefono;
+            fillSelect(PARENTESCO_API, 'readAll', 'prueba', JSON.dataset.idparentesco);
+        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         } else {
             sweetAlert(2, JSON.exception, false);
         }

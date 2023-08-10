@@ -10,25 +10,26 @@ class ResponsableQueries
     */
     public function searchRows($value)
     {
-        $sql = ' SELECT idresponsable, nombre, direccion, telefono
-        FROM responsables
+        $sql = ' SELECT idresponsable, nombre, direccion, telefono, nombre_parentesco
+        FROM responsables INNER JOIN parentescos USING (idparentesco)
         WHERE nombre LIKE ? OR direccion LIKE ? OR telefono LIKE ?
         ORDER BY idresponsable';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
  
     public function readAll()
     {
-        $sql = ' SELECT idresponsable, nombre, direccion, telefono
-        FROM responsables';
+        $sql = ' SELECT idresponsable, nombre, direccion, telefono, nombre_parentesco
+        FROM responsables INNER JOIN parentescos USING (idparentesco)
+        ORDER BY idresponsable';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT idresponsable, nombre, direccion, telefono
+        $sql = 'SELECT idresponsable, nombre, direccion, telefono, idparentesco
                 FROM responsables
                 WHERE idresponsable = ?';
         $params = array($this->id);
@@ -37,9 +38,9 @@ class ResponsableQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO responsables(nombre, direccion, telefono)
-                VALUES(?,?,?)';
-        $params = array($this->nombre, $this->direccion, $this->telefono);
+        $sql = 'INSERT INTO responsables(nombre, direccion, telefono, idparentesco)
+                VALUES(?,?,?,?)';
+        $params = array($this->nombre, $this->direccion, $this->telefono, $this->parentesco);
         return Database::executeRow($sql, $params);
     }
 
