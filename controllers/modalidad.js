@@ -8,6 +8,11 @@ const SAVE_FORM = document.getElementById('save-form');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
+
+// Constante para establecer la modal de guardar.
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
+
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -83,10 +88,10 @@ async function fillTable(form = null) {
             <tr
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <p class="text-base">${row.nombre_modalidad}</p>
+              <p class="text-base">${row.idmodalidad_deporte}</p>
             </th>
-            <td class="px-6 py-4">
-              <p class="text-center  w-14 rounded-xl">${row.idmodalidad_deporte}</p>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <p class="text-center  w-14 rounded-xl">${row.nombre_modalidad}</p>
             </td>
             <td >
               <button data-modal-toggle = "save-modal" class="rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline" onclick="openUpdate(${row.idmodalidad_deporte})">
@@ -126,6 +131,10 @@ async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id', id);
+    // // Se abre la caja de diálogo que contiene el formulario.
+    SAVE_MODAL.show();
+    // Se restauran los elementos del formulario.
+    SAVE_FORM.reset();
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(MODALIDAD_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

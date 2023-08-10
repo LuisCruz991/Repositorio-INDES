@@ -4,16 +4,16 @@
 
 <head>
   <!-- Titulo -->
-  <title>Eventos</title>
+  <title>Atletas_crud</title>
   <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Css de de tailwind -->
-  <link href="../Css/tailwind.css" rel="stylesheet">
+  <link href="../css/tailwind.css" rel="stylesheet">
   <!-- Cdn de flowbite -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+  <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
   <!-- Css del proyecto -->
-  <link rel="stylesheet" href="../Css/Estilos.css">
+  <link rel="stylesheet" href="../css/estilos.css">
   <!-- Fuentes del proyecto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,7 +228,9 @@
       <div class="p-4">
 
         <!-- Comienzo del navbar -->
-        <HEADER class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900"></HEADER>
+        <HEADER class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+
+        </HEADER>
         <!-- Finalizacion del navbar -->
 
         <!-- Inicio de la tabla-->
@@ -243,7 +245,7 @@
                     d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
                 </svg>
               </button>
-              <!-- Filtro por fecha -->
+              <!-- Dropdown menu para filtro de busqueda -->
               <div id="dropdownRadio"
                 class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                 data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top"
@@ -297,6 +299,8 @@
                   </li>
                 </ul>
               </div>
+              <!-- Dropdown menu -->
+
               <!-- Busqueda -->
               <label for="table-search" class="sr-only">Search</label>
               <div class=" relative mt-1">
@@ -321,7 +325,7 @@
                     </div>
                     <input type="text" id="search" name="search"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="buscar por el nombre del evento" required>
+                      placeholder="buscar por nombre del deporte" required>
                   </div>
                   <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -335,12 +339,13 @@
                 </form>
               </div>
             </div>
-            <!-- Boton para agregar -->
-            <button data-modal-target="save-modal" data-modal-toggle="save-modal" onclick="openCreate()"
-              class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 hover:underline">Agregar</a>
-            </button>
 
-            <!-- Modal -->
+            <!-- Boton para agregar atleta -->
+            <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
+              class="mt-2 text-sm rounded-md w-24 h-10  bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
+            </a>
+
+            <!-- Modal para agregar -->
             <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
               <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
@@ -361,6 +366,7 @@
                       <span class="sr-only">Close modal</span>
                     </button>
                   </div>
+                  <h1 class="text-center">Administrar Deportes</h1>
                   <form id="save-form" method="post">
                     <div class="grid gap-6 m-5 md:grid-cols-2">
                       <!-- id  -->
@@ -377,13 +383,16 @@
                       </div>
                       <!-- Campo para seleccionar el tipo de evento -->
                       <div class="mt-5">
-                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clasificacion</label>
+                        <label for="company"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clasificacion</label>
                         <select id="clasificacion" name="clasificacion"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </select>
                       </div>
                       <div>
-                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modalidad deportiva</label>
+                        <label for="company"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modalidad
+                          deportiva</label>
                         <select id="modalidad" name="modalidad"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </select>
@@ -398,38 +407,48 @@
                 </div>
               </div>
             </div>
-
           </div>
+
+
+          <p class="text-left" id="records"></p>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
-                <!-- Titulos de la tabla -->
-                <tr class="hidden" id="records"></tr>
                 <tr>
-                  <div class="titulos-tabla-crud  bg-azul-3">
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre del evento
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Modalidad deportiva
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Clasificacion
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                  <!-- Titulos de la tabla -->
+                  <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
+                    <!-- Titulos de la tabla -->
+                    <tr class="hidden" id="records"></tr>
+                    <tr>
+                      <div class="titulos-tabla-crud  bg-azul-3">
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Nombre del deporte
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Modalidad deportiva
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Clasificacion
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
-                    </th>
-                  </div>
-                </tr>
-              </thead>
+                        </th>
+                      </div>
+                    </tr>
+                  </thead>
+                  <!-- Titulos de la tabla -->
 
+                  <!-- Datos de la tabla -->
+              <tbody id="tbody-rows">
+              </tbody>
               <!-- Datos de la tabla -->
-              <tbody id="tbody-rows"></tbody>
+
             </table>
+          </div>
         </main>
         <!-- Finalizacion de la tabla -->
 
@@ -440,19 +459,14 @@
 
   </div>
   <!-- Finalizacion del codigo -->
+
+  <!-- Js de flowbite -->
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="../js/script.js"></script>
   <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
   <script src="../controllers/account.js"></script>
   <script src="../controllers/deporte.js"></script>
-  <!-- Js de flowbite -->
-  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-  <!-- Js de apexcharts -->
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <!-- Js del proyecto -->
-  <script src="../js/script.js"></script>
-  <!-- Js de chartjs -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </body>
 
 </html>

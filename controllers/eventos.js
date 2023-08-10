@@ -11,7 +11,7 @@ const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
 // Constante para establecer la modal de guardar.
- //const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -123,8 +123,6 @@ async function fillTable(form = null) {
 *   Retorno: ninguno.
 */
 function openCreate() {
-  // Se abre la caja de diálogo que contiene el formulario.
-
   // Se restauran los elementos del formulario.
   SAVE_FORM.reset();
   // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
@@ -145,7 +143,7 @@ async function openUpdate(id) {
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
     // // Se abre la caja de diálogo que contiene el formulario.
-    // SAVE_MODAL.show();
+    SAVE_MODAL.show();
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se inicializan los campos del formulario.
@@ -159,7 +157,6 @@ async function openUpdate(id) {
     document.getElementById('horaI').value = JSON.dataset.hora_inicio;
     document.getElementById('horaC').value = JSON.dataset.hora_cierre;
     document.getElementById('archivo').required = false;
-    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
   } else {
     sweetAlert(2, JSON.exception, false);
   }
@@ -189,5 +186,17 @@ async function openDelete(id) {
     } else {
       sweetAlert(2, JSON.exception, false);
     }
+  }
+}
+
+async function Preview(input, target) {
+  let file = input.files[0];
+  let reader = new FileReader();
+
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+    let img = document.getElementById(target);
+    // can also use "this.result"
+    img.src = reader.result;
   }
 }

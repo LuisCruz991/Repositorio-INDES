@@ -11,6 +11,9 @@ const SAVE_FORM = document.getElementById('save-form');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
+// Constante para establecer la modal de guardar.
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
+
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,8 +94,8 @@ async function fillTable(form = null) {
 
             `;
         });
-        // Se   inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-        RECORDS.textContent = JSON.message;
+    // Se muestra un mensaje de acuerdo con el resultado.
+    RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -103,7 +106,7 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate() {    
+function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se cargan laS modalidades deportivas
@@ -126,18 +129,19 @@ async function openUpdate(id) {
     const JSON = await dataFetch(DEPORTE_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
+        // // Se abre la caja de diálogo que contiene el formulario.
+        SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
-        // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
-            document.getElementById('id').value = JSON.dataset.iddeporte;
-            document.getElementById('nombre').value = JSON.dataset.nombre_deporte;
-            fillSelect(MODALIDAD_API, 'readAll', 'modalidad', JSON.dataset.idmodalidad_deporte);
-            fillSelect(CLASificacion_API, 'readAll', 'clasificacion', JSON.dataset.idclasificacion_deporte);
-            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        } else {
-            sweetAlert(2, JSON.exception, false);
-        }
+        document.getElementById('id').value = JSON.dataset.iddeporte;
+        document.getElementById('nombre').value = JSON.dataset.nombre_deporte;
+        fillSelect(MODALIDAD_API, 'readAll', 'modalidad', JSON.dataset.idmodalidad_deporte);
+        fillSelect(CLASificacion_API, 'readAll', 'clasificacion', JSON.dataset.idclasificacion_deporte);
+        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
 }
 
 /*
