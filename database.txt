@@ -1,13 +1,14 @@
+
 --
 -- Estructura de tabla para la tabla `administradores`
 --
 
 CREATE TABLE `administradores` (
-  `idadministrador` bigint(20) UNSIGNED NOT NULL COMMENT 'ID del administrador',
+  `idadministrador` int(20) NOT NULL COMMENT 'ID del administrador',
   `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
   `clave_usuario` varchar(25) NOT NULL COMMENT 'Clave del administrador',
   `idgenero` int(11) NOT NULL COMMENT 'Genero del administrador '
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -37,7 +38,7 @@ CREATE TABLE `atletas` (
   `iddeporte` int(11) NOT NULL COMMENT 'Deporte practicado por el atleta',
   `identrenador` int(11) NOT NULL COMMENT 'Entrenador encargado del atleta',
   `clave` varchar(50) NOT NULL COMMENT 'Contraseña'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -48,7 +49,7 @@ CREATE TABLE `atletas` (
 CREATE TABLE `categoria_inversion` (
   `idcateg_inversion` int(11) NOT NULL COMMENT 'Numero de categoria de inversion',
   `anual_mensual` tinyint(1) NOT NULL COMMENT 'Tipo de inversion mensual o anual'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE `categoria_inversion` (
 CREATE TABLE `clasificacion_deporte` (
   `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte',
   `nombre_clasificacion` varchar(50) NOT NULL COMMENT 'Nombre de la clasificacion del deporte'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,7 @@ CREATE TABLE `deportes` (
   `nombre_deporte` varchar(50) NOT NULL COMMENT 'Nombre del deporte',
   `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte',
   `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Numero de modalidad del deporte'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,7 @@ CREATE TABLE `entrenadores` (
   `direccion` varchar(200) NOT NULL COMMENT 'Direccion del entrenador',
   `dui` varchar(10) NOT NULL COMMENT 'Numero de DUI del entrenador ',
   `correo` varchar(50) NOT NULL COMMENT 'Direccion de correo del entrenador '
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,7 @@ CREATE TABLE `eventos` (
   `hora_inicio` time NOT NULL COMMENT 'Hora de inicio del evento',
   `hora_cierre` time NOT NULL COMMENT 'Hora de cierre del evento',
   `idtipo_evento` int(11) NOT NULL COMMENT 'Tipo de evento'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,7 @@ CREATE TABLE `eventos` (
 CREATE TABLE `generos` (
   `idgenero` int(11) NOT NULL COMMENT 'Numero de genero',
   `nombre_genero` varchar(25) DEFAULT NULL COMMENT 'Genero '
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,7 @@ CREATE TABLE `generos` (
 CREATE TABLE `modalidades_deportivas` (
   `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Numero de modalidad deportiva',
   `nombre_modalidad` varchar(50) NOT NULL COMMENT 'Nombre de la modalidad deportiva'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE `presupuesto` (
   `patrocinadores` decimal(6,2) DEFAULT NULL COMMENT 'Dinero de apoyo de patrocinadores ',
   `obsevaciones` varchar(500) NOT NULL COMMENT 'Observaciones dadas o realizadas al atleta ',
   `idatleta` int(11) NOT NULL COMMENT 'Numero del atleta'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ CREATE TABLE `pruebas` (
   `nombre_prueba` varchar(100) NOT NULL COMMENT 'Nombre de la prueba',
   `iddeporte` int(11) NOT NULL COMMENT 'Numero del deporte',
   `idevento` int(11) NOT NULL COMMENT 'Numero de evento al que pertenece'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ CREATE TABLE `records` (
   `idatleta` int(11) NOT NULL COMMENT 'Atleta que obtuvo esa marca',
   `idprueba` int(11) NOT NULL COMMENT 'Prueba en la que se realizo la marca',
   `posicion` int(11) DEFAULT NULL COMMENT 'Posición en la que quedo el atleta dentro de la prueba'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -186,14 +187,23 @@ CREATE TABLE `records` (
 --
 
 CREATE TABLE `responsables` (
-  `idresponsable` int(11) NOT NULL COMMENT 'ID de padre o/y madre del atleta',
-  `nombre_madre` varchar(50) DEFAULT NULL COMMENT 'Nombre de la madre del atleta',
-  `direccion_madre` varchar(200) DEFAULT NULL COMMENT 'Direccion de la madre del atleta',
-  `telefono_madre` varchar(9) DEFAULT NULL COMMENT 'Telefono movil de la madre del atleta',
-  `nombre_padre` varchar(50) DEFAULT NULL COMMENT 'Nombre del padre del atleta',
-  `direccion_padre` varchar(200) DEFAULT NULL COMMENT 'Direccion del padre del atleta',
-  `telefono_padre` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del padre del atleta'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `idresponsable` int(11) NOT NULL COMMENT 'ID del responsable del atleta',
+  `nombre` varchar(50) DEFAULT NULL COMMENT 'Nombre del responsable del atleta',
+  `direccion` varchar(200) DEFAULT NULL COMMENT 'Direccion del responsable del atleta',
+  `telefono` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del responsable del atleta',
+  `idparentesco` int(11) NOT NULL COMMENT 'Parentesco del responsable con el atleta'
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `parentescos`
+--
+
+CREATE TABLE `parentescos` (
+  `idparentesco` int(11) NOT NULL COMMENT 'ID del Parentesco',
+  `nombre_parentesco` varchar(20) NOT NULL COMMENT 'Nombre del parentesco'
+);
 
 -- --------------------------------------------------------
 
@@ -204,7 +214,7 @@ CREATE TABLE `responsables` (
 CREATE TABLE `tipo_evento` (
   `idtipo_evento` int(11) NOT NULL COMMENT 'ID del tipo del evento',
   `nombre` varchar(80) NOT NULL COMMENT 'Nombre del tipo del evento '
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -215,7 +225,7 @@ CREATE TABLE `tipo_evento` (
 CREATE TABLE `unidades_medidas` (
   `idunidad_medida` int(11) NOT NULL COMMENT 'ID de la unidad de medida',
   `nombre_medida` varchar(30) NOT NULL COMMENT 'Nombre de la unidad de medida utilizada'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Índices para tablas volcadas
@@ -317,7 +327,14 @@ ALTER TABLE `records`
 -- Indices de la tabla `responsables`
 --
 ALTER TABLE `responsables`
-  ADD PRIMARY KEY (`idresponsable`);
+  ADD PRIMARY KEY (`idresponsable`),
+  ADD KEY `responsables_parentesco` (`idparentesco`);
+
+--
+-- Indices de la tabla `parentescos`
+--
+ALTER TABLE `parentescos`
+  ADD PRIMARY KEY (`idparentesco`);
 
 --
 -- Indices de la tabla `tipo_evento`
@@ -386,6 +403,12 @@ ALTER TABLE `presupuesto`
   ADD CONSTRAINT `categoria_presupuesto` FOREIGN KEY (`idcateg_inversion`) REFERENCES `categoria_inversion` (`idcateg_inversion`);
 
 --
+-- Filtros para la tabla `responsables`
+--
+ALTER TABLE `responsables`
+  ADD CONSTRAINT `responsables_parentesco` FOREIGN KEY (`idparentesco`) REFERENCES `parentescos` (`idparentesco`);
+
+--
 -- Filtros para la tabla `pruebas`
 --
 ALTER TABLE `pruebas`
@@ -400,10 +423,3 @@ ALTER TABLE `records`
   ADD CONSTRAINT `record_prueba` FOREIGN KEY (`idprueba`) REFERENCES `pruebas` (`idprueba`),
   ADD CONSTRAINT `records_unidad` FOREIGN KEY (`idunidad_medida`) REFERENCES `unidades_medidas` (`idunidad_medida`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-AUTO_INCREMENT
