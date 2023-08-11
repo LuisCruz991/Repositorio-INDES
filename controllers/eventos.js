@@ -89,7 +89,7 @@ async function fillTable(form = null) {
               ${row.direccion_sede}
             </td>
             <td class="px-6 py-4">
-            <img src="${SERVER_URL}imagenes/eventos/${row.imagen_sede}" class="materialboxed" height="100">
+            <img src="${SERVER_URL}imagenes/eventos/${row.imagen_sede}" class="materialboxed" height="100"ººººººººººººººººººººººººººººººººººº onerror="this.src='../imagenes/notFound.png';">
             </td>
             <td class="px-6 py-4">
             ${row.hora_inicio}
@@ -188,7 +188,7 @@ async function openDelete(id) {
     }
   }
 }
-
+// Funcion asincrona para mostrar la imagen seleccionada en el modal. 
 async function Preview(input, target) {
   let file = input.files[0];
   let reader = new FileReader();
@@ -196,7 +196,7 @@ async function Preview(input, target) {
   reader.readAsDataURL(file);
   reader.onload = function () {
     let img = document.getElementById(target);
-    // can also use "this.result"
     img.src = reader.result;
   }
 }
+
