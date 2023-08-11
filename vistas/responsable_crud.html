@@ -362,56 +362,37 @@
                       <div>
                         <!-- Campo para ingresar un nombre de madre en la tabla -->
                         <label for="nombre_madre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de
-                          Mamá</label>
-                        <input type="text" id="nombre_madre" name="nombre_madre"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del
+                          representante</label>
+                        <input type="text" id="nombre" name="nombre"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Nombre de Mamá" required>
+                          placeholder="Nombre del responsable" required>
                       </div>
                       <div>
                         <!-- Campo para ingresar una direccion de madre en la tabla -->
                         <label for="direccion_madre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion de
-                          Mamá</label>
-                        <input type="text" id="direccion_madre" name="direccion_madre"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion del
+                          representante</label>
+                        <input type="text" id="direccion" name="direccion"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Direccion de Mamá" required>
+                          placeholder="Direccion del responsable" required>
                       </div>
                       <div>
                         <!-- Campo para ingresar un telefono de madre en la tabla -->
                         <label for="telefono_madre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono de
-                          Mamá</label>
-                        <input type="tel" id="telefono_madre" name="telefono_madre"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono del
+                          representante</label>
+                        <input type="tel" id="telefono" name="telefono"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="0000-0000" required>
                       </div>
                       <div>
-                        <!-- Campo para ingresar un nombre de padre en la tabla -->
-                        <label for="nombre_padre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de
-                          Papá</label>
-                        <input type="text" id="nombre_padre" name="nombre_padre"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Nombre de Papá" required>
-                      </div>
-                      <div>
-                        <!-- Campo para ingresar una direccion de padre en la tabla -->
-                        <label for="direccion_padre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion de
-                          Papá</label>
-                        <input type="text" id="direccion_padre" name="direccion_padre"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Direccion de Papá" required>
-                      </div>
-                      <div>
-                        <!-- Campo para ingresar un telefono de padre en la tabla -->
-                        <label for="telefono_padre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono de
-                          Papá</label>
-                        <input type="tel" id="telefono_padre" name="telefono_padre"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="0000-0000" required>
+                        <!-- Campo para ingresar un atleta en la tabla -->
+                        <label for="parentesco"
+                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Parentesco</label>
+                        <select id="parentesco" name="parentesco"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </select>
                       </div>
                     </div>
                     <!-- Boton para crear registro -->
@@ -437,34 +418,24 @@
                       ID
                     </th>
 
-                    <!-- Campo de nombre madre en la tabla -->
+                    <!-- Campo de nombre del responsable en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre Mamá
+                      Nombre
                     </th>
 
-                    <!-- Campo de direccion madre en la tabla -->
+                    <!-- Campo de direccion del responsable en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Dirección Mamá
+                      Dirección
                     </th>
 
-                    <!-- Campo de telefono madre en la tabla -->
+                    <!-- Campo de telefono del responsable en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Telefono Mamá
+                      Telefono
                     </th>
 
-                    <!-- Campo de nombre padre en la tabla -->
+                    <!-- Campo de de parentesco del responsable con el atleta en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre Papá
-                    </th>
-
-                    <!-- Campo de direccion padre en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Dirección Papá
-                    </th>
-
-                    <!-- Campo de telefono padre en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Telefono Papá
+                      Parentesco
                     </th>
 
                     <!-- Campo de actualizar en la tabla -->

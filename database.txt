@@ -4,10 +4,10 @@
 --
 
 CREATE TABLE `administradores` (
-  `idadministrador` int(20) NOT NULL COMMENT 'ID del administrador',
+  `idadministrador` bigint(20) NOT NULL COMMENT 'ID del administrador',
   `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
-  `clave_usuario` varchar(25) NOT NULL COMMENT 'Clave del administrador',
-  `idgenero` int(11) NOT NULL COMMENT 'Genero del administrador '
+  `clave_usuario` varchar(200) NOT NULL COMMENT 'Clave del administrador',
+  `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador'
 );
 
 -- --------------------------------------------------------
@@ -235,8 +235,7 @@ CREATE TABLE `unidades_medidas` (
 -- Indices de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`idadministrador`),
-  ADD KEY `genero_admin` (`idgenero`);
+  ADD PRIMARY KEY (`idadministrador`);
 
 --
 -- Indices de la tabla `atletas`
@@ -361,12 +360,6 @@ ALTER TABLE `administradores`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `administradores`
---
-ALTER TABLE `administradores`
-  ADD CONSTRAINT `genero_admin` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `atletas`

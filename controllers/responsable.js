@@ -145,7 +145,7 @@ async function openUpdate(id) {
             document.getElementById('nombre').value = JSON.dataset.nombre;
             document.getElementById('direccion').value = JSON.dataset.direccion;
             document.getElementById('telefono').value = JSON.dataset.telefono;
-            fillSelect(PARENTESCO_API, 'readAll', 'prueba', JSON.dataset.idparentesco);
+            fillSelect(PARENTESCO_API, 'readAll', 'parentesco', JSON.dataset.idparentesco);
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         } else {
             sweetAlert(2, JSON.exception, false);
