@@ -89,7 +89,7 @@ async function fillTable(form = null) {
               ${row.direccion_sede}
             </td>
             <td class="px-6 py-4">
-            <img src="${SERVER_URL}imagenes/eventos/${row.imagen_sede}" class="materialboxed" height="100"ººººººººººººººººººººººººººººººººººº onerror="this.src='../imagenes/notFound.png';">
+            <img src="${SERVER_URL}imagenes/eventos/${row.imagen_sede}" class="materialboxed" height="100" onerror="this.src='../imagenes/notFound.png';">
             </td>
             <td class="px-6 py-4">
             ${row.hora_inicio}
