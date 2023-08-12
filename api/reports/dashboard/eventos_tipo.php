@@ -4,20 +4,20 @@ require_once('../../helpers/report.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se verifica si existe un valor para la categoría, de lo contrario se muestra un mensaje.
-if (isset($_GET['id_categoria'])) {
+if (isset($_GET['idtipo_evento'])) {
     require_once('../../entities/dto/categoria.php');
     require_once('../../entities/dto/producto.php');
     // Se instancian las entidades correspondientes.
-    $categoria = new Categoria;
-    $producto = new Producto;
+    $tipo = new TipoEvento;
+    $evento = new Event;
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
-    if ($categoria->setId($_GET['id_categoria']) && $producto->setCategoria($_GET['id_categoria'])) {
+    if ($tipo->setId($_GET['idtipo_evento']) && $evento->setTipoEvento($_GET['idtipo_evento'])) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
-        if ($rowCategoria = $categoria->readOne()) {
+        if ($rowTipo = $tipo->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
-            $pdf->startReport('Productos de la categoría ' . $rowCategoria['nombre_categoria']);
+            $pdf->startReport('Eventos de un tipo ' . $rowTipo['nombre']);
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $producto->productosCategoria()) {
+            if ($dataEvento = $evento->productosCategoria()) {
                 // Se establece un color de relleno para los encabezados.
                 $pdf->setFillColor(225);
                 // Se establece la fuente para los encabezados.
@@ -29,23 +29,22 @@ if (isset($_GET['id_categoria'])) {
                 // Se establece la fuente para los datos de los productos.
                 $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
-                foreach ($dataProductos as $rowProducto) {
-                    ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
+                foreach ($dataEvento as $rowEvento) {
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
+                    $pdf->cell(126, 10, $pdf->encodeString($rowEvento['nombre_producto']), 1, 0);
+                    $pdf->cell(30, 10, $rowEvento['precio_producto'], 1, 0);
                     $pdf->cell(30, 10, $estado, 1, 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1);
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-            $pdf->output('I', 'categoria.pdf');
+            $pdf->output('I', 'tipos_eventos.pdf');
         } else {
-            print('Categoría inexistente');
+            print('Tipo de evento inexistente');
         }
     } else {
-        print('Categoría incorrecta');
+        print('Tipo de evento incorrecto');
     }
 } else {
     print('Debe seleccionar una categoría');

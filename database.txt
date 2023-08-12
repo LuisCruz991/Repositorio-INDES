@@ -6,7 +6,6 @@
 CREATE TABLE `administradores` (
   `idadministrador` bigint(20) NOT NULL COMMENT 'ID del administrador',
   `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
-  `apellido_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
   `clave_usuario` varchar(200) NOT NULL COMMENT 'Clave del administrador',
   `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador'
 );
@@ -32,9 +31,6 @@ CREATE TABLE `atletas` (
   `celular` varchar(9) NOT NULL COMMENT 'Numero de teléfono del atleta',
   `telefono_casa` varchar(9) NOT NULL COMMENT 'Teléfono fijo del atleta',
   `correo` varchar(50) NOT NULL COMMENT 'Dirección de correo del atleta',
-  `facebook` varchar(50) DEFAULT NULL COMMENT 'Facebook del atleta',
-  `instagram` varchar(50) DEFAULT NULL COMMENT 'Instagram del atleta',
-  `twitter` varchar(50) DEFAULT NULL COMMENT 'Twitter del atleta',
   `idresponsable` int(11) NOT NULL COMMENT 'Padre o/y madre del atleta',
   `iddeporte` int(11) NOT NULL COMMENT 'Deporte practicado por el atleta',
   `identrenador` int(11) NOT NULL COMMENT 'Entrenador encargado del atleta',
