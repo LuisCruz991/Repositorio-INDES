@@ -19,7 +19,7 @@ class Atleta extends AtletaQueries  {
     protected $celular = null ;
     protected $telefono = null;
     protected $correo = null;
-    protected $nombre_madre = null;
+    protected $responsable = null;
     protected $deporte = null ;
     protected $entrenador = null ;
     protected $clave = null ;
@@ -161,7 +161,7 @@ class Atleta extends AtletaQueries  {
 
     public function setNombreMadre($value) {
         if (Validator::validateNaturalNumber($value)) {
-            $this->nombre_madre = $value;
+            $this->responsable = $value;
             return true;
         } else {
             return false;
@@ -253,7 +253,7 @@ class Atleta extends AtletaQueries  {
     }
 
     public function getNombreMadre() {
-        return $this->nombre_madre;
+        return $this->responsable;
     }
 
     public function getDeporte() {

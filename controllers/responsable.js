@@ -77,7 +77,7 @@ async function fillTable(form = null) {
                 <tr>
                   <td>${row.idresponsable}</td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.nombre}
+                  ${row.nombre_responsable}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.direccion}
@@ -142,7 +142,7 @@ async function openUpdate(id) {
         // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
             document.getElementById('id').value = JSON.dataset.idresponsable;
-            document.getElementById('nombre').value = JSON.dataset.nombre;
+            document.getElementById('nombre').value = JSON.dataset.nombre_responsable;
             document.getElementById('direccion').value = JSON.dataset.direccion;
             document.getElementById('telefono').value = JSON.dataset.telefono;
             fillSelect(PARENTESCO_API, 'readAll', 'parentesco', JSON.dataset.idparentesco);

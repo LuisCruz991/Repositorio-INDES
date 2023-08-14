@@ -121,7 +121,7 @@ async function fillTable(form = null) {
 
                   </td>
                   <td class="px-6 py-4">
-                  ${row.nombre_madre}
+                  ${row.nombre_responsable}
 
                   </td>
                   <td class="px-6 py-4">
@@ -155,7 +155,7 @@ function openCreate() {
     // Abrir la caja de diálogo que contiene el formulario.
     SAVE_FORM.reset(); // Restaurar los elementos del formulario.
     fillSelect(ATLETA_API, 'readGenero', 'genero');
-    fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre');
+    fillSelect(RESPONSABLE_API, 'readAll', 'responsable');
     fillSelect(DEPORTE_API, 'readAll', 'deporte');
     fillSelect(ATLETA_API, 'readEntrenador', 'entrenador');
 }
@@ -183,7 +183,7 @@ async function openUpdate(id) {
         document.getElementById('celular').value = JSON.dataset.celular;
         document.getElementById('telefono').value = JSON.dataset.telefono_casa;
         document.getElementById('correo').value = JSON.dataset.correo;
-        fillSelect(RESPONSABLE_API, 'readAll', 'nombre_madre', JSON.dataset.idresponsable);
+        fillSelect(RESPONSABLE_API, 'readAll', 'responsable', JSON.dataset.idresponsable);
         fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
         fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
         document.getElementById('clave').disabled = true ;

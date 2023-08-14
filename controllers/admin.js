@@ -92,10 +92,6 @@ async function fillTable(form = null) {
             ${row.correo_usuario}
             </td>
             <td class="px-6 py-4">
-            ${row.clave_usuario}
-
-            </td>
-            <td class="px-6 py-4">
             ${row.nombre_genero}
 
 

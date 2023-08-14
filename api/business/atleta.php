@@ -83,9 +83,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'telefono del atleta no valido';
                 } elseif (!$atleta->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo del atleta no valido';
-                }elseif (!isset($_POST['nombre_madre'])) {
+                }elseif (!isset($_POST['responsable'])) {
                     $result['exception'] = 'Seleccione un responsable';
-                } elseif (!$atleta->setNombreMadre($_POST['nombre_madre'])) {
+                } elseif (!$atleta->setNombreMadre($_POST['responsable'])) {
                     $result['exception'] = 'Responsable no valida';
                 }  elseif (!isset($_POST['deporte'])) {
                     $result['exception'] = 'Seleccione el deporte';
@@ -149,9 +149,9 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'telefono del atleta no valido';
                     } elseif (!$atleta->setCorreo($_POST['correo'])) {
                         $result['exception'] = 'Correo del atleta no valido';
-                    }elseif (!isset($_POST['nombre_madre'])) {
+                    }elseif (!isset($_POST['responsable'])) {
                         $result['exception'] = 'Seleccione un responsable';
-                    } elseif (!$atleta->setNombreMadre($_POST['nombre_madre'])) {
+                    } elseif (!$atleta->setNombreMadre($_POST['responsable'])) {
                         $result['exception'] = 'Responsable no valida';
                     }  elseif (!isset($_POST['deporte'])) {
                         $result['exception'] = 'Seleccione el deporte';

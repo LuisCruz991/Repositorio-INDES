@@ -45,7 +45,7 @@ if (isset($_GET['action'])) {
                 } elseif (!isset($_POST['clasificacion'])) {
                     $result['exception'] = 'Seleccione la clasificación del deporte';
                 } elseif (!$deporte->setClasificacion($_POST['clasificacion'])) {
-                    $result['exception'] = 'Categoria no valida';
+                    $result['exception'] = 'Clasificacion no valida';
                 }  elseif (!isset($_POST['modalidad'])) {
                     $result['exception'] = 'Seleccione la modalidad del deporte';
                 } elseif (!$deporte->setModalidad($_POST['modalidad'])) {

@@ -10,7 +10,7 @@ class ResponsableQueries
     */
     public function searchRows($value)
     {
-        $sql = ' SELECT idresponsable, nombre, direccion, telefono, nombre_parentesco
+        $sql = ' SELECT idresponsable, nombre_responsable, direccion, telefono, nombre_parentesco
         FROM responsables INNER JOIN parentescos USING (idparentesco)
         WHERE nombre LIKE ? OR direccion LIKE ? OR telefono LIKE ?
         ORDER BY idresponsable';
@@ -21,7 +21,7 @@ class ResponsableQueries
  
     public function readAll()
     {
-        $sql = ' SELECT idresponsable, nombre, direccion, telefono, nombre_parentesco
+        $sql = ' SELECT idresponsable, nombre_responsable, direccion, telefono, nombre_parentesco
         FROM responsables INNER JOIN parentescos USING (idparentesco)
         ORDER BY idresponsable';
         return Database::getRows($sql);
@@ -29,7 +29,7 @@ class ResponsableQueries
 
     public function readOne()
     {
-        $sql = 'SELECT idresponsable, nombre, direccion, telefono, idparentesco
+        $sql = 'SELECT idresponsable, nombre_responsable, direccion, telefono, idparentesco
                 FROM responsables
                 WHERE idresponsable = ?';
         $params = array($this->id);
@@ -38,7 +38,7 @@ class ResponsableQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO responsables(nombre, direccion, telefono, idparentesco)
+        $sql = 'INSERT INTO responsables(nombre_responsable, direccion, telefono, idparentesco)
                 VALUES(?,?,?,?)';
         $params = array($this->nombre, $this->direccion, $this->telefono, $this->parentesco);
         return Database::executeRow($sql, $params);
@@ -48,7 +48,7 @@ class ResponsableQueries
     {
        
         $sql = 'UPDATE responsables
-                SET nombre = ?, direccion = ?, telefono = ?
+                SET nombre_responsable = ?, direccion = ?, telefono = ?
                 WHERE idresponsable = ?';
         $params = array($this->nombre, $this->direccion, $this->telefono, $this->id);
         return Database::executeRow($sql, $params);

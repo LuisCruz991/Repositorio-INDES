@@ -1176,6 +1176,18 @@ input:checked + .toggle-bg {
   margin-top: 2rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
 .block {
   display: block;
 }
@@ -1258,6 +1270,10 @@ input:checked + .toggle-bg {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-128 {
+  height: 32rem;
 }
 
 .min-h-screen {
@@ -2204,6 +2220,18 @@ input:checked + .toggle-bg {
 
   .md\:h-screen {
     height: 100vh;
+  }
+
+  .md\:h-2 {
+    height: 0.5rem;
+  }
+
+  .md\:h-20 {
+    height: 5rem;
+  }
+
+  .md\:h-2\.5 {
+    height: 0.625rem;
   }
 
   .md\:w-48 {
