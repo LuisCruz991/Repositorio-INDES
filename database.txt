@@ -4,10 +4,11 @@
 --
 
 CREATE TABLE `administradores` (
-  `idadministrador` bigint(20) NOT NULL COMMENT 'ID del administrador',
+  `idadministrador` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID del administrador',
   `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
   `clave_usuario` varchar(200) NOT NULL COMMENT 'Clave del administrador',
-  `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador'
+  `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador',
+  `idgenero` int(11) NULL COMMENT 'Numero de genero'
 );
 
 -- --------------------------------------------------------
@@ -17,7 +18,7 @@ CREATE TABLE `administradores` (
 --
 
 CREATE TABLE `atletas` (
-  `idatleta` int(11) NOT NULL COMMENT 'Numero de atleta',
+  `idatleta` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de atleta',
   `nombre_atleta` varchar(50) NOT NULL COMMENT 'Nombre del atleta',
   `apellido_atleta` varchar(50) NOT NULL COMMENT 'Apellido del atleta',
   `nacimiento` date NOT NULL COMMENT 'Fecha de nacimiento del atleta',
@@ -44,7 +45,7 @@ CREATE TABLE `atletas` (
 --
 
 CREATE TABLE `categoria_inversion` (
-  `idcateg_inversion` int(11) NOT NULL COMMENT 'Numero de categoria de inversion',
+  `idcateg_inversion` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de categoria de inversion',
   `anual_mensual` tinyint(1) NOT NULL COMMENT 'Tipo de inversion mensual o anual'
 );
 
@@ -55,7 +56,7 @@ CREATE TABLE `categoria_inversion` (
 --
 
 CREATE TABLE `clasificacion_deporte` (
-  `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte',
+  `idclasificacion_deporte` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de clasificacion del deporte',
   `nombre_clasificacion` varchar(50) NOT NULL COMMENT 'Nombre de la clasificacion del deporte'
 );
 
@@ -66,7 +67,7 @@ CREATE TABLE `clasificacion_deporte` (
 --
 
 CREATE TABLE `deportes` (
-  `iddeporte` int(11) NOT NULL COMMENT 'Numero de deporte',
+  `iddeporte` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de deporte',
   `nombre_deporte` varchar(50) NOT NULL COMMENT 'Nombre del deporte',
   `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte',
   `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Numero de modalidad del deporte'
@@ -79,7 +80,7 @@ CREATE TABLE `deportes` (
 --
 
 CREATE TABLE `entrenadores` (
-  `id_entrenador` int(11) NOT NULL COMMENT 'Numero del entrenador',
+  `id_entrenador` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero del entrenador',
   `nombre` varchar(50) NOT NULL COMMENT 'Nombre del entrenador',
   `apellido` varchar(50) NOT NULL COMMENT 'Apellido del entrenador',
   `telefono` varchar(9) NOT NULL COMMENT 'Numero de teléfono del entrenador ',
@@ -96,7 +97,7 @@ CREATE TABLE `entrenadores` (
 --
 
 CREATE TABLE `eventos` (
-  `idevento` int(11) NOT NULL COMMENT 'Numero de evento',
+  `idevento` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de evento',
   `nombre_evento` varchar(80) NOT NULL COMMENT 'Nombre del evento',
   `descripcion` varchar(500) NOT NULL COMMENT 'Descripcion del evento',
   `fecha_evento` date NOT NULL COMMENT 'Fecha del evento',
@@ -115,7 +116,7 @@ CREATE TABLE `eventos` (
 --
 
 CREATE TABLE `generos` (
-  `idgenero` int(11) NOT NULL COMMENT 'Numero de genero',
+  `idgenero` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de genero',
   `nombre_genero` varchar(25) DEFAULT NULL COMMENT 'Genero '
 );
 
@@ -126,7 +127,7 @@ CREATE TABLE `generos` (
 --
 
 CREATE TABLE `modalidades_deportivas` (
-  `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Numero de modalidad deportiva',
+  `idmodalidad_deporte` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de modalidad deportiva',
   `nombre_modalidad` varchar(50) NOT NULL COMMENT 'Nombre de la modalidad deportiva'
 );
 
@@ -137,7 +138,7 @@ CREATE TABLE `modalidades_deportivas` (
 --
 
 CREATE TABLE `presupuesto` (
-  `idpresupuesto` int(11) NOT NULL COMMENT 'Numero de presupuesto',
+  `idpresupuesto` INT AUTO_INCREMENT PRIMARY KEY COMMENT  'Numero de presupuesto',
   `idcateg_inversion` int(11) NOT NULL COMMENT 'Tipo de inversión',
   `estimulos` decimal(6,2) DEFAULT NULL COMMENT 'Remuneración monetaria por cumplimiento de objetivos ',
   `preparacion_fogues` decimal(6,2) DEFAULT NULL COMMENT 'Apoyo monetario para sus fogueos ',
@@ -156,7 +157,7 @@ CREATE TABLE `presupuesto` (
 --
 
 CREATE TABLE `pruebas` (
-  `idprueba` int(11) NOT NULL COMMENT 'Numero de prueba',
+  `idprueba` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de prueba',
   `nombre_prueba` varchar(100) NOT NULL COMMENT 'Nombre de la prueba',
   `iddeporte` int(11) NOT NULL COMMENT 'Numero del deporte',
   `idevento` int(11) NOT NULL COMMENT 'Numero de evento al que pertenece'
@@ -169,7 +170,7 @@ CREATE TABLE `pruebas` (
 --
 
 CREATE TABLE `records` (
-  `idrecord` int(11) NOT NULL COMMENT 'Numero de récord ',
+  `idrecord` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Numero de récord ',
   `marca_obtenida` decimal(5,2) NOT NULL COMMENT 'Marca del record obtenida en la prueba',
   `idunidad_medida` int(11) NOT NULL COMMENT 'Unidad de medida utilizada para medir la marca obtenida ',
   `idatleta` int(11) NOT NULL COMMENT 'Atleta que obtuvo esa marca',
@@ -184,7 +185,7 @@ CREATE TABLE `records` (
 --
 
 CREATE TABLE `responsables` (
-  `idresponsable` int(11) NOT NULL COMMENT 'ID del responsable del atleta',
+  `idresponsable` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID del responsable del atleta',
   `nombre` varchar(50) DEFAULT NULL COMMENT 'Nombre del responsable del atleta',
   `direccion` varchar(200) DEFAULT NULL COMMENT 'Direccion del responsable del atleta',
   `telefono` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del responsable del atleta',
@@ -198,7 +199,7 @@ CREATE TABLE `responsables` (
 --
 
 CREATE TABLE `parentescos` (
-  `idparentesco` int(11) NOT NULL COMMENT 'ID del Parentesco',
+  `idparentesco` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID del Parentesco',
   `nombre_parentesco` varchar(20) NOT NULL COMMENT 'Nombre del parentesco'
 );
 
@@ -209,7 +210,7 @@ CREATE TABLE `parentescos` (
 --
 
 CREATE TABLE `tipo_evento` (
-  `idtipo_evento` int(11) NOT NULL COMMENT 'ID del tipo del evento',
+  `idtipo_evento` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID del tipo del evento',
   `nombre` varchar(80) NOT NULL COMMENT 'Nombre del tipo del evento '
 );
 
@@ -220,7 +221,7 @@ CREATE TABLE `tipo_evento` (
 --
 
 CREATE TABLE `unidades_medidas` (
-  `idunidad_medida` int(11) NOT NULL COMMENT 'ID de la unidad de medida',
+  `idunidad_medida` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID de la unidad de medida',
   `nombre_medida` varchar(30) NOT NULL COMMENT 'Nombre de la unidad de medida utilizada'
 );
 
@@ -232,13 +233,12 @@ CREATE TABLE `unidades_medidas` (
 -- Indices de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`idadministrador`);
-
+  ADD KEY `admin_genero` (`idgenero`);
+  
 --
 -- Indices de la tabla `atletas`
 --
 ALTER TABLE `atletas`
-  ADD PRIMARY KEY (`idatleta`),
   ADD UNIQUE KEY `correo_atleta_unique` (`correo`),
   ADD UNIQUE KEY `celular_atleta_unique` (`celular`),
   ADD UNIQUE KEY `dui_atleta_unique` (`dui`),
@@ -246,23 +246,11 @@ ALTER TABLE `atletas`
   ADD KEY `atleta_resposable` (`idresponsable`),
   ADD KEY `atleta_deporte` (`iddeporte`);
 
---
--- Indices de la tabla `categoria_inversion`
---
-ALTER TABLE `categoria_inversion`
-  ADD PRIMARY KEY (`idcateg_inversion`);
-
---
--- Indices de la tabla `clasificacion_deporte`
---
-ALTER TABLE `clasificacion_deporte`
-  ADD PRIMARY KEY (`idclasificacion_deporte`);
 
 --
 -- Indices de la tabla `deportes`
 --
 ALTER TABLE `deportes`
-  ADD PRIMARY KEY (`iddeporte`),
   ADD KEY `deporte_clasificacion` (`idclasificacion_deporte`),
   ADD KEY `deporte_modalidad` (`idmodalidad_deporte`);
 
@@ -270,7 +258,6 @@ ALTER TABLE `deportes`
 -- Indices de la tabla `entrenadores`
 --
 ALTER TABLE `entrenadores`
-  ADD PRIMARY KEY (`id_entrenador`),
   ADD UNIQUE KEY `dui_unique` (`dui`),
   ADD UNIQUE KEY `correo_unique` (`correo`),
   ADD KEY `entrenador_genero` (`idgenero`);
@@ -279,26 +266,12 @@ ALTER TABLE `entrenadores`
 -- Indices de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD PRIMARY KEY (`idevento`),
   ADD KEY `evento_tipo` (`idtipo_evento`);
-
---
--- Indices de la tabla `generos`
---
-ALTER TABLE `generos`
-  ADD PRIMARY KEY (`idgenero`);
-
---
--- Indices de la tabla `modalidades_deportivas`
---
-ALTER TABLE `modalidades_deportivas`
-  ADD PRIMARY KEY (`idmodalidad_deporte`);
 
 --
 -- Indices de la tabla `presupuesto`
 --
 ALTER TABLE `presupuesto`
-  ADD PRIMARY KEY (`idpresupuesto`),
   ADD KEY `atleta_presupuesto` (`idatleta`),
   ADD KEY `categoria_presupuesto` (`idcateg_inversion`);
 
@@ -306,7 +279,6 @@ ALTER TABLE `presupuesto`
 -- Indices de la tabla `pruebas`
 --
 ALTER TABLE `pruebas`
-  ADD PRIMARY KEY (`idprueba`),
   ADD KEY `prueba_deporte` (`iddeporte`),
   ADD KEY `prueba_evento` (`idevento`);
 
@@ -314,7 +286,6 @@ ALTER TABLE `pruebas`
 -- Indices de la tabla `records`
 --
 ALTER TABLE `records`
-  ADD PRIMARY KEY (`idrecord`),
   ADD KEY `records_unidad` (`idunidad_medida`),
   ADD KEY `atleta_record` (`idatleta`),
   ADD KEY `record_prueba` (`idprueba`);
@@ -323,36 +294,7 @@ ALTER TABLE `records`
 -- Indices de la tabla `responsables`
 --
 ALTER TABLE `responsables`
-  ADD PRIMARY KEY (`idresponsable`),
   ADD KEY `responsables_parentesco` (`idparentesco`);
-
---
--- Indices de la tabla `parentescos`
---
-ALTER TABLE `parentescos`
-  ADD PRIMARY KEY (`idparentesco`);
-
---
--- Indices de la tabla `tipo_evento`
---
-ALTER TABLE `tipo_evento`
-  ADD PRIMARY KEY (`idtipo_evento`);
-
---
--- Indices de la tabla `unidades_medidas`
---
-ALTER TABLE `unidades_medidas`
-  ADD PRIMARY KEY (`idunidad_medida`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `administradores`
---
-ALTER TABLE `administradores`
-  MODIFY `idadministrador` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador';
 
 --
 -- Restricciones para tablas volcadas
