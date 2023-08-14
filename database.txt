@@ -186,7 +186,7 @@ CREATE TABLE `records` (
 
 CREATE TABLE `responsables` (
   `idresponsable` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID del responsable del atleta',
-  `nombre` varchar(50) DEFAULT NULL COMMENT 'Nombre del responsable del atleta',
+  `nombre_responsable` varchar(50) DEFAULT NULL COMMENT 'Nombre del responsable del atleta',
   `direccion` varchar(200) DEFAULT NULL COMMENT 'Direccion del responsable del atleta',
   `telefono` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del responsable del atleta',
   `idparentesco` int(11) NOT NULL COMMENT 'Parentesco del responsable con el atleta'
