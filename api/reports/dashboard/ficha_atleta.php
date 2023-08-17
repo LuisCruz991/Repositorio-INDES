@@ -4,8 +4,8 @@ require_once('../../helpers/report.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se verifica si existe un valor para la categoría, de lo contrario se muestra un mensaje.
-if (isset($_GET['id_categoria'])) {
-    require_once('../../entities/dto/categoria.php');
+if (isset($_GET['idatleta'])) {
+    require_once('../../entities/dto/atleta.php');
     require_once('../../entities/dto/producto.php');
     // Se instancian las entidades correspondientes.
     $categoria = new Categoria;
