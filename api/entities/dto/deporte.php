@@ -8,7 +8,6 @@ class Deporte extends SportsQueries  {
     protected $id = null;
     protected $nombre = null;
     protected $clasificacion = null ;
-    protected $modalidad = null ;
 
 
 
@@ -33,16 +32,6 @@ class Deporte extends SportsQueries  {
         }
     }
 
-    public function setModalidad($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->modalidad = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function setClasificacion($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -61,11 +50,6 @@ class Deporte extends SportsQueries  {
     public function getDeporte()
     {
         return $this->nombre;
-    }
-
-    public function getModalidad()
-    {
-        return $this->modalidad;
     }
 
     public function getClasificacion()

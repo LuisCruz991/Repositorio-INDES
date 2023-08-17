@@ -11,13 +11,13 @@ if (isset($_GET['identrenador'])) {
     $entrenador = new Entrenador;
     $federacion = new Federacion;
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
-    if ($federacion->setId($_GET['identrenador']) && $federacion->setCategoria($_GET['identrenador'])) {
+    if ($federacion->setId($_GET['idfederacion']) && $entrenador->setFedereacion($_GET['idfederacion'])) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
         if ($rowFederacion = $federacion->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
-            $pdf->startReport('Entrenadores de la federacion ' . $entrenador['nombre_categoria']);
+            $pdf->startReport('Entrenadores de la federacion ' . $rowFederacion['nombre_federacion']);
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $producto->productosCategoria()) {
+            if ($dataEntrenador = $entrenador->entrenadorFederacion()) {
                 // Se establece un color de relleno para los encabezados.
                 $pdf->setFillColor(225);
                 // Se establece la fuente para los encabezados.
@@ -30,23 +30,24 @@ if (isset($_GET['identrenador'])) {
                 // Se establece la fuente para los datos de los productos.
                 $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
-                foreach ($dataProductos as $rowProducto) {
+                foreach ($dataEntrenador as $rowEntrenador) {
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
-                    $pdf->cell(30, 10, $estado, 1, 1);
+                    $pdf->cell(27, 10, $pdf->encodeString($rowEntrenador['nombre']), 1, 0);
+                    $pdf->cell(27, 10, $rowEntrenador['telefono'], 1, 0);
+                    $pdf->cell(28, 10, $rowEntrenador['dui'], 1, 0);
+                    $pdf->cell(50, 10, $rowEntrenador['correo'], 1, 1);
                 }
             } else {
-                $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1);
+                $pdf->cell(0, 10, $pdf->encodeString('No hay entrenadores para la federacion'), 1, 1);
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-            $pdf->output('I', 'categoria.pdf');
+            $pdf->output('I', 'entrenadores_de_federacion.pdf');
         } else {
-            print('Categoría inexistente');
+            print('Federacion inexistente');
         }
     } else {
-        print('Categoría incorrecta');
+        print('Federacion incorrecta');
     }
 } else {
-    print('Debe seleccionar una categoría');
+    print('Debe seleccionar una Federacion');
 }

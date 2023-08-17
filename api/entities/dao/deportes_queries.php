@@ -6,9 +6,8 @@ class SportsQueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, 
                  FROM deportes INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
-                               INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
                  WHERE nombre_deporte  LIKE ?';
          $params = array("%$value%");
          return Database::getRows($sql, $params);
@@ -17,19 +16,18 @@ class SportsQueries {
      // Consulta para realizar la operacion "Create"
      public function createRow()
      {
-         $sql = 'INSERT INTO deportes(nombre_deporte , idclasificacion_deporte, idmodalidad_deporte)
+         $sql = 'INSERT INTO deportes(nombre_deporte , idclasificacion_deporte)
                  VALUES(?,?,?)';
-         $params = array($this->nombre, $this->clasificacion, $this->modalidad);
+         $params = array($this->nombre, $this->clasificacion);
          return Database::executeRow($sql, $params);
      }
      
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, 
                  FROM deportes
-                 INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
-                 INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)';
+                 INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)';
          return Database::getRows($sql);
      }
 
@@ -37,17 +35,8 @@ class SportsQueries {
 
      public function readClasificacion()
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
-                 FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
-                               INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-     }
-     public function readModalidad()
-     {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad
-                 FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)
-                               INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)';
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, 
+                 FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)';
         $params = array($this->id);
         return Database::getRows($sql, $params);
      }
@@ -56,10 +45,9 @@ class SportsQueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, nombre_modalidad, idclasificacion_deporte, idmodalidad_deporte
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, idclasificacion_deporte, 
                 FROM deportes
                 INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
-                INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
                  WHERE iddeporte = ?';
          $params = array($this->id);
          return Database::getRow($sql, $params);
@@ -69,9 +57,9 @@ class SportsQueries {
      public function updateRow()
      {
          $sql = 'UPDATE deportes  
-                 SET  nombre_deporte =? , idclasificacion_deporte = ?, idmodalidad_deporte = ?
+                 SET  nombre_deporte =? , idclasificacion_deporte = ?,
                  WHERE iddeporte = ?';
-         $params = array($this->nombre, $this->clasificacion, $this->modalidad,$this->id);
+         $params = array($this->nombre, $this->clasificacion,$this->id);
          return Database::executeRow($sql, $params);
      }
  

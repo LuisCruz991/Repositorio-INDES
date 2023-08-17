@@ -46,10 +46,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione la clasificación del deporte';
                 } elseif (!$deporte->setClasificacion($_POST['clasificacion'])) {
                     $result['exception'] = 'Clasificacion no valida';
-                }  elseif (!isset($_POST['modalidad'])) {
-                    $result['exception'] = 'Seleccione la modalidad del deporte';
-                } elseif (!$deporte->setModalidad($_POST['modalidad'])) {
-                    $result['exception'] = 'Modalidad no valida';
                 } elseif ($deporte->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Deporte guardado correctamente';
@@ -80,8 +76,6 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Nombre del deporte no valido';
                     } elseif (!$deporte->setClasificacion($_POST['clasificacion'])) {
                         $result['exception'] = 'Clasificacion no valida';
-                    } elseif (!$deporte->setModalidad($_POST['modalidad'])) {
-                        $result['exception'] = 'Modalidad deportiva no valida';
                     } elseif ($deporte->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Deporte actualizado exitosamente';
