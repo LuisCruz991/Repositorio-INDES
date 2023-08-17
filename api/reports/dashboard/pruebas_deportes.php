@@ -40,7 +40,7 @@ if ($dataDeporte = $deporte->readAll()) {
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(62, 10, $pdf->encodeString($rowPruebas['idprueba']), 1, 0);
                     $pdf->cell(62, 10, $rowPruebas['nombre_prueba'], 1, 0);
-                    $pdf->cell(62, 10, $modalidad['nombre_modalidad'], 1, 1);
+                    $pdf->cell(62, 10, $rowPruebas['nombre_modalidad'], 1, 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay pruebas del deporte'), 1, 1);
