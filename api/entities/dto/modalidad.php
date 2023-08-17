@@ -23,7 +23,7 @@ class modalidad extends ModalidadQueries  {
 
     public function setModalidad($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->modalidad = $value;
             return true;
         } else {
