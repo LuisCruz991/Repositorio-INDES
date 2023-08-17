@@ -250,3 +250,42 @@ async function dataFetch(filename, action, form = null) {
         console.log(error);
     }
 }
+
+/* 
+*Funcion para generar un grafico de barras verticales.
+*Parametros: canvas, xAxis, yAxis, legend, title.
+*/
+
+function barGraph(canvas, xAxis, yAxis, legend, title) {
+    // Se declara un arreglo para guardar de colores las graficas.
+    let colors =[];
+    //Se generan códigos hexadecimales de 6 cifras.
+    xAxis.forEach(() => {
+        colors.push('#' + (Math.random().toString(16)).substring(2,8));
+    });
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    new Chart(document.getElementById(canvas), {
+        type: 'bar',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                backgroundColor: colors
+            }]
+        },
+        colors: {
+            plugins:{
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            }
+        }
+
+    })
+
+}
