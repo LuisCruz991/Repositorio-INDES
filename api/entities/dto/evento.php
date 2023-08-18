@@ -9,13 +9,14 @@ class Event extends EventQueries  {
     protected $nombre = null;
     protected $descripcion = null ;
     protected $fechaEvento = null ;
+    protected $pais = null ;
     protected $direccion = null ;
     protected $horaInicio = null ;
     protected $horaCierre = null ;
     protected $tipoEvento = null ;
     protected $imagenSede = null;
     protected $ruta = '../imagenes/eventos/';
-    protected $sede = null ;
+    protected $sede = null;
 
     public function setSede($value)
     {
@@ -76,6 +77,17 @@ class Event extends EventQueries  {
             return false;
         }
     }
+
+    public function setPais($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->pais = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setDireccion($value)
     {
         if (Validator::validateAlphanumeric($value,1,500)) {
@@ -133,6 +145,11 @@ class Event extends EventQueries  {
     public function getFecha()
     {
         return $this->fechaEvento;
+    }
+
+    public function getPais() 
+    {
+        return $this->pais;
     }
 
     public function getDireccion()

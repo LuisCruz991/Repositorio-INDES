@@ -88,6 +88,9 @@ async function fillTable(form = null) {
                   ${row.correo}
                   </td>
                   <td class="px-6 py-4">
+                  ${row.nombre_federacion}
+                  </td>
+                  <td class="px-6 py-4">
                     <button onclick="openUpdate(${row.identrenador})" 
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
                   </td>
@@ -129,6 +132,7 @@ async function openUpdate(id) {
         document.getElementById('direccion').value = JSON.dataset.direccion;
         document.getElementById('dui').value = JSON.dataset.dui;
         document.getElementById('correo').value = JSON.dataset.correo;
+        fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion', JSON.dataset.idfederacion);
     } else {
         sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
     }

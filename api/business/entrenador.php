@@ -22,6 +22,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                case 'readFederacion':
+                    if ($result['dataset'] = $federacion->readFederacion()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;
             case 'readAll':
                 if ($result['dataset'] = $entrenador->readAll()) {
                     $result['status'] = 1;
@@ -62,6 +71,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Dui del entrenador no valido';
                 }  elseif (!$entrenador->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo del entrenador no valido';
+                } elseif (!$entrenador->setFederacion($_POST['federacion'])) {
+                    $result['exception'] = 'Federacion no valida';
                 } elseif ($entrenador->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Entrenador guardado correctamente';
@@ -102,7 +113,9 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Dui del entrenador no valido';
                     }  elseif (!$entrenador->setCorreo($_POST['correo'])) {
                         $result['exception'] = 'Correo del entrenador no valido';
-                    }  elseif ($entrenador->updateRow()) {
+                    }  elseif (!$entrenador->setFederacion($_POST['federacion'])) {
+                        $result['exception'] = 'Federacion no valida';
+                    } elseif ($entrenador->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Entrenador actualizado exitosamente';
                     } else {

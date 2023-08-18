@@ -1,6 +1,7 @@
 // Constantes para completar las rutas de la API.
 const EVENTO_API = 'business/evento.php';
 const TIPOEVENTO_API = 'business/tipo_event.php';
+const PAIS_API = 'business/pais.php';
 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -83,7 +84,7 @@ async function fillTable(form = null) {
               ${row.fecha_evento}</td>
             </td>
             <td class="px-6 py-4">
-              ${row.sede_evento}
+              ${row.nombre_pais}
             </td>
             <td class="px-6 py-4">
               ${row.direccion_sede}
@@ -127,6 +128,7 @@ function openCreate() {
   SAVE_FORM.reset();
   // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
   fillSelect(TIPOEVENTO_API, 'readAll', 'tipo');
+  fillSelect(PAIS_API, 'readAll', 'pais');
 }
 
 /*
@@ -152,7 +154,7 @@ async function openUpdate(id) {
     document.getElementById('nombre').value = JSON.dataset.nombre_evento;
     document.getElementById('descripcion').value = JSON.dataset.descripcion;
     document.getElementById('fecha').value = JSON.dataset.fecha_evento;
-    document.getElementById('sede').value = JSON.dataset.sede_evento;
+    fillSelect(PAIS_API, 'readAll', 'pais', JSON.dataset.idpais);
     document.getElementById('direccion').value = JSON.dataset.direccion_sede;
     document.getElementById('horaI').value = JSON.dataset.hora_inicio;
     document.getElementById('horaC').value = JSON.dataset.hora_cierre;

@@ -25,7 +25,7 @@ class SportsQueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, 
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion
                  FROM deportes
                  INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)';
          return Database::getRows($sql);
@@ -35,7 +35,7 @@ class SportsQueries {
 
      public function readClasificacion()
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, 
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion
                  FROM deportes INNER JOIN clasificacion_deportes USING(idclasificacion_deporte)';
         $params = array($this->id);
         return Database::getRows($sql, $params);
@@ -57,7 +57,7 @@ class SportsQueries {
      public function updateRow()
      {
          $sql = 'UPDATE deportes  
-                 SET  nombre_deporte =? , idclasificacion_deporte = ?,
+                 SET  nombre_deporte =? , idclasificacion_deporte = ?
                  WHERE iddeporte = ?';
          $params = array($this->nombre, $this->clasificacion,$this->id);
          return Database::executeRow($sql, $params);

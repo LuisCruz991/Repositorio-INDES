@@ -45,18 +45,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre del evento incorrecto';
                 } elseif (!$evento->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripcion no valida';
+                } elseif (!$evento->setPais($_POST['pais'])) {
+                    $result['exception'] = 'Pais no valido';
                 } elseif (!$evento->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion del evento no valido';
                 } elseif (!$evento->setSede($_POST['sede'])) {
                     $result['exception'] = 'sede del evento no valida';
-                } elseif (!$evento->setTipoEvento($_POST['t'])) {
-                    $result['exception'] = 'Categoria no valida';
                 } elseif (!$evento->setFecha($_POST['fecha'])) {
                     $result['exception'] = 'Fecha no valida';
                 } elseif (!$evento->setHoraCierre($_POST['horaC'])) {
                     $result['exception'] = 'Hora no valida';
                 } elseif (!$evento->setHoraInicio($_POST['horaI'])) {
                     $result['exception'] = 'Hora no valida';
+                } elseif (!$evento->setTipoEvento($_POST['t'])) {
+                    $result['exception'] = 'Categoria no valida';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$evento->setImagen($_FILES['archivo'])) {
@@ -95,6 +97,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre del evento incorrecto';
                 } elseif (!$evento->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripcion no valida';
+                } elseif (!$evento->setPais($_POST['pais'])) {
+                    $result['exception'] = 'Pais no valido';
                 } elseif (!$evento->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion del evento no valido';
                 } elseif (!$evento->setSede($_POST['sede'])) {

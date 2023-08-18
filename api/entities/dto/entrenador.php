@@ -13,6 +13,7 @@ class Entrenador extends EntrenadorQueries  {
     protected $direccion = null ;
     protected $dui = null ;
     protected $correo = null ;
+    protected $federacion = null ;
 
     public function setId($value)
     {
@@ -94,6 +95,16 @@ class Entrenador extends EntrenadorQueries  {
         }
 
 
+        public function setFederacion($value) {
+            if (Validator::validateNaturalNumber($value)) {
+                $this->federacion = $value;
+                return true;
+            } else {
+                return false;
+            }    
+        }
+
+
 
 
     public function getId() {
@@ -128,6 +139,10 @@ class Entrenador extends EntrenadorQueries  {
  public function getCorreo() {
         return $this->correo;
     }
+
+    public function getFederacion() {
+           return $this->federacion;
+       }
    
 
 

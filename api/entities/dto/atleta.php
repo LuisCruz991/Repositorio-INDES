@@ -20,8 +20,8 @@ class Atleta extends AtletaQueries  {
     protected $telefono = null;
     protected $correo = null;
     protected $responsable = null;
-    protected $deporte = null ;
     protected $entrenador = null ;
+    protected $federeacion = null ;
     protected $clave = null ;
 
 
@@ -159,20 +159,9 @@ class Atleta extends AtletaQueries  {
         }
 
 
-    public function setNombreMadre($value) {
+    public function setResponsable($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->responsable = $value;
-            return true;
-        } else {
-            return false;
-        }    
-    }
-
-    
-
-    public function setDeporte($value) {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->deporte = $value;
             return true;
         } else {
             return false;
@@ -187,6 +176,16 @@ class Atleta extends AtletaQueries  {
             return false;
         }    
     }
+
+    public function setFederacion($value) {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->federacion = $value;
+            return true;
+        } else {
+            return false;
+        }    
+    }
+
     public function setClave($value) {
         if (Validator::validateString($value, 1,50)) {
             $this->clave = $value;
@@ -256,12 +255,12 @@ class Atleta extends AtletaQueries  {
         return $this->responsable;
     }
 
-    public function getDeporte() {
-        return $this->deporte;
-    }
-
     public function getEntrenador() {
         return $this->entrenador;
+    }
+
+    public function getFederacion() {
+        return $this->federacion;
     }
 
     public function getClave() {
