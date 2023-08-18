@@ -1,5 +1,3 @@
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `administradores`
 --
@@ -9,8 +7,15 @@ CREATE TABLE `administradores` (
   `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
   `clave_usuario` varchar(200) NOT NULL COMMENT 'Clave del administrador',
   `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador',
-  `idgenero` int(11) NOT NULL COMMENT 'Numero de genero'
+  `imagen_admin` varchar(200) DEFAULT NULL COMMENT 'Imagen de perfil de los usuarios admin '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`idadministrador`, `nombre_usuario`, `clave_usuario`, `correo_usuario`, `imagen_admin`) VALUES
+(4, 'raul', '$2y$10$WGbuQywYhiTWIa4zuNTcKODbYYsS0sn9eE9oBxVK/dy2LM2lMNlra', 'raul@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -36,6 +41,7 @@ CREATE TABLE `atletas` (
   `facebook` varchar(50) DEFAULT NULL COMMENT 'Facebook del atleta',
   `instagram` varchar(50) DEFAULT NULL COMMENT 'Instagram del atleta',
   `twitter` varchar(50) DEFAULT NULL COMMENT 'Twitter del atleta',
+  `imagen_atleta` varchar(200) NOT NULL COMMENT 'Imagen de perfil del atleta',
   `idresponsable` int(11) NOT NULL COMMENT 'Padre o/y madre del atleta',
   `identrenador` int(11) NOT NULL COMMENT 'Entrenador encargado del atleta',
   `idfederacion` int(11) NOT NULL COMMENT 'Federacion asociada al atleta',
@@ -109,7 +115,8 @@ CREATE TABLE `entrenadores` (
   `direccion` varchar(200) NOT NULL COMMENT 'Direccion del entrenador',
   `dui` varchar(10) NOT NULL COMMENT 'Numero de DUI del entrenador ',
   `correo` varchar(50) NOT NULL COMMENT 'Direccion de correo del entrenador ',
-  `idfederacion` int(11) NOT NULL COMMENT 'Federacion asociada al atleta'
+  `idfederacion` int(11) NOT NULL COMMENT 'Federacion asociada al atleta',
+  `imagen_entrenador` int(200) NOT NULL COMMENT 'Imagen de perfil del entrenador '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -314,8 +321,7 @@ CREATE TABLE `unidades_medidas` (
 ALTER TABLE `administradores`
   ADD PRIMARY KEY (`idadministrador`),
   ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
-  ADD UNIQUE KEY `correo_usuario` (`correo_usuario`),
-  ADD KEY `admin_genero` (`idgenero`);
+  ADD UNIQUE KEY `correo_usuario` (`correo_usuario`);
 
 --
 -- Indices de la tabla `atletas`
@@ -475,7 +481,7 @@ ALTER TABLE `unidades_medidas`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `idadministrador` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador', AUTO_INCREMENT=3;
+  MODIFY `idadministrador` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `atletas`
@@ -596,12 +602,6 @@ ALTER TABLE `unidades_medidas`
 --
 
 --
--- Filtros para la tabla `administradores`
---
-ALTER TABLE `administradores`
-  ADD CONSTRAINT `administrador_genero` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `atletas`
 --
 ALTER TABLE `atletas`
@@ -679,4 +679,3 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
