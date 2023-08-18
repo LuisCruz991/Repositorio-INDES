@@ -17,7 +17,7 @@ class SportsQueries {
      public function createRow()
      {
          $sql = 'INSERT INTO deportes(nombre_deporte , idclasificacion_deporte)
-                 VALUES(?,?,?)';
+                 VALUES(?,?)';
          $params = array($this->nombre, $this->clasificacion);
          return Database::executeRow($sql, $params);
      }
@@ -45,7 +45,7 @@ class SportsQueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, idclasificacion_deporte, 
+         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion 
                 FROM deportes
                 INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
                  WHERE iddeporte = ?';

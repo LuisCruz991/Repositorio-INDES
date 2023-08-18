@@ -42,6 +42,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Deporte incorrecto';
                 }  elseif (!$prueba->setEvento($_POST['evento'])) {
                     $result['exception'] = 'Evento incorrecto';
+                }  elseif (!$prueba->setModalidad($_POST['modalidad'])) {
+                    $result['exception'] = 'Modalidad incorrecta';
                 }  elseif ($prueba->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Prueba creada correctamente';
@@ -68,6 +70,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Prueba inexistente';
                 } elseif (!$prueba->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
+                } elseif (!$prueba->setDeporte($_POST['deporte'])) {
+                    $result['exception'] = 'Deporte incorrecto';
+                }  elseif (!$prueba->setEvento($_POST['evento'])) {
+                    $result['exception'] = 'Evento incorrecto';
+                }  elseif (!$prueba->setModalidad($_POST['modalidad'])) {
+                    $result['exception'] = 'Modalidad incorrecta';
                 }  elseif ($prueba->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Prueba modificada correctamente';

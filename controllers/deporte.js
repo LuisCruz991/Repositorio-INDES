@@ -1,6 +1,6 @@
 // Constantes para completar la ruta de la API's.
 const DEPORTE_API = 'business/deporte.php';
-const CLASificacion_API = 'business/clas_deportes.php';
+const CLASIFICACION_API = 'business/clas_deportes.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -72,6 +72,7 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
+                  <td>${row.iddeporte}</td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.nombre_deporte}
                   </td>
@@ -106,7 +107,7 @@ function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se cargan las clasidicaciones del los deportes 
-    fillSelect(CLASificacion_API, 'readAll', 'clasificacion');
+    fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
 
 }
 
@@ -130,7 +131,7 @@ async function openUpdate(id) {
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.iddeporte;
         document.getElementById('nombre').value = JSON.dataset.nombre_deporte;
-        fillSelect(CLASificacion_API, 'readAll', 'clasificacion', JSON.dataset.idclasificacion_deporte);
+        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', JSON.dataset.idclasificacion_deporte);
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);

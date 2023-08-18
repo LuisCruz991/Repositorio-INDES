@@ -11,6 +11,7 @@ class Prueba extends PruebasQueries
     protected $nombre = null;
     protected $deporte = null;
     protected $evento = null;
+    protected $modalidad = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -55,6 +56,15 @@ class Prueba extends PruebasQueries
         }
     }
 
+    public function setModalidad($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->modalidad = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -76,5 +86,10 @@ class Prueba extends PruebasQueries
     public function getEvento()
     {
         return $this->evento;
+    }
+
+    public function getModalidad()
+    {
+        return $this->modalidad;
     }
 }

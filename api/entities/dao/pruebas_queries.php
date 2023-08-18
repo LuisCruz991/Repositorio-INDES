@@ -10,9 +10,10 @@ class PruebasQueries
     */
     public function searchRows($value)
     {
-        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento
+        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento, nombre_modalidad
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
+        INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
         WHERE nombre_prueba LIKE ?
         ORDER BY idprueba';
         $params = array("%$value%");
@@ -22,16 +23,17 @@ class PruebasQueries
  
     public function readAll()
     {
-        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento
+        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento, nombre_modalidad
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
+        INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
         ORDER BY idprueba';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT idprueba, nombre_prueba, iddeporte, idevento
+        $sql = 'SELECT idprueba, nombre_prueba, iddeporte, idevento, idmodalidad_deporte
                 FROM pruebas
                 WHERE idprueba = ?';
         $params = array($this->id);
@@ -40,9 +42,9 @@ class PruebasQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO pruebas(nombre_prueba, iddeporte, idevento)
-                VALUES(?,?,?)';
-        $params = array($this->nombre, $this->deporte, $this->evento);
+        $sql = 'INSERT INTO pruebas(nombre_prueba, iddeporte, idevento, idmodalidad_deporte)
+                VALUES(?,?,?,?)';
+        $params = array($this->nombre, $this->deporte, $this->evento, $this->modalidad);
         return Database::executeRow($sql, $params);
     }
 
@@ -78,6 +80,16 @@ class PruebasQueries
         $sql = 'SELECT idprueba, nombre_prueba
                 FROM pruebas INNER JOIN eventos USING (idevento)
                 WHERE eventos = ? 
+                ORDER BY idprueba';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
+    
+    public function readModalidad()
+    {
+        $sql = 'SELECT idprueba, nombre_prueba
+                FROM pruebas INNER JOIN modalidades_deportivas USING (idmodalidad_deporte)
+                WHERE modalidades_deportivas = ? 
                 ORDER BY idprueba';
         $params = array($this->id);
         return Database::getRows($sql, $params);

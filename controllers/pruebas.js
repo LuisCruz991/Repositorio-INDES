@@ -2,6 +2,7 @@
 const PRUEBA_API = 'business/prueba.php';
 const DEPORTE_API = 'business/deporte.php';
 const EVENTO_API = 'business/evento.php';
+const MODALIDAD_API = 'business/modalidad.php';
 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -88,6 +89,9 @@ async function fillTable(form = null) {
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.nombre_evento}
                   </td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.nombre_modalidad}
+                  </td>
                   <td class="px-6 py-4">
                     <button onclick="openUpdate(${row.idprueba})" 
                       class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
@@ -120,6 +124,7 @@ function openCreate() {
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(DEPORTE_API, 'readAll', 'deporte');
     fillSelect(EVENTO_API, 'readAll', 'evento');
+    fillSelect(MODALIDAD_API, 'readAll', 'modalidad');
 }
 
 /*
@@ -145,6 +150,7 @@ async function openUpdate(id) {
         document.getElementById('nombre').value = JSON.dataset.nombre_prueba;
         fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
         fillSelect(EVENTO_API, 'readAll', 'evento', JSON.dataset.idevento);
+        fillSelect(MODALIDAD_API, 'readAll', 'modalidad', JSON.dataset.idmodalidad);
 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
