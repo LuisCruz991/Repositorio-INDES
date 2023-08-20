@@ -5,6 +5,9 @@ const RESPONSABLE_API = 'business/responsable.php';
 // Ruta de la API para los deportes.
 const DEPORTE_API = 'business/deporte.php';
 
+const ENTRENADOR_API = 'business/entrenador.php';
+
+
 // Formulario de búsqueda.
 const SEARCH_FORM = document.getElementById('search-form');
 // Formulario de guardar.
@@ -125,7 +128,7 @@ async function fillTable(form = null) {
 
                   </td>
                   <td class="px-6 py-4">
-                  ${row.nombre_deporte}
+                  ${row.nombre_federacion}
 
                   </td>
                   <td class="px-6 py-4">
@@ -156,7 +159,7 @@ function openCreate() {
     SAVE_FORM.reset(); // Restaurar los elementos del formulario.
     fillSelect(ATLETA_API, 'readGenero', 'genero');
     fillSelect(RESPONSABLE_API, 'readAll', 'responsable');
-    fillSelect(DEPORTE_API, 'readAll', 'deporte');
+    fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion');
     fillSelect(ATLETA_API, 'readEntrenador', 'entrenador');
 }
 
@@ -184,7 +187,7 @@ async function openUpdate(id) {
         document.getElementById('telefono').value = JSON.dataset.telefono_casa;
         document.getElementById('correo').value = JSON.dataset.correo;
         fillSelect(RESPONSABLE_API, 'readAll', 'responsable', JSON.dataset.idresponsable);
-        fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
+        fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion', JSON.dataset.idfederacion);
         fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
         document.getElementById('clave').disabled = true ;
     } else {

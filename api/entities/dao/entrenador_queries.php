@@ -8,7 +8,7 @@ class entrenadorqueries {
      {
          $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion
          FROM entrenadores INNER JOIN generos USING(idgenero)
-         INNER JOIN federacion USING(idfederacion)
+         INNER JOIN federaciones USING(idfederacion)
          WHERE nombre  LIKE ? or apellido  LIKE ?';
          $params = array("%$value%", "%$value%" );
          return Database::getRows($sql, $params);
@@ -17,8 +17,8 @@ class entrenadorqueries {
      // Consulta para realizar la operacion "Create"
      public function createRow()
      {
-         $sql = 'INSERT INTO entrenadores (nombre, apellido, telefono, idgenero, direccion, dui, correom idfederacion)
-         VALUES (?, ?, ?, ?, ?, ?, ?)';
+         $sql = 'INSERT INTO entrenadores (nombre, apellido, telefono, idgenero, direccion, dui, correo, idfederacion)
+         VALUES (?, ?, ?, ?, ?, ?, ?,?)';
          $params = array($this->nombre, $this->apellido, $this->telefono,$this->genero, $this->direccion, $this->dui, $this->correo, $this->federacion);
          return Database::executeRow($sql, $params);
      }
@@ -29,7 +29,7 @@ class entrenadorqueries {
          $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion
          FROM entrenadores
          INNER JOIN generos USING(idgenero)
-         INNER JOIN federacion USING(idfederacion)';
+         INNER JOIN federaciones USING(idfederacion)';
          return Database::getRows($sql);
      }
 
@@ -43,7 +43,7 @@ class entrenadorqueries {
      public function readFederacion()
      {
          $sql = 'SELECT idfederacion, nombre_federacion
-                 FROM federacion';
+                 FROM federaciones';
          return Database::getRows($sql);
      }
 
@@ -54,7 +54,7 @@ class entrenadorqueries {
          $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion
          FROM entrenadores
          INNER JOIN generos USING(idgenero)
-         INNER JOIN federacion USING(idfederacion)
+         INNER JOIN federaciones USING(idfederacion)
          WHERE identrenador = ?';
          $params = array($this->id);
          return Database::getRow($sql, $params);

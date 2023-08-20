@@ -113,6 +113,8 @@ function openCreate() {
     // Abrir la caja de diálogo que contiene el formulario.
     SAVE_FORM.reset(); // Restaurar los elementos del formulario.
     fillSelect(ENTRENADOR_API, 'readGenero', 'genero');
+    fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion');
+
 }
 
 // Preparar el formulario al momento de actualizar un registro.

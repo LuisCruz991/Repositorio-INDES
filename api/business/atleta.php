@@ -85,12 +85,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Correo del atleta no valido';
                 }elseif (!isset($_POST['responsable'])) {
                     $result['exception'] = 'Seleccione un responsable';
-                } elseif (!$atleta->setNombreMadre($_POST['responsable'])) {
+                } elseif (!$atleta->setResponsable($_POST['responsable'])) {
                     $result['exception'] = 'Responsable no valida';
-                }  elseif (!isset($_POST['deporte'])) {
-                    $result['exception'] = 'Seleccione el deporte';
-                } elseif (!$atleta->setDeporte($_POST['deporte'])) {
-                    $result['exception'] = 'Deporte no valida';
+                }  elseif (!isset($_POST['federacion'])) {
+                    $result['exception'] = 'Seleccione la federacion';
+                } elseif (!$atleta->setFederacion($_POST['federacion'])) {
+                    $result['exception'] = 'Federacion no valida';
                 } elseif (!isset($_POST['entrenador'])) {
                     $result['exception'] = 'Seleccione el entrenador';
                 } elseif (!$atleta->setEntrenador($_POST['entrenador'])) {
@@ -153,10 +153,10 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Seleccione un responsable';
                     } elseif (!$atleta->setNombreMadre($_POST['responsable'])) {
                         $result['exception'] = 'Responsable no valida';
-                    }  elseif (!isset($_POST['deporte'])) {
-                        $result['exception'] = 'Seleccione el deporte';
-                    } elseif (!$atleta->setDeporte($_POST['deporte'])) {
-                        $result['exception'] = 'Deporte no valida';
+                    }  elseif (!isset($_POST['federacion'])) {
+                        $result['exception'] = 'Seleccione la federaccion';
+                    } elseif (!$atleta->setFederacion($_POST['federacion'])) {
+                        $result['exception'] = 'Federacion no valida';
                     } elseif (!isset($_POST['entrenador'])) {
                         $result['exception'] = 'Seleccione el entrenador';
                     } elseif (!$atleta->setEntrenador($_POST['entrenador'])) {

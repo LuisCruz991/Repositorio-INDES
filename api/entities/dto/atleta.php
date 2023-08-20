@@ -21,7 +21,7 @@ class Atleta extends AtletaQueries  {
     protected $correo = null;
     protected $responsable = null;
     protected $entrenador = null ;
-    protected $federeacion = null ;
+    protected $federacion = null ;
     protected $clave = null ;
 
 

@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
                 case 'readFederacion':
-                    if ($result['dataset'] = $federacion->readFederacion()) {
+                    if ($result['dataset'] = $entrenador->readFederacion()) {
                         $result['status'] = 1;
                     } elseif (Database::getException()) {
                         $result['exception'] = Database::getException();

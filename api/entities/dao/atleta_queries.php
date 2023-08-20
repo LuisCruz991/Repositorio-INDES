@@ -6,11 +6,11 @@ class atletaqueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_deporte, nombre, atletas.clave
+         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, nombre, atletas.clave
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
-         INNER JOIN deportes USING(iddeporte)
+         INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
                  WHERE nombre_atleta  LIKE ?';
          $params = array("%$value%", "%$value%" );
@@ -20,21 +20,33 @@ class atletaqueries {
      // Consulta para realizar la operacion "Create"
      public function createRow()
      {
-         $sql = 'INSERT INTO atletas(nombre_atleta, apellido_atleta, nacimiento, idgenero, estatura, peso, talla_camisa, talla_short, direccion, dui, celular, telefono_casa, correo, idresponsable, iddeporte, identrenador, clave)
+         $sql = 'INSERT INTO atletas(nombre_atleta, apellido_atleta, nacimiento, idgenero, estatura, peso, talla_camisa, talla_short, direccion, dui, celular, telefono_casa, correo, idresponsable, idfederacion, identrenador, clave)
                  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-         $params = array($this->nombre, $this->apellido, $this->nacimiento,$this->genero, $this->estatura, $this->peso,$this->camisa, $this->short, $this->direccion,$this->dui, $this->celular, $this->telefono,$this->correo,$this->responsable, $this->deporte,$this->entrenador, $this->clave);
+         $params = array($this->nombre, $this->apellido, $this->nacimiento,$this->genero, $this->estatura, $this->peso,$this->camisa, $this->short, $this->direccion,$this->dui, $this->celular, $this->telefono,$this->correo,$this->responsable, $this->federacion,$this->entrenador, $this->clave);
          return Database::executeRow($sql, $params);
      }
      
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_deporte,nombre_responsable,entrenadores.nombre, atletas.clave
+         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion,nombre_responsable,entrenadores.nombre, atletas.clave
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
-         INNER JOIN deportes USING(iddeporte)
+         INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)';
+         return Database::getRows($sql);
+     }
+
+     public function readAtletasFederacion()
+     {
+         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion,nombre_responsable,entrenadores.nombre, atletas.clave
+         FROM atletas
+         INNER JOIN generos USING(idgenero)
+         INNER JOIN responsables USING(idresponsable)
+         INNER JOIN federaciones USING(idfederacion)
+         INNER JOIN entrenadores USING(identrenador)
+         ORDER BY federacion';
          return Database::getRows($sql);
      }
 
@@ -57,11 +69,11 @@ class atletaqueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_deporte, entrenadores.nombre, atletas.clave
+         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, entrenadores.nombre, atletas.clave
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
-         INNER JOIN deportes USING(iddeporte)
+         INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
          WHERE idatleta = ?';
          $params = array($this->id);
@@ -72,10 +84,10 @@ class atletaqueries {
      public function updateRow()
      {
          $sql = 'UPDATE atletas
-         SET nombre_atleta = ?, apellido_atleta = ?, nacimiento = ?, idgenero = ?, estatura = ?, peso = ?, talla_camisa = ?, talla_short = ?, direccion = ?, dui = ?, celular = ?, telefono_casa = ?, correo = ?, idresponsable = ?, iddeporte = ?, identrenador = ?
+         SET nombre_atleta = ?, apellido_atleta = ?, nacimiento = ?, idgenero = ?, estatura = ?, peso = ?, talla_camisa = ?, talla_short = ?, direccion = ?, dui = ?, celular = ?, telefono_casa = ?, correo = ?, idresponsable = ?, idfederacion = ?, identrenador = ?
          WHERE idatleta = ?';
          $params = array($this->nombre, $this->apellido, $this->nacimiento,$this->genero, $this->estatura, $this->peso,$this->camisa, $this->short, $this->direccion,$this->dui, $this->celular, $this->telefono,$this->correo, $this->responsable
-         , $this->deporte,$this->entrenador,  $this->id);
+         , $this->federacion,$this->entrenador,  $this->id);
          return Database::executeRow($sql, $params);
      }
  
