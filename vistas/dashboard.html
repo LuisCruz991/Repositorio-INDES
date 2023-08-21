@@ -34,49 +34,60 @@
     <!-- Finalizacion del sidebar -->
 
     <!-- Comienzo del dashboard -->
-
-    <div class="h-screen w-full overflow-y-auto">
-      <div class="p-4">
-
-        <!-- Comienzo del header -->
-        <HEADER class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-
-        </HEADER>
-        <!-- Finalizacion del header -->
-
-        <main class="flex flex-col">
-          <!-- Grafico para ritmo de entrenamiento -->
-          <div class="overflow-hidden rounded-lg shadow-lg">
-            <div class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-              <h4 class="font-jakarta font-bold text-2xl">Ritmo de entrenamiento del mes</h4>
-            </div>
-            <div class="p-10" id="chart"></div>
+    <main class="container">
+      <!-- Título del contenido principal -->
+      <h3 class="center-align">Bienvenido</h3>
+      <!-- Se muestran gráficos de acuerdo con algunos datos disponibles en la base de datos -->
+      <div class="row">
+          <div class="col-3">
+              <!-- Se muestra un gráfico con los resultados de un atleta(parametrizado) -->
+              <canvas id="chart1"></canvas>
           </div>
-          <!-- Grafico para ritmo de entrenamiento del mes -->
-          <div class="grafico-2 overflow-hidden rounded-lg shadow-lg mt-4 w-126">
-            <div class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-              <h4 class="font-jakarta font-bold text-2xl">Ritmo de entrenamiento del mes</h4>
-            </div>
-            <div class="flex items-center justify-center" id="chart2"></div>
+          <div class="col-3">
+              <!-- Se muestra un gráfico de pastel con la cantidad de productos por tipo de producto -->
+              <canvas id="chart2"></canvas>
           </div>
-
-
-        </main>
+          <div class="col-3">
+            <!-- Se muestra un gráfico de pastel con la cantidad de productos por genero -->
+            <canvas id="chart3"></canvas>
+          </div>
+          <div class="col-3">
+            <!-- Se muestra un gráfico de pastel con la cantidad de pedidos por estado -->
+            <canvas id="chart4"></canvas>
+          </div>
+          <div class="col-3">
+           <!-- Se muestra un gráfico con el presupuesto de un atleta(parametrizado) -->
+          <canvas id="chart5"></canvas>
+          </div>
+          <div class="col-3">
+             <!-- Se muestra un gráfico con la cantidad de eventos por tipo -->
+            <canvas id="chart6"></canvas>
+          </div>
+         <div class="col-3">
+           <!-- Se muestra un gráfico con la cantidad de atletas por genero -->
+           <canvas id="chart7"></canvas>
+          </div>
+        <div class="col-3">
+           <!-- Se muestra un gráfico de area polar con la cantidad de clientes por genero -->
+            <canvas id="chart8"></canvas>
+        </div>
       </div>
-    </div>
+  </main>
+  
     <!-- Finalizacion del dashboard -->
 
   </div>
   <!-- Finalizacion del codigo -->
-
-  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-  <script src="../js/script.js"></script>
-  <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
+  <script src="../controllers/main.js"></script>
   <script src="../controllers/account.js"></script>
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="../js/charts.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../Js/sweetalert.min.js"></script>
+ 
 
 </body>
 

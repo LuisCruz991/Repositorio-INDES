@@ -150,6 +150,14 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = Database::getException();
                 }
+                //Consulta la cantidad de eventos que pertenecen a un tipo
+                case 'cantidadEventosTipo':
+                    if ($result['dataset'] = $evento->cantidadEventosTipo 
+                    ()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
                 break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';

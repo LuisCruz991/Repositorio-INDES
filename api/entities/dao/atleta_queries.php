@@ -99,4 +99,13 @@ class atletaqueries {
          $params = array($this->id);
          return Database::executeRow($sql, $params);
      }
+
+     //Creamos la consulta para obtener la cantidad de atletas que pertenecen a un genero 
+    public function cantidadAtletasGenero()
+    {
+        $sql = 'SELECT nombre_genero, COUNT(idatleta) cantidad
+                FROM atletas INNER JOIN generos USING(idgenero)
+                GROUP BY nombre_genero ORDER BY cantidad DESC';
+        return Database::getRows($sql);   
+    }
 }

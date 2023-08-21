@@ -83,4 +83,13 @@ class EventQueries {
          $params = array($this->id);
          return Database::executeRow($sql, $params);
      }
+
+     //Creamos la consulta para obtener la cantidad de eventos que pertenecen a un tipo 
+    public function cantidadEventosTipo()
+    {
+        $sql = 'SELECT nombre, COUNT(idevento) cantidad
+                FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
+                GROUP BY nombre ORDER BY cantidad DESC';
+        return Database::getRows($sql);   
+    }º
 }
