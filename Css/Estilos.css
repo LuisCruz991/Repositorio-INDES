@@ -59,5 +59,10 @@ hr{
 background-color: #50577A;
 }
 
+.sidebar {
+  overflow-y: scroll;
+}
 
-
+::-webkit-scrollbar { 
+  display: none; 
+}

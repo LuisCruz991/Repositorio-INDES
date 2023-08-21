@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   </div>
         `;
 
-    SIDE.innerHTML = `     <div class="min-h-screen bg-gray-100">
+    SIDE.innerHTML = `<div class="min-h-screen bg-gray-100">
   <nav class="sidebar sm:block hidden min-h-screen w-36  overflow-hidden border-r  bg-azul-1 hover:shadow-lg">
     <div class="flex h-screen flex-col justify-between mt-12 pb-6">
       <div class="flex flex-col items-center">
@@ -246,6 +246,31 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <li>
                   <a href="../vistas/modalidad_deporte.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Modalidad</a>
+                </li>
+              </ul>
+            </div>
+          <!-- Boton para gestionar los paises y los continentes -->
+            <li class="min-w-max">
+              <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownP"
+                class=" mb-7 peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512" fill="currentColor">
+                <path d="M64 32C64 14.3 49.7 0 32 0S0 14.3 0 32V64 368 480c0 17.7 14.3 32 32 32s32-14.3 32-32V352l64.3-16.1c41.1-10.3 84.6-5.5 122.5 13.4c44.2 22.1 95.5 24.8 141.7 7.4l34.7-13c12.5-4.7 20.8-16.6 20.8-30V66.1c0-23-24.2-38-44.8-27.7l-9.6 4.8c-46.3 23.2-100.8 23.2-147.1 0c-35.1-17.6-75.4-22-113.5-12.5L64 48V32z"/></svg>
+                <span class="text-sm  font-medium">Países</span>
+              </button>
+            </li>
+            <!-- Dropdown menu de boton Paises -->
+            <div id="dropdownP"
+              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                <!-- Boton para acceder al SCRUD de Paises -->
+                <li>
+                  <a href="../vistas/paises.html"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Países</a>
+                </li>
+                <!-- Boton para acceder al SCRUD de Continentes -->
+                <li>
+                  <a href="../vistas/continente.html"
+                    class="block px-4 py-2 hover:bg-gray-100  text-red">Continentes</a>
                 </li>
               </ul>
             </div>
