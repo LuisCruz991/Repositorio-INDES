@@ -147,6 +147,9 @@
                     </svg>
                     <span class="sr-only">buscar</span>
                   </button>
+                  <a onclick="window.openReport()" data-modal-target="save-modal" data-modal-toggle="save-modal"
+            class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Reporte</a>
+          </a>
                 </form>
               </div>
             </div>
@@ -157,6 +160,7 @@
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
             </a>
+            
             <!-- Modal para agregar -->
             <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
