@@ -40,13 +40,12 @@ class atletaqueries {
 
      public function readAtletasFederacion()
      {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion,nombre_responsable,entrenadores.nombre, atletas.clave
+         $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, atletas.dui, celular, atletas.correo, nombre_federacion,entrenadores.nombre
          FROM atletas
          INNER JOIN generos USING(idgenero)
-         INNER JOIN responsables USING(idresponsable)
          INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
-         ORDER BY federacion';
+         ORDER BY nombre_federacion';
          return Database::getRows($sql);
      }
 
