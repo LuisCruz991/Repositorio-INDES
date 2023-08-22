@@ -8,8 +8,7 @@ class AdminQueries
      // Consulta para realizar la operacion "Search"
     public function searchRows($value)
     {
-        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, nombre_genero
-        FROM administradores INNER JOIN generos USING (idgenero)
+        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario
         WHERE nombre_usuario LIKE ? ';   
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -18,8 +17,8 @@ class AdminQueries
     // Consulta para realizar la operacion "Read"
     public function readAll()
     {
-        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, nombre_genero
-        FROM administradores INNER JOIN generos USING (idgenero)
+        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario
+        FROM administradores
         ORDER BY idadministrador';
         return Database::getRows($sql);
     }

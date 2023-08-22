@@ -13,7 +13,7 @@ class atletaqueries {
          INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
                  WHERE nombre_atleta  LIKE ?';
-         $params = array("%$value%", "%$value%" );
+         $params = array("%$value%");
          return Database::getRows($sql, $params);
      }
  
@@ -69,7 +69,7 @@ class atletaqueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, entrenadores.nombre, atletas.clave
+         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, entrenadores.nombre, atletas.clave, atletas.idgenero, idresponsable, identrenador,atletas.idfederacion
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)

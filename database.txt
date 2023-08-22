@@ -1,3 +1,26 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-08-2023 a las 05:37:01
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `dbindes`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -8,8 +31,15 @@ CREATE TABLE `administradores` (
   `idadministrador` int(11) NOT NULL COMMENT 'ID del administrador',
   `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
   `clave_usuario` varchar(200) NOT NULL COMMENT 'Clave del administrador',
-  `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador',
-);
+  `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`idadministrador`, `nombre_usuario`, `clave_usuario`, `correo_usuario`) VALUES
+(3, 'raul', '$2y$10$Qksub.cc5RbR/sJLi1hU/OlQmHhhZSx7z8blvXxZZ5GxuRp.SUbDW', 'raul@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -36,7 +66,14 @@ CREATE TABLE `atletas` (
   `identrenador` int(11) NOT NULL COMMENT 'Entrenador encargado del atleta',
   `idfederacion` int(11) NOT NULL COMMENT 'Federacion asociada al atleta',
   `clave` varchar(50) NOT NULL COMMENT 'Contraseña'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `atletas`
+--
+
+INSERT INTO `atletas` (`idatleta`, `nombre_atleta`, `apellido_atleta`, `nacimiento`, `idgenero`, `estatura`, `peso`, `talla_camisa`, `talla_short`, `direccion`, `dui`, `celular`, `telefono_casa`, `correo`, `idresponsable`, `identrenador`, `idfederacion`, `clave`) VALUES
+(1, 'cd', 'cddd', '2023-08-11', 1, 1.70, 9.99, 'S', 'S', 'Mejicanos', '43543353-3', '7858-3723', '7434-2823', 'raul@gmail.com', 1, 1, 1, '123456');
 
 -- --------------------------------------------------------
 
@@ -47,7 +84,14 @@ CREATE TABLE `atletas` (
 CREATE TABLE `categoria_inversion` (
   `idcateg_inversion` int(11) NOT NULL COMMENT 'Numero de categoria de inversion',
   `anual_mensual` tinyint(1) NOT NULL COMMENT 'Tipo de inversion mensual o anual'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categoria_inversion`
+--
+
+INSERT INTO `categoria_inversion` (`idcateg_inversion`, `anual_mensual`) VALUES
+(1, 0);
 
 -- --------------------------------------------------------
 
@@ -58,7 +102,7 @@ CREATE TABLE `categoria_inversion` (
 CREATE TABLE `clasificacion_deporte` (
   `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte',
   `nombre_clasificacion` varchar(50) NOT NULL COMMENT 'Nombre de la clasificacion del deporte'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clasificacion_deporte`
@@ -74,9 +118,16 @@ INSERT INTO `clasificacion_deporte` (`idclasificacion_deporte`, `nombre_clasific
 --
 
 CREATE TABLE `continentes` (
-  `idcontintente` int(11) NOT NULL COMMENT 'Numero de continente',
+  `idcontinente` int(11) NOT NULL COMMENT 'Numero de continente',
   `nombre_continente` varchar(50) NOT NULL COMMENT 'Nombre del continente'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `continentes`
+--
+
+INSERT INTO `continentes` (`idcontinente`, `nombre_continente`) VALUES
+(1, 'America');
 
 -- --------------------------------------------------------
 
@@ -88,7 +139,14 @@ CREATE TABLE `deportes` (
   `iddeporte` int(11) NOT NULL COMMENT 'Numero de deporte',
   `nombre_deporte` varchar(50) NOT NULL COMMENT 'Nombre del deporte',
   `idclasificacion_deporte` int(11) NOT NULL COMMENT 'Numero de clasificacion del deporte'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `deportes`
+--
+
+INSERT INTO `deportes` (`iddeporte`, `nombre_deporte`, `idclasificacion_deporte`) VALUES
+(1, 'frfr', 1);
 
 -- --------------------------------------------------------
 
@@ -106,7 +164,14 @@ CREATE TABLE `entrenadores` (
   `dui` varchar(10) NOT NULL COMMENT 'Numero de DUI del entrenador ',
   `correo` varchar(50) NOT NULL COMMENT 'Direccion de correo del entrenador ',
   `idfederacion` int(11) NOT NULL COMMENT 'Federacion asociada al atleta'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `entrenadores`
+--
+
+INSERT INTO `entrenadores` (`identrenador`, `nombre`, `apellido`, `telefono`, `idgenero`, `direccion`, `dui`, `correo`, `idfederacion`) VALUES
+(1, 'Jesus', 'Benavidez', '7854-6863', 1, 'Mejicanos', '45354353-3', 'raul@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -122,7 +187,7 @@ CREATE TABLE `entrenamientos` (
   `lugar_entreno` varchar(200) NOT NULL COMMENT 'Lugar de practica',
   `idatleta` int(11) NOT NULL COMMENT 'Numero del atleta',
   `identrenador` int(11) NOT NULL COMMENT 'Numero del entrenador'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -141,12 +206,12 @@ CREATE TABLE `eventos` (
   `hora_inicio` time NOT NULL COMMENT 'Hora de inicio del evento',
   `hora_cierre` time NOT NULL COMMENT 'Hora de cierre del evento',
   `idtipo_evento` int(11) NOT NULL COMMENT 'Tipo de evento'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `federacion`
+-- Estructura de tabla para la tabla `federaciones`
 --
 
 CREATE TABLE `federaciones` (
@@ -154,7 +219,14 @@ CREATE TABLE `federaciones` (
   `nombre_federacion` varchar(30) NOT NULL,
   `logo` varchar(200) NOT NULL,
   `iddeporte` int(11) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `federaciones`
+--
+
+INSERT INTO `federaciones` (`idfederacion`, `nombre_federacion`, `logo`, `iddeporte`) VALUES
+(1, 'fvever', '', 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +237,15 @@ CREATE TABLE `federaciones` (
 CREATE TABLE `generos` (
   `idgenero` int(11) NOT NULL COMMENT 'Numero de genero',
   `nombre_genero` varchar(25) DEFAULT NULL COMMENT 'Genero '
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `generos`
+--
+
+INSERT INTO `generos` (`idgenero`, `nombre_genero`) VALUES
+(1, 'Masculino'),
+(2, 'Femenino');
 
 -- --------------------------------------------------------
 
@@ -176,7 +256,14 @@ CREATE TABLE `generos` (
 CREATE TABLE `modalidades_deportivas` (
   `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Numero de modalidad deportiva',
   `nombre_modalidad` varchar(50) NOT NULL COMMENT 'Nombre de la modalidad deportiva'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `modalidades_deportivas`
+--
+
+INSERT INTO `modalidades_deportivas` (`idmodalidad_deporte`, `nombre_modalidad`) VALUES
+(1, 'Basketball 3v3');
 
 -- --------------------------------------------------------
 
@@ -188,8 +275,15 @@ CREATE TABLE `paises` (
   `idpais` int(11) NOT NULL COMMENT 'Numero de pais',
   `nombre_pais` varchar(50) NOT NULL COMMENT 'Nombre del pais',
   `bandera` varchar(200) DEFAULT NULL COMMENT 'imagen de la bandera del pais',
-  `idcontintente` int(11) NOT NULL COMMENT 'Continente del pais'
-);
+  `idcontinente` int(11) NOT NULL COMMENT 'Continente del pais'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `paises`
+--
+
+INSERT INTO `paises` (`idpais`, `nombre_pais`, `bandera`, `idcontinente`) VALUES
+(1, 'El salvador', '64e42c3507eea.png', 1);
 
 -- --------------------------------------------------------
 
@@ -200,7 +294,7 @@ CREATE TABLE `paises` (
 CREATE TABLE `parentescos` (
   `idparentesco` int(11) NOT NULL COMMENT 'ID del Parentesco',
   `nombre_parentesco` varchar(20) NOT NULL COMMENT 'Nombre del parentesco'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `parentescos`
@@ -226,7 +320,14 @@ CREATE TABLE `presupuesto` (
   `patrocinadores` decimal(6,2) DEFAULT NULL COMMENT 'Dinero de apoyo de patrocinadores ',
   `obsevaciones` varchar(500) NOT NULL COMMENT 'Observaciones dadas o realizadas al atleta ',
   `idatleta` int(11) NOT NULL COMMENT 'Numero del atleta'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `presupuesto`
+--
+
+INSERT INTO `presupuesto` (`idpresupuesto`, `idcateg_inversion`, `estimulos`, `preparacion_fogues`, `ayuda_extranjera`, `equipamiento`, `otros`, `patrocinadores`, `obsevaciones`, `idatleta`) VALUES
+(1, 1, 21.00, 12.00, 21.00, 21.00, 12.00, 12.00, '12', 1);
 
 -- --------------------------------------------------------
 
@@ -240,7 +341,7 @@ CREATE TABLE `pruebas` (
   `iddeporte` int(11) NOT NULL COMMENT 'Numero del deporte',
   `idevento` int(11) NOT NULL COMMENT 'Numero de evento al que pertenece',
   `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Nombre de la modalidad deportiva'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -255,7 +356,7 @@ CREATE TABLE `records` (
   `idatleta` int(11) NOT NULL COMMENT 'Atleta que obtuvo esa marca',
   `idprueba` int(11) NOT NULL COMMENT 'Prueba en la que se realizo la marca',
   `posicion` int(11) DEFAULT NULL COMMENT 'Posición en la que quedo el atleta dentro de la prueba'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -269,7 +370,14 @@ CREATE TABLE `responsables` (
   `direccion` varchar(200) DEFAULT NULL COMMENT 'Direccion del responsable del atleta',
   `telefono` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del responsable del atleta',
   `idparentesco` int(11) NOT NULL COMMENT 'Parentesco del responsable con el atleta'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `responsables`
+--
+
+INSERT INTO `responsables` (`idresponsable`, `nombre_responsable`, `direccion`, `telefono`, `idparentesco`) VALUES
+(1, 'vrtvrtvtr', 'vrtvrt', '7854-6863', 1);
 
 -- --------------------------------------------------------
 
@@ -280,7 +388,7 @@ CREATE TABLE `responsables` (
 CREATE TABLE `tipo_evento` (
   `idtipo_evento` int(11) NOT NULL COMMENT 'ID del tipo del evento',
   `nombre` varchar(80) NOT NULL COMMENT 'Nombre del tipo del evento '
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_evento`
@@ -298,7 +406,7 @@ INSERT INTO `tipo_evento` (`idtipo_evento`, `nombre`) VALUES
 CREATE TABLE `unidades_medidas` (
   `idunidad_medida` int(11) NOT NULL COMMENT 'ID de la unidad de medida',
   `nombre_medida` varchar(30) NOT NULL COMMENT 'Nombre de la unidad de medida utilizada'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas
@@ -310,18 +418,16 @@ CREATE TABLE `unidades_medidas` (
 ALTER TABLE `administradores`
   ADD PRIMARY KEY (`idadministrador`),
   ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
-  ADD UNIQUE KEY `correo_usuario` (`correo_usuario`),
-  ADD KEY `admin_genero` (`idgenero`);
+  ADD UNIQUE KEY `correo_usuario` (`correo_usuario`);
 
 --
 -- Indices de la tabla `atletas`
 --
 ALTER TABLE `atletas`
   ADD PRIMARY KEY (`idatleta`),
-  ADD KEY `atleta_genero_idx` (`idgenero`),
-  ADD KEY `atleta_federacion_idx` (`idfederacion`),
-  ADD KEY `atleta_responsable_idx` (`idresponsable`),
-  ADD KEY `atleta_entrenador _idx` (`identrenador`);
+  ADD KEY `atleta_genero` (`idgenero`),
+  ADD KEY `atleta_resposable` (`idresponsable`),
+  ADD KEY `atleta_federacion` (`idfederacion`);
 
 --
 -- Indices de la tabla `categoria_inversion`
@@ -340,7 +446,7 @@ ALTER TABLE `clasificacion_deporte`
 -- Indices de la tabla `continentes`
 --
 ALTER TABLE `continentes`
-  ADD PRIMARY KEY (`idcontintente`),
+  ADD PRIMARY KEY (`idcontinente`),
   ADD UNIQUE KEY `nombre_continente_UNIQUE` (`nombre_continente`);
 
 --
@@ -381,12 +487,12 @@ ALTER TABLE `eventos`
   ADD KEY `evento_tipo` (`idtipo_evento`);
 
 --
--- Indices de la tabla `federacion`
+-- Indices de la tabla `federaciones`
 --
-ALTER TABLE `federacion`
+ALTER TABLE `federaciones`
   ADD PRIMARY KEY (`idfederacion`),
   ADD UNIQUE KEY `nombre_federacion_UNIQUE` (`nombre_federacion`),
-  ADD KEY `federacion_deporte_idx` (`iddeporte`);
+  ADD KEY `federacion_deporte` (`iddeporte`);
 
 --
 -- Indices de la tabla `generos`
@@ -407,7 +513,7 @@ ALTER TABLE `modalidades_deportivas`
 ALTER TABLE `paises`
   ADD PRIMARY KEY (`idpais`),
   ADD UNIQUE KEY `nombre_pais_UNIQUE` (`nombre_pais`),
-  ADD KEY `pais_continente_idx` (`idcontintente`);
+  ADD KEY `pais_continente_idx` (`idcontinente`);
 
 --
 -- Indices de la tabla `parentescos`
@@ -471,19 +577,19 @@ ALTER TABLE `unidades_medidas`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `idadministrador` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador', AUTO_INCREMENT=3;
+  MODIFY `idadministrador` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `atletas`
 --
 ALTER TABLE `atletas`
-  MODIFY `idatleta` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de atleta';
+  MODIFY `idatleta` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de atleta', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria_inversion`
 --
 ALTER TABLE `categoria_inversion`
-  MODIFY `idcateg_inversion` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de categoria de inversion';
+  MODIFY `idcateg_inversion` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de categoria de inversion', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `clasificacion_deporte`
@@ -495,19 +601,19 @@ ALTER TABLE `clasificacion_deporte`
 -- AUTO_INCREMENT de la tabla `continentes`
 --
 ALTER TABLE `continentes`
-  MODIFY `idcontintente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de continente';
+  MODIFY `idcontinente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de continente', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `deportes`
 --
 ALTER TABLE `deportes`
-  MODIFY `iddeporte` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de deporte';
+  MODIFY `iddeporte` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de deporte', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `entrenadores`
 --
 ALTER TABLE `entrenadores`
-  MODIFY `identrenador` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero del entrenador';
+  MODIFY `identrenador` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero del entrenador', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `entrenamientos`
@@ -522,28 +628,28 @@ ALTER TABLE `eventos`
   MODIFY `idevento` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de evento';
 
 --
--- AUTO_INCREMENT de la tabla `federacion`
+-- AUTO_INCREMENT de la tabla `federaciones`
 --
-ALTER TABLE `federacion`
-  MODIFY `idfederacion` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `federaciones`
+  MODIFY `idfederacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `idgenero` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de genero';
+  MODIFY `idgenero` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de genero', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `modalidades_deportivas`
 --
 ALTER TABLE `modalidades_deportivas`
-  MODIFY `idmodalidad_deporte` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de modalidad deportiva';
+  MODIFY `idmodalidad_deporte` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de modalidad deportiva', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
 ALTER TABLE `paises`
-  MODIFY `idpais` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de pais';
+  MODIFY `idpais` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de pais', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `parentescos`
@@ -555,7 +661,7 @@ ALTER TABLE `parentescos`
 -- AUTO_INCREMENT de la tabla `presupuesto`
 --
 ALTER TABLE `presupuesto`
-  MODIFY `idpresupuesto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de presupuesto';
+  MODIFY `idpresupuesto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de presupuesto', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pruebas`
@@ -573,7 +679,7 @@ ALTER TABLE `records`
 -- AUTO_INCREMENT de la tabla `responsables`
 --
 ALTER TABLE `responsables`
-  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del responsable del atleta';
+  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del responsable del atleta', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_evento`
@@ -592,19 +698,12 @@ ALTER TABLE `unidades_medidas`
 --
 
 --
--- Filtros para la tabla `administradores`
---
-ALTER TABLE `administradores`
-  ADD CONSTRAINT `administrador_genero` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `atletas`
 --
 ALTER TABLE `atletas`
-  ADD CONSTRAINT `atleta_entrenador ` FOREIGN KEY (`identrenador`) REFERENCES `entrenadores` (`identrenador`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `atleta_federacion` FOREIGN KEY (`idfederacion`) REFERENCES `federacion` (`idfederacion`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `atleta_genero` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `atleta_responsable` FOREIGN KEY (`idresponsable`) REFERENCES `responsables` (`idresponsable`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `atleta_federacion` FOREIGN KEY (`idfederacion`) REFERENCES `federaciones` (`idfederacion`),
+  ADD CONSTRAINT `atleta_genero` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`),
+  ADD CONSTRAINT `atleta_resposable` FOREIGN KEY (`idresponsable`) REFERENCES `responsables` (`idresponsable`);
 
 --
 -- Filtros para la tabla `deportes`
@@ -616,7 +715,8 @@ ALTER TABLE `deportes`
 -- Filtros para la tabla `entrenadores`
 --
 ALTER TABLE `entrenadores`
-  ADD CONSTRAINT `entrenador_federacion ` FOREIGN KEY (`idfederacion`) REFERENCES `federacion` (`idfederacion`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `entrenador_federacion` FOREIGN KEY (`idfederacion`) REFERENCES `federaciones` (`idfederacion`),
+  ADD CONSTRAINT `entrenador_genero` FOREIGN KEY (`idgenero`) REFERENCES `generos` (`idgenero`);
 
 --
 -- Filtros para la tabla `entrenamientos`
@@ -629,19 +729,20 @@ ALTER TABLE `entrenamientos`
 -- Filtros para la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `evento_tipoevento` FOREIGN KEY (`idtipo_evento`) REFERENCES `tipo_evento` (`idtipo_evento`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `evento_pais` FOREIGN KEY (`idpais`) REFERENCES `paises` (`idpais`),
+  ADD CONSTRAINT `evento_tipo` FOREIGN KEY (`idtipo_evento`) REFERENCES `tipo_evento` (`idtipo_evento`);
 
 --
--- Filtros para la tabla `federacion`
+-- Filtros para la tabla `federaciones`
 --
-ALTER TABLE `federacion`
-  ADD CONSTRAINT `federacion_deporte` FOREIGN KEY (`iddeporte`) REFERENCES `deportes` (`iddeporte`) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE `federaciones`
+  ADD CONSTRAINT `federacion_deporte` FOREIGN KEY (`iddeporte`) REFERENCES `deportes` (`iddeporte`);
 
 --
 -- Filtros para la tabla `paises`
 --
 ALTER TABLE `paises`
-  ADD CONSTRAINT `pais_continente` FOREIGN KEY (`idcontintente`) REFERENCES `continentes` (`idcontintente`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `pais_continente` FOREIGN KEY (`idcontinente`) REFERENCES `continentes` (`idcontinente`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `presupuesto`
@@ -672,3 +773,7 @@ ALTER TABLE `records`
 ALTER TABLE `responsables`
   ADD CONSTRAINT `responsable_parentesco` FOREIGN KEY (`idparentesco`) REFERENCES `parentescos` (`idparentesco`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

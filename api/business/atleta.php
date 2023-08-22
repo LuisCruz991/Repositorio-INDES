@@ -160,7 +160,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Correo del atleta no valido';
                     }elseif (!isset($_POST['responsable'])) {
                         $result['exception'] = 'Seleccione un responsable';
-                    } elseif (!$atleta->setNombreMadre($_POST['responsable'])) {
+                    } elseif (!$atleta->setResponsable($_POST['responsable'])) {
                         $result['exception'] = 'Responsable no valida';
                     }  elseif (!isset($_POST['federacion'])) {
                         $result['exception'] = 'Seleccione la federaccion';

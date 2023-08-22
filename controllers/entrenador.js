@@ -2,6 +2,7 @@
 const ENTRENADOR_API = 'business/entrenador.php';
 
 
+
 // Formulario de búsqueda.
 const SEARCH_FORM = document.getElementById('search-form');
 // Formulario de guardar.
@@ -113,7 +114,7 @@ function openCreate() {
     // Abrir la caja de diálogo que contiene el formulario.
     SAVE_FORM.reset(); // Restaurar los elementos del formulario.
     fillSelect(ENTRENADOR_API, 'readGenero', 'genero');
-    fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion');
+    fillSelect(ENTRENADOR_API, 'readFederacion', 'f');
 
 }
 
@@ -134,7 +135,7 @@ async function openUpdate(id) {
         document.getElementById('direccion').value = JSON.dataset.direccion;
         document.getElementById('dui').value = JSON.dataset.dui;
         document.getElementById('correo').value = JSON.dataset.correo;
-        fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion', JSON.dataset.idfederacion);
+        fillSelect(ENTRENADOR_API, 'readFederacion', 'f', JSON.dataset.idfederacion);
     } else {
         sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
     }

@@ -51,7 +51,7 @@ class entrenadorqueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion
+         $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion, idfederacion, idgenero
          FROM entrenadores
          INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)

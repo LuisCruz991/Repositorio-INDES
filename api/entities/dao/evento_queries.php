@@ -91,5 +91,5 @@ class EventQueries {
                 FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                 GROUP BY nombre ORDER BY cantidad DESC';
         return Database::getRows($sql);   
-    }º
+    }
 }

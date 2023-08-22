@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const JSON = await dataFetch(USER_API, 'getUser');
   // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
   if (JSON.session) {
-    HEADER.innerHTML = `
-    <div class="container flex flex-wrap items-center justify-between mx-auto">
+    HEADER.innerHTML = `<div class="container flex flex-wrap items-center justify-between mx-auto">
     <h1 class="titulo-navbar self-center text-4xl font-overpass font-normal whitespace-nowrap dark:text-white">
       Dashboard</h1>
     </a>
@@ -71,6 +70,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           class="w-14" alt=""></button>
     </div>
   </div>
+  <hr class="h-px mb-1 mt-5 bg-gray-200 border-0 dark:bg-gray-700">
+
         `;
 
     SIDE.innerHTML = `<div class="min-h-screen bg-gray-100">

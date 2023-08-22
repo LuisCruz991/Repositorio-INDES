@@ -44,7 +44,7 @@ async function graficoPastelGenero() {
 */
 async function graficoBarrasTipo() {
     // Petición para obtener los datos del gráfico.
-    const JSON = await dataFetch(PRODUCTO_API, 'cantidadEventosTipo');
+    const JSON = await dataFetch(EVENTO_API, 'cantidadEventosTipo');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (JSON.status) {
         // Se declaran los arreglos para guardar los datos a graficar.

@@ -71,7 +71,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Dui del entrenador no valido';
                 }  elseif (!$entrenador->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo del entrenador no valido';
-                } elseif (!$entrenador->setFederacion($_POST['federacion'])) {
+                }elseif (!isset($_POST['f'])) {
+                    $result['exception'] = 'Seleccione una federacion';
+                } elseif (!$entrenador->setFederacion($_POST['f'])) {
                     $result['exception'] = 'Federacion no valida';
                 } elseif ($entrenador->createRow()) {
                     $result['status'] = 1;
@@ -113,7 +115,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Dui del entrenador no valido';
                     }  elseif (!$entrenador->setCorreo($_POST['correo'])) {
                         $result['exception'] = 'Correo del entrenador no valido';
-                    }  elseif (!$entrenador->setFederacion($_POST['federacion'])) {
+                    }  elseif (!$entrenador->setFederacion($_POST['f'])) {
                         $result['exception'] = 'Federacion no valida';
                     } elseif ($entrenador->updateRow()) {
                         $result['status'] = 1;

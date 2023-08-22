@@ -53,7 +53,7 @@ class PresupuestoQueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT  idpresupuesto, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones
+         $sql = 'SELECT  idpresupuesto, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones, idatleta, idcateg_inversion
                  FROM presupuesto
                  WHERE idpresupuesto = ?';
          $params = array($this->id);
