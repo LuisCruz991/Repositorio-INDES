@@ -75,15 +75,7 @@ class Federacion extends FederacionQueries  {
     }
 
 
-    public function setImagen($file)
-    {
-        if (Validator::validateImageFile($file, 2000, 2000)) {
-            $this->imagenSede = Validator::getFileName();
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 
     public function setDeporte($value) {
         if (Validator::validateNaturalNumber($value)) {
