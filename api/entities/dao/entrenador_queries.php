@@ -26,7 +26,7 @@ class entrenadorqueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion
+         $sql = 'SELECT identrenador,nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
          FROM entrenadores
          INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)';
@@ -51,13 +51,24 @@ class entrenadorqueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion, idfederacion, idgenero
+         $sql = 'SELECT identrenador,nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion, idfederacion, idgenero
          FROM entrenadores
          INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)
          WHERE identrenador = ?';
          $params = array($this->id);
          return Database::getRow($sql, $params);
+     }
+
+     public function readFicha()
+     {
+         $sql = 'SELECT nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion, idfederacion, idgenero
+         FROM entrenadores
+         INNER JOIN generos USING(idgenero)
+         INNER JOIN federaciones USING(idfederacion)
+         WHERE identrenador = ?';
+         $params = array($this->id);
+         return Database::getRows($sql, $params);
      }
  
      // Consulta para realizar la operacion "Update"
