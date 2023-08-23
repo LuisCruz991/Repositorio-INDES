@@ -182,19 +182,19 @@
                       <!-- id  -->
                       <input type="text" id="id" name="id"
                         class="hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                      <!-- Campo para ingresar el nombre del evento -->
+                      <!-- Campo para ingresar el nombre de la federacion -->
                       <div>
                         <label for="Nombre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de la
-                          federacion</label>
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del
+                          evento</label>
                         <input type="text" id="nombre" name="nombre"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Nombre del evento" required>
+                          placeholder="Nombre de federacion" required>
                       </div>
-                      <!-- Campo para ingresar la descripcion -->
+                      <!-- Campo para ingresar la siglas-->
                       <div>
                         <label for="Siglas"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Siglas</label>
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
                         <input type="text" id="siglas" name="siglas"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Siglas" required>
@@ -206,9 +206,9 @@
                           federacion</label>
                         <input type="text" id="direccion" name="direccion"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Direccion del evento" required>
+                          placeholder="Direccion de la federacion" required>
                       </div>
-                      <!-- Campo para ingresar el telefono de la federacion -->
+                     <!-- Campo para ingresar el telefono de la federacion -->
                       <div>
                         <label for="Telefono"
                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono de la
@@ -238,75 +238,74 @@
                         </select>
                       </div>
                     </div>
+                    <div></div>
+                    <!-- Boton para crear registro -->
+                    <button type="submit"
+                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
+                  </form>
                 </div>
-                <!-- Boton para crear registro -->
-                <button type="submit"
-                  class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
-                </form>
               </div>
             </div>
           </div>
-      </div>
 
-      <p class="text-left" id="records"></p>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <!-- Titulos de la tabla -->
-          <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
+          <p class="text-left" id="records"></p>
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
-                <!-- Titulos de la tabla -->
-                <tr class="hidden" id="records"></tr>
                 <tr>
-                  <div class="titulos-tabla-crud  bg-azul-3">
-                    <!-- Campo de ID en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      ID
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Siglas
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Direccion
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Telefono
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Logo
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Deporte
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                  <!-- Titulos de la tabla -->
+                  <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
+                    <!-- Titulos de la tabla -->
+                    <tr class="hidden" id="records"></tr>
+                    <tr>
+                      <div class="titulos-tabla-crud  bg-azul-3">
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          ID
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Nombre
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Siglas
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Direccion
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Telefono
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Logo
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Deporte
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
-                    </th>
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
-                    </th>
-                  </div>
-                </tr>
-              </thead>
-              <!-- Titulos de la tabla -->
+                        </th>
+                      </div>
+                    </tr>
+                  </thead>
+                  <!-- Titulos de la tabla -->
 
+                  <!-- Datos de la tabla -->
+              <tbody id="tbody-rows">
+              </tbody>
               <!-- Datos de la tabla -->
-          <tbody id="tbody-rows">
-          </tbody>
-          <!-- Datos de la tabla -->
 
-          </table>
-        </div>
-      </main>
-      <!-- Finalizacion de la tabla -->
+            </table>
+          </div>
+        </main>
+        <!-- Finalizacion de la tabla -->
 
+      </div>
     </div>
-  </div>
 
-  <!-- Finalizacion del dashboard -->
+    <!-- Finalizacion del dashboard -->
 
   </div>
 
