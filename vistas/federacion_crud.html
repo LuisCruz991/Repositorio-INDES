@@ -1,0 +1,324 @@
+<!doctype html>
+<!-- Idioma del sitio -->
+<html lang="es">
+
+<head>
+  <!-- Titulo -->
+  <title>Federaciones</title>
+  <!-- Definicion de carecteres del sitio -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Css de de tailwind -->
+  <link href="../css/tailwind.css" rel="stylesheet">
+  <!-- Cdn de flowbite -->
+  <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
+  <!-- Css del proyecto -->
+  <link rel="stylesheet" href="../css/estilos.css">
+  <!-- Fuentes del proyecto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;300&family=Plus+Jakarta+Sans&family=Quicksand:wght@700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- Fuentes del proyecto -->
+</head>
+
+<body class="dashboard-body">
+
+  <!-- Comienzo del codigo -->
+
+  <div class="flex flex-row">
+
+    <!-- Comienzo del sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Comienzo del contenido -->
+    <div class="h-screen w-full overflow-y-auto">
+      <div class="p-4">
+
+        <!-- Comienzo del navbar -->
+        <HEADER class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+
+        </HEADER>
+        <!-- Finalizacion del navbar -->
+
+        <!-- Inicio de la tabla-->
+        <main class="flex mt-4 flex-col">
+          <div class="flex  sm:flex-row flex-col justify-between mb-3 b-4 bg-white dark:bg-gray-900">
+            <div class="flex gap-2">
+              <button class="mt-1 ml-2 w-10 h-9 flex justify-center items-center shadow-xl bg-white rounded-lg"
+                aria-expanded="false" data-dropdown-toggle="dropdownRadio" data-dropdown-placement="bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                </svg>
+              </button>
+              <!-- Dropdown menu para filtro de busqueda -->
+              <div id="dropdownRadio"
+                class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top"
+                style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdownRadioButton">
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-1" type="radio" value="" name="filter-radio"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-1"
+                        class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                        day</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-2"
+                        class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last 7
+                        days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-3" type="radio" value="" name="filter-radio"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-3"
+                        class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last 30
+                        days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-4" type="radio" value="" name="filter-radio"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-4"
+                        class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                        month</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-5" type="radio" value="" name="filter-radio"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-5"
+                        class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last
+                        year</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- Dropdown menu -->
+
+              <!-- Busqueda -->
+              <label for="table-search" class="sr-only">Search</label>
+              <div class=" relative mt-1">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor"
+                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <form method="post" class="flex items-center" id="search-form">
+                  <label for="search-form" class="sr-only">buscar</label>
+                  <div class="relative w-full">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <input type="text" id="search" name="search"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="buscar por nombre de la federacion" required>
+                  </div>
+                  <button type="submit"
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <span class="sr-only">buscar</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Boton para agregar atleta -->
+            <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
+              class="mt-2 text-sm rounded-md w-24 h-10  bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
+            </a>
+
+            <!-- Modal para agregar -->
+            <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+              class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
+              <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <!-- Modal header -->
+                  <div class="grid justify-items-stretch">
+                    <button type="button"
+                      class="justify-end text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white mr-5"
+                      data-modal-hide="save-modal">
+                      <svg aria-hidden="true" class="w-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                    </button>
+                  </div>
+                  <h1 class="text-center">Administrar Federaciones</h1>
+                  <form id="save-form" method="post">
+                    <div class="grid gap-6 m-5 md:grid-cols-2">
+                      <!-- id  -->
+                      <input type="text" id="id" name="id"
+                        class="hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      <!-- Campo para ingresar el nombre del evento -->
+                      <div>
+                        <label for="Nombre"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de la
+                          federacion</label>
+                        <input type="text" id="nombre" name="nombre"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Nombre del evento" required>
+                      </div>
+                      <!-- Campo para ingresar la descripcion -->
+                      <div>
+                        <label for="Siglas"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Siglas</label>
+                        <input type="text" id="siglas" name="siglas"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Siglas" required>
+                      </div>
+                      <!-- Campo para ingresar la direccion de la federacion -->
+                      <div>
+                        <label for="Direccion"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion de la
+                          federacion</label>
+                        <input type="text" id="direccion" name="direccion"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Direccion del evento" required>
+                      </div>
+                      <!-- Campo para ingresar el telefono de la federacion -->
+                      <div>
+                        <label for="Telefono"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono de la
+                          federacion</label>
+                        <input type="tel" id="telefono" name="telefono"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="0000-0000" required>
+                      </div>
+                      <!-- Campo para seleccionar la imagen -->
+                      <div>
+                        <label class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          for="file_input">Seleccionar una imagen</label>
+                        <img id="preview" class="rounded-lg max-w-80 bg-gray-300" src="../imagenes/search.png"
+                          title="Imagen no disponible." onerror="this.src='../imagenes/notFound.png';">
+                        <div>
+                          <input
+                            class="mt-5 block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-blue-600 dark:border-gray-600 dark:placeholder-gray-400"
+                            id="archivo" name="archivo" type="file" onchange="Preview(this, 'preview')">
+                        </div>
+                      </div>
+                      <!-- Campo para seleccionar el deporte de la federacion -->
+                      <div>
+                        <label for="company"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deporte</label>
+                        <select id="deporte" name="deporte"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </select>
+                      </div>
+                    </div>
+                </div>
+                <!-- Boton para crear registro -->
+                <button type="submit"
+                  class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <p class="text-left" id="records"></p>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <!-- Titulos de la tabla -->
+          <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <!-- Titulos de la tabla -->
+              <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
+                <!-- Titulos de la tabla -->
+                <tr class="hidden" id="records"></tr>
+                <tr>
+                  <div class="titulos-tabla-crud  bg-azul-3">
+                    <!-- Campo de ID en la tabla -->
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      ID
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Nombre
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Siglas
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Direccion
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Telefono
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Logo
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Deporte
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+
+                    </th>
+                  </div>
+                </tr>
+              </thead>
+              <!-- Titulos de la tabla -->
+
+              <!-- Datos de la tabla -->
+          <tbody id="tbody-rows">
+          </tbody>
+          <!-- Datos de la tabla -->
+
+          </table>
+        </div>
+      </main>
+      <!-- Finalizacion de la tabla -->
+
+    </div>
+  </div>
+
+  <!-- Finalizacion del dashboard -->
+
+  </div>
+
+  <!-- Finalizacion del codigo -->
+
+  <!-- Js de flowbite -->
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../Js/sweetalert.min.js"></script>
+  <script src="../controllers/components.js"></script>
+  <script src="../controllers/account.js"></script>
+  <script src="../controllers/federacion.js"></script>
+</body>
+
+</html>
