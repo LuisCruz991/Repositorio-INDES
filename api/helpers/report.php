@@ -1,5 +1,5 @@
 <?php
-require_once('../../libraries/fpdf182/fpdf.php');
+require_once('../libraries/fpdf182/fpdf.php');
 
 /*
 *   Clase para definir las plantillas de los reportes del sitio privado.
@@ -24,7 +24,7 @@ class Report extends FPDF
         // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en los reportes.
         session_start();
         // Se verifica si un administrador ha iniciado sesión para generar el documento, de lo contrario se direcciona a la página web principal.
-        if (isset($_SESSION['id_usuario'])) {
+        if (isset($_SESSION['idadministrador'])) {
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
             // Se establece el título del documento (true = utf-8).
@@ -57,7 +57,7 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
-        $this->image('../../images/logo.png', 15, 15, 20);
+        $this->image('../images/logo-indes.png', 15, 15, 20);
         // Se ubica el título.
         $this->cell(20);
         $this->setFont('Arial', 'B', 15);

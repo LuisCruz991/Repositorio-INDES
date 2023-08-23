@@ -38,6 +38,14 @@ class atletaqueries {
          return Database::getRows($sql);
      }
 
+     public function readFederaciones()
+     {
+         $sql = 'SELECT idfederacion,nombre_federacion
+         FROM federaciones';
+         return Database::getRows($sql);
+     }
+
+
      public function readAtletasFederacion()
      {
          $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, atletas.dui, celular, atletas.correo, nombre_federacion,entrenadores.nombre

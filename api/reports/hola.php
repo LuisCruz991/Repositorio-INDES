@@ -1,6 +1,6 @@
 <?php
-require_once('../../helpers/report.php');
-require_once('../../entities/dto/atleta.php');
+require_once('../helpers/report.php');
+require_once('../entities/dto/atleta.php');
 
 
 // Se instancia la clase para crear el reporte.
@@ -13,8 +13,6 @@ $pdf = new Report;
         if ($dataAtletas = $atleta->readAtletasFederacion()) {
             // Se inicia el reporte con el encabezado del documento.
             $pdf->startReport('Atletas por federacion');
-            // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $producto->productosCategoria()) {
                 // Se establece un color de relleno para los encabezados.
                 $pdf->setFillColor(225);
                 // Se establece la fuente para los encabezados.
@@ -46,14 +44,11 @@ $pdf = new Report;
                     $pdf->cell(45, 10, $pdf->encodeString($rowAtleta['nombre']), 1, 0);
 
                 }
-            } else {
+              }  else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay atletas'), 1, 1);
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
             $pdf->output('I', 'lista_atletas.pdf');
-        } else {
-            print('Atleta inexistente');
-        }
-
+     
 
 
