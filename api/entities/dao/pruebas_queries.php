@@ -94,4 +94,21 @@ class PruebasQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
+
+    
+    /*
+    *   Métodos para generar reportes.
+    */
+    
+    //Reporte no parametrizado de los productos de una marca
+    public function pruebasDeporte()
+    {
+        $sql = 'SELECT idprueba, nombre_prueba, nombre_modalidad
+                FROM pruebas INNER JOIN modalidades_deportivas USING (idmodalidad_deporte)
+                INNER JOIN deportes USING (iddeporte)
+                WHERE idprueba = ?
+                ORDER BY nombre_prueba';
+        $params = array($this->deporte);
+        return Database::getRows($sql, $params);
+    }
 }

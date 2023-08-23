@@ -1,5 +1,6 @@
 <?php
 require_once('../../helpers/report.php');
+// Se incluyen las clases para la transferencia y acceso a datos.
 require_once('../../entities/dto/pruebas.php');
 require_once('../../entities/dto/depote.php');
 
@@ -34,7 +35,7 @@ if ($dataDeporte = $deporte->readAll()) {
         // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
         if ($prueba->setDeporte($rowDeporte['iddeporte'])) {
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataPrueba = $producto->pruebasDeportes()) {
+            if ($dataPrueba = $prueba->pruebasDeporte()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataPrueba as $rowPruebas) {
                     // Se imprimen las celdas con los datos de los productos.
