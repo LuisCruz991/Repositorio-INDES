@@ -148,12 +148,16 @@ async function fillTable(form = null) {
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
                   <button onclick="openReport2(${row.idatleta})" 
-                    class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
+                  class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
+              </td>
+                <td class="px-6 py-4">
+                  <button onclick="graficoPastelHoras(${row.idatleta})" 
+                    class=" rounded-md w-24 h-8 bg-green-200 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
                 </td>
-                  <td class="px-6 py-4">
-                    <button onclick="graficoPastelHoras(${row.idatleta})" 
-                      class=" rounded-md w-24 h-8 bg-green-200 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
-                  </td>
+                <td class="px-6 py-4">
+                <button onclick="openReport(${row.idatleta})" 
+                  class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ver Resultado</button>
+              </td>
                 </tr>
 
             `;
@@ -266,4 +270,28 @@ function openReport2(id) {
 
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
-}
+    }
+
+    //grafico para ver los resultados de un atleta
+    async function graficoDonutResultado(id) {
+        const FORM = new FormData();
+        FORM.append('idatleta', id);
+        const JSON = await dataFetch(ATLETA_API, 'resultadoAtleta', FORM); // Obtener los datos del registro seleccionado.
+        if (JSON.status) {
+            GRAPH_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
+            // Se declaran los arreglos para guardar los datos a gráficar.
+            let posicion = [];
+            let nombre = [] ;
+            // Se recorre el conjunto de registros fila por fila a través del objeto row.
+            JSON.dataset.forEach(row => {
+                // Se agregan los datos a los arreglos.
+                posicion.push(row.posicion);
+                nombre.push(row.nombre_atleta);
+            });
+            // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
+            pieGraph('chart1', nombre, posicion,'Horas entrenadas del atleta');
+        } else {
+            document.getElementById('chart1').remove();
+            console.log(JSON.exception);
+        }
+    }
