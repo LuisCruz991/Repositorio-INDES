@@ -94,4 +94,14 @@ class RecordQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
+
+    public function readAtletasTitulos()
+     {
+         $sql = 'SELECT nombre_atleta, COUNT(idrecord) as  cantidad
+         FROM records
+         INNER JOIN atletas USING(idatleta)
+        GROUP BY nombre_atleta
+         ORDER BY cantidad DESC LIMIT 5';
+         return Database::getRows($sql);
+     }
 }
