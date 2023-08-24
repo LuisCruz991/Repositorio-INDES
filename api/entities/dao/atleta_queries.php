@@ -115,4 +115,13 @@ class atletaqueries {
                 GROUP BY nombre_genero ORDER BY cantidad DESC';
         return Database::getRows($sql);   
     }
+
+    public function horasAtleta()
+    {
+        $sql = 'SELECT  SUM(hora_cierre - hora_inicio) as horas, nombre_atleta, idatleta 
+                FROM entrenamientos INNER JOIN atletas USING (idatleta)
+                WHERE idatleta = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);   
+    }
 }
