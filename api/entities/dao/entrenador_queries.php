@@ -59,6 +59,17 @@ class entrenadorqueries {
          $params = array($this->id);
          return Database::getRow($sql, $params);
      }
+
+     public function readFicha()
+     {
+         $sql = 'SELECT nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion, idfederacion, idgenero
+         FROM entrenadores
+         INNER JOIN generos USING(idgenero)
+         INNER JOIN federaciones USING(idfederacion)
+         WHERE identrenador = ?';
+         $params = array($this->id);
+         return Database::getRows($sql, $params);
+     }
  
      // Consulta para realizar la operacion "Update"
      public function updateRow()

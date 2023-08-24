@@ -158,14 +158,3 @@ async function openDelete(id) {
 }
 
 
-/*
-*   Función para abrir el reporte de entrenadores por federacion.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-function openReport() {
-    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}reports/entrenador_fede.php`);
-    // Se abre el reporte en una nueva pestaña del navegador web.
-    window.open(PATH.href);
-}
