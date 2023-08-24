@@ -71,6 +71,17 @@ class atletaqueries {
          return Database::getRows($sql);
      }
 
+     public function resultadoAtleta()
+     {
+         $sql = 'SELECT marca_obtenida, nombre_medida, nombre_atleta, nombre_prueba, posicion
+         FROM records
+         INNER JOIN atletas USING(idatleta)
+         INNER JOIN pruebas USING(idprueba)
+         WHERE idatleta = ?';
+         $params = array($this->id);
+         return Database::getRows($sql, $params);
+     }
+
   
  
      // Consulta para cargar los datos de un solo registro
@@ -86,6 +97,8 @@ class atletaqueries {
          $params = array($this->id);
          return Database::getRow($sql, $params);
      }
+
+
  
      // Consulta para realizar la operacion "Update"
      public function updateRow()

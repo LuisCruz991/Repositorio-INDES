@@ -200,6 +200,17 @@ if (isset($_GET['action'])) {
                                 $result['exception'] = 'Ocurrió un problema al leer el atleta';
                             }
                         break;
+                        case 'resultadoAtleta':
+                            if (!$atleta->setId($_POST['idatleta'])) {
+                                $result['exception'] = 'Atleta invalido';
+                            } elseif ($result['dataset'] = $atleta->resultadoAtleta()) {
+                                $result['status'] = 1;
+                            } elseif (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Ocurrió un problema al leer el atleta';
+                            }
+                        break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
