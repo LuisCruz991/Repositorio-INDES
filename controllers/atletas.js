@@ -155,7 +155,7 @@ async function fillTable(form = null) {
                     class=" rounded-md w-24 h-8 bg-green-200 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
                 </td>
                 <td class="px-6 py-4">
-                <button onclick="openReport(${row.idatleta})" 
+                <button onclick="graficoDonutResultado(${row.idatleta})" 
                   class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ver Resultado</button>
               </td>
                 </tr>
@@ -255,9 +255,9 @@ async function graficoPastelHoras(id) {
             nombre.push(row.nombre_atleta);
         });
         // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('chart1', nombre, horas,'Horas entrenadas del atleta');
+        pieGraph('chart8', nombre, horas,'Horas entrenadas del atleta');
     } else {
-        document.getElementById('chart1').remove();
+        document.getElementById('chart8').remove();
         console.log(JSON.exception);
     }
 }
@@ -289,7 +289,7 @@ function openReport2(id) {
                 nombre.push(row.nombre_atleta);
             });
             // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-            pieGraph('chart1', nombre, posicion,'Horas entrenadas del atleta');
+            doughnutGraph('chart1', nombre, posicion,'Resultados del atleta');
         } else {
             document.getElementById('chart1').remove();
             console.log(JSON.exception);

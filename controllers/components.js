@@ -342,7 +342,7 @@ function barGraphX(canvas, xAxis, yAxis, legend, title) {
     });
 }
 
-function pieGraph(canvas, legends, values, title) {
+function doughnutGraph(canvas, legends, values, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
@@ -353,7 +353,7 @@ function pieGraph(canvas, legends, values, title) {
     const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
     const chart = new Chart(context, {
-        type: '',
+        type: 'doughnut',
         data: {
             labels: legends,
             datasets: [{
