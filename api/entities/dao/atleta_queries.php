@@ -115,4 +115,17 @@ class atletaqueries {
                 GROUP BY nombre_genero ORDER BY cantidad DESC';
         return Database::getRows($sql);   
     }
+
+    public function readFicha()
+    {
+        $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_responsable ,entrenadores.nombre, nombre_federacion
+        FROM atletas
+         INNER JOIN generos USING(idgenero)
+         INNER JOIN responsables USING(idresponsable)
+         INNER JOIN federaciones USING(idfederacion)
+         INNER JOIN entrenadores USING(identrenador)
+        WHERE idatleta = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }

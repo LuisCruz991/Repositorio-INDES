@@ -1,51 +1,92 @@
 <?php
-require_once('../../helpers/report.php');
+// Se incluye la clase con las plantillas para generar reportes.
+require_once('../helpers/report.php');
 
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se verifica si existe un valor para la categoría, de lo contrario se muestra un mensaje.
 if (isset($_GET['idatleta'])) {
-    require_once('../../entities/dto/atleta.php');
-    require_once('../../entities/dto/producto.php');
+    // Se incluyen las clases para la transferencia y acceso a datos.
+    require_once('../entities/dto/atleta.php');
     // Se instancian las entidades correspondientes.
     $atleta = new Atleta;
-    $atleta = new Atleta;
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
-    if ($categoria->setId($_GET['idatleta']) && $producto->setCategoria($_GET['idatleta'])) {
+    if ($atleta->setId($_GET['idatleta']) ) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
-        if ($rowCategoria = $categoria->readOne()) {
+        if ($rowAtleta = $atleta->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
-            $pdf->startReport('Productos de la categoría ' . $rowCategoria['nombre_categoria']);
+            $pdf->startReport('Ficha de ' . $rowAtleta['nombre_atleta']);
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $producto->productosCategoria()) {
+            if ($dataAtleta = $atleta->readFicha()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->setFillColor(225);
+                $pdf->setFillColor(107,114,142);
                 // Se establece la fuente para los encabezados.
                 $pdf->setFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
-                $pdf->cell(45, 10, 'Nombre', 1, 0, 'C', 1);
-                $pdf->cell(45, 10, 'Apellido', 1, 0, 'C', 1);
-                $pdf->cell(46, 10, 'Nacimiento', 1, 0, 'C', 1);
-                $pdf->cell(46, 10, 'Genero', 1, 1, 'C', 1);
+                $pdf->cell(50, 10, 'Nombre', 1, 0, 'C', 1);
+                $pdf->cell(50, 10, 'Apellido', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Nacimiento', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Genero', 1, 1, 'C', 1);
+
+
+                
                 // Se establece la fuente para los datos de los productos.
                 $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
-                foreach ($dataProductos as $rowProducto) {
+                foreach ($dataAtleta as $rowDatos) {
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
-                    $pdf->cell(30, 10, $estado, 1, 1);
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['nombre_atleta']), 1, 0);
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['apellido_atleta']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['nacimiento']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['nombre_genero']), 1, 1);
                 }
+
+                $pdf->cell(50, 10, 'Estatura', 1, 0, 'C', 1);
+                $pdf->cell(50, 10, 'Peso', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Talla de camisa', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Talla de short', 1, 1, 'C', 1);
+
+                foreach ($dataAtleta as $rowDatos) {
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['estatura']), 1, 0);
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['peso']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['talla_camisa']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['talla_short']), 1, 1);
+                }
+
+                $pdf->cell(50, 10, 'Direccion', 1, 0, 'C', 1);
+                $pdf->cell(50, 10, 'DUI', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Celular', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Telefono fijo', 1, 1, 'C', 1);
+
+                foreach ($dataAtleta as $rowDatos) {
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['direccion']), 1, 0);
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['dui']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['celular']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['telefono_casa']), 1, 1);
+                }
+
+                $pdf->cell(50, 10, 'Correo', 1, 0, 'C', 1);
+                $pdf->cell(50, 10, 'Responsable', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Entrenador', 1, 0, 'C', 1);
+                $pdf->cell(43, 10, 'Federacion', 1, 1, 'C', 1);
+
+                foreach ($dataAtleta as $rowDatos) {
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['correo']), 1, 0);
+                    $pdf->cell(50, 10, $pdf->encodeString($rowDatos['nombre_responsable']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['nombre']), 1, 0);
+                    $pdf->cell(43, 10, $pdf->encodeString($rowDatos['nombre_federacion']), 1, 1);
+                }
+
             } else {
-                $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1);
+                $pdf->cell(0, 10, $pdf->encodeString('No hay informacion para mostrar'), 1, 1);
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-            $pdf->output('I', 'ficha_atleta.pdf');
+            $pdf->output('I', 'Ficha atleta.pdf');
         } else {
-            print('Atleta inexistente');
+            print('Informacion inexistente');
         }
     } else {
-        print('Atleta incorrecta');
+        print('Informacion incorrecto');
     }
 } else {
     print('Debe seleccionar un atleta');

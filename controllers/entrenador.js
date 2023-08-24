@@ -167,7 +167,7 @@ async function openDelete(id) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openReport() {
+function openReportN() {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const PATH = new URL(`${SERVER_URL}reports/entrenador_fede.php`);
     // Se abre el reporte en una nueva pestaña del navegador web.

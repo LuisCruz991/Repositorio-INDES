@@ -20,7 +20,7 @@ if ($dataPrueba = $prueba->readDeportes()) {
     $pdf->cell(62, 10, 'Modalidad', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(80,87,122);
+    $pdf->setFillColor(120,161,175);
     // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Times', '', 11);
 
