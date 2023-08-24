@@ -18,7 +18,7 @@ const MODAL_TITLE = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
-const GRAPH_MODAL =  new Modal(document.getElementById('graph-modal'));;
+const GRAPH_MODAL = new Modal(document.getElementById('graph-modal'));;
 
 
 
@@ -147,13 +147,18 @@ async function fillTable(form = null) {
                     <button onclick="openDelete(${row.idatleta})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
-                  <button onclick="openReport2(${row.idatleta})" 
-                    class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
-                </td>
                   <td class="px-6 py-4">
-                    <button onclick="graficoPastelHoras(${row.idatleta})" 
-                      class=" rounded-md w-24 h-8 bg-green-200 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
+                  <button onclick="openReport2(${row.idatleta})" 
+                  class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
                   </td>
+                <td class="px-6 py-4">
+                  <button onclick="graficoPastelHoras(${row.idatleta})" 
+                    class=" rounded-md w-24 h-8 bg-green-200 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
+                </td>
+                <td class="px-6 py-4">
+                <button onclick="graficoDonutResultado(${row.idatleta})" 
+                  class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ver Resultado</button>
+              </td>
                 </tr>
 
             `;
@@ -200,7 +205,7 @@ async function openUpdate(id) {
         fillSelect(RESPONSABLE_API, 'readAll', 'responsable', JSON.dataset.idresponsable);
         fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion', JSON.dataset.idfederacion);
         fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
-        document.getElementById('clave').disabled = true ;
+        document.getElementById('clave').disabled = true;
     } else {
         sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
     }
@@ -243,7 +248,7 @@ async function graficoPastelHoras(id) {
         GRAPH_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
         // Se declaran los arreglos para guardar los datos a gráficar.
         let horas = [];
-        let nombre = [] ;
+        let nombre = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
@@ -251,9 +256,9 @@ async function graficoPastelHoras(id) {
             nombre.push(row.nombre_atleta);
         });
         // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('chart1', nombre, horas,'Horas entrenadas del atleta');
+        pieGraph('chart8', nombre, horas, 'Horas entrenadas del atleta');
     } else {
-        document.getElementById('chart1').remove();
+        document.getElementById('chart8').remove();
         console.log(JSON.exception);
     }
 }
@@ -266,4 +271,28 @@ function openReport2(id) {
 
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
+}
+
+//grafico para ver los resultados de un atleta
+async function graficoDonutResultado(id) {
+    const FORM = new FormData();
+    FORM.append('idatleta', id);
+    const JSON = await dataFetch(ATLETA_API, 'resultadoAtleta', FORM); // Obtener los datos del registro seleccionado.
+    if (JSON.status) {
+        GRAPH_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
+        // Se declaran los arreglos para guardar los datos a gráficar.
+        let posicion = [];
+        let nombre = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            posicion.push(row.posicion);
+            nombre.push(row.nombre_atleta);
+        });
+        // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
+        doughnutGraph('chart8', nombre, posicion, 'Resultados del atleta');
+    } else {
+        document.getElementById('chart8').remove();
+        console.log(JSON.exception);
+    }
 }

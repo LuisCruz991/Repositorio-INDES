@@ -93,11 +93,7 @@ class PruebasQueries
     }
 
     
-    /*
-    *   Métodos para generar reportes.
-    */
-    
-    //Reporte no parametrizado de los productos de una marca
+    //Consulta para reporte no parametrizado que muestra las pruebas por deportes
     public function readPruebaDeportes()
     {
         $sql = 'SELECT nombre_prueba, nombre_deporte, nombre_evento, nombre_modalidad

@@ -196,6 +196,7 @@ async function openDelete(id) {
     }
   }
 }
+
 // Funcion asincrona para mostrar la imagen seleccionada en el modal. 
 async function Preview(input, target) {
   let file = input.files[0];
@@ -208,3 +209,14 @@ async function Preview(input, target) {
   }
 }
 
+/*
+*   Función para abrir el reporte de entrenadores por federacion.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+function openReport() {
+  // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+  const PATH = new URL(`${SERVER_URL}reports/eventos_pais.php`);
+  // Se abre el reporte en una nueva pestaña del navegador web.
+  window.open(PATH.href);
+}

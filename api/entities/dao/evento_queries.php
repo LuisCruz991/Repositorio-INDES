@@ -41,15 +41,12 @@ class EventQueries {
         return Database::getRows($sql, $params);
      }
 
-     //  Consulta para leer los paises del eventos 
       public function readPais()
-      {
-          $sql = 'SELECT idevento,nombre_evento, descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
-                  FROM eventos INNER JOIN paises USING(idpais)
-                  INNER JOIN tipo_evento USING(idtipo_evento)';
-         $params = array($this->id);
-         return Database::getRows($sql, $params);
-      }
+     {
+         $sql = 'SELECT idpais, nombre_pais
+                 FROM paises';
+         return Database::getRows($sql);
+     }
  
  
      // Consulta para cargar los datos de un solo registro
@@ -91,5 +88,15 @@ class EventQueries {
                 FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                 GROUP BY nombre ORDER BY cantidad DESC';
         return Database::getRows($sql);   
+    }
+
+    //Consulta para reporte no parametrizado que muestra los eventos por paises
+    public function readEventoPais()
+    {
+        $sql = 'SELECT nombre_evento , descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
+        FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
+        INNER JOIN paises USING(idpais)
+        ORDER BY nombre_evento';
+        return Database::getRows($sql);
     }
 }
