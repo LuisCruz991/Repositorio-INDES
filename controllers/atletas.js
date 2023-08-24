@@ -20,6 +20,7 @@ const RECORDS = document.getElementById('records');
 
 const GRAPH_MODAL =  new Modal(document.getElementById('graph-modal'));;
 
+const GRAPH2_MODAL =  new Modal(document.getElementById('graph2-modal'));;
 
 
 // Modal de guardar.
@@ -147,6 +148,7 @@ async function fillTable(form = null) {
                     <button onclick="openDelete(${row.idatleta})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
+                <td>
                   <button onclick="openReport2(${row.idatleta})" 
                   class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
               </td>
@@ -158,8 +160,11 @@ async function fillTable(form = null) {
                 <button onclick="graficoDonutResultado(${row.idatleta})" 
                   class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ver Resultado</button>
               </td>
-                </tr>
-
+                  <td class="px-6 py-4">
+                  <button onclick="openHoras(${row.idatleta})" 
+                    class=" rounded-md w-24 h-10 bg-purple-500 font-medium text-white dark:text-blue-500 hover:underline">Ver horas cumplidas</button>
+                  </td>
+              </tr>
             `;
         });
         // Se   inicializa el componente Tooltip para que funcionen las sugerencias textuales.
@@ -255,7 +260,7 @@ async function graficoPastelHoras(id) {
             nombre.push(row.nombre_atleta);
         });
         // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('chart8', nombre, horas,'Horas entrenadas del atleta');
+        polarGraph('chart8', nombre, horas,'Horas entrenadas del atleta');
     } else {
         document.getElementById('chart8').remove();
         console.log(JSON.exception);
@@ -278,7 +283,7 @@ function openReport2(id) {
         FORM.append('idatleta', id);
         const JSON = await dataFetch(ATLETA_API, 'resultadoAtleta', FORM); // Obtener los datos del registro seleccionado.
         if (JSON.status) {
-            GRAPH_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
+            GRAPH2_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
             // Se declaran los arreglos para guardar los datos a gráficar.
             let posicion = [];
             let nombre = [] ;
@@ -289,9 +294,21 @@ function openReport2(id) {
                 nombre.push(row.nombre_atleta);
             });
             // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-            doughnutGraph('chart8', nombre, posicion,'Resultados del atleta');
+            doughnutGraph('chart1', nombre, posicion,'Resultados del atleta');
         } else {
-            document.getElementById('chart8').remove();
+            document.getElementById('chart1').remove();
             console.log(JSON.exception);
         }
     }
+
+
+
+function openHoras(id) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/horas_cumplidas.php`);
+    //Se declara el id que se enviara cuando se abra el reporte
+    PATH.searchParams.append('idatleta', id);
+
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}

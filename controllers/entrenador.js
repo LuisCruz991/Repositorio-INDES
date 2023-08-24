@@ -103,6 +103,10 @@ async function fillTable(form = null) {
                   <button onclick="openReport(${row.identrenador})" 
                     class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
                 </td>
+                <td class="px-6 py-4">
+                <button onclick="openReport2(${row.identrenador})" 
+                  class=" rounded-md w-24 h-12 bg-purple-500 font-medium text-white dark:text-blue-500 hover:underline">Ver atletas encargados</button>
+              </td>
                 </tr>
 
             `;
@@ -183,6 +187,17 @@ function openReport(id) {
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }
+
+function openReport2(id) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/entrenador_atleta.php`);
+    //Se declara el id que se enviara cuando se abra el reporte
+    PATH.searchParams.append('identrenador', id);
+
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
+
 
 
 

@@ -100,4 +100,13 @@ class entrenadorqueries {
          return Database::getRows($sql);
      }
 
+     public function atletaEntrenador () 
+     {
+        $sql = 'SELECT  nombre_atleta, nombre
+                FROM atletas INNER JOIN entrenadores USING (identrenador)
+                WHERE identrenador = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);   
+     }
+
 }
