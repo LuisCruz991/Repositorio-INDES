@@ -49,9 +49,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Pais no valido';
                 } elseif (!$evento->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion del evento no valido';
-                } elseif (!$evento->setSede($_POST['sede'])) {
-                    $result['exception'] = 'sede del evento no valida';
-                } elseif (!$evento->setFecha($_POST['fecha'])) {
+                }  elseif (!$evento->setFecha($_POST['fecha'])) {
                     $result['exception'] = 'Fecha no valida';
                 } elseif (!$evento->setHoraCierre($_POST['horaC'])) {
                     $result['exception'] = 'Hora no valida';
@@ -101,11 +99,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Pais no valido';
                 } elseif (!$evento->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion del evento no valido';
-                } elseif (!$evento->setSede($_POST['sede'])) {
-                    $result['exception'] = 'sede del evento no valida';
-                } elseif (!isset($_POST['tipo'])) {
+                }  elseif (!isset($_POST['t'])) {
                     $result['exception'] = 'Seleccione una categoria para el evento';
-                } elseif (!$evento->setTipoEvento($_POST['tipo'])) {
+                } elseif (!$evento->setTipoEvento($_POST['t'])) {
                     $result['exception'] = 'Categoria no valida';
                 } elseif (!$evento->setFecha($_POST['fecha'])) {
                     $result['exception'] = 'Fecha no valida';

@@ -75,7 +75,7 @@ async function fillTable(form = null) {
               <p class="text-base">${row.nombre_evento}</p>
             </th>
             <td class="px-6 py-4">
-              <p class="text-center  w-14 rounded-xl">${row.descripcion}</p>
+              <p class="text-left  w-14 rounded-xl">${row.descripcion}</p>
             </td>
             <td class="px-6 py-4">
               ${row.nombre}
@@ -97,6 +97,12 @@ async function fillTable(form = null) {
             </td>
              <td class="px-6 py-4">
              ${row.hora_cierre}
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <p class="text-center  w-14 rounded-xl">${row.nombre_pais}</p>
+            </td>
+            <td class="px-6 py-4">
+            <img src="${SERVER_URL}imagenes/banderas/${row.bandera}" class="materialboxed" height="100" onerror="this.src='../imagenes/notFound.png';">
             </td>
             <td >
               <button data-modal-toggle = "save-modal" class="rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline" onclick="openUpdate(${row.idevento})">

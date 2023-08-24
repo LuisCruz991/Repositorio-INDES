@@ -6,7 +6,7 @@ class EventQueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT idevento, nombre_evento, descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
+         $sql = 'SELECT idevento, nombre_evento, descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre, bandera
                  FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                  INNER JOIN paises USING(idpais)
                  WHERE nombre_evento  LIKE ?';
@@ -26,7 +26,7 @@ class EventQueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT idevento, nombre_evento , descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
+         $sql = 'SELECT idevento, nombre_evento , descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre, bandera
                  FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                  INNER JOIN paises USING(idpais)';
          return Database::getRows($sql);
@@ -35,7 +35,7 @@ class EventQueries {
     //  Consulta para leer los tipos de eventos 
      public function readTipo()
      {
-         $sql = 'SELECT idevento,nombre_evento, descripcion, fecha_evento, sede_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
+         $sql = 'SELECT idevento,nombre_evento, descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
                  FROM eventos INNER JOIN tipo_eventos USING(idtipo_evento)';
         $params = array($this->id);
         return Database::getRows($sql, $params);
@@ -44,7 +44,7 @@ class EventQueries {
      //  Consulta para leer los paises del eventos 
       public function readPais()
       {
-          $sql = 'SELECT idevento,nombre_evento, descripcion, fecha_evento, sede_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
+          $sql = 'SELECT idevento,nombre_evento, descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
                   FROM eventos INNER JOIN paises USING(idpais)
                   INNER JOIN tipo_evento USING(idtipo_evento)';
          $params = array($this->id);
@@ -55,7 +55,7 @@ class EventQueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT idevento, nombre_evento, descripcion, nombre, fecha_evento, sede_evento, idpais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, idtipo_evento
+         $sql = 'SELECT idevento, nombre_evento, descripcion, nombre, fecha_evento,  idpais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, idtipo_evento
                  FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                  INNER JOIN paises USING(idpais)
                  WHERE idevento = ?';
@@ -69,9 +69,9 @@ class EventQueries {
         ($this->imagenSede) ? Validator::deleteFile($this->getRuta(), $imagen) : $this->imagenSede = $imagen;
 
          $sql = 'UPDATE eventos  
-                 SET  nombre_evento = ?, descripcion = ?, fecha_evento = ?, imagen_sede = ?, sede_evento = ?, direccion_sede = ?, hora_inicio = ?, hora_cierre = ?, idtipo_evento = ?
+                 SET  nombre_evento = ?, descripcion = ?, fecha_evento = ?, imagen_sede = ?, idpais = ?, direccion_sede = ?, hora_inicio = ?, hora_cierre = ?, idtipo_evento = ?
                  WHERE idevento = ?';
-         $params = array($this->nombre, $this->descripcion, $this->fechaEvento,$this->imagenSede,$this->sede, $this->direccion,$this->horaInicio,$this->horaCierre,$this->tipoEvento, $this->id);
+         $params = array($this->nombre, $this->descripcion, $this->fechaEvento,$this->imagenSede,$this->pais, $this->direccion,$this->horaInicio,$this->horaCierre,$this->tipoEvento, $this->id);
          return Database::executeRow($sql, $params);
      }
  
