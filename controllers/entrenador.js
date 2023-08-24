@@ -99,6 +99,10 @@ async function fillTable(form = null) {
                     <button onclick="openDelete(${row.identrenador})" 
                       class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
                   </td>
+                  <td class="px-6 py-4">
+                  <button onclick="openReport(${row.identrenador})" 
+                    class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
+                </td>
                 </tr>
 
             `;
@@ -155,6 +159,29 @@ async function openDelete(id) {
             sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
         }
     }
+}
+
+
+/*
+*   Función para abrir el reporte de entrenadores por federacion.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+function openReport() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/entrenador_fede.php`);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
+
+function openReport(id) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/ficha_entrenador.php`);
+    //Se declara el id que se enviara cuando se abra el reporte
+    PATH.searchParams.append('identrenador', id);
+
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
 }
 
 
