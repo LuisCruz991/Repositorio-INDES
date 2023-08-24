@@ -90,7 +90,7 @@ class EventQueries {
         return Database::getRows($sql);   
     }
 
-    
+    //Consulta para reporte no parametrizado que muestra los eventos por paises
     public function readEventoPais()
     {
         $sql = 'SELECT nombre_evento , descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, hora_inicio, hora_cierre, nombre
