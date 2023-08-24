@@ -116,6 +116,15 @@ class atletaqueries {
         return Database::getRows($sql);   
     }
 
+    //Creamos la consulta para obtener la cantidad de atletas que pertenecen a una federacion
+    public function cantidadAtletasFederaciones()
+    {
+        $sql = 'SELECT nombre_atleta, COUNT(idfederacion) cantidad 
+                FROM atletas INNER JOIN federaciones USING(idfederacion)
+                GROUP BY nombre_federacion ORDER BY cantidad DESC';
+        return Database::getRows($sql);   
+    }
+
     public function readFicha()
     {
         $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_responsable ,entrenadores.nombre, nombre_federacion

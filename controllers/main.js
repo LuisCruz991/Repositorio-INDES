@@ -2,6 +2,7 @@
 const ATLETA_API = 'business/atleta.php';
 const EVENTO_API = 'business/evento.php';
 const RECORDS_API = 'business/record.php';
+const FEDERACIONES_API = 'business/federacion.php'
 
 
 
@@ -10,6 +11,7 @@ const RECORDS_API = 'business/record.php';
 graficoPastelGenero();
 graficoBarrasTipo();
 graficoBarrasAtletas();
+graficoPastelFederaciones();
 
 
 
@@ -89,3 +91,27 @@ async function graficoBarrasAtletas() {
         console.log(JSON.exception);
     }
 }
+
+async function graficoPastelFederaciones() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(FEDERACIONES_API, 'cantidadAtletasFederaciones');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let atletas = [];
+        let idfederacion = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            nombre_atleta.push(row.nombre_atleta);
+            federaciones.push(row.federaciones);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        barGraphX('chart4', nombre_atleta, federaciones, 'Atletas Federaciones');
+    } else {
+        document.getElementById('chart4').remove();
+            tipo_evento.push(row.nombre);
+            cantidades.push(row.cantidad);
+        };
+}
+ 
