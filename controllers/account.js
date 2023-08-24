@@ -233,6 +233,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div id="dropdownball"
               class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                <!-- Boton para acceder al SCRUD de federaciones -->
+                <li>
+                  <a href="../vistas/federacion_crud.html"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Federaciones</a>
+                </li>
                 <!-- Boton para acceder al SCRUD de deportes -->
                 <li>
                   <a href="../vistas/deportes_crud.html"

@@ -66,14 +66,11 @@ class PruebasQueries
     }
 
     public function readDeportes()
-    {
-        $sql = 'SELECT idprueba, nombre_prueba
-                FROM pruebas INNER JOIN deportes USING (iddeporte)
-                WHERE deportes = ? 
-                ORDER BY idprueba';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-    }
+     {
+         $sql = 'SELECT iddeporte, nombre_deporte
+                 FROM deportes';
+         return Database::getRows($sql);
+     }
     
     public function readEvento()
     {
@@ -101,14 +98,13 @@ class PruebasQueries
     */
     
     //Reporte no parametrizado de los productos de una marca
-    public function pruebasDeporte()
+    public function readPruebaDeportes()
     {
-        $sql = 'SELECT idprueba, nombre_prueba, nombre_modalidad
-                FROM pruebas INNER JOIN modalidades_deportivas USING (idmodalidad_deporte)
-                INNER JOIN deportes USING (iddeporte)
-                WHERE idprueba = ?
-                ORDER BY nombre_prueba';
-        $params = array($this->deporte);
-        return Database::getRows($sql, $params);
+        $sql = 'SELECT nombre_prueba, nombre_deporte, nombre_evento, nombre_modalidad
+        FROM pruebas INNER JOIN deportes USING (iddeporte)
+        INNER JOIN eventos USING(idevento)
+        INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
+        ORDER BY nombre_prueba';
+        return Database::getRows($sql);
     }
 }

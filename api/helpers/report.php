@@ -57,17 +57,21 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
-        $this->image('../images/logo-indes.png', 15, 15, 20);
+        $this->image('../images/logo-indes.png', 18, 12, 40);
         // Se ubica el título.
         $this->cell(20);
-        $this->setFont('Arial', 'B', 15);
+        $this->setFont('Arial', 'B', 20);
         $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
+        // Se ubica la fecha del servidor.
+        $this->cell(20);
+        $this->setFont('Arial', '', 12);
+        $this->cell(166, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'C');
         // Se ubica la fecha y hora del servidor.
         $this->cell(20);
-        $this->setFont('Arial', '', 10);
-        $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->setFont('Arial', '', 12);
+        $this->cell(166, 10, 'Hora: ' . date('H:i:s'), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
-        $this->ln(10);
+        $this->ln(15);
     }
 
     /*

@@ -6,7 +6,7 @@ class entrenadorqueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion
+         $sql = 'SELECT identrenador, nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
          FROM entrenadores INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)
          WHERE nombre  LIKE ? or apellido  LIKE ?';
@@ -17,7 +17,7 @@ class entrenadorqueries {
      // Consulta para realizar la operacion "Create"
      public function createRow()
      {
-         $sql = 'INSERT INTO entrenadores (nombre, apellido, telefono, idgenero, direccion, dui, correo, idfederacion)
+         $sql = 'INSERT INTO entrenadores (nombre, apellido, entrenadores.telefono, idgenero, entrenadores.direccion, dui, correo, idfederacion)
          VALUES (?, ?, ?, ?, ?, ?, ?,?)';
          $params = array($this->nombre, $this->apellido, $this->telefono,$this->genero, $this->direccion, $this->dui, $this->correo, $this->federacion);
          return Database::executeRow($sql, $params);
@@ -26,7 +26,7 @@ class entrenadorqueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion
+         $sql = 'SELECT identrenador,nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
          FROM entrenadores
          INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)';
@@ -51,7 +51,7 @@ class entrenadorqueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT identrenador,nombre, apellido, telefono, nombre_genero, direccion, dui, correo, nombre_federacion, idfederacion, idgenero
+         $sql = 'SELECT identrenador,nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion, idfederacion, idgenero
          FROM entrenadores
          INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)
@@ -78,4 +78,15 @@ class entrenadorqueries {
          $params = array($this->id);
          return Database::executeRow($sql, $params);
      }
+
+
+     public function readEntrenadorFederacion()
+     {
+         $sql = 'SELECT nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
+         FROM entrenadores INNER JOIN generos USING(idgenero)
+         INNER JOIN federaciones USING(idfederacion)
+         ORDER BY nombre_federacion';
+         return Database::getRows($sql);
+     }
+
 }
