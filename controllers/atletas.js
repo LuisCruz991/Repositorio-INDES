@@ -289,9 +289,9 @@ function openReport2(id) {
                 nombre.push(row.nombre_atleta);
             });
             // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-            doughnutGraph('chart1', nombre, posicion,'Resultados del atleta');
+            doughnutGraph('chart8', nombre, posicion,'Resultados del atleta');
         } else {
-            document.getElementById('chart1').remove();
+            document.getElementById('chart8').remove();
             console.log(JSON.exception);
         }
     }

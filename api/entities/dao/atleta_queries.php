@@ -73,7 +73,7 @@ class atletaqueries {
 
      public function resultadoAtleta()
      {
-         $sql = 'SELECT marca_obtenida, nombre_medida, nombre_atleta, nombre_prueba, posicion
+         $sql = 'SELECT marca_obtenida, nombre_atleta, nombre_prueba, posicion
          FROM records
          INNER JOIN atletas USING(idatleta)
          INNER JOIN pruebas USING(idprueba)
