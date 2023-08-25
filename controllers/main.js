@@ -36,7 +36,7 @@ async function graficoPastelGenero() {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('chart7', genero_atleta, cantidades, 'Cantidad de atletas', 'Cantidad de atletas por genero');
+        doughnutGraph('chart7', genero_atleta, cantidades, 'Cantidad de atletas por genero');
     } else {
         document.getElementById('chart7').remove();
         console.log(JSON.exception);
@@ -63,7 +63,7 @@ async function graficoBarrasTipo() {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraphY('chart6', tipo_evento, cantidades, 'Cantidad de productos', 'Cantidad de productos por marca');
+        barGraphY('chart6', tipo_evento, cantidades, tipo_evento ,'Cantidad de eventos por categoría');
     } else {
         document.getElementById('chart6').remove();
         console.log(JSON.exception);
@@ -99,19 +99,19 @@ async function graficoPastelFederaciones() {
     if (JSON.status) {
         // Se declaran los arreglos para guardar los datos a graficar.
         let atletas = [];
-        let idfederacion = [];
+        let federaciones = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
-            nombre_atleta.push(row.nombre_atleta);
-            federaciones.push(row.federaciones);
+            atletas.push(row.cantidad);
+            federaciones.push(row.nombre_federacion);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraphX('chart4', nombre_atleta, federaciones, 'Atletas Federaciones');
+        pieGraph('chart4', federaciones, atletas, 'Cantidad de atletas por federación');
     } else {
         document.getElementById('chart4').remove();
-            tipo_evento.push(row.nombre);
-            cantidades.push(row.cantidad);
+            atletas.push(row.cantidad);
+            federaciones.push(row.nombre_federacion);
         };
 }
  

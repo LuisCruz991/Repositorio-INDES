@@ -159,4 +159,16 @@ class atletaqueries {
         $params = array($this->id);
         return Database::getRows($sql, $params);   
     }
+
+    public function presupuestoAtleta()
+    {
+        $sql = "SELECT estimulos, preparacion_fogues,ayuda_extranjera,equipamiento,patrocinadores, otros, CONCAT(nombre_atleta, ' ', apellido_atleta) atleta
+                FROM presupuesto INNER JOIN atletas USING(idatleta) 
+                WHERE idatleta = ?";
+        $params = array($this->id);
+        return Database::getRow($sql, $params);   
+    }
+
+    
+    
 }

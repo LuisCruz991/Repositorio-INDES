@@ -86,8 +86,10 @@ class EventQueries {
     {
         $sql = 'SELECT nombre, COUNT(idevento) cantidad
                 FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
-                GROUP BY nombre ORDER BY cantidad DESC';
+                GROUP BY nombre ORDER BY cantidad DESC
+                LIMIT 5';
         return Database::getRows($sql);   
+    
     }
 
     //Consulta para reporte no parametrizado que muestra los eventos por paises

@@ -6,7 +6,7 @@ class FederacionQueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT idfederacion, nombre_federacion, siglas, direccion, telefono, logo, nombre_deporte
+         $sql = 'SELECT idfederacion, nombre_federacion, direccion, telefono, logo, nombre_deporte
                  FROM federaciones INNER JOIN deportes USING(iddeporte)
                  WHERE nombre_federacion LIKE ? or siglas LIKE ? or direccion LIKE ?';
          $params = array("%$value%", "%$value%", "%$value%");
@@ -25,7 +25,7 @@ class FederacionQueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT idfederacion, nombre_federacion , siglas, direccion, telefono, logo, nombre_deporte
+         $sql = 'SELECT idfederacion, nombre_federacion ,  direccion, telefono, logo, nombre_deporte
                  FROM federaciones INNER JOIN deportes USING(iddeporte)';
          return Database::getRows($sql);
      }
@@ -69,5 +69,14 @@ class FederacionQueries {
                  WHERE idfederacion = ?';
          $params = array($this->id);
          return Database::executeRow($sql, $params);
+     }
+
+//      consulta para generar grafico de cantidad de atletas por Federacion
+     public function cantidadAtletasFederaciones()
+     {
+         $sql = 'SELECT nombre_federacion, COUNT(idatleta) cantidad
+                 FROM atletas INNER JOIN federaciones USING(idfederacion)
+                 GROUP BY nombre_federacion ORDER BY cantidad DESC';
+         return Database::getRows($sql);   
      }
 }

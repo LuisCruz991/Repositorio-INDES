@@ -35,7 +35,7 @@ if (isset($_GET['idatleta'])) {
                 foreach ($dataAtleta as $rowDatos) {
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(90, 10, $pdf->encodeString($rowDatos['nombre_atleta']), 1, 0);
-                    $pdf->cell(90, 10, $rowDatos['horas'], 1, 0);
+                    $pdf->cell(90, 10, $rowDatos['horas'], 1, 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay informacion para mostrar'), 1, 1);

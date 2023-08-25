@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-                // Caso para usar el buscador 
+            // Caso para usar el buscador 
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -36,7 +36,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-                // Caso para realizar la insercion de datos
+            // Caso para realizar la insercion de datos
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$federacion->setNombre($_POST['nombre'])) {
@@ -64,7 +64,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                // Caso para leer los datos de un unico registro
+            // Caso para leer los datos de un unico registro
             case 'readOne':
                 if (!$federacion->setId($_POST['id'])) {
                     $result['exception'] = 'Federacion no valida';
@@ -76,7 +76,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Federacion inexistente';
                 }
                 break;
-                // Caso para realizar la operacion de actualizar un registro 
+            // Caso para realizar la operacion de actualizar un registro 
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$federacion->setId($_POST['id'])) {
@@ -93,8 +93,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Direccion del evento no valido';
                 } elseif (!$federacion->setDeporte($_POST['deporte'])) {
                     $result['exception'] = 'Deporte no valido';
-                } 
-                elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
+                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     if ($federacion->updateRow($data['logo'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Federacion actualizada correctamente';
@@ -114,13 +113,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                // Caso pra eliminar un registro 
+            // Caso pra eliminar un registro 
             case 'delete':
                 if (!$federacion->setId($_POST['idfederacion'])) {
                     $result['exception'] = 'Federacion no valida';
-                }elseif (!$data = $federacion->readOne()) {
+                } elseif (!$data = $federacion->readOne()) {
                     $result['exception'] = 'Hubó un error al tratar de leer la federacion';
-                }  elseif ($federacion->deleteRow()) {
+                } elseif ($federacion->deleteRow()) {
                     $result['status'] = 1;
                     if (Validator::deleteFile($federacion->getRuta(), $data['imagen_sede'])) {
                         $result['message'] = 'Federacion descartada de forma satisfactoría';
@@ -130,6 +129,17 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = Database::getException();
                 }
+                break;
+            case 'cantidadAtletasFederaciones':
+                if (
+                    $result['dataset'] = $federacion->cantidadAtletasFederaciones
+                    ()
+                ) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

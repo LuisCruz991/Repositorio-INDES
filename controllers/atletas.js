@@ -18,9 +18,14 @@ const MODAL_TITLE = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
-const GRAPH_MODAL = new Modal(document.getElementById('graph-modal'));;
+const GRAPH_MODAL = new Modal(document.getElementById('graph-modal'));
 
-const GRAPH2_MODAL =  new Modal(document.getElementById('graph2-modal'));;
+const GRAPH2_MODAL =  new Modal(document.getElementById('graph2-modal'));
+
+const GRAPH3_MODAL =  new Modal(document.getElementById('graph3-modal'));
+
+const GRAPH_FORM = document.getElementById('graph-form');
+
 
 
 // Modal de guardar.
@@ -162,7 +167,11 @@ async function fillTable(form = null) {
               </td>
                   <td class="px-6 py-4">
                   <button onclick="openHoras(${row.idatleta})" 
-                    class=" rounded-md w-24 h-10 bg-purple-500 font-medium text-white dark:text-blue-500 hover:underline">Ver horas cumplidas</button>
+                    class=" rounded-md w-24 h-16 bg-purple-500 font-medium text-white dark:text-blue-500 hover:underline">Ver horas cumplidas</button>
+                  </td>
+                  <td class="px-6 py-4">
+                  <button onclick="graficoBarrasPresupuesto(${row.idatleta})" 
+                    class=" rounded-md w-24 h-16 bg-yellow-400 font-medium text-white dark:text-blue-500 hover:underline">Visualizar presupuesto</button>
                   </td>
               </tr>
             `;
@@ -297,6 +306,25 @@ function openReport2(id) {
             doughnutGraph('chart1', nombre, posicion,'Resultados del atleta');
         } else {
             document.getElementById('chart1').remove();
+            console.log(JSON.exception);
+        }
+    }
+
+    async function  graficoBarrasPresupuesto(id) {
+        const FORM = new FormData();
+        FORM.append('idatleta', id);
+        const JSON = await dataFetch(ATLETA_API, 'presupuestoAtleta', FORM); // Obtener los datos del registro seleccionado.
+        if (JSON.status) {
+            GRAPH3_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
+            // Se declaran los arreglos para guardar los datos a gráficar.
+            const DATA = JSON.dataset;
+            let inversiones = ['Estimulos', 'Fogueo', 'Ayuda', 'Equipamiento', 'Patrocinadore', 'Otro'];
+            let montos = [DATA.estimulos, DATA.preparacion_fogues, DATA.ayuda_extranjera, DATA.equipamiento, DATA.patrocinadores, DATA.otros] ;
+            // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
+            barGraphX('chart9', inversiones, montos,'Resultados del atleta','Presupuesto del atleta: ' + DATA.atleta);
+        } else {
+            GRAPH_FORM.reset(); // Restaurar los elementos del formulario.
+            document.getElementById('chart9').remove();
             console.log(JSON.exception);
         }
     }
