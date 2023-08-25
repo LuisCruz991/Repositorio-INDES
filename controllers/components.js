@@ -342,7 +342,13 @@ function barGraphX(canvas, xAxis, yAxis, legend, title) {
     });
 }
 
-function doughnutGraph(canvas, legends, values, title) {
+/*
+*   Función para generar un gráfico de pastel.
+*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+
+function pieGraph(canvas, legends, values, title){
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
@@ -353,7 +359,7 @@ function doughnutGraph(canvas, legends, values, title) {
     const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
     const chart = new Chart(context, {
-        type: 'doughnut',
+        type: 'pie',
         data: {
             labels: legends,
             datasets: [{

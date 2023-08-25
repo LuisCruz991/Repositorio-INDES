@@ -18,7 +18,7 @@ const MODAL_TITLE = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
-const GRAPH_MODAL =  new Modal(document.getElementById('graph-modal'));;
+const GRAPH_MODAL = new Modal(document.getElementById('graph-modal'));;
 
 const GRAPH2_MODAL =  new Modal(document.getElementById('graph2-modal'));;
 
@@ -151,7 +151,7 @@ async function fillTable(form = null) {
                 <td>
                   <button onclick="openReport2(${row.idatleta})" 
                   class=" rounded-md w-24 h-8 bg-blue-500 font-medium text-white dark:text-blue-500 hover:underline">Ficha</button>
-              </td>
+                  </td>
                 <td class="px-6 py-4">
                   <button onclick="graficoPastelHoras(${row.idatleta})" 
                     class=" rounded-md w-24 h-8 bg-green-200 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
@@ -209,7 +209,7 @@ async function openUpdate(id) {
         fillSelect(RESPONSABLE_API, 'readAll', 'responsable', JSON.dataset.idresponsable);
         fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion', JSON.dataset.idfederacion);
         fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
-        document.getElementById('clave').disabled = true ;
+        document.getElementById('clave').disabled = true;
     } else {
         sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
     }
@@ -252,7 +252,7 @@ async function graficoPastelHoras(id) {
         GRAPH_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
         // Se declaran los arreglos para guardar los datos a gráficar.
         let horas = [];
-        let nombre = [] ;
+        let nombre = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
@@ -275,7 +275,7 @@ function openReport2(id) {
 
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
-    }
+}
 
     //grafico para ver los resultados de un atleta
     async function graficoDonutResultado(id) {

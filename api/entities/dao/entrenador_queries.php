@@ -90,7 +90,7 @@ class entrenadorqueries {
          return Database::executeRow($sql, $params);
      }
 
-
+     //Consulta para reporte no parametrizado que muestra los entrenadores por federacion
      public function readEntrenadorFederacion()
      {
          $sql = 'SELECT nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
