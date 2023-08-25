@@ -191,6 +191,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Evento para ejecutar la consulta de las horas cumplidas de un Atleta
             case 'horaAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
@@ -202,6 +203,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
+                // Evento para ejecutar la consulta sobre los resultados de un atleta
             case 'resultadoAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
@@ -213,10 +215,23 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
+                // Evento para ejecutar la consulta para saber el presupuesto de un atleta
             case 'presupuestoAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
                 } elseif ($result['dataset'] = $atleta->presupuestoAtleta()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al leer el atleta';
+                }
+                break;
+                // Evento para ejecutar la consulta y obtener los datos de las marcas de un atleta
+            case 'marcaAtleta':
+                if (!$atleta->setId($_POST['idatleta'])) {
+                    $result['exception'] = 'Atleta invalido';
+                } elseif ($result['dataset'] = $atleta->atletaMarcas()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();

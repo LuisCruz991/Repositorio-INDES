@@ -295,6 +295,7 @@ function pieGraph(canvas, legends, values, title) {
     });
 }
 
+// Funcion para genrar un grafico de barras vertical
 function barGraphX(canvas, xAxis, yAxis, legend, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
@@ -342,12 +343,8 @@ function barGraphX(canvas, xAxis, yAxis, legend, title) {
     });
 }
 
-/*
-*   Función para generar un gráfico de pastel.
-*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
-*   Retorno: ninguno.
-*/
 
+// Funcion para genrar un grafico de dona 
 function doughnutGraph(canvas, legends, values, title){
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
@@ -378,6 +375,7 @@ function doughnutGraph(canvas, legends, values, title){
     });
 }
 
+// Funcion para generar greficos polares 
 function polarGraph(canvas, legends, values, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
@@ -402,6 +400,54 @@ function polarGraph(canvas, legends, values, title) {
                 title: {
                     display: true,
                     text: title
+                }
+            }
+        }
+    });
+}
+
+// Funcion para generar graficos de lineas 
+function lineGraph(canvas, xAxis, yAxis, legend, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    xAxis.forEach(() => {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    });
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
+    const chart = new Chart(context, {
+        type: 'line',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                borderColor: '#000000',
+                borderWidth: 1,
+                backgroundColor: colors,
+                barPercentage: 1
+            }]
+        },
+        options: {
+            aspectRatio: 1,
+            indexAxis: 'x', // Cambiamos la orientación del gráfico a horizontalBar
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1
+                    }
                 }
             }
         }

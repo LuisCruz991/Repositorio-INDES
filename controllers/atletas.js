@@ -17,14 +17,17 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-
+// Constante del modal para acceder al grafco parametrizado
 const GRAPH_MODAL = new Modal(document.getElementById('graph-modal'));
 
+// Constante del modal para acceder al grafco parametrizado
 const GRAPH2_MODAL =  new Modal(document.getElementById('graph2-modal'));
 
+// Constante del modal para acceder al grafco parametrizado
 const GRAPH3_MODAL =  new Modal(document.getElementById('graph3-modal'));
 
-const GRAPH_FORM = document.getElementById('graph-form');
+// Constante del modal para acceder al grafco parametrizado
+const GRAPH4_MODAL =  new Modal(document.getElementById('graph4-modal'));
 
 
 
@@ -159,7 +162,7 @@ async function fillTable(form = null) {
                   </td>
                 <td class="px-6 py-4">
                   <button onclick="graficoPastelHoras(${row.idatleta})" 
-                    class=" rounded-md w-24 h-8 bg-green-200 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
+                    class=" rounded-md w-24 h-8 bg-green-400 font-medium text-white dark:text-blue-500 hover:underline">Ver horas</button>
                 </td>
                 <td class="px-6 py-4">
                 <button onclick="graficoDonutResultado(${row.idatleta})" 
@@ -172,6 +175,10 @@ async function fillTable(form = null) {
                   <td class="px-6 py-4">
                   <button onclick="graficoBarrasPresupuesto(${row.idatleta})" 
                     class=" rounded-md w-24 h-16 bg-yellow-400 font-medium text-white dark:text-blue-500 hover:underline">Visualizar presupuesto</button>
+                  </td>
+                  <td class="px-6 py-4">
+                  <button onclick="graficoMarcas(${row.idatleta})" 
+                    class=" rounded-md w-24 h-16 bg-pink-400 font-medium text-white dark:text-blue-500 hover:underline">Ver marcas obtenidas</button>
                   </td>
               </tr>
             `;
@@ -253,6 +260,7 @@ function openReport() {
     window.open(PATH.href);
 }
 
+// Funcion asincrona para generar un grafico de las horas entrenadas de una atleta 
 async function graficoPastelHoras(id) {
     const FORM = new FormData();
     FORM.append('idatleta', id);
@@ -310,6 +318,7 @@ function openReport2(id) {
         }
     }
 
+    // Funcion asincrona para generar el grafico parametrizado del presupueto de un atleta
     async function  graficoBarrasPresupuesto(id) {
         const FORM = new FormData();
         FORM.append('idatleta', id);
@@ -329,8 +338,32 @@ function openReport2(id) {
         }
     }
 
+// Grafico de linea recopilando las marcas obtenidas por un atleta 
+    async function  graficoMarcas(id) {
+        const FORM = new FormData();
+        FORM.append('idatleta', id);
+        const JSON = await dataFetch(ATLETA_API, 'marcaAtleta', FORM); // Obtener los datos del registro seleccionado.
+        if (JSON.status) {
+            GRAPH4_MODAL.show(); // Abrir la caja de diálogo que contiene el formulario.
+            // Se declaran los arreglos para guardar los datos a gráficar.
+            const DATA = JSON.dataset;
+            let nombre = [];
+            let marca = [] ;
+            // Se recorre el conjunto de registros fila por fila a través del objeto row.
+            JSON.dataset.forEach(row => {
+                // Se agregan los datos a los arreglos.
+                marca.push(row.marca_obtenida);
+                nombre.push(row.nombre_atleta);
+            });
+            // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
+            lineGraph('chart4', nombre, marca,'Marca','Marcas de un atleta');
+        } else {
+            document.getElementById('chart4').remove();
+            console.log(JSON.exception);
+        }
+    }
 
-
+// Funcion para abrir el reporte de las horas cumplidas de entrenamiento de un atleta
 function openHoras(id) {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const PATH = new URL(`${SERVER_URL}reports/horas_cumplidas.php`);

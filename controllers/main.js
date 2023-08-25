@@ -63,13 +63,14 @@ async function graficoBarrasTipo() {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraphY('chart6', tipo_evento, cantidades, tipo_evento ,'Cantidad de eventos por categoría');
+        pieGraph('chart6', tipo_evento, cantidades,'Cantidad de eventos por categoría');
     } else {
         document.getElementById('chart6').remove();
         console.log(JSON.exception);
     }
 }
 
+// funcion para generar el grafico de los atletas con mas titulos
 async function graficoBarrasAtletas() {
     // Petición para obtener los datos del gráfico.
     const JSON = await dataFetch(RECORDS_API, 'readAtletasTitulos');
@@ -92,6 +93,7 @@ async function graficoBarrasAtletas() {
     }
 }
 
+// Funcion para generar el grafico de la cantidad de atletas por federacione 
 async function graficoPastelFederaciones() {
     // Petición para obtener los datos del gráfico.
     const JSON = await dataFetch(FEDERACIONES_API, 'cantidadAtletasFederaciones');
@@ -107,7 +109,7 @@ async function graficoPastelFederaciones() {
             federaciones.push(row.nombre_federacion);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        pieGraph('chart4', federaciones, atletas, 'Cantidad de atletas por federación');
+        barGraphY('chart4', federaciones, atletas ,'Numero de atletas','Cantidad de atletas por federación');
     } else {
         document.getElementById('chart4').remove();
             atletas.push(row.cantidad);

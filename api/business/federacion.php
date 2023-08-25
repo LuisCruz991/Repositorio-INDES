@@ -130,6 +130,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Evento para obtener todos los atletas que pertenecen a cada federacion 
             case 'cantidadAtletasFederaciones':
                 if (
                     $result['dataset'] = $federacion->cantidadAtletasFederaciones

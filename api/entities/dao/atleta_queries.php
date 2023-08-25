@@ -45,7 +45,7 @@ class atletaqueries {
          return Database::getRows($sql);
      }
 
-
+    //  Consulta para obtener todos los atletas y ordenarlos por federacion
      public function readAtletasFederacion()
      {
          $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, atletas.dui, celular, atletas.correo, nombre_federacion,entrenadores.nombre
@@ -71,6 +71,7 @@ class atletaqueries {
          return Database::getRows($sql);
      }
 
+    //  Consulta para obtener los resultados obtenidos por un atleta 
      public function resultadoAtleta()
      {
          $sql = 'SELECT marca_obtenida, nombre_atleta, nombre_prueba, posicion
@@ -138,6 +139,7 @@ class atletaqueries {
         return Database::getRows($sql);   
     }
 
+    // Consulta para obtener la ficha de atleta
     public function readFicha()
     {
         $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_responsable ,entrenadores.nombre, nombre_federacion
@@ -151,6 +153,7 @@ class atletaqueries {
         return Database::getRows($sql, $params);
     }
 
+    // Consulta para obtener las horas de entrenamiento cumplidas por atleta
     public function horasAtleta()
     {
         $sql = 'SELECT  SUM(hora_cierre - hora_inicio) as horas, nombre_atleta, idatleta 
@@ -160,6 +163,7 @@ class atletaqueries {
         return Database::getRows($sql, $params);   
     }
 
+    // Consulta para obtener el presupuesto de un atleta
     public function presupuestoAtleta()
     {
         $sql = "SELECT estimulos, preparacion_fogues,ayuda_extranjera,equipamiento,patrocinadores, otros, CONCAT(nombre_atleta, ' ', apellido_atleta) atleta
@@ -169,6 +173,15 @@ class atletaqueries {
         return Database::getRow($sql, $params);   
     }
 
-    
+    // Consulta para obtener las marcas de un atleta 
+    public function atletaMarcas () 
+    {
+       $sql = "SELECT  marca_obtenida, nombre_atleta 
+               FROM records INNER JOIN atletas USING (idatleta)
+               WHERE idatleta = ?";
+       $params = array($this->id);
+       return Database::getRows($sql, $params);   
+    }
+
     
 }
