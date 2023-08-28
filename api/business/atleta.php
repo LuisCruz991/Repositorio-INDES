@@ -129,9 +129,9 @@ if (isset($_GET['action'])) {
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$atleta->setId($_POST['id'])) {
-                    $result['exception'] = 'Deporte invalido';
+                    $result['exception'] = 'Atleta no valido';
                 } elseif (!$data = $atleta->readOne()) {
-                    $result['exception'] = 'Ocurrió un problema al leer el deporte';
+                    $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 } elseif (!$atleta->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre del atleta no valido';
                 } elseif (!$atleta->setApellido($_POST['apellido'])) {
@@ -174,7 +174,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Entrenador no valida';
                 } elseif ($atleta->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Deporte actualizado exitosamente';
+                    $result['message'] = 'atleta actualizado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

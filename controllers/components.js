@@ -237,7 +237,7 @@ function barGraphY(canvas, xAxis, yAxis, legend, title) {
             }]
         },
         options: {
-            aspectRatio: 1,
+            // aspectRatio: 1, 
             indexAxis: 'y', // Cambiamos la orientación del gráfico a horizontalBar
             plugins: {
                 title: {

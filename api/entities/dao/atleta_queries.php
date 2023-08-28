@@ -176,9 +176,11 @@ class atletaqueries {
     // Consulta para obtener las marcas de un atleta 
     public function atletaMarcas () 
     {
-       $sql = "SELECT  marca_obtenida, nombre_atleta 
-               FROM records INNER JOIN atletas USING (idatleta)
-               WHERE idatleta = ?";
+       $sql = "SELECT  marca_obtenida, nombre_prueba , CONCAT(nombre_atleta, ' ', apellido_atleta) atleta
+                FROM records 
+                INNER JOIN pruebas USING (idprueba) 
+                INNER JOIN atletas USING (idatleta)
+                WHERE idatleta = ?";
        $params = array($this->id);
        return Database::getRows($sql, $params);   
     }
