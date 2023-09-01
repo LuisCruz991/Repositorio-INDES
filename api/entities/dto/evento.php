@@ -11,8 +11,6 @@ class Event extends EventQueries  {
     protected $fechaEvento = null ;
     protected $pais = null ;
     protected $direccion = null ;
-    protected $horaInicio = null ;
-    protected $horaCierre = null ;
     protected $tipoEvento = null ;
     protected $imagenSede = null;
     protected $ruta = '../imagenes/eventos/';
@@ -97,25 +95,6 @@ class Event extends EventQueries  {
             return false;
         }
     }
-    public function setHoraInicio($value)
-    {
-        if (Validator::validateAlphanumeric($value,1,20)) {
-            $this->horaInicio = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setHoraCierre($value)
-    {
-        if (Validator::validateAlphanumeric($value,1,20)) {
-            $this->horaCierre = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function setTipoEvento($value)
     {
@@ -157,15 +136,7 @@ class Event extends EventQueries  {
         return $this->direccion;
     }
 
-    public function getHoraInicio()
-    {
-        return $this->horaInicio;
-    }
 
-    public function getHoraCierre()
-    {
-        return $this->horaCierre;
-    }
 
     public function getTipoEvento() 
     {
