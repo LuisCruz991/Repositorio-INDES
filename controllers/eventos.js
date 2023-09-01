@@ -92,12 +92,6 @@ async function fillTable(form = null) {
             <td class="px-6 py-4">
             <img src="${SERVER_URL}imagenes/eventos/${row.imagen_sede}" class="materialboxed" height="100" onerror="this.src='../imagenes/notFound.png';">
             </td>
-            <td class="px-6 py-4">
-            ${row.hora_inicio}
-            </td>
-             <td class="px-6 py-4">
-             ${row.hora_cierre}
-            </td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <p class="text-center  w-14 rounded-xl">${row.nombre_pais}</p>
             </td>
@@ -162,8 +156,6 @@ async function openUpdate(id) {
     document.getElementById('fecha').value = JSON.dataset.fecha_evento;
     fillSelect(PAIS_API, 'readAll', 'pais', JSON.dataset.idpais);
     document.getElementById('direccion').value = JSON.dataset.direccion_sede;
-    document.getElementById('horaI').value = JSON.dataset.hora_inicio;
-    document.getElementById('horaC').value = JSON.dataset.hora_cierre;
     document.getElementById('archivo').required = false;
   } else {
     sweetAlert(2, JSON.exception, false);

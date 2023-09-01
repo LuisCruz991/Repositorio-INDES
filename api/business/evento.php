@@ -51,11 +51,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Direccion del evento no valido';
                 }  elseif (!$evento->setFecha($_POST['fecha'])) {
                     $result['exception'] = 'Fecha no valida';
-                } elseif (!$evento->setHoraCierre($_POST['horaC'])) {
-                    $result['exception'] = 'Hora no valida';
-                } elseif (!$evento->setHoraInicio($_POST['horaI'])) {
-                    $result['exception'] = 'Hora no valida';
-                } elseif (!$evento->setTipoEvento($_POST['t'])) {
+                }  elseif (!$evento->setTipoEvento($_POST['t'])) {
                     $result['exception'] = 'Categoria no valida';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
@@ -105,11 +101,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Categoria no valida';
                 } elseif (!$evento->setFecha($_POST['fecha'])) {
                     $result['exception'] = 'Fecha no valida';
-                } elseif (!$evento->setHoraCierre($_POST['horaC'])) {
-                    $result['exception'] = 'Hora no valida';
-                } elseif (!$evento->setHoraInicio($_POST['horaI'])) {
-                    $result['exception'] = 'Hora no valida';
-                }
+                } 
                 elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     if ($evento->updateRow($data['imagen_sede'])) {
                         $result['status'] = 1;
