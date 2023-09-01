@@ -351,8 +351,11 @@ CREATE TABLE `records` (
 CREATE TABLE `responsables` (
   `idresponsable` int(11) NOT NULL COMMENT 'ID del responsable del atleta',
   `nombre_responsable` varchar(50) DEFAULT NULL COMMENT 'Nombre del responsable del atleta',
+  `apellido_responsable` varchar(50) DEFAULT NULL COMMENT 'Apellido del responsable del atleta',
   `direccion` varchar(200) DEFAULT NULL COMMENT 'Direccion del responsable del atleta',
   `telefono` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del responsable del atleta',
+  `dui` varchar(10) DEFAULT NULL COMMENT 'DUI del responsable del atleta',
+  `oficio` varchar(40) DEFAULT NULL COMMENT 'Oficio del responsable del atleta',
   `idparentesco` int(11) NOT NULL COMMENT 'Parentesco del responsable con el atleta'
 );
 
