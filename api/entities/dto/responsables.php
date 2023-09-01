@@ -9,8 +9,11 @@ class Responsable extends ResponsableQueries
     // Declaración de atributos (propiedades).
     protected $id = null;
     protected $nombre = null;
+    protected $apellido = null;
     protected $direccion = null;
     protected $telefono = null;
+    protected $dui = null;
+    protected $oficio = null;
     protected $parentesco = null;
 
     /*
@@ -36,6 +39,16 @@ class Responsable extends ResponsableQueries
         }
     }
 
+    public function setApellido($value)
+    {
+        if (Validator::validateString($value, 1, 50)) {
+            $this->apellido = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setDireccion($value)
     {
         if (Validator::validateString($value, 1, 50)) {
@@ -50,6 +63,25 @@ class Responsable extends ResponsableQueries
     {
         if (Validator::validatePhone($value, 1, 50)) {
             $this->telefono = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDUI($value) {
+        if (Validator::validateDUI($value)) {
+            $this->dui = $value;
+            return true;
+        } else {
+            return false;
+        }    
+    }
+
+    public function setOficio($value)
+    {
+        if (Validator::validateString($value, 1, 50)) {
+            $this->oficio = $value;
             return true;
         } else {
             return false;
@@ -79,6 +111,11 @@ class Responsable extends ResponsableQueries
         return $this->nombre;
     }
 
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
     public function getDireccion()
     {
         return $this->direccion;
@@ -87,6 +124,16 @@ class Responsable extends ResponsableQueries
     public function getTelefono()
     {
         return $this->telefono;
+    }
+
+    public function getDui()
+    {
+        return $this->dui;
+    }
+
+    public function getOficio()
+    {
+        return $this->oficio;
     }
 
     public function getParentesco()

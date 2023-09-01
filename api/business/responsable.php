@@ -39,10 +39,16 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$responsable->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
+                }  elseif (!$responsable->setApellido($_POST['apellido'])) {
+                    $result['exception'] = 'Apellido incorrecto';
                 }  elseif (!$responsable->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecta';
                 }  elseif (!$responsable->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Telefono incorrecto';
+                }  elseif (!$responsable->setDUI($_POST['dui'])) {
+                    $result['exception'] = 'DUI incorrecto';
+                }  elseif (!$responsable->setOficio($_POST['oficio'])) {
+                    $result['exception'] = 'Oficio incorrecto';
                 }  elseif (!$responsable->setParentesco($_POST['parentesco'])) {
                     $result['exception'] = 'Parentesco incorrecto';
                 }  elseif ($responsable->createRow()) {
@@ -71,10 +77,16 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Ocurrió un problema al leer los responsables';
                     } elseif (!$responsable->setNombre($_POST['nombre'])) {
                         $result['exception'] = 'Nombre incorrecto';
+                    } elseif (!$responsable->setApellido($_POST['apellido'])) {
+                        $result['exception'] = 'Apellido incorrecto';
                     } elseif (!$responsable->setDireccion($_POST['direccion'])) {
                         $result['exception'] = 'Direccion incorrecta';
                     } elseif (!$responsable->setTelefono($_POST['telefono'])) {
                         $result['exception'] = 'Telefono incorrecito';
+                    } elseif (!$responsable->setDUI($_POST['dui'])) {
+                        $result['exception'] = 'DUI incorrecto';
+                    } elseif (!$responsable->setOficio($_POST['oficio'])) {
+                        $result['exception'] = 'Oficio incorrecto';
                     } elseif (!$responsable->setParentesco($_POST['parentesco'])) {
                         $result['exception'] = 'Parentesco incorrecto';
                     } elseif ($responsable->updateRow()) {
