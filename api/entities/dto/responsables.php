@@ -126,7 +126,7 @@ class Responsable extends ResponsableQueries
         return $this->telefono;
     }
 
-    public function getDui()
+    public function getDUI()
     {
         return $this->dui;
     }

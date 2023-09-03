@@ -38,6 +38,10 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$prueba->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
+                }  elseif (!$prueba->setHoraInicio($_POST['hora_inicio'])) {
+                    $result['exception'] = 'Hora de inicio incorrecta';
+                }  elseif (!$prueba->setEstimado($_POST['estimado'])) {
+                    $result['exception'] = 'Tiempo estimado incorrecto';
                 }  elseif (!$prueba->setDeporte($_POST['deporte'])) {
                     $result['exception'] = 'Deporte incorrecto';
                 }  elseif (!$prueba->setEvento($_POST['evento'])) {
@@ -70,7 +74,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Prueba inexistente';
                 } elseif (!$prueba->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$prueba->setDeporte($_POST['deporte'])) {
+                } elseif (!$prueba->setHoraInicio($_POST['hora_inicio'])) {
+                    $result['exception'] = 'Hora de inicio incorrecta';
+                }  elseif (!$prueba->setEstimado($_POST['estimado'])) {
+                    $result['exception'] = 'Tiempo estimado incorrecto';
+                }  elseif (!$prueba->setDeporte($_POST['deporte'])) {
                     $result['exception'] = 'Deporte incorrecto';
                 }  elseif (!$prueba->setEvento($_POST['evento'])) {
                     $result['exception'] = 'Evento incorrecto';

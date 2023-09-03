@@ -10,7 +10,7 @@ class PruebasQueries
     */
     public function searchRows($value)
     {
-        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento, nombre_modalidad
+        $sql = ' SELECT idprueba, nombre_prueba, hora_inicio, duracion_estimada, nombre_deporte, nombre_evento, nombre_modalidad
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
         INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
@@ -23,7 +23,7 @@ class PruebasQueries
  
     public function readAll()
     {
-        $sql = ' SELECT idprueba, nombre_prueba, nombre_deporte, nombre_evento, nombre_modalidad
+        $sql = ' SELECT idprueba, nombre_prueba, hora_inicio, duracion_estimada, nombre_deporte, nombre_evento, nombre_modalidad
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
         INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
@@ -33,7 +33,7 @@ class PruebasQueries
 
     public function readOne()
     {
-        $sql = 'SELECT idprueba, nombre_prueba, iddeporte, idevento, idmodalidad_deporte
+        $sql = 'SELECT idprueba, nombre_prueba, hora_inicio, duracion_estimada, iddeporte, idevento, idmodalidad_deporte
                 FROM pruebas
                 WHERE idprueba = ?';
         $params = array($this->id);
@@ -42,9 +42,9 @@ class PruebasQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO pruebas(nombre_prueba, iddeporte, idevento, idmodalidad_deporte)
-                VALUES(?,?,?,?)';
-        $params = array($this->nombre, $this->deporte, $this->evento, $this->modalidad);
+        $sql = 'INSERT INTO pruebas(nombre_prueba, hora_inicio, duracion_estimada, iddeporte, idevento, idmodalidad_deporte)
+                VALUES(?,?,?,?,?,?)';
+        $params = array($this->nombre, $this->horaInicio, $this->estimado, $this->deporte, $this->evento, $this->modalidad);
         return Database::executeRow($sql, $params);
     }
 
@@ -96,7 +96,7 @@ class PruebasQueries
     //Consulta para reporte no parametrizado que muestra las pruebas por deportes
     public function readPruebaDeportes()
     {
-        $sql = 'SELECT nombre_prueba, nombre_deporte, nombre_evento, nombre_modalidad
+        $sql = 'SELECT nombre_prueba, hora_inicio, duracion_estimada, nombre_deporte, nombre_evento, nombre_modalidad
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
         INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)

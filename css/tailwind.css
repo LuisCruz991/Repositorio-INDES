@@ -1116,6 +1116,10 @@ input:checked + .toggle-bg {
   margin-bottom: 1.5rem;
 }
 
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -1535,6 +1539,11 @@ input:checked + .toggle-bg {
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
+.border-purple-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(108 43 217 / var(--tw-border-opacity));
+}
+
 .bg-azul-1 {
   --tw-bg-opacity: 1;
   background-color: rgb(107 114 142 / var(--tw-bg-opacity));
@@ -1583,6 +1592,11 @@ input:checked + .toggle-bg {
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+
+.bg-purple-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(144 97 249 / var(--tw-bg-opacity));
 }
 
 .bg-red-500 {
@@ -1635,6 +1649,10 @@ input:checked + .toggle-bg {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .p-6 {
@@ -1896,6 +1914,11 @@ input:checked + .toggle-bg {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-purple-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(85 33 181 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-red-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(155 28 28 / var(--tw-bg-opacity));
@@ -1962,6 +1985,11 @@ input:checked + .toggle-bg {
   --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity));
 }
 
+.focus\:ring-purple-300:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(202 191 253 / var(--tw-ring-opacity));
+}
+
 .focus\:ring-red-300:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(248 180 180 / var(--tw-ring-opacity));
@@ -2009,6 +2037,11 @@ input:checked + .toggle-bg {
 .dark .dark\:bg-gray-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-purple-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(126 58 242 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:text-blue-500 {
@@ -2065,6 +2098,11 @@ input:checked + .toggle-bg {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
+.dark .dark\:hover\:bg-purple-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(108 43 217 / var(--tw-bg-opacity));
+}
+
 .dark .dark\:hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -2093,6 +2131,11 @@ input:checked + .toggle-bg {
 .dark .dark\:focus\:ring-gray-600:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(75 85 99 / var(--tw-ring-opacity));
+}
+
+.dark .dark\:focus\:ring-purple-800:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(85 33 181 / var(--tw-ring-opacity));
 }
 
 .dark .dark\:focus\:ring-red-800:focus {

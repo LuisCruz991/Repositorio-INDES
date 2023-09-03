@@ -39,7 +39,7 @@ class ResponsableQueries
     public function createRow()
     {
         $sql = 'INSERT INTO responsables(nombre_responsable, apellido_responsable, direccion, telefono, dui, oficio, idparentesco)
-                VALUES(?,?,?,?)';
+                VALUES(?,?,?,?,?,?,?)';
         $params = array($this->nombre, $this->apellido, $this->direccion, $this->telefono,  $this->dui,  $this->oficio, $this->parentesco);
         return Database::executeRow($sql, $params);
     }

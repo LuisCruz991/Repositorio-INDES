@@ -181,6 +181,23 @@
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Nombre" required>
                       </div>
+                      <!-- Campo para ingresar la hora de inicio -->
+                      <div>
+                        <label for="Hora" 
+                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora de
+                          inicio</label>
+                        <input type="text" id="hora_inicio" name="hora_inicio"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="00:00:00" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" required>
+                      </div>
+                      <div>
+                        <!-- Campo para ingresar el tiempo estimado de la prueba en la tabla -->
+                        <label for="estimado"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duracion estimada</label>
+                        <input type="time" id="estimado" name="estimado"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Tiempo estimado de la prueba" required>
+                      </div>
                       <div>
                         <!-- Campo para ingresar un deporte en la tabla -->
                         <label for="deporte"
@@ -236,6 +253,16 @@
                     <!-- Campo de nombre de prueba en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Nombre
+                    </th>
+
+                    <!-- Campo de la hora de inicio de prueba en la tabla -->
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Hora de inicio
+                    </th>
+
+                    <!-- Campo de duracion estimada de prueba en la tabla -->
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Duracion estimada
                     </th>
 
                     <!-- Campo de deporte en la tabla -->
