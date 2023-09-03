@@ -9,6 +9,8 @@ class Prueba extends PruebasQueries
     // Declaración de atributos (propiedades).
     protected $id = null;
     protected $nombre = null;
+    protected $horaInicio = null;
+    protected $estimado = null;
     protected $deporte = null;
     protected $evento = null;
     protected $modalidad = null;
@@ -30,6 +32,26 @@ class Prueba extends PruebasQueries
     {
         if (Validator::validateString($value, 1, 50)) {
             $this->nombre = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setHoraInicio($value)
+    {
+        if (Validator::validateAlphanumeric($value,1,20)) {
+            $this->horaInicio = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstimado($value)
+    {
+        if (Validator::validateAlphanumeric($value,1,20)) {
+            $this->estimado = $value;
             return true;
         } else {
             return false;
@@ -76,6 +98,16 @@ class Prueba extends PruebasQueries
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    public function getHorainicio()
+    {
+        return $this->horaInicio;
+    }
+
+    public function getEstimado()
+    {
+        return $this->estimado;
     }
 
     public function getDeporte()
