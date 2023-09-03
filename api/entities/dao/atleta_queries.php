@@ -74,11 +74,11 @@ class atletaqueries {
     //  Consulta para obtener los resultados obtenidos por un atleta 
      public function resultadoAtleta()
      {
-         $sql = 'SELECT marca_obtenida, nombre_atleta, nombre_prueba, posicion
+         $sql = 'SELECT nombre_prueba, posicion
          FROM records
-         INNER JOIN atletas USING(idatleta)
          INNER JOIN pruebas USING(idprueba)
-         WHERE idatleta = ?';
+         WHERE idatleta = ?
+         ORDER BY posicion ASC';
          $params = array($this->id);
          return Database::getRows($sql, $params);
      }
@@ -88,13 +88,13 @@ class atletaqueries {
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, entrenadores.nombre, atletas.clave, atletas.idgenero, idresponsable, identrenador,atletas.idfederacion
+         $sql = "SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, entrenadores.nombre, atletas.clave, atletas.idgenero, idresponsable, identrenador,atletas.idfederacion,CONCAT(nombre_atleta, ' ', apellido_atleta) as nombre_completo
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
          INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
-         WHERE idatleta = ?';
+         WHERE idatleta = ?";
          $params = array($this->id);
          return Database::getRow($sql, $params);
      }
@@ -156,10 +156,19 @@ class atletaqueries {
     // Consulta para obtener las horas de entrenamiento cumplidas por atleta
     public function horasAtleta()
     {
-        $sql = 'SELECT  SUM(hora_cierre - hora_inicio) as horas, nombre_atleta, idatleta 
-                FROM entrenamientos INNER JOIN atletas USING (idatleta)
-                WHERE idatleta = ?';
+        $sql = 'SELECT  hora_inicio, hora_cierre,(hora_cierre - hora_inicio) as horas, lugar_entreno, fecha_entreno 
+                FROM entrenamientos 
+                WHERE idatleta =  ?';
         $params = array($this->id);
+        return Database::getRows($sql, $params);   
+    }
+
+    public function horasAtleta2()
+    {
+         $sql = 'SELECT (hora_cierre - hora_inicio) as horas, fecha_entreno
+                FROM entrenamientos
+                WHERE idatleta = ? ';
+            $params = array($this->id);
         return Database::getRows($sql, $params);   
     }
 
@@ -176,10 +185,9 @@ class atletaqueries {
     // Consulta para obtener las marcas de un atleta 
     public function atletaMarcas () 
     {
-       $sql = "SELECT  marca_obtenida, nombre_prueba , CONCAT(nombre_atleta, ' ', apellido_atleta) atleta
+       $sql = "SELECT  marca_obtenida, nombre_prueba 
                 FROM records 
                 INNER JOIN pruebas USING (idprueba) 
-                INNER JOIN atletas USING (idatleta)
                 WHERE idatleta = ?";
        $params = array($this->id);
        return Database::getRows($sql, $params);   
