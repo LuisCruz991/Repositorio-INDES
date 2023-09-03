@@ -233,7 +233,8 @@ function barGraphY(canvas, xAxis, yAxis, legend, title) {
                 borderColor: '#000000',
                 borderWidth: 1,
                 backgroundColor: colors,
-                barPercentage: 1
+                barPercentage: 1,
+                borderRadius: 2
             }]
         },
         options: {
@@ -245,7 +246,7 @@ function barGraphY(canvas, xAxis, yAxis, legend, title) {
                     text: title
                 },
                 legend: {
-                    display: false
+                    display: false,
                 }
             },
             scales: {
@@ -253,8 +254,8 @@ function barGraphY(canvas, xAxis, yAxis, legend, title) {
                     ticks: {
                         beginAtZero: true,
                         stepSize: 1
-                    }
-                }
+                    },
+                },
             }
         }
     });

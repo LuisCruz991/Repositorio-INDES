@@ -4,7 +4,7 @@
 
 <head>
   <!-- Titulo -->
-  <title>Pruebas</title>
+  <title>Entrenamientos</title>
   <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,6 @@
 
     <!-- Comienzo del sidebar -->
     <div id="sidebar"></div>
-    <!-- Finalizacion del sidebar -->
 
     <!-- Comienzo del contenido -->
     <div class="h-screen w-full overflow-y-auto">
@@ -136,7 +135,7 @@
                     </div>
                     <input type="text" id="search" name="search"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="buscar" required>
+                      placeholder="buscar por nombre del evento" required>
                   </div>
                   <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -154,145 +153,160 @@
               </div>
             </div>
 
-
-            <!-- Boton para agregar pruebas -->
-
+            <!-- Boton para agregar atleta -->
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
-              class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
+              class="mt-2 text-sm rounded-md w-24 h-10  bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
             </a>
-            <!-- Modal para agregar pruebas-->
+
+            <!-- Modal para agregar -->
             <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
               <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   <!-- Modal header -->
-                  <form id="save-form">
-
+                  <div class="grid justify-items-stretch">
+                    <button type="button"
+                      class="justify-end text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white mr-5"
+                      data-modal-hide="save-modal">
+                      <svg aria-hidden="true" class="w-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                    </button>
+                  </div>
+                  <h1 class="text-center">Administrar Eventos</h1>
+                  <form id="save-form" method="post">
                     <div class="grid gap-6 m-5 md:grid-cols-2">
-                      <!-- Campo para almacenar el id -->
-                      <input class="hidden" type="number" id="id" name="id">
-
+                      <!-- id  -->
+                      <input type="text" id="id" name="id"
+                        class="hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      <!-- Campo para ingresar el nombre del evento -->
                       <div>
-                        <!-- Campo para ingresar un nombre de la prueba en la tabla -->
-                        <label for="nombre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                        <label for="Nombre"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del
+                          evento</label>
                         <input type="text" id="nombre" name="nombre"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Nombre" required>
+                          placeholder="Nombre del evento" required>
                       </div>
-                      <!-- Campo para ingresar la hora de inicio -->
+                      <!-- Campo para ingresar la descripcion -->
                       <div>
-                        <label for="Hora" 
-                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora de
-                          inicio</label>
-                        <input type="text" id="hora_inicio" name="hora_inicio"
+                        <label for="Descripcion"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
+                        <input type="text" id="descripcion" name="descripcion"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="00:00:00" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" required>
+                          placeholder="Descripcion" required>
                       </div>
-                      <!-- Campo para ingresar la duracion estimada de la prueba de inicio -->
+                      <!-- Campo para seleccionar la fecha del evento -->
                       <div>
-                        <label for="Hora" 
-                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiempo estimado de la 
-                        prueba</label>
-                        <input type="text" id="estimado" name="estimado"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="00:00:00" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" required>
-                      </div>
+                        <label for="fecha"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
+                        <div class="relative max-w-sm">
+                          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd"
+                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                clip-rule="evenodd"></path>
+                            </svg>
+                          </div>
+                          <input datepicker type="date" id="fecha" name="fecha"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="yyyy-mm-dd">
+                        </div>
+                      </div><!-- Campo para seleccionar el 'pais' de evento -->
                       <div>
-                        <!-- Campo para ingresar un deporte en la tabla -->
-                        <label for="deporte"
-                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deporte</label>
-                        <select id="deporte" name="deporte"
+                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pais
+                        </label>
+                        <select id="pais" name="pais"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
                         </select>
                       </div>
+                      <!-- Campo para ingresar la direccion del evento -->
                       <div>
-                        <!-- Campo para ingresar un evento en la tabla -->
-                        <label for="evento"
-                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Evento</label>
-                        <select id="evento" name="evento"
+                        <label for="Direccion"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion del
+                          evento</label>
+                        <input type="text" id="direccion" name="direccion"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Direccion del evento" required>
+                      </div>
+                      <!-- Campo para seleccionar el atleta -->
+                      <div>
+                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atleta
+                          </label>
+                        <select id="tipo" name="t"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
+                        </select>
+                      </div>
+                      <!-- Campo para seleccionar el entrenador -->
+                      <div>
+                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Entrenador
+                          </label>
+                        <select id="tipo" name="t"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </select>
                       </div>
                       
-                      <div>
-                        <!-- Campo para ingresar una modalidad en la tabla -->
-                        <label for="modalidad"
-                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modalidad</label>
-                        <select id="modalidad" name="modalidad"
-                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                        </select>
-                      </div>
                     </div>
+                    <div></div>
                     <!-- Boton para crear registro -->
                     <button type="submit"
-                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
-                      datos</button>
+                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
                   </form>
                 </div>
               </div>
             </div>
           </div>
 
+          <p class="text-left" id="records"></p>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
-                <tr id="records"></tr>
                 <tr>
                   <!-- Titulos de la tabla -->
-                  <div class="titulos-tabla-crud  bg-azul-3">
-                    <!-- Campo de ID en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      ID
-                    </th>
+                  <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
+                    <!-- Titulos de la tabla -->
+                    <tr class="hidden" id="records"></tr>
+                    <tr>
+                      <div class="titulos-tabla-crud  bg-azul-3">
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Fecha de entreno
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Hora Inicio
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Hora Cierre
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Lugar
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Atleta
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Entrenador
+                        </th>
 
-                    <!-- Campo de nombre de prueba en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre
-                    </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
-                    <!-- Campo de la hora de inicio de prueba en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Hora de inicio
-                    </th>
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
-                    <!-- Campo de duracion estimada de prueba en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Duracion estimada
-                    </th>
+                        </th>
+                      </div>
+                    </tr>
+                  </thead>
+                  <!-- Titulos de la tabla -->
 
-                    <!-- Campo de deporte en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Deporte
-                    </th>
-
-                    <!-- Campo de evento en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Evento
-                    </th>
-
-                    <!-- Campo de modalidad en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Modalidad
-                    </th>
-
-                    <!-- Campo de actualizar en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-
-                    </th>
-                    <!-- Campo de eliminar en la tabla -->
-                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-
-                    </th>
-                  </div>
-                </tr>
-              </thead>
-              <!-- Datos de la tabla -->
+                  <!-- Datos de la tabla -->
               <tbody id="tbody-rows">
               </tbody>
               <!-- Datos de la tabla -->
@@ -308,6 +322,7 @@
     <!-- Finalizacion del dashboard -->
 
   </div>
+
   <!-- Finalizacion del codigo -->
 
   <!-- Js de flowbite -->
@@ -316,11 +331,7 @@
   <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
   <script src="../controllers/account.js"></script>
-  <script src="../controllers/pruebas.js"></script>
-
-
-
-
+  <script src="../controllers/entrenamiento.js"></script>
 </body>
 
 </html>

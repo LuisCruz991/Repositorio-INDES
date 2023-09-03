@@ -66,3 +66,7 @@ background-color: #50577A;
 ::-webkit-scrollbar { 
   display: none; 
 }
+
+/* .rotar {
+  transform: scaleX(-1);
+} */

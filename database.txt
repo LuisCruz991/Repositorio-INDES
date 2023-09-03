@@ -184,8 +184,6 @@ CREATE TABLE `eventos` (
   `imagen_sede` varchar(200) NOT NULL COMMENT 'Foto del lugar del evento',
   `idpais` int(11) NOT NULL COMMENT 'Pais del evento',
   `direccion_sede` varchar(500) NOT NULL COMMENT 'Direccion del evento',
-  `hora_inicio` time NOT NULL COMMENT 'Hora de inicio del evento',
-  `hora_cierre` time NOT NULL COMMENT 'Hora de cierre del evento',
   `idtipo_evento` int(11) NOT NULL COMMENT 'Tipo de evento'
 );
 
@@ -322,6 +320,8 @@ INSERT INTO `presupuesto` (`idpresupuesto`, `idcateg_inversion`, `estimulos`, `p
 CREATE TABLE `pruebas` (
   `idprueba` int(11) NOT NULL COMMENT 'Numero de prueba',
   `nombre_prueba` varchar(100) NOT NULL COMMENT 'Nombre de la prueba',
+  `hora_inicial` time NOT NULL COMMENT 'Hora de inicio de la prueba',
+  `duracion_estimada` time NOT NULL COMMENT 'Tiempo estimado de la prueba',
   `iddeporte` int(11) NOT NULL COMMENT 'Numero del deporte',
   `idevento` int(11) NOT NULL COMMENT 'Numero de evento al que pertenece',
   `idmodalidad_deporte` int(11) NOT NULL COMMENT 'Nombre de la modalidad deportiva'
@@ -351,8 +351,11 @@ CREATE TABLE `records` (
 CREATE TABLE `responsables` (
   `idresponsable` int(11) NOT NULL COMMENT 'ID del responsable del atleta',
   `nombre_responsable` varchar(50) DEFAULT NULL COMMENT 'Nombre del responsable del atleta',
+  `apellido_responsable` varchar(50) DEFAULT NULL COMMENT 'Apellido del responsable del atleta',
   `direccion` varchar(200) DEFAULT NULL COMMENT 'Direccion del responsable del atleta',
   `telefono` varchar(9) DEFAULT NULL COMMENT 'Telefono movil del responsable del atleta',
+  `dui` varchar(10) DEFAULT NULL COMMENT 'DUI del responsable del atleta',
+  `oficio` varchar(40) DEFAULT NULL COMMENT 'Oficio del responsable del atleta',
   `idparentesco` int(11) NOT NULL COMMENT 'Parentesco del responsable con el atleta'
 );
 

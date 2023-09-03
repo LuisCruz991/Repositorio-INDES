@@ -88,22 +88,22 @@ async function fillTable(form = null) {
               </div>
             </td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            ${row.estimulos}
+            $ ${row.estimulos}
             </td>
             <td class="px-6 py-4">
-            ${row.preparacion_fogues}
+            $ ${row.preparacion_fogues}
             </td>
             <td class="px-6 py-4">
-            ${row.ayuda_extranjera}
+            $ ${row.ayuda_extranjera}
             </td>
             <td class="px-6 py-4">
-            ${row.equipamiento}
+            $ ${row.equipamiento}
             </td>
             <td class="px-6 py-4">
-            ${row.otros}
+            $ ${row.otros}
             </td>
             <td class="px-6 py-4">
-            ${row.patrocinadores}
+            $ ${row.patrocinadores}
             </td>
             <td class="px-6 py-4">
             ${row.obsevaciones}

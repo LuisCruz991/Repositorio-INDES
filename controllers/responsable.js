@@ -80,10 +80,19 @@ async function fillTable(form = null) {
                   ${row.nombre_responsable}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.apellido_responsable}
+                  </td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.direccion}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.telefono}
+                  </td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.dui}
+                  </td>
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  ${row.oficio}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.nombre_parentesco}
@@ -143,8 +152,11 @@ async function openUpdate(id) {
         // Se inicializan los campos del formulario.
             document.getElementById('id').value = JSON.dataset.idresponsable;
             document.getElementById('nombre').value = JSON.dataset.nombre_responsable;
+            document.getElementById('apellido').value = JSON.dataset.apellido_responsable;
             document.getElementById('direccion').value = JSON.dataset.direccion;
             document.getElementById('telefono').value = JSON.dataset.telefono;
+            document.getElementById('dui').value = JSON.dataset.dui;
+            document.getElementById('oficio').value = JSON.dataset.oficio;
             fillSelect(PARENTESCO_API, 'readAll', 'parentesco', JSON.dataset.idparentesco);
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         } else {

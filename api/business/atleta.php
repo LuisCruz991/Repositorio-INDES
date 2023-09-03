@@ -203,6 +203,17 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
+                case 'horaAtleta2':
+                if (!$atleta->setId($_POST['idatleta'])) {
+                    $result['exception'] = 'Atleta invalido';
+                } elseif ($result['dataset'] = $atleta->horasAtleta2()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al leer el atleta';
+                }
+                break;
                 // Evento para ejecutar la consulta sobre los resultados de un atleta
             case 'resultadoAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {

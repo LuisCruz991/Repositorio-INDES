@@ -10,7 +10,7 @@ class ResponsableQueries
     */
     public function searchRows($value)
     {
-        $sql = ' SELECT idresponsable, nombre_responsable, direccion, telefono, nombre_parentesco
+        $sql = ' SELECT idresponsable, nombre_responsable, apellido_responsable, direccion, telefono, dui, oficio, nombre_parentesco
         FROM responsables INNER JOIN parentescos USING (idparentesco)
         WHERE nombre LIKE ? OR direccion LIKE ? OR telefono LIKE ?
         ORDER BY idresponsable';
@@ -21,7 +21,7 @@ class ResponsableQueries
  
     public function readAll()
     {
-        $sql = ' SELECT idresponsable, nombre_responsable, direccion, telefono, nombre_parentesco
+        $sql = ' SELECT idresponsable, nombre_responsable, apellido_responsable, direccion, telefono, dui, oficio, nombre_parentesco
         FROM responsables INNER JOIN parentescos USING (idparentesco)
         ORDER BY idresponsable';
         return Database::getRows($sql);
@@ -29,7 +29,7 @@ class ResponsableQueries
 
     public function readOne()
     {
-        $sql = 'SELECT idresponsable, nombre_responsable, direccion, telefono, idparentesco
+        $sql = 'SELECT idresponsable, nombre_responsable, apellido_responsable, direccion, telefono, dui, oficio, idparentesco
                 FROM responsables
                 WHERE idresponsable = ?';
         $params = array($this->id);
@@ -38,9 +38,9 @@ class ResponsableQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO responsables(nombre_responsable, direccion, telefono, idparentesco)
-                VALUES(?,?,?,?)';
-        $params = array($this->nombre, $this->direccion, $this->telefono, $this->parentesco);
+        $sql = 'INSERT INTO responsables(nombre_responsable, apellido_responsable, direccion, telefono, dui, oficio, idparentesco)
+                VALUES(?,?,?,?,?,?,?)';
+        $params = array($this->nombre, $this->apellido, $this->direccion, $this->telefono,  $this->dui,  $this->oficio, $this->parentesco);
         return Database::executeRow($sql, $params);
     }
 
@@ -48,9 +48,9 @@ class ResponsableQueries
     {
        
         $sql = 'UPDATE responsables
-                SET nombre_responsable = ?, direccion = ?, telefono = ?
+                SET nombre_responsable = ?, nombre_responsable = ?, direccion = ?, telefono = ?, dui = ?, oficio = ?
                 WHERE idresponsable = ?';
-        $params = array($this->nombre, $this->direccion, $this->telefono, $this->id);
+        $params = array($this->nombre, $this->apellido, $this->direccion, $this->telefono, $this->dui, $this->oficio, $this->id);
         return Database::executeRow($sql, $params);
     }
 
