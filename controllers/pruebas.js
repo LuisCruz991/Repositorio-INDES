@@ -84,7 +84,7 @@ async function fillTable(form = null) {
                   ${row.nombre_prueba}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  ${row.hora_inicio}
+                  ${row.hora_inicial}
                   </td>
                   <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   ${row.duracion_estimada}
@@ -154,7 +154,7 @@ async function openUpdate(id) {
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idprueba;
         document.getElementById('nombre').value = JSON.dataset.nombre_prueba;
-        document.getElementById('hora_inicio').value = JSON.dataset.hora_inicio;
+        document.getElementById('hora_inicio').value = JSON.dataset.hora_inicial;
         document.getElementById('estimado').value = JSON.dataset.duracion_estimada;
         fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
         fillSelect(EVENTO_API, 'readAll', 'evento', JSON.dataset.idevento);

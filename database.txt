@@ -320,7 +320,7 @@ INSERT INTO `presupuesto` (`idpresupuesto`, `idcateg_inversion`, `estimulos`, `p
 CREATE TABLE `pruebas` (
   `idprueba` int(11) NOT NULL COMMENT 'Numero de prueba',
   `nombre_prueba` varchar(100) NOT NULL COMMENT 'Nombre de la prueba',
-  `hora_inicio` time NOT NULL COMMENT 'Hora de inicio de la prueba',
+  `hora_inicial` time NOT NULL COMMENT 'Hora de inicio de la prueba',
   `duracion_estimada` time NOT NULL COMMENT 'Tiempo estimado de la prueba',
   `iddeporte` int(11) NOT NULL COMMENT 'Numero del deporte',
   `idevento` int(11) NOT NULL COMMENT 'Numero de evento al que pertenece',
