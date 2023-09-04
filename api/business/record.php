@@ -16,6 +16,7 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $record->readAll()) {
                     $result['status'] = 1;
+                    $result['message'] = 'La tabla cuenta con ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {

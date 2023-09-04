@@ -17,6 +17,7 @@ if (isset($_GET['action'])) {
             case 'getUser':
                 if (isset($_SESSION['nombre_usuario'])) {
                     $result['status'] = 1;
+                    $result['message'] = 'La tabla cuenta con ' . count($result['dataset']) . ' registros';
                     $result['username'] = $_SESSION['nombre_usuario'];
                 } else {
                     $result['exception'] = 'Alias de usuario indefinido';
