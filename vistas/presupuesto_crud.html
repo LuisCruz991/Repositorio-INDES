@@ -40,11 +40,12 @@
 
         <!-- Comienzo del navbar -->
         <HEADER class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-         
+
         </HEADER>
         <!-- Finalizacion del navbar -->
 
         <!-- Inicio de la tabla-->
+        <p class="text-left" id="records"></p>
         <main class="flex mt-4 flex-col">
           <div class="flex  sm:flex-row flex-col justify-between mb-3 b-4 bg-white dark:bg-gray-900">
             <div class="flex gap-2">
@@ -123,17 +124,29 @@
                       clip-rule="evenodd"></path>
                   </svg>
                 </div>
-                <form method="post" class="flex items-center" id="search-form">   
+                <form method="post" class="flex items-center" id="search-form">
                   <label for="search-form" class="sr-only">buscar</label>
                   <div class="relative w-full">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                          <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                      </div>
-                      <input type="text" id="search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscar" required>
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <input type="text" id="search" name="search"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="buscar" required>
                   </div>
-                  <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                      <span class="sr-only">buscar</span>
+                  <button type="submit"
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <span class="sr-only">buscar</span>
                   </button>
                 </form>
               </div>
@@ -141,10 +154,10 @@
 
 
             <!-- Boton para agregar atleta -->
-          
+
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
-          </a>
+            </a>
             <!-- Modal para agregar -->
             <div id="save-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
               class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
@@ -153,41 +166,43 @@
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <!-- Modal header -->
                   <form id="save-form">
-                   
+
                     <div class="grid gap-6 m-5 md:grid-cols-2">
-                      
+
                       <input class="hidden" type="number" id="id" name="id">
 
-                       <!-- Campo para seleccionar Categoria -->
-                       <div>
-                        <label for="categoria"
-                          class=" mt-5 
+                      <!-- Campo para seleccionar Categoria -->
+                      <div>
+                        <label for="categoria" class=" mt-5 
                           block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
                         <select id="categoria" name="categoria"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          
+
                         </select>
                       </div>
-                    <!-- Campo para ingresar Estimulos -->
+                      <!-- Campo para ingresar Estimulos -->
                       <div>
                         <label for="estimulo"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estimulos</label>
-                        <input type="number" id="estimulo" name="estimulo" step="0.01" min="0.00" max="100000.00" required
+                        <input type="number" id="estimulo" name="estimulo" step="0.01" min="0.00" max="100000.00"
+                          required
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="" required>
                       </div>
 
-                       <!-- Campo para ingresar Preparacion Fogues -->
-                       <div>
+                      <!-- Campo para ingresar Preparacion Fogues -->
+                      <div>
                         <label for="preparacion"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preparacion Fogues</label>
-                        <input type="number" id="preparacion" name="preparacion" step="0.01" min="0.00" max="100000.00" required
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preparacion
+                          Fogues</label>
+                        <input type="number" id="preparacion" name="preparacion" step="0.01" min="0.00" max="100000.00"
+                          required
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="" required>
                       </div>
 
-                       <!-- Campo para ingresar Ayudas -->
-                       <div>
+                      <!-- Campo para ingresar Ayudas -->
+                      <div>
                         <label for="ayuda"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ayudas</label>
                         <input type="number" id="ayuda" name="ayuda" step="0.01" min="0.00" max="100000.00" required
@@ -195,17 +210,18 @@
                           placeholder="" required>
                       </div>
 
-                       <!-- Campo para ingresar Equipamiento -->
-                       <div>
+                      <!-- Campo para ingresar Equipamiento -->
+                      <div>
                         <label for="equipamiento"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Equipamiento</label>
-                        <input type="number" id="equipamiento" name="equipamiento" step="0.01" min="0.00" max="100000.00" required
+                        <input type="number" id="equipamiento" name="equipamiento" step="0.01" min="0.00"
+                          max="100000.00" required
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="" required>
                       </div>
 
-                       <!-- Campo para ingresar Otros -->
-                       <div>
+                      <!-- Campo para ingresar Otros -->
+                      <div>
                         <label for="otro"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otros</label>
                         <input type="number" id="otro" name="otro" step="0.01" min="0.00" max="100000.00" required
@@ -217,11 +233,12 @@
                       <div>
                         <label for="patrocinador"
                           class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Patrocinadores</label>
-                        <input type="number" id="patrocinador" name="patrocinador" step="0.01" min="0.00" max="100000.00" required
+                        <input type="number" id="patrocinador" name="patrocinador" step="0.01" min="0.00"
+                          max="100000.00" required
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="" required>
                       </div>
-                      
+
                       <!-- Campo para ingresar Observaciones -->
                       <div>
                         <label for="observacion"
@@ -230,31 +247,31 @@
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="" required>
                       </div>
-                      
-                     
 
-                       <!-- Campo para seleccionar Atleta -->
-                       <div>
-                        <label for="atleta"
-                          class=" mt-5 
+
+
+                      <!-- Campo para seleccionar Atleta -->
+                      <div>
+                        <label for="atleta" class=" mt-5 
                           block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atleta</label>
                         <select id="atleta" name="atleta"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          
+
                         </select>
                       </div>
-                  
+
                     </div>
-                    
+
                     <!-- Boton para crear registro -->
                     <button type="submit"
-                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar datos</button>
+                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
+                      datos</button>
                   </form>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
@@ -298,7 +315,7 @@
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Atletas
                     </th>
-                   
+
 
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 

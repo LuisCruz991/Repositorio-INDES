@@ -44,6 +44,7 @@
         <!-- Finalizacion del navbar -->
 
         <!-- Inicio de la tabla-->
+        <p class="text-left" id="records"></p>
         <main class="flex mt-4 flex-col">
           <div class="flex  sm:flex-row flex-col justify-between mb-3 b-4 bg-white dark:bg-gray-900">
             <div class="flex gap-2">
@@ -193,7 +194,8 @@
                       </div>
                       <!-- Campo para seleccionar el continente -->
                       <div class="mt-5">
-                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Continente</label>
+                        <label for="company"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Continente</label>
                         <select id="continente" name="continente"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </select>
@@ -221,7 +223,6 @@
             </div>
           </div>
 
-          <p class="text-left" id="records"></p>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
@@ -279,4 +280,5 @@
   <script src="../controllers/account.js"></script>
   <script src="../controllers/paises.js"></script>
 </body>
+
 </html>
