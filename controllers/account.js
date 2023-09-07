@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
   if (JSON.session) {
     HEADER.innerHTML = `<div class="container flex flex-wrap items-center justify-between mx-auto">
-    <h1 class="titulo-navbar self-center text-4xl font-overpass font-normal whitespace-nowrap dark:text-white">
-      Dashboard</h1>
     </a>
     <div class="flex items-center md:order-2">
       <button class="mr-4 w-10 h-10 bg-azul-opaco flex justify-center items-center rounded-full"
@@ -103,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z" />
                 </svg>
                 <span class="text-sm  font-medium">Atletas</span>
-              </button>d
+              </button>
             </li>
             <!-- Dropdown menu de boton de atletas -->
             <div id="dropdownatleta"
