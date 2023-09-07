@@ -70,3 +70,13 @@ background-color: #50577A;
 /* .rotar {
   transform: scaleX(-1);
 } */
+
+
+
+  
+@media (min-width: 428px){
+  .cont{
+    width: 950px;
+    height: 500px;
+  }
+}
