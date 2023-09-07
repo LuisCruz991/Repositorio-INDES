@@ -28,7 +28,7 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Sesión eliminada correctamente';
                 } else {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
-                }
+                } 
                 break;
             case 'readProfile':
                 if ($result['dataset'] = $usuario->readProfile()) {
@@ -204,6 +204,9 @@ if (isset($_GET['action'])) {
                     $_SESSION['nombre_usuario'] = $usuario->getNombre();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
+                } if((time() - $_SESSION['time']) > 10){
+                        session_destroy();
+                        header('location: ../vistas/index.html'); 
                 }
                 break;
             default:
