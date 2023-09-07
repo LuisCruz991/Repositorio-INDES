@@ -125,7 +125,7 @@
                   </svg>
                 </div>
                 <form method="post" class="flex items-center" id="search-form">
-                  <label for="search-form" class="sr-only">buscar</label>
+                  <label for="search-form" class="sr-only">Buscar</label>
                   <div class="relative w-full">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
@@ -146,11 +146,18 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
-                    <span class="sr-only">buscar</span>
+                    <span class="sr-only">Buscar</span>
                   </button>
-                  <a onclick="window.openReport()"
-                    class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Reporte</a>
-                  </a>
+                  <button title="Ver Pruebas" onclick="window.openReport()"
+                  placeholder="Generar reporte"
+                  class="p-2.5 ml-2 text-sm font-medium text-white bg-red-600 rounded-lg border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                  <svg placeholder="Generar reporte" xmlns="http://www.w3.org/2000/svg"
+                      height="0.75rem" viewBox="0 0 512 512" fill="currentColor"
+                      class=" w-7 h-7 bi bi-house-door-fill" viewBox="0 0 16 16">
+                      <path
+                          d="M64 464H96v48H64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V288H336V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16zM176 352h32c30.9 0 56 25.1 56 56s-25.1 56-56 56H192v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V448 368c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24H192v48h16zm96-80h32c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H304c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H320v96h16zm80-112c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V432 368z" />
+                  </svg></a>
+              </button>
                 </form>
               </div>
             </div>
@@ -168,7 +175,7 @@
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <!-- Modal header -->
-                  <form id="save-form">
+                  <form id="save-form" >
 
                     <div class="grid gap-6 m-5 md:grid-cols-2">
                       <!-- Campo para almacenar el id -->
@@ -265,7 +272,7 @@
 
                     <!-- Campo de duracion estimada de prueba en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Duracion estimada
+                      Duración estimada
                     </th>
 
                     <!-- Campo de deporte en la tabla -->
