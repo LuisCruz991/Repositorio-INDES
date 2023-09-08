@@ -18,9 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const JSON = await dataFetch(USER_API, 'getUser');
   // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
   if (JSON.session) {
-    HEADER.innerHTML = `<div class="container flex flex-wrap items-center justify-between mx-auto">
-    </a>
-    <div class="flex items-center md:order-2">
+    HEADER.innerHTML = `<div class="container flex flex-wrap items-center justify-end mx-auto">
+    <div class="flex items-end md:order-2">
       <button class="mr-4 w-10 h-10 bg-azul-opaco flex justify-center items-center rounded-full"
         aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray"
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           class="w-14" alt=""></button>
     </div>
   </div>
-  <hr class="h-px mb-1 mt-5 bg-gray-200 border-0 dark:bg-gray-700">
 
         `;
 
