@@ -204,10 +204,7 @@ if (isset($_GET['action'])) {
                     $_SESSION['nombre_usuario'] = $usuario->getNombre();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
-                } if((time() - $_SESSION['time']) > 10){
-                        session_destroy();
-                        header('location: ../vistas/index.html'); 
-                }
+                } 
                 break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';

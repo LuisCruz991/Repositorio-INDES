@@ -3,191 +3,204 @@
 <html lang="es">
 
 <head>
-  <!-- Titulo -->
-  <title>Login</title>
-  <!-- Definicion de carecteres del sitio -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Css de tailwind -->
-  <link rel="stylesheet" href="../Css/tailwind.css">
-  <!-- Cdn de flowbite -->
-  <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
-  <!-- Css del proyecto -->
-  <link rel="stylesheet" href="../Css/Estilos.css">
-  <!-- Fuentes del proyecto -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&family=Quicksand:wght@700&display=swap"
-    rel="stylesheet">
+    <!-- Titulo -->
+    <title>Login</title>
+    <!-- Definicion de carecteres del sitio -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Css de tailwind -->
+    <link rel="stylesheet" href="../Css/tailwind.css">
+    <!-- Cdn de flowbite -->
+    <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- Css del proyecto -->
+    <link rel="stylesheet" href="../Css/Estilos.css">
+    <!-- Fuentes del proyecto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&family=Quicksand:wght@700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="login-body">
-  <!-- Inicio del codigo -->
-  <main>
+    <!-- Inicio del codigo -->
+    <main>
 
-    <!--Inicio del Login -->
-    <div class="hidden"  id="login-contenedor" >
-    <div class="mt-10 mb-10 md:flex items-center  justify-center  mx-auto md:h-screen lg:py-0" id="login-contenedor">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-      </a>
-      <div
-        class="contenedor bg-azul-1 rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <hr>
-          <hr>
-          <!-- Titulo -->
-          <h1
-            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
-            Iniciar sesion
-          </h1>
-          <hr>
-          <hr>
-          <form class="space-y-4 md:space-y-6" id="login-form" action="#" autocomplete="off">
-            <!-- Campo para ingresar usuario -->
-            <div class="py-4">
-              <label for="email" class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
-              <input type="text" name="nombres" id="nombres"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="example@mail.com" required="">
-            </div>
-            <!-- Campo para ingresar la clave -->
-            <div class="py-6">
-              <label for="password" class="block mb-2 text-lg font-medium text-white dark:text-white">Contraseña</label>
-             <div class="flex">
-              <input type="password" name="clave" id="clave" placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required="">
-                <a id="password-visible" onclick="mostrarContrasenia()">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="ml-2 w-10 h-10  bi bi-eye-fill" viewBox="0 0 16 16">
-                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                </svg>
-              </a>
-            </div>
-            </div>
-            <!-- Acceder a recuperacion de clave -->
-            <div class="flex items-center justify-between py-2">
-              <div class="flex items-start">
-                <div class="flex items-center h-5">
-                  <p class="text-sm font-bold text-white dark:text-gray-400">
-                    <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Olvidastes tu
-                      contraseña? </a>
-                  </p>
+        <!--Inicio del Login -->
+        <div class="hidden" id="login-contenedor">
+            <div class="mt-10 mb-10 md:flex items-center  justify-center  mx-auto md:h-screen lg:py-0"
+                id="login-contenedor">
+                <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                </a>
+                <div
+                    class="contenedor bg-azul-1 rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <hr>
+                        <hr>
+                        <!-- Titulo -->
+                        <h1
+                            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+                            Iniciar sesion
+                        </h1>
+                        <hr>
+                        <hr>
+                        <form class="space-y-4 md:space-y-6" id="login-form" method="post" autocomplete="off">
+                            <!-- Campo para ingresar usuario -->
+                            <div class="py-4">
+                                <label for="email"
+                                    class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
+                                <input type="text" name="nombres" id="nombres"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="example@mail.com" required="">
+                            </div>
+                            <!-- Campo para ingresar la clave -->
+                            <div class="py-6">
+                                <label for="password"
+                                    class="block mb-2 text-lg font-medium text-white dark:text-white">Contraseña</label>
+                                <div class="flex">
+                                    <input type="password" name="clave" id="clave" placeholder="••••••••"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        required="">
+                                    <a id="password-visible" onclick="mostrarContrasenia()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="white"
+                                            class="ml-2 w-10 h-10  bi bi-eye-fill" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                            <path
+                                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Acceder a recuperacion de clave -->
+                            <div class="flex items-center justify-between py-2">
+                                <div class="flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <p class="text-sm font-bold text-white dark:text-gray-400">
+                                            <a href="#"
+                                                class="font-medium text-primary-600 hover:underline dark:text-primary-500">Olvidastes
+                                                tu
+                                                contraseña? </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Boton para iniciar sesion -->
+                            <div class="flex flex-col items-center py-4">
+                                <button type="submit"
+                                    class="boton-contrasenia tooltipped text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Ingresar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
+                <!--Finalizacion del Login -->
+
+                <!-- Titulo y logo de la empresa -->
+                <section class="mt-8 seccion-2 mb-48 flex flex-col items-center">
+                    <div>
+                        <h2
+                            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+                            Bienvenido!
+                        </h2>
+                    </div>
+                    <div>
+                        <img class="w-96" src="../imagenes/logo-indes.png" alt="">
+                    </div>
+                </section>
+                <!-- Titulo y logo de la empresa -->
+
             </div>
-            <!-- Boton para iniciar sesion -->
-            <div class="flex flex-col items-center py-4">
-              <button type="submit"
-              class="boton-contrasenia tooltipped text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Ingresar</button>
-            </div>
-          </form>
         </div>
-      </div>
-      <!--Finalizacion del Login -->
 
-      <!-- Titulo y logo de la empresa -->
-      <section class="mt-8 seccion-2 mb-48 flex flex-col items-center">
-        <div>
-          <h2
-            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
-            Bienvenido!
-          </h2>
-        </div>
-        <div>
-          <img class="w-96" src="../imagenes/logo-indes.png" alt="">
-        </div>
-      </section>
-      <!-- Titulo y logo de la empresa -->
+        <!--Inicio del registro -->
+        <div class="hidden" id="signup-contenedor">
+            <div class="md:flex items-center  justify-center  px-6 py-8 mx-auto md:h-screen lg:py-0"
+                id="signup-contenedor">
+                <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                </a>
+                <div
+                    class="contenedor bg-azul-1 rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <hr>
+                        <hr>
+                        <!-- Titulo -->
+                        <h1
+                            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+                            Registrar usuario
+                        </h1>
+                        <hr>
+                        <hr>
+                        <form class="space-y-4 md:space-y-6" id="signup-form" action="#" autocomplete="off">
+                            <!-- Campo para ingresar usuario -->
+                            <div class="py-4">
+                                <label for="correo"
+                                    class="block mb-2 text-lg font-medium text-white dark:text-white">Correo</label>
+                                <input type="email" name="correo" id="correo"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Correo electronico" required>
+                            </div>
+                            <div class="py-4">
+                                <label for="usuario"
+                                    class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
+                                <input type="text" name="usuario" id="usuario"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Usuario" required>
+                            </div>
+                            <!-- Campo para ingresar la clave -->
+                            <div class="py-4">
+                                <label for="codigo"
+                                    class="block mb-2 text-lg font-medium text-white dark:text-white">Clave</label>
+                                <input type="password" name="codigo" id="codigo" placeholder="••••••••"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    required>
+                            </div>
+                            <div class="py-4">
+                                <label for="confirmar"
+                                    class="block mb-2 text-lg font-medium text-white dark:text-white">Clave confirmar
+                                    clave</label>
+                                <input type="password" name="confirmar" id="confirmar" placeholder="••••••••"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    required>
+                            </div>
+                            <!-- Boton para iniciar sesion -->
+                            <div class="flex flex-col items-center py-4">
+                                <button type="submit"
+                                    class="boton-contrasenia mt-5 tooltipped text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Guardar
+                                    datos</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--Finalizacion del Login -->
 
-    </div>
-   </div>
+                <!-- Titulo y logo de la empresa -->
+                <section class="mt-8 seccion-2 mb-48 flex flex-col items-center">
+                    <div>
+                        <h2
+                            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
+                            Bienvenido!
+                        </h2>
+                    </div>
+                    <div>
+                        <img class="w-96" src="../imagenes/logo-indes.png" alt="">
+                    </div>
+                </section>
+                <!-- Titulo y logo de la empresa -->
 
-    <!--Inicio del registro -->
-    <div class="hidden"  id="signup-contenedor">
-    <div class="md:flex items-center  justify-center  px-6 py-8 mx-auto md:h-screen lg:py-0" id="signup-contenedor">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-      </a>
-      <div
-        class="contenedor bg-azul-1 rounded-lg shadow dark:border md:mt-0  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <hr>
-          <hr>
-          <!-- Titulo -->
-          <h1
-            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
-            Registrar usuario 
-          </h1>
-          <hr>
-          <hr>
-          <form class="space-y-4 md:space-y-6" id="signup-form" action="#" autocomplete="off">
-            <!-- Campo para ingresar usuario -->
-            <div class="py-4">
-              <label for="correo" class="block mb-2 text-lg font-medium text-white dark:text-white">Correo</label>
-              <input type="email" name="correo" id="correo"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Correo electronico" required>
             </div>
-            <div class="py-4">
-              <label for="usuario" class="block mb-2 text-lg font-medium text-white dark:text-white">Usuario</label>
-              <input type="text" name="usuario" id="usuario"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Usuario" required>
-            </div>
-            <!-- Campo para ingresar la clave -->
-            <div class="py-4">
-              <label for="codigo" class="block mb-2 text-lg font-medium text-white dark:text-white">Clave</label>
-              <input type="password" name="codigo" id="codigo" placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required>
-            </div>
-            <div class="py-4">
-              <label for="confirmar" class="block mb-2 text-lg font-medium text-white dark:text-white">Clave confirmar clave</label>
-              <input type="password" name="confirmar" id="confirmar" placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required>
-            </div>
-            <!-- Boton para iniciar sesion -->
-            <div class="flex flex-col items-center py-4">
-              <button type="submit"
-                class="boton-contrasenia mt-5 tooltipped text-white w-72 bg-white hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Guardar
-                datos</button>
-            </div>
-          </form>
         </div>
-      </div>
-      <!--Finalizacion del Login -->
-
-      <!-- Titulo y logo de la empresa -->
-      <section class="mt-8 seccion-2 mb-48 flex flex-col items-center">
-        <div>
-          <h2
-            class="text-5xl font-overpass leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
-            Bienvenido!
-          </h2>
-        </div>
-        <div>
-          <img class="w-96" src="../imagenes/logo-indes.png" alt="">
-        </div>
-      </section>
-      <!-- Titulo y logo de la empresa -->
-
-    </div>
-  </div>
 
 
 
-  </main>
+    </main>
 
-  <!-- Finalizacion del codigo -->
+    <!-- Finalizacion del codigo -->
 
 
-  <!-- Js de flowbite -->
-  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-  <script src="../Js/sweetalert.min.js"></script>
-  <script src="../controllers/components.js"></script>
-  <script src="../controllers/account.js"></script>
-  <script src="../controllers/index.js"></script>
+    <!-- Js de flowbite -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../Js/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/account.js"></script>
+    <script src="../controllers/index.js"></script>
 
 </body>
 
