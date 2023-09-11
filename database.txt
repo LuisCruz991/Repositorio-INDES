@@ -12,9 +12,9 @@ CREATE TABLE `administradores` (
   `idadministrador` int(11) NOT NULL COMMENT 'ID del administrador',
   `nombre_usuario` varchar(25) NOT NULL COMMENT 'Nombre del usuario del administrador',
   `clave_usuario` varchar(200) NOT NULL COMMENT 'Clave del administrador',
-  `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador'
-  `intentos_fallidos` tinyint NOT NULL default 0 COMMENT 
-  `bloqueo_hasta` datetime NOT NULL COMMENT  
+  `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador' ,
+  `intentos_fallidos` tinyint NOT NULL default 0 COMMENT 'Numero de intentos fallidos al ingresar',
+  `bloqueo_hasta` datetime  NULL COMMENT 'Tiempo que la cuenta estara bloqueda'  
 );
 
 --

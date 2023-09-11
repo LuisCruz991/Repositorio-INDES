@@ -38,6 +38,9 @@ const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 document.addEventListener('DOMContentLoaded', () => {
     // Llenar la tabla con los registros disponibles.
     fillTable();
+
+    // se carga el banner del CRUD 
+    // document.getElementById('banner').innerHTML = '<img src="../imagenes/gato-persa.jpg">';
 });
 
 // Evento cuando se envía el formulario de búsqueda.
