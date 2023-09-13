@@ -7,6 +7,11 @@ if (isset($_GET['action'])) {
     session_start();
     // Se instancia la clase correspondiente.
     $usuario = new Usuario;
+    // Establecer el tiempo de inactividad permitido en segundos
+    $inactivity_time = 10;
+    if (!isset($_SESSION['last_activity'])) {
+        $_SESSION['last_activity'] = time();
+    }
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -28,7 +33,20 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Sesión eliminada correctamente';
                 } else {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
-                } 
+                }
+                break;
+            case 'inactividad':
+                 if (time() > $_SESSION['last_activity'] + $inactivity_time) {
+                    // Cerrar la sesión
+                    session_destroy();
+                    // Redirigir al usuario a la página de inicio de sesión
+                    header('Location: ../vistas/index.html');
+                    $result['message'] = 'Cuenta en inactividad, vuelva a ingresar';
+                    exit;
+                } else {
+                    // Actualizar la hora de la última actividad
+                    $_SESSION['last_activity'] = time();
+                }
                 break;
             case 'readProfile':
                 if ($result['dataset'] = $usuario->readProfile()) {
@@ -204,9 +222,6 @@ if (isset($_GET['action'])) {
                     $_SESSION['nombre_usuario'] = $usuario->getNombre();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
-                } if((time() - $_SESSION['time']) > 10){
-                        session_destroy();
-                        header('location: ../vistas/index.html'); 
                 }
                 break;
             default:
