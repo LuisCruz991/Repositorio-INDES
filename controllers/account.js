@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   const JSON = await dataFetch(USER_API, 'getUser');
   // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
   if (JSON.session) {
+    setInterval(() => {
+      TiempoInactividad();
+  }, 30000);
+    if (JSON.status) {
     HEADER.innerHTML = `<div class="h-24 container flex flex-wrap items-center justify-between mx-auto" style="background: url(../imagenes/banner/${BANNER});  border-radius: 10px; background-color: rgb(80 87 122);">
     <!-- Titulo de la pagina  -->
     <h1 class="px-5 font-medium text-white text-4xl">${TITULO}</h1>
@@ -289,7 +293,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 </div>
    `;
   }
-
+}
+  
 
   /*
 // Se define el componente Parallax.
@@ -363,5 +368,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   M.Parallax.init(document.querySelectorAll('.parallax'));
   */
 });
+
+async function TiempoInactividad() {
+  const DATA = await dataFetch(USER_API, 'TiempoInactividad');
+  if (DATA.status) {
+      console.log(DATA.message);
+  } else {
+      clearInterval();
+      // Redireccionamiento a la pagina de acceso al sistema
+      sweetAlert(2, DATA.exception, false, 'index.html');
+  }
+}
 
 

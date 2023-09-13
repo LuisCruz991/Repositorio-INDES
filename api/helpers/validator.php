@@ -295,4 +295,19 @@ class Validator
             return false;
         }
     }
+
+    public static function ValidarTiempo()
+    {
+        //Establecer tiempo de inactivad en segundos
+        $inactivity_time = 30;
+        //Verificar la última actividad está registrada en la sesión 
+        if ((time() - $_SESSION['last_activity']) > $inactivity_time) {
+            //Destruye la sesión
+            session_destroy();
+            return false;
+        } else {
+            $_SESSION['last_activity'] = time();
+            return true;
+        }
+    }
 }

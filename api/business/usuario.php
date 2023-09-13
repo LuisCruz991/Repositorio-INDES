@@ -30,23 +30,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
-            case 'inactividad':
-                if (!isset($_SESSION['last_activity'])) {
-                    $_SESSION['last_activity'] = time();
-                    // Establecer el tiempo de inactividad permitido en segundos
-                } elseif (time() > 20) {
-                    // Cerrar la sesión
-                    session_destroy();
-                    // Redirigir al usuario a la página de inicio de sesión
-                    header('Location: ../vistas/index.html');
-                    $result['status'] = 1;
-                    $result['message'] = 'Cuenta en inactividad, vuelva a ingresar';
-                    exit;
-                } else {
-                    // Actualizar la hora de la última actividad
-                    $_SESSION['last_activity'] = time();
-                }
-                break;
+            case 'TiempoInactividad':
+                    if (Validator::ValidarTiempo()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Sesión activa';
+                    } else {
+                        $result['exception'] = 'Su sesión ha caducado';
+                    }
+                    break;
             case 'readProfile':
                 if ($result['dataset'] = $usuario->readProfile()) {
                     $result['status'] = 1;
