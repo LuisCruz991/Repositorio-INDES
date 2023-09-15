@@ -14,7 +14,7 @@ const SIDE = document.getElementById('sidebar');
 const FILENAME = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
 const BANNER = FILENAME.replace('html', 'png');
 // se obtine el titulo del sitio web 
-const TITULO = document.title ;
+const TITULO = document.title;
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (JSON.session) {
     setInterval(() => {
       TiempoInactividad();
-  }, 30000);
+    }, 30000);
     if (JSON.status) {
-    HEADER.innerHTML = `<div class="h-24 container flex flex-wrap items-center justify-between mx-auto" style="background: url(../imagenes/banner/${BANNER});  border-radius: 10px; background-color: rgb(80 87 122);">
+      HEADER.innerHTML = `<div class="h-24 container flex flex-wrap items-center justify-between mx-auto" style="background: url(../imagenes/banner/${BANNER});  border-radius: 15px; background-color: rgb(80 87 122);">
     <!-- Titulo de la pagina  -->
     <h1 class="px-5 font-medium text-white text-4xl">${TITULO}</h1>
     <!-- Opciones del usuario -->
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         `;
 
-    SIDE.innerHTML = `<div class="min-h-screen bg-gray-100">
+      SIDE.innerHTML = `<div class="min-h-screen bg-gray-100">
   <nav class="sidebar sm:block hidden min-h-screen w-36  overflow-hidden border-r  bg-azul-1 hover:shadow-lg">
     <div class="flex h-screen flex-col justify-between mt-12 pb-6">
       <div class="flex flex-col items-center">
@@ -292,9 +292,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   </nav>
 </div>
    `;
+    }
   }
-}
-  
+
 
   /*
 // Se define el componente Parallax.
@@ -372,11 +372,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function TiempoInactividad() {
   const DATA = await dataFetch(USER_API, 'TiempoInactividad');
   if (DATA.status) {
-      console.log(DATA.message);
+    console.log(DATA.message);
   } else {
-      clearInterval();
-      // Redireccionamiento a la pagina de acceso al sistema
-      sweetAlert(2, DATA.exception, false, 'index.html');
+    clearInterval();
+    // Redireccionamiento a la pagina de acceso al sistema
+    sweetAlert(2, DATA.exception, false, 'index.html');
   }
 }
 

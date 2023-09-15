@@ -31,13 +31,13 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'TiempoInactividad':
-                    if (Validator::ValidarTiempo()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Sesión activa';
-                    } else {
-                        $result['exception'] = 'Su sesión ha caducado';
-                    }
-                    break;
+                if (Validator::ValidarTiempo()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Sesión activa';
+                } else {
+                    $result['exception'] = 'Su sesión ha caducado';
+                }
+                break;
             case 'readProfile':
                 if ($result['dataset'] = $usuario->readProfile()) {
                     $result['status'] = 1;
@@ -85,7 +85,7 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $usuario->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -98,7 +98,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ingrese un valor para buscar';
                 } elseif ($result['dataset'] = $usuario->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -184,23 +184,30 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Debe crear un usuario para comenzar';
                 }
                 break;
+             // Metodo para ingresar el primer usuario 
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
-                if  (!$usuario->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$usuario->setAlias($_POST['usuario'])) {
-                    $result['exception'] = 'Alias incorrecto';
-                } elseif ($_POST['codigo'] != $_POST['confirmar']) {
-                    $result['exception'] = 'Claves diferentes';
-                } elseif (!$usuario->setClave($_POST['codigo'])) {
-                    $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->createRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Usuario registrado correctamente';
+                $existingUsers = $usuario->readAll();
+                if (count($existingUsers) > 0) {
+                    $result['exception'] = 'No es posible ingresar un usuario nuevo por este medio';
                 } else {
-                    $result['exception'] = Database::getException();
+                    if (!$usuario->setCorreo($_POST['correo'])) {
+                        $result['exception'] = 'Correo incorrecto';
+                    } elseif (!$usuario->setAlias($_POST['usuario'])) {
+                        $result['exception'] = 'Alias incorrecto';
+                    } elseif ($_POST['codigo'] != $_POST['confirmar']) {
+                        $result['exception'] = 'Claves diferentes';
+                    } elseif (!$usuario->setClave($_POST['codigo'])) {
+                        $result['exception'] = Validator::getPasswordError();
+                    } elseif ($usuario->createRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Usuario registrado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
                 }
                 break;
+                // Codigo para el caso del login
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->checkUser($_POST['nombres'])) {
