@@ -71,12 +71,24 @@ background-color: #50577A;
   transform: scaleX(-1);
 } */
 
-
+  
 
   
 @media (min-width: 428px){
   .cont{
     width: 950px;
+    height: 500px;
+  }
+}
+
+.bg_contra{
+ background-image: url(../imagenes/ilustrations/contra_back.png);
+background-size:cover;
+}
+
+@media (min-width: 428px){
+  .contra{
+    width: 700px;
     height: 500px;
   }
 }

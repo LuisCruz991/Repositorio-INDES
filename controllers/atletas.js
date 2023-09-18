@@ -372,7 +372,6 @@ function openHoras(id) {
     const PATH = new URL(`${SERVER_URL}reports/horas_cumplidas.php`);
     //Se declara el id que se enviara cuando se abra el reporte
     PATH.searchParams.append('idatleta', id);
-
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }

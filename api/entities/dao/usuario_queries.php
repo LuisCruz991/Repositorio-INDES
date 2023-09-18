@@ -1,13 +1,13 @@
 <?php
 require_once('../helpers/database.php');
 /*
-*	Clase para manejar el acceso a datos de la entidad USUARIO.
-*/
+ *	Clase para manejar el acceso a datos de la entidad USUARIO.
+ */
 class UsuarioQueries
 {
     /*
-    *   Métodos para gestionar la cuenta del usuario.
-    */
+     *   Métodos para gestionar la cuenta del usuario.
+     */
     public function checkUser($nombres)
     {
         $sql = 'SELECT idadministrador FROM administradores WHERE nombre_usuario = ?';
@@ -60,8 +60,8 @@ class UsuarioQueries
     }
 
     /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
-    */
+     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
+     */
     public function searchRows($value)
     {
         $sql = 'SELECT idusuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario
@@ -76,7 +76,7 @@ class UsuarioQueries
     {
         $sql = 'INSERT INTO administradores(nombre_usuario, clave_usuario, correo_usuario)
                 VALUES(?, ?, ?)';
-        $params = array($this->alias, $this->clave,  $this->correo);
+        $params = array($this->alias, $this->clave, $this->correo);
         return Database::executeRow($sql, $params);
     }
 
@@ -112,5 +112,14 @@ class UsuarioQueries
                 WHERE idadministrador = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    public function readByname()
+    {
+        $sql = "SELECT correo_usuario
+        FROM administradores
+        WHERE nombre_usuario = ?";
+        $params = array($this->alias);
+        return Database::getRow($sql, $params);
     }
 }
