@@ -12,6 +12,9 @@ class Usuario extends UsuarioQueries
     protected $nombres = null;
     protected $alias = null;
     protected $clave = null;
+    protected $intentos = null;
+    protected $acceso = null;
+    
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -68,6 +71,26 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    public function setIntentos($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->intentos = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setAcceso($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->acceso = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -95,5 +118,15 @@ class Usuario extends UsuarioQueries
     public function getAlias()
     {
         return $this->clave;
+    }
+
+    public function getIntentos()
+    {
+        return $this->intentos;
+    }
+
+    public function getAcceso()
+    {
+        return $this->acceso;
     }
 }

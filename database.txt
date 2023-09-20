@@ -14,7 +14,7 @@ CREATE TABLE `administradores` (
   `clave_usuario` varchar(200) NOT NULL COMMENT 'Clave del administrador',
   `correo_usuario` varchar(80) NOT NULL COMMENT 'Correo del usuario del administrador' ,
   `intentos_fallidos` tinyint NOT NULL default 0 COMMENT 'Numero de intentos fallidos al ingresar',
-  `bloqueo_hasta` datetime  NULL COMMENT 'Tiempo que la cuenta estara bloqueda'  
+  `acceso` boolean default true  NULL COMMENT 'true es acceso permitido, false es denegado'  
 );
 
 --
