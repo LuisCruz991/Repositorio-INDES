@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
   if (JSON.session) {
     setInterval(() => {
+      //Se coloca la cantidad de tiempo maxima de inactividad en milisegundos
       TiempoInactividad();
     }, 30000);
     if (JSON.status) {
@@ -370,13 +371,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 async function TiempoInactividad() {
-  const DATA = await dataFetch(USER_API, 'TiempoInactividad');
-  if (DATA.status) {
-    console.log(DATA.message);
+  const JSON = await dataFetch(USER_API, 'TiempoInactividad');
+  if (JSON.status) {
+    sweetAlert(1, JSON.message, true);
   } else {
     clearInterval();
-    // Redireccionamiento a la pagina de acceso al sistema
-    sweetAlert(2, DATA.exception, false, 'index.html');
+    // Redireccionamiento a la pagina de inicio del sistema
+    sweetAlert(2, JSON.exception, false, '../vistas/index.html');
   }
 }
 
