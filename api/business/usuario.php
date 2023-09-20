@@ -210,15 +210,36 @@ if (isset($_GET['action'])) {
                 // Codigo para el caso del login
             case 'login':
                 $_POST = Validator::validateForm($_POST);
+                print_r($_POST);
                 if (!$usuario->checkUser($_POST['nombres'])) {
-                    $result['exception'] = 'Usuario incorrecto';
+                    $result['exception'] = 'Credenciales incorrectas';
+                } elseif ($usuario->getAcceso() == 0) {
+                    $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
                 } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Autenticación correcta';
                     $_SESSION['idadministrador'] = $usuario->getId();
                     $_SESSION['nombre_usuario'] = $usuario->getNombre();
+                    // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
+                    if ($usuario->resetearIntentosIntentos()) {
+                        $result['exception'] = 'Autenticación correcta';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
                 } else {
-                    $result['exception'] = 'Clave incorrecta';
+                    if ($usuario->getIntentos() < 2) {
+                        if ($usuario->actualizarIntentos()) {
+                            $result['exception'] = 'Credenciales incorrectas.';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                    } else {
+                        if ($usuario->bloquearUsuario()) {
+                            $result['exception'] = 'Excedio el número de intentos para iniciar sesión, el usuario ha sido bloqueado.';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                    }
+                    $result['exception'] = 'Credenciales incorrectas';
                 }
                 break;
             default:

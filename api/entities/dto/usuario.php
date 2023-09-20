@@ -83,7 +83,7 @@ class Usuario extends UsuarioQueries
 
     public function setAcceso($value)
     {
-        if (Validator::validateBoolean($value)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->acceso = $value;
             return true;
         } else {

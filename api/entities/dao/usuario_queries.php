@@ -10,10 +10,11 @@ class UsuarioQueries
      */
     public function checkUser($nombres)
     {
-        $sql = 'SELECT idadministrador FROM administradores WHERE nombre_usuario = ?';
+        $sql = 'SELECT idadministrador, acceso FROM administradores WHERE nombre_usuario = ?';
         $params = array($nombres);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idadministrador'];
+            $this->acceso = $data['acceso'];
             $this->nombres = $nombres;
             return true;
         } else {
@@ -23,9 +24,10 @@ class UsuarioQueries
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT clave_usuario FROM administradores WHERE idadministrador = ?';
+        $sql = 'SELECT clave_usuario, intentos_fallidos FROM administradores WHERE idadministrador = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
+        $this->intentos = $data['intentos_fallidos'];
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($password, $data['clave_usuario'])) {
             return true;
@@ -122,4 +124,28 @@ class UsuarioQueries
         $params = array($this->alias);
         return Database::getRow($sql, $params);
     }
+
+    // Método para resetear los intentos de inicio de sesión.
+    public function bloquearUsuario()
+    {
+        $sql = 'UPDATE administradores SET acceso = 0  WHERE idadministrador = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    } 
+
+    // Método para actualizar los intentos de inicio de sesión.
+    public function actualizarIntentos()
+    {
+        $sql = 'UPDATE administradores SET intentos_fallidos = intentos_fallidos + 1 WHERE idadministrador = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+     // Método para resetear los intentos de inicio de sesión.
+     public function resetearIntentos()
+     {
+         $sql = 'UPDATE administradores SET intentos_fallidos = 0 WHERE idadministrador = ?';
+         $params = array($this->id);
+         return Database::executeRow($sql, $params);
+     }
 }
