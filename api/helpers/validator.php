@@ -189,7 +189,10 @@ class Validator
         if (strlen($value) < 6) {
             self::$passwordError = 'Clave menor a 6 caracteres';
             return false;
-        } elseif (strlen($value) <= 72) {
+        } elseif (strpos($value, ' ') !== false) {;
+            self::$passwordError = 'Clave no debe contener espacios';
+            return false;
+        }elseif (strlen($value) <= 72) {
             return true;
         } else {
             self::$passwordError = 'Clave mayor a 72 caracteres';

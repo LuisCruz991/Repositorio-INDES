@@ -197,7 +197,10 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Alias incorrecto';
                     } elseif ($_POST['codigo'] != $_POST['confirmar']) {
                         $result['exception'] = 'Claves diferentes';
-                    } elseif (!$usuario->setClave($_POST['codigo'])) {
+                    }elseif (!preg_match('/[^a-zA-Z\d]/', $_POST['confirmar'])) {
+                        $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                    } 
+                    elseif (!$usuario->setClave($_POST['codigo'])) {
                         $result['exception'] = Validator::getPasswordError();
                     } elseif ($usuario->createRow()) {
                         $result['status'] = 1;
@@ -210,7 +213,6 @@ if (isset($_GET['action'])) {
                 // Codigo para el caso del login
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                print_r($_POST);
                 if (!$usuario->checkUser($_POST['nombres'])) {
                     $result['exception'] = 'Credenciales incorrectas';
                 } elseif ($usuario->getAcceso() == 0) {
