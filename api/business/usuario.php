@@ -220,7 +220,7 @@ if (isset($_GET['action'])) {
                     $_SESSION['idadministrador'] = $usuario->getId();
                     $_SESSION['nombre_usuario'] = $usuario->getNombre();
                     // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
-                    if ($usuario->resetearIntentosIntentos()) {
+                    if ($usuario->resetearIntentos()) {
                         $result['exception'] = 'Autenticación correcta';
                     } else {
                         $result['exception'] = Database::getException();
