@@ -302,7 +302,7 @@ class Validator
     public static function ValidarTiempo()
     {
         //Establecer tiempo de inactivad en segundos
-        $inactivity_time = 30;
+        $inactivity_time = 300;
         //Verificar la última actividad está registrada en la sesión 
         if ((time() - $_SESSION['last_activity']) > $inactivity_time) {
             //Destruye la sesión

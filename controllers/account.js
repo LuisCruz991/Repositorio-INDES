@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setInterval(() => {
       //Se coloca la cantidad de tiempo maxima de inactividad en milisegundos
       TiempoInactividad();
-    }, 30000);
+    }, 300000);
     if (JSON.status) {
       HEADER.innerHTML = `<div class="h-24 container flex flex-wrap items-center justify-between mx-auto" style="background: url(../imagenes/banner/${BANNER});  border-radius: 15px; background-color: rgb(80 87 122);">
     <!-- Titulo de la pagina  -->
