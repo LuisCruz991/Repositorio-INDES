@@ -1,0 +1,4 @@
+1-A01:2021 – Pérdida de Control de Acceso
+
+No poder actuar en el sistema sin estar ingresado o contar con los permisos correspondientes, contando con niveles de usuarios
+y permisos de cada tipo o nivel del usuario
