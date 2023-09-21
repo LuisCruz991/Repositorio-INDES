@@ -57,7 +57,7 @@ if ($user->setAlias($_GET['nombre_usuario'])) {
             //Content
             $mail->isHTML(true); //Set email format to HTML
             $mail->Subject = 'Tu codigo de verificacion';
-            $mail->Body = "Tu codigo de verificación: $code";
+            $mail->Body = "Tu codigo de verificación es: $code";
 
             $mail->send();
             // echo 'Mensaje envido de forma exitosa';
