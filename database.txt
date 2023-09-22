@@ -24,6 +24,19 @@ CREATE TABLE `administradores` (
 INSERT INTO `administradores` (`idadministrador`, `nombre_usuario`, `clave_usuario`, `correo_usuario`) VALUES
 (3, 'raul', '$2y$10$Qksub.cc5RbR/sJLi1hU/OlQmHhhZSx7z8blvXxZZ5GxuRp.SUbDW', 'raul@gmail.com');
 
+
+--
+-- Estructura de tabla para la tabla `auditoria`
+--
+
+CREATE TABLE `auditorias` (
+  `idauditoria` int(11) NOT NULL COMMENT 'ID de la auditoria',
+  `idadministrador` int(11) NOT NULL COMMENT 'ID del administrador',
+  `fecha_ingreso` date NOT NULL COMMENT 'Fecha de ingreso al sistema',
+  `hora_entrada` time NOT NULL COMMENT 'Hora de ingreso al sistema' 
+);
+
+
 -- --------------------------------------------------------
 
 --
@@ -410,6 +423,13 @@ ALTER TABLE `administradores`
   ADD UNIQUE KEY `correo_usuario` (`correo_usuario`);
 
 --
+-- Indices de la tabla `auditoria`
+--
+ALTER TABLE `auditorias`
+  ADD PRIMARY KEY (`idauditoria`),
+  ADD KEY `auditoria_admin` (`idadministrador`);
+
+--
 -- Indices de la tabla `atletas`
 --
 ALTER TABLE `atletas`
@@ -567,6 +587,12 @@ ALTER TABLE `unidades_medidas`
 --
 ALTER TABLE `administradores`
   MODIFY `idadministrador` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador', AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `auditoria`
+--
+ALTER TABLE `auditorias`
+  MODIFY `idauditoria` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID del administrador', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `atletas`
@@ -755,6 +781,13 @@ ALTER TABLE `records`
   ADD CONSTRAINT `record_atleta` FOREIGN KEY (`idatleta`) REFERENCES `atletas` (`idatleta`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `record_prueba` FOREIGN KEY (`idprueba`) REFERENCES `pruebas` (`idprueba`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `records_unidad` FOREIGN KEY (`idunidad_medida`) REFERENCES `unidades_medidas` (`idunidad_medida`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `auditoria`
+--
+ALTER TABLE `auditorias`
+  ADD CONSTRAINT `auditoria_admin` FOREIGN KEY (`idadministrador`) REFERENCES `administradores` (`idadministrador`) ON DELETE NO ACTION ON UPDATE CASCADE;
+COMMIT;
 
 --
 -- Filtros para la tabla `responsables`
