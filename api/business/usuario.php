@@ -184,7 +184,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Debe crear un usuario para comenzar';
                 }
                 break;
-             // Metodo para ingresar el primer usuario 
+            // Metodo para ingresar el primer usuario 
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
                 $existingUsers = $usuario->readAll();
@@ -197,10 +197,9 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Alias incorrecto';
                     } elseif ($_POST['codigo'] != $_POST['confirmar']) {
                         $result['exception'] = 'Claves diferentes';
-                    }elseif (!preg_match('/[^a-zA-Z\d]/', $_POST['confirmar'])) {
+                    } elseif (!preg_match('/[^a-zA-Z\d]/', $_POST['confirmar'])) {
                         $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                    } 
-                    elseif (!$usuario->setClave($_POST['codigo'])) {
+                    } elseif (!$usuario->setClave($_POST['codigo'])) {
                         $result['exception'] = Validator::getPasswordError();
                     } elseif ($usuario->createRow()) {
                         $result['status'] = 1;
@@ -210,7 +209,7 @@ if (isset($_GET['action'])) {
                     }
                 }
                 break;
-                // Codigo para el caso del login
+            // Codigo para el caso del login
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->checkUser($_POST['nombres'])) {
@@ -242,6 +241,24 @@ if (isset($_GET['action'])) {
                         }
                     }
                     $result['exception'] = 'Credenciales incorrectas';
+                }
+                break;
+            // Caso del cambio de contraseña por medio de la recuperación
+            case 'recuPassword':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->setAlias($_POST['nombre'])) {
+                    $result['exception'] = 'Usuario no leido correctamente';
+                } elseif ($_POST['nueva'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Las claves no coinciden';
+                } elseif (!preg_match('/[^a-zA-Z\d]/', $_POST['confirmar'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif (!$usuario->setClave($_POST['confirmar'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif ($usuario->recuPassword()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Contraseña cambiada de forma exitosa';
+                } else {
+                    $result['exception'] = Database::getException();
                 }
                 break;
             default:
