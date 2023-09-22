@@ -1,6 +1,9 @@
 // constante con el link del archivo de php
 const RECU = '../api/mails/recu.php';
 
+// Constante para completar la ruta de la API.
+const USUARIO_API = 'business/usuario.php';
+
 // se declara la constante del formulario donde se introduce el codigo 
 const CODE_FORM = document.getElementById('code-form');
 
@@ -15,6 +18,9 @@ const CODE_I = document.getElementById('code_form');
 
 //Constante del div donde se introduce el codigo
 const CONTRA = new Modal(document.getElementById('contra-modal'));
+
+//Constante del div donde se introduce el codigo
+const CONTRA_FORM = document.getElementById('contra-form');
 
 // Evento cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -46,7 +52,10 @@ CODE_FORM.addEventListener('submit', async (event) => {
         if (code == DATA) {
             // En caso de coincidir se imprime un mensaje y se redirecciona al usuario al formulario de restablecer contraseña
             sweetAlert(1, 'Autenticación completada exitosamente');
+            // se muestra el modalr para hacer el cambio de contraseña
             CONTRA.show();
+            // se obtiane el valor del usuario 
+            document.getElementById('nombre').value = document.getElementById('nombres').value;
         }
         else {
             // En caso de no coincidir se imprime un mensaje de error 
@@ -57,7 +66,20 @@ CODE_FORM.addEventListener('submit', async (event) => {
     }
 })
 
-
+// evento para cuando se manda el formulario del cambio de contraseña
+CONTRA_FORM.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Evitar recargar la página web después de enviar el formulario.
+    const FORM = new FormData(CONTRA_FORM);
+    // se ejecuta la accion del business
+    const JSON = await dataFetch(USUARIO_API, 'recuPassword',FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+      // Se muestra un mensaje de éxito.
+      sweetAlert(1, JSON.message, true, 'index.html'); // Mostrar mensaje de éxito y redirigir a la página de inicio.
+    } else {
+      sweetAlert(2, JSON.exception, false); // Mostrar mensaje de error en tal caso
+    }
+})
 
 // Funcion para abrir el reporte de las horas cumplidas de entrenamiento de un atleta
 function openMail() {

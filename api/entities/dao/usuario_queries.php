@@ -43,6 +43,15 @@ class UsuarioQueries
         return Database::executeRow($sql, $params);
     }
 
+    public function recuPassword()
+    {
+        $sql = 'UPDATE administradores 
+                SET clave_usuario = ? 
+                WHERE nombre_usuario = ?';
+        $params = array($this->clave, $this-> alias);
+        return Database::executeRow($sql, $params);
+    }
+
     public function readProfile()
     {
         $sql = 'SELECT idadministrador, nombre_usuario, idgenero

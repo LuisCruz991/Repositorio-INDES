@@ -143,36 +143,32 @@
         </div>
         <form id="contra-form" method="post" autocomplete="off">
           <div class="grid gap-6 m-5 md:grid-cols-2">
-            <!-- id  -->
-            <input type="text" id="id" name="id"
-              class="hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <!-- Campo para ingresar el nombre del evento -->
+            <!-- nombre  -->
+            <input hidden type="text" id="nombre" name="nombre"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <!-- Campo -->
             <div>
-              <label for="Nombre" class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña actual</label>
-              <input type="password" id="nombre" name="nombre"
+              <label for="Nombre" class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nueva
+                contraseña</label>
+              <input type="password" id="nueva" name="nueva"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="••••••••" required>
             </div>
-            <!-- Campo para ingresar la descripcion -->
+            <!-- Campo  -->
             <div>
-              <label for="Nombre" class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nueva contraseña</label>
-              <input type="password" id="nombre" name="nombre"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="••••••••" required>
-            </div>
-            <!-- Campo para seleccionar la fecha del evento -->
-            <div>
-              <label for="Nombre" class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar contraseña</label>
-              <input type="password" id="nombre" name="nombre"
+              <label for="Nombre" class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar
+                contraseña</label>
+              <input type="password" id="confirmar" name="confirmar"
                 class="mb-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="••••••••" required >
-            </div><!-- Campo para seleccionar el 'pais' de evento -->
+                placeholder="••••••••" required>
+            </div><!-- Campo  -->
           </div>
           <button type="submit"
-          class="mb-8 text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar cambios</button>  
+            class="mb-8 text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
+            cambios</button>
       </div>
       <!-- Boton para crear registro -->
-     </form>
+      </form>
     </div>
   </div>
   </div>
