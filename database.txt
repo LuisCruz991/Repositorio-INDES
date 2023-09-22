@@ -146,7 +146,9 @@ CREATE TABLE `entrenadores` (
   `direccion` varchar(200) NOT NULL COMMENT 'Direccion del entrenador',
   `dui` varchar(10) NOT NULL COMMENT 'Numero de DUI del entrenador ',
   `correo` varchar(50) NOT NULL COMMENT 'Direccion de correo del entrenador ',
-  `idfederacion` int(11) NOT NULL COMMENT 'Federacion asociada al atleta'
+  `idfederacion` int(11) NOT NULL COMMENT 'Federacion asociada al atleta',
+  `clave` varchar(200)  NULL COMMENT 'Clave del entrenador '
+
 );
 
 --

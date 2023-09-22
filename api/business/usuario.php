@@ -197,6 +197,10 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Alias incorrecto';
                     } elseif ($_POST['codigo'] != $_POST['confirmar']) {
                         $result['exception'] = 'Claves diferentes';
+                    }elseif ($_POST['usuario'] == $_POST['confirmar']) {
+                        $result['exception'] = 'Eliga una clave mas segura';
+                    }elseif ($_POST['correo'] == $_POST['confirmar']) {
+                        $result['exception'] = 'Eliga una clave mas segura';
                     } elseif (!preg_match('/[^a-zA-Z\d]/', $_POST['confirmar'])) {
                         $result['exception'] = 'La clave debe contener al menos un carácter especial';
                     } elseif (!$usuario->setClave($_POST['codigo'])) {
