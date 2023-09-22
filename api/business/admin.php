@@ -79,7 +79,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el administrador';
                 }
                 break;
-
+             
                 case 'update':
                     $_POST = Validator::validateForm($_POST);
                     if (!$admin->setId($_POST['id'])) {

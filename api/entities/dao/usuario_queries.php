@@ -36,6 +36,19 @@ class UsuarioQueries
         }
     }
 
+    public function checkPassword2($password)
+    {
+        $sql = 'SELECT clave_usuario FROM administradores WHERE idadministrador = ?';
+        $params = array($_SESSION['idadministrador']);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if (password_verify($password, $data['clave_usuario'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function changePassword()
     {
         $sql = 'UPDATE administradores SET clave_usuario = ? WHERE idadministrador = ?';
@@ -54,11 +67,21 @@ class UsuarioQueries
 
     public function readProfile()
     {
-        $sql = 'SELECT idadministrador, nombre_usuario, idgenero
+        $sql = 'SELECT nombre_usuario,correo_usuario, clave_usuario
                 FROM administradores
                 WHERE idadministrador = ?';
         $params = array($_SESSION['idadministrador']);
         return Database::getRow($sql, $params);
+    }
+
+    public function cambiarClave()
+    {
+       
+        $sql = 'UPDATE administradores
+                SET clave_usuario = ?
+                WHERE idadministrador = ?';
+        $params = array($this->clave, $_SESSION['idadministrador']);
+        return Database::executeRow($sql, $params);
     }
 
     public function editProfile()

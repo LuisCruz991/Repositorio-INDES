@@ -64,6 +64,50 @@
             </div>
           </main>
           <!-- Agrega aquí tus scripts u otros elementos necesarios -->
+          <div id="password-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+          class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
+          <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <form id="password-form" autocomplete="off">
+
+                <div class="grid gap-6 m-5 md:grid-cols-2">
+                  <!-- Campo para ingresar nombre -->
+                  <div>
+                    <input type="text" id="usuario" class="hidden" name="usuario">
+                    <input type="text" id="correo" class="hidden" name="correo">
+
+                    <label for="actual"
+                      class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave actual</label>
+                    <input type="password" id="actual" name="actual"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Clave" required>
+                  </div>
+                  <div>
+                    <label for="nueva"
+                      class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nueva clave</label>
+                    <input type="password" id="nueva" name="nueva"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Clave" required>
+                  </div>
+                  <div>
+                    <label for="confirmar"
+                      class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar clave</label>
+                    <input type="password" id="confirmar" name="confirmar"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Clave" required>
+                  </div>
+                </div>
+
+                <!-- Boton para crear registro -->
+                <button type="submit"
+                  class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
+                  datos</button>
+              </form>
+            </div>
+          </div>
+        </div>
         </body>
 
         </html>
@@ -77,11 +121,11 @@
 
   </div>
   <!-- Finalizacion del codigo -->
+  <script type="text/javascript" src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   <script type="text/javascript" src="../Js/sweetalert.min.js"></script>
   <script type="text/javascript" src="../controllers/components.js"></script>
   <script type="text/javascript" src="../controllers/main.js"></script>
   <script type="text/javascript" src="../controllers/account.js"></script>
-  <script type="text/javascript" src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   <script type="text/javascript" src="../js/chart.min.js"></script>
 
 </body>

@@ -32,6 +32,8 @@ class AdminQueries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
+
+ 
  
     //  Consulta para leer los generos de administradores
     public function readGenero()

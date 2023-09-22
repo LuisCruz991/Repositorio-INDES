@@ -6,10 +6,13 @@
 
 // Constante para completar la ruta de la API. 
 const USER_API = 'business/usuario.php';
+const ADMIN_API = 'business/admin.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const HEADER = document.querySelector('header');
 const NAV = document.querySelector('nav');
 const SIDE = document.getElementById('sidebar');
+const PASSWORD_MODAL = new Modal(document.getElementById('password-modal'));
+const PASSWORD_FORM = document.getElementById('password-form');
 
 const FILENAME = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
 const BANNER = FILENAME.replace('html', 'png');
@@ -60,9 +63,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         <ul class="py-2" aria-labelledby="user-menu-button">
           <!-- Acciones del usuario -->
           <li>
-            <a href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Editar perfil</a>
-          </li>
+             <button onclick="openPassword()" 
+             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cambiar clave</a>
+             </li>
           <li>
             <a href="#"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Configuración</a>
@@ -381,4 +384,41 @@ async function TiempoInactividad() {
   }
 }
 
+PASSWORD_FORM.addEventListener('submit', async (event) => {
+  // Se evita recargar la página web después de enviar el formulario.
+  event.preventDefault();
+  // Constante tipo objeto con los datos del formulario.
+  const FORM = new FormData(PASSWORD_FORM);
+  // Petición para actualizar la constraseña.
+  const JSON = await dataFetch(USER_API, 'cambiarClave', FORM);
+  // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+  if (JSON.status) {
+      // Se cierra la caja de diálogo.
+      // Se muestra un mensaje de éxito.
+      sweetAlert(1, JSON.message, true);
+  } else {
+      sweetAlert(2, JSON.exception, false);
+  }
+});
+
+async function openPassword() {
+  // Se abre la caja de diálogo que contiene el formulario.
+
+  const FORM = new FormData();
+  // Petición para obtener los datos del registro solicitado.
+  const JSON = await dataFetch(USER_API, 'readProfile', FORM);
+  // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+  if (JSON.status) {
+    // // Se abre la caja de diálogo que contiene el formulario.
+    PASSWORD_MODAL.show();
+    // Se restauran los elementos del formulario.
+    PASSWORD_FORM.reset();
+    // Se inicializan los campos del formulario.
+    document.getElementById('usuario').value = JSON.dataset.nombre_usuario;
+    document.getElementById('correo').value = JSON.dataset.correo_usuario;
+  } else {
+    sweetAlert(2, JSON.exception, false);
+  }
+  // Se restauran los elementos del formulario.
+}
 
