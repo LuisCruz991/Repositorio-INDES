@@ -12,6 +12,8 @@ class Admin extends AdminQueries
     protected $clave = null;
     protected $genero = null;
     protected $correo = null;
+    protected $intentos = null;
+    protected $acceso = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -64,6 +66,8 @@ class Admin extends AdminQueries
                 return false;
             }    
         }
+
+    
 
 
     /*

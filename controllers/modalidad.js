@@ -87,9 +87,6 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
             <tr
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <p class="text-base">${row.idmodalidad_deporte}</p>
-            </th>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <p class="text-center  w-14 rounded-xl">${row.nombre_modalidad}</p>
             </td>
