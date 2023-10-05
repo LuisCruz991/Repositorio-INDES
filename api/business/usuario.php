@@ -47,24 +47,6 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Usuario inexistente';
                     }
                     break;
-            case 'editProfile':
-                $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$usuario->setAlias($_POST['alias'])) {
-                    $result['exception'] = 'Alias incorrecto';
-                } elseif ($usuario->editProfile()) {
-                    $result['status'] = 1;
-                    $_SESSION['alias_usuario'] = $usuario->getAlias();
-                    $result['message'] = 'Perfil modificado correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
             case 'cambiarClave':
                 $_POST = Validator::validateForm($_POST);
               if (!$usuario->checkPassword2($_POST['actual'])) {

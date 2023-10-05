@@ -67,12 +67,13 @@ class UsuarioQueries
 
     public function readProfile()
     {
-        $sql = 'SELECT nombre_usuario,correo_usuario, clave_usuario
+        $sql = 'SELECT idadministrador,nombre_usuario,correo_usuario, clave_usuario
                 FROM administradores
                 WHERE idadministrador = ?';
         $params = array($_SESSION['idadministrador']);
         return Database::getRow($sql, $params);
     }
+    
 
     public function cambiarClave()
     {
@@ -84,14 +85,7 @@ class UsuarioQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function editProfile()
-    {
-        $sql = 'UPDATE administradores
-                SET nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?
-                WHERE idadministrador = ?';
-        $params = array($this->alias, $this->apellidos, $this->correo, $_SESSION['idadministrador']);
-        return Database::executeRow($sql, $params);
-    }
+   
 
     /*
      *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
