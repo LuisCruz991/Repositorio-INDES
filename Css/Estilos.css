@@ -96,3 +96,15 @@ background-size:cover;
 .suario_code {
   transition: 5s ease-out;
 }
+
+.proximo {
+  background: url(../imagenes/ilustrations/proximo.png);
+}
+
+.destacado {
+  background: url(../imagenes/ilustrations/destacado.png);
+}
+
+.atletas {
+  background: url(../imagenes/ilustrations/atletas.png);
+} 

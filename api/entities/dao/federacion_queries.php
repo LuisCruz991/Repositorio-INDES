@@ -74,9 +74,9 @@ class FederacionQueries {
 //      consulta para generar grafico de cantidad de atletas por Federacion
      public function cantidadAtletasFederaciones()
      {
-         $sql = 'SELECT nombre_federacion, COUNT(idatleta) cantidad
+         $sql = 'SELECT siglas, COUNT(idatleta) cantidad
                  FROM atletas INNER JOIN federaciones USING(idfederacion)
-                 GROUP BY nombre_federacion ORDER BY cantidad DESC';
+                 GROUP BY siglas ORDER BY cantidad DESC';
          return Database::getRows($sql);   
      }
 }

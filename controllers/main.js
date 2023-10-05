@@ -106,14 +106,14 @@ async function graficoPastelFederaciones() {
         JSON.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
             atletas.push(row.cantidad);
-            federaciones.push(row.nombre_federacion);
+            federaciones.push(row.siglas);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
         barGraphY('chart4', federaciones, atletas ,'Numero de atletas','Cantidad de atletas por federación');
     } else {
         document.getElementById('chart4').remove();
             atletas.push(row.cantidad);
-            federaciones.push(row.nombre_federacion);
+            federaciones.push(row.siglas);
         };
 }
  
