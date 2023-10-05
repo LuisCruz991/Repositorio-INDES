@@ -33,6 +33,14 @@ class AdminQueries
         return Database::getRow($sql, $params);
     }
 
+    public function editProfile()
+    {
+        $sql = 'UPDATE administradores
+                SET nombre_usuario = ?, correo_usuario = ?
+                WHERE idadministrador = ?';
+        $params = array($this->nombre, $this->correo, $_SESSION['idadministrador']);
+        return Database::executeRow($sql, $params);
+    }
  
  
     //  Consulta para leer los generos de administradores

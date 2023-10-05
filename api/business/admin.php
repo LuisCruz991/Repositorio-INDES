@@ -47,7 +47,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-
+                case 'editProfile':
+                    $_POST = Validator::validateForm($_POST);
+                    if (!$admin->setNombre($_POST['nombre'])) {
+                        $result['exception'] = 'Nombres incorrectos';
+                    } elseif (!$admin->setCorreo($_POST['email'])) {
+                        $result['exception'] = 'Correo incorrecto';
+                    } elseif ($admin->editProfile()) {
+                        $result['status'] = 1;
+                        $_SESSION['nombre_usuario'] = $admin->getNombre();
+                        $result['message'] = 'Perfil modificado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$admin->setNombre($_POST['nombre'])) {

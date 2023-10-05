@@ -44,6 +44,7 @@
             <!-- Título del contenido principal -->
             <h3 class="text-center text-2xl mb-10">Bienvenido!</h3>
             <!-- Se muestran gráficos de acuerdo con algunos datos disponibles en la base de datos -->
+
             <div class="flex justify-between">
               <div class="mr-16 ml-2 h-auto w-165 flex justify-between flex-wrap">
                 <div class="w-64 h-44 rounded-xl bg-azul-1 shadow-xl proximo">
@@ -56,44 +57,71 @@
                   <h1 class=" text-center mt-2 text-white">Atletas destacados en la última competición</h1>
                 </div>
 
-                <!-- Fila de los graficos  -->
-                <div>
-                  <!-- contenedor de un grafico -->
-                  <div
-                    class="mt-8 w-124 mr-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center font-white shadow-md">
+                <div class="flex mr-5">
+                  <div class="w-96">
                     <!-- Se muestra un gráfico con la cantidad de eventos por categoria-->
-                    <div class="w-80 mt-5">
-                      <canvas id="chart6"></canvas>
-                    </div>
+                    <canvas id="chart6"></canvas>
                   </div>
-                  <!-- contenedor de un grafico -->
-                  <div class="mt-8 w-124 ml-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center shadow-md">
+                  <div class="w-96 ">
                     <!-- Se muestra un gráfico con los los 5 atletas mas titulos -->
-                    <div class="w-80 mt-5">
-                      <canvas id="chart1"></canvas>
-                    </div>
+                    <canvas id="chart1"></canvas>
                   </div>
-                </div>
-
-                <!-- FIla de los graficos  -->
-                <div>
-                  <!-- contenedor de un grafico -->
-                  <div
-                    class="mt-8 w-124 mr-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center font-white shadow-md">
+                  <div class="w-96">
                     <!--Se muestra un grafico pastel con los atletas por genero-->
-                    <div class="w-80 mt-5">
-                      <canvas id="chart7"></canvas>
+                    <canvas id="chart7"></canvas>
+                  </div>
+                </div>
+                <div class=" ml-10">
+                  <!-- Se muestra un gráfico de pastel con las federaciones y la cantidad de atletas por federacion -->
+                  <canvas id="chart4"></canvas>
+                </div>
+          </main>
+
+          <div id="password-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+            class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
+            <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
+              <!-- Modal content -->
+              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <form id="password-form" autocomplete="off">
+                  <!-- Fila de los graficos  -->
+                  <div>
+                    <!-- contenedor de un grafico -->
+                    <div
+                      class="mt-8 w-124 mr-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center font-white shadow-md">
+                      <!-- Se muestra un gráfico con la cantidad de eventos por categoria-->
+                      <div class="w-80 mt-5">
+                        <canvas id="chart6"></canvas>
+                      </div>
+                    </div>
+                    <!-- contenedor de un grafico -->
+                    <div class="mt-8 w-124 ml-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center shadow-md">
+                      <!-- Se muestra un gráfico con los los 5 atletas mas titulos -->
+                      <div class="w-80 mt-5">
+                        <canvas id="chart1"></canvas>
+                      </div>
                     </div>
                   </div>
 
-                  <!-- contenedor de un grafico -->
-                  <div class="mt-8 w-124 ml-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center shadow-md">
-                    <!-- Se muestra un gráfico de pastel con las federaciones y la cantidad de atletas por federacion -->
-                    <div class="w-80 mt-5">
-                      <canvas id="chart4" style="height: 24rem;"></canvas>
+                  <!-- FIla de los graficos  -->
+                  <div>
+                    <!-- contenedor de un grafico -->
+                    <div
+                      class="mt-8 w-124 mr-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center font-white shadow-md">
+                      <!--Se muestra un grafico pastel con los atletas por genero-->
+                      <div class="w-80 mt-5">
+                        <canvas id="chart7"></canvas>
+                      </div>
+                    </div>
+
+                    <!-- contenedor de un grafico -->
+                    <div class="mt-8 w-124 ml-5 h-96 rounded-xl border-2 border-azul-1 flex justify-center shadow-md">
+                      <!-- Se muestra un gráfico de pastel con las federaciones y la cantidad de atletas por federacion -->
+                      <div class="w-80 mt-5">
+                        <canvas id="chart4" style="height: 24rem;"></canvas>
+                      </div>
                     </div>
                   </div>
-                </div>
               </div>
 
               <!-- se muestran noticias relacionadas al mundo del deporte  -->
@@ -103,53 +131,95 @@
                 </div>
               </div>
 
-          </main>
-          <!-- Agrega aquí tus scripts u otros elementos necesarios -->
-          <div id="password-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-            class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
-            <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
-              <!-- Modal content -->
-              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <form id="password-form" autocomplete="off">
+              </main>
+              <!-- Agrega aquí tus scripts u otros elementos necesarios -->
+              <div id="password-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+                class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
+                <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
+                  <!-- Modal content -->
+                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <form id="password-form" autocomplete="off">
 
-                  <div class="grid gap-6 m-5 md:grid-cols-2">
-                    <!-- Campo para ingresar nombre -->
-                    <div>
-                      <input type="text" id="usuario" class="hidden" name="usuario">
-                      <input type="text" id="correo" class="hidden" name="correo">
+                      <div class="grid gap-6 m-5 md:grid-cols-2">
+                        <!-- Campo para ingresar nombre -->
+                        <div>
+                          <input type="text" id="usuario" class="hidden" name="usuario">
+                          <input type="text" id="correo" class="hidden" name="correo">
 
-                      <label for="actual"
-                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave actual</label>
-                      <input type="password" id="actual" name="actual"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Clave" required>
-                    </div>
-                    <div>
-                      <label for="nueva"
-                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nueva clave</label>
-                      <input type="password" id="nueva" name="nueva"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Clave" required>
-                    </div>
-                    <div>
-                      <label for="confirmar"
-                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar
-                        clave</label>
-                      <input type="password" id="confirmar" name="confirmar"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Clave" required>
-                    </div>
+                          <label for="actual"
+                            class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave
+                            actual</label>
+                          <input type="password" id="actual" name="actual"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Clave" required>
+                        </div>
+                        <div>
+                          <label for="nueva"
+                            class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nueva
+                            clave</label>
+                          <input type="password" id="nueva" name="nueva"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Clave" required>
+                        </div>
+                        <div>
+                          <label for="confirmar"
+                            class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar
+                            clave</label>
+                          <input type="password" id="confirmar" name="confirmar"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Clave" required>
+                        </div>
+                      </div>
+
+                      <!-- Boton para crear registro -->
+                      <button type="submit"
+                        class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
+                        datos</button>
+                    </form>
                   </div>
-
-                  <!-- Boton para crear registro -->
-                  <button type="submit"
-                    class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
-                    datos</button>
-                </form>
+                </div>
               </div>
             </div>
-          </div>
+
+            <div id="profile-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+              class="fixed w top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0  md:h-full">
+              <div class="relative w-full sm:h-full h-[43rem] max-w-2xl md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <!-- Modal header -->
+                  <form id="profile-form" autocomplete="off">
+
+                    <div class="grid gap-6 m-5 md:grid-cols-2">
+                      <!-- Campo para ingresar nombre -->
+                      <div>
+                        <input type="text" id="id" class="hidden" name="id">
+
+                        <label for="usuario"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de
+                          usuario</label>
+                        <input type="text" id="nombre" name="nombre"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Usuario" required>
+                      </div>
+                      <div>
+                        <label for="correo"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo del
+                          usuario</label>
+                        <input type="email" id="email" name="email"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Correo" required>
+                      </div>
+                    </div>
+
+                    <!-- Boton para crear registro -->
+                    <button type="submit"
+                      class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
+                      datos</button>
+                  </form>
+                </div>
+              </div>
+            </div>
         </body>
 
 </html>
