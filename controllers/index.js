@@ -48,6 +48,7 @@ LOGIN_FORM.addEventListener('submit', async (event) => {
     }
 });
 
+// evento para mostrar y ocultar la contraseña
 function mostrarContrasenia() {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const passwordInput = document.getElementById('clave');
@@ -74,7 +75,7 @@ function mostrarContrasenia() {
     window.open(PATH.href);
 }
 
-
+// metodo para ocultar la contraseña en el primer uso
 function mostrarContraseniaSignUp() {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const passwordInput = document.getElementById('confirmar');

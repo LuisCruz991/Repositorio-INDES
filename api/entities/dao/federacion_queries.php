@@ -25,7 +25,7 @@ class FederacionQueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT idfederacion, nombre_federacion ,  direccion, telefono, logo, nombre_deporte
+         $sql = 'SELECT idfederacion, nombre_federacion ,  direccion, telefono, logo, nombre_deporte, siglas
                  FROM federaciones INNER JOIN deportes USING(iddeporte)';
          return Database::getRows($sql);
      }

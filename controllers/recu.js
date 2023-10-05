@@ -14,7 +14,7 @@ const RECU_FORM = document.getElementById('recu-form');
 let code = null;
 
 //Constante del div donde se introduce el codigo
-const CODE_I = document.getElementById('code_form');
+const CODE_I = document.getElementById('code_form');  
 
 //Constante del div donde se introduce el codigo
 const CONTRA = new Modal(document.getElementById('contra-modal'));
