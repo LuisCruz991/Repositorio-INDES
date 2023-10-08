@@ -1,4 +1,26 @@
 --
+-- Base de datos: `dbindes`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `actuaciones_destacadas`
+--
+
+CREATE TABLE `actuaciones_destacadas` (
+  `idactuacion` int(11) NOT NULL COMMENT 'Id de la actuación',
+  `posicion` int(11) NOT NULL COMMENT 'Posición obtenida en la actuación. ',
+  `marca_obtenida` varchar(20) NOT NULL COMMENT 'Marca obtenida',
+  `idunidad_medida` int(11) NOT NULL COMMENT 'unidad de medidad de la marca',
+  `idprueba` int(11) NOT NULL COMMENT 'Prueba de la actuación ',
+  `idatleta` int(11) NOT NULL COMMENT 'atleta de al que le corresponde la actuación ',
+  `idusuario` int(11) NOT NULL COMMENT 'Usuario que guardo la actuación '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `administradores`
 --
 
@@ -189,6 +211,13 @@ CREATE TABLE `eventos` (
   `direccion_sede` varchar(150) NOT NULL COMMENT 'Direccion del evento',
   `idtipo_evento` int(11) NOT NULL COMMENT 'Tipo de evento'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `eventos`
+--
+
+INSERT INTO `eventos` (`idevento`, `nombre_evento`, `logo_evento`, `descripcion`, `fecha_evento`, `imagen_sede`, `Cant.paises_participantes`, `Cant.participantes`, `idpais`, `direccion_sede`, `idtipo_evento`) VALUES
+(1, 'Juegos centroamericanos y del caribe', 'f', 'f', '2023-10-09', 'f', 10, 5, 1, 'f', 1);
 
 -- --------------------------------------------------------
 
@@ -494,6 +523,16 @@ CREATE TABLE `usuarios` (
 --
 
 --
+-- Indices de la tabla `actuaciones_destacadas`
+--
+ALTER TABLE `actuaciones_destacadas`
+  ADD PRIMARY KEY (`idactuacion`),
+  ADD KEY `unidad_actuacion` (`idunidad_medida`),
+  ADD KEY `prueba_actuacion` (`idprueba`),
+  ADD KEY `actuacion_atleta` (`idatleta`),
+  ADD KEY `usuario_actuacion` (`idusuario`);
+
+--
 -- Indices de la tabla `administradores`
 --
 ALTER TABLE `administradores`
@@ -684,6 +723,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `actuaciones_destacadas`
+--
+ALTER TABLE `actuaciones_destacadas`
+  MODIFY `idactuacion` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id de la actuación';
+
+--
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
@@ -735,7 +780,7 @@ ALTER TABLE `entrenamientos`
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `idevento` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de evento';
+  MODIFY `idevento` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de evento', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `federaciones`
@@ -830,6 +875,15 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `actuaciones_destacadas`
+--
+ALTER TABLE `actuaciones_destacadas`
+  ADD CONSTRAINT `actuacion_atleta` FOREIGN KEY (`idatleta`) REFERENCES `atletas` (`idatleta`),
+  ADD CONSTRAINT `prueba_actuacion` FOREIGN KEY (`idprueba`) REFERENCES `pruebas` (`idprueba`),
+  ADD CONSTRAINT `unidad_actuacion` FOREIGN KEY (`idunidad_medida`) REFERENCES `unidades_medidas` (`idunidad_medida`),
+  ADD CONSTRAINT `usuario_actuacion` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`idusuario`);
 
 --
 -- Filtros para la tabla `atletas`
