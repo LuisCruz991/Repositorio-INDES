@@ -483,8 +483,10 @@ CREATE TABLE `usuarios` (
   `nombre_usuario` varchar(15) NOT NULL COMMENT 'Nombre del usuario',
   `clave_usuario` varchar(100) NOT NULL COMMENT 'Clave del usuario',
   `correo_usuario` varchar(30) NOT NULL COMMENT 'Correo electronico del usuario',
-  `imagen_usuario` varchar(100) NOT NULL,
-  `idtipo_usuario` int(11) NOT NULL COMMENT 'Conexión con el tipo de usuario'
+  `imagen_usuario` varchar(100) NOT NULL COMMENT 'Imagen de perfil de usuario',
+  `idtipo_usuario` int(11) NOT NULL COMMENT 'Conexión con el tipo de usuario',
+  `intentos_fallidos` tinyint(4) NOT NULL DEFAULT 0 COMMENT 'Numero de intentos fallidos',
+  `acceso` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'Acceso, 1 es permitido y 0 es denegado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
