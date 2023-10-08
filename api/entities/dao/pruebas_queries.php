@@ -90,11 +90,11 @@ class PruebasQueries
     //Consulta para reporte no parametrizado que muestra las pruebas por deportes
     public function readPruebaDeportes()
     {
-        $sql = 'SELECT nombre_prueba, hora_inicial, duracion_estimada, nombre_deporte, nombre_evento, nombre_modalidad
+        $sql = 'SELECT nombre_prueba, nombre_evento, nombre_modalidad
         FROM pruebas INNER JOIN deportes USING(iddeporte)
         INNER JOIN eventos USING(idevento)
         INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
-        ORDER BY nombre_prueba';
+        ORDER BY nombre_deporte';
         return Database::getRows($sql);
     }
 }

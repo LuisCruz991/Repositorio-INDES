@@ -15,8 +15,8 @@ if ($dataEntrenador = $entrenador->readFederacion()) {
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 11);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(40, 10, 'Nombre', 1, 0, 'C', 1);
-    $pdf->cell(40, 10, 'Telefono', 1, 0, 'C', 1);
+    $pdf->cell(44, 10, 'Nombre y apellido', 1, 0, 'C', 1);
+    $pdf->cell(36, 10, 'Telefono', 1, 0, 'C', 1);
     $pdf->cell(40, 10, 'DUI', 1, 0, 'C', 1);
     $pdf->cell(66, 10, 'Correo', 1, 1, 'C', 1);
    
@@ -24,7 +24,7 @@ if ($dataEntrenador = $entrenador->readFederacion()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(120,161,175);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Times', '', 11);
+    $pdf->setFont('Times', 'B', 11);
 
     // Se recorren los registros fila por fila.
     foreach ($dataEntrenador as $rowEntrenador) {
@@ -37,11 +37,13 @@ if ($dataEntrenador = $entrenador->readFederacion()) {
             if ($dataEntrenador = $entrenador->readEntrenadorFederacion()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataEntrenador as $rowEntrenador) {
+                    // Se establece la fuente para los datos de los productos.
+                    $pdf->setFont('Times', '', 11);
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(40, 10, $pdf->encodeString($rowEntrenador['nombre']), 1, 0);
-                    $pdf->cell(40, 10, $pdf->encodeString($rowEntrenador['telefono']), 1, 0);
-                    $pdf->cell(40, 10, $pdf->encodeString($rowEntrenador['dui']), 1, 0);
-                    $pdf->cell(66, 10, $pdf->encodeString($rowEntrenador['correo']), 1, 1);
+                    $pdf->cell(44, 10, $pdf->encodeString($rowEntrenador['entrenador']), 1, 0, 'C');
+                    $pdf->cell(36, 10, $pdf->encodeString($rowEntrenador['telefono']), 1, 0, 'C');
+                    $pdf->cell(40, 10, $pdf->encodeString($rowEntrenador['dui']), 1, 0, 'C');
+                    $pdf->cell(66, 10, $pdf->encodeString($rowEntrenador['correo']), 1, 1, 'C');
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay entrenadores '), 1, 1);

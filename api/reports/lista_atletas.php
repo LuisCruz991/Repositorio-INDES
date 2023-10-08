@@ -25,7 +25,7 @@ if ($dataAtletas = $atleta->readFederaciones()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(120,161,175);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Times', '', 11);
+    $pdf->setFont('Times', 'B', 11);
 
     // Se recorren los registros fila por fila.
     foreach ($dataAtletas as $rowAtleta) {
@@ -38,12 +38,14 @@ if ($dataAtletas = $atleta->readFederaciones()) {
             if ($dataAtletas = $atleta->readAtletasFederacion()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataAtletas as $rowAtleta) {
+                    // Se establece la fuente para los datos de los productos.
+                    $pdf->setFont('Times', '', 11);
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(46, 10, $pdf->encodeString($rowAtleta['nombre_atleta']), 1, 0);
-                    $pdf->cell(46, 10, $pdf->encodeString($rowAtleta['apellido_atleta']), 1, 0);
-                    $pdf->cell(29, 10, $rowAtleta['nacimiento'], 1, 0);
-                    $pdf->cell(45, 10, $pdf->encodeString($rowAtleta['nombre']), 1, 0);
-                    $pdf->cell(20, 10, $pdf->encodeString($rowAtleta['nombre_genero']), 1, 1);
+                    $pdf->cell(46, 10, $pdf->encodeString($rowAtleta['nombre_atleta']), 1, 0, 'C');
+                    $pdf->cell(46, 10, $pdf->encodeString($rowAtleta['apellido_atleta']), 1, 0, 'C');
+                    $pdf->cell(29, 10, $rowAtleta['nacimiento'], 1, 0, 'C');
+                    $pdf->cell(45, 10, $pdf->encodeString($rowAtleta['nombre']), 1, 0, 'C');
+                    $pdf->cell(20, 10, $pdf->encodeString($rowAtleta['nombre_genero']), 1, 1, 'C');
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay atletas '), 1, 1);

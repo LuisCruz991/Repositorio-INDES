@@ -93,16 +93,16 @@ class entrenadorqueries {
      //Consulta para reporte no parametrizado que muestra los entrenadores por federacion
      public function readEntrenadorFederacion()
      {
-         $sql = 'SELECT nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
+         $sql = "SELECT CONCAT(nombre, ' ', apellido) entrenador, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
          FROM entrenadores INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)
-         ORDER BY nombre_federacion';
+         ORDER BY nombre_federacion";
          return Database::getRows($sql);
      }
 
      public function atletaEntrenador () 
      {
-        $sql = 'SELECT  nombre_atleta, nombre
+        $sql = 'SELECT  nombre_atleta, apellido_atleta, atletas.celular
                 FROM atletas INNER JOIN entrenadores USING (identrenador)
                 WHERE identrenador = ?';
         $params = array($this->id);

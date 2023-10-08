@@ -23,8 +23,9 @@ if (isset($_GET['identrenador'])) {
                 // Se establece la fuente para los encabezados.
                 $pdf->setFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
-                $pdf->cell(90, 10, 'Entrenador', 1, 0, 'C', 1);
-                $pdf->cell(90, 10, 'Atleta', 1, 1, 'C', 1);
+                $pdf->cell(62, 10, 'Nombre del atleta', 1, 0, 'C', 1);
+                $pdf->cell(62, 10, 'Apellido del atleta', 1, 0, 'C', 1);
+                $pdf->cell(62, 10, 'Celular del atleta', 1, 1, 'C', 1);
 
 
                 
@@ -33,8 +34,9 @@ if (isset($_GET['identrenador'])) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataEntrenador as $rowDatos) {
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(90, 10, $pdf->encodeString($rowDatos['nombre']), 1, 0);
-                    $pdf->cell(90, 10, $pdf->encodeString($rowDatos['nombre_atleta']), 1, 1);
+                    $pdf->cell(62, 10, $pdf->encodeString($rowDatos['nombre_atleta']), 1, 0, 'C');
+                    $pdf->cell(62, 10, $pdf->encodeString($rowDatos['apellido_atleta']), 1, 0, 'C');
+                    $pdf->cell(62, 10, $pdf->encodeString($rowDatos['celular']), 1, 1, 'C');
                 }
 
             } else {

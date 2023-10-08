@@ -1,5 +1,5 @@
 <?php
-// Se incluyen las clases para la transferencia y acceso a datos.
+// Se incluye la clase con las plantillas para generar reportes.
 require_once('../helpers/report.php');
 require_once('../entities/dto/pruebas.php');
 // Se instancia la clase para crear el reporte.
@@ -18,11 +18,12 @@ if ($dataPrueba = $prueba->readDeportes()) {
     $pdf->cell(62, 10, 'Nombre prueba', 1, 0, 'C', 1);
     $pdf->cell(62, 10, 'Nombre Evento', 1, 0, 'C', 1);
     $pdf->cell(62, 10, 'Modalidad', 1, 1, 'C', 1);
+   
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(120,161,175);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Times', '', 11);
+    $pdf->setFont('Times', 'B', 11);
 
     // Se recorren los registros fila por fila.
     foreach ($dataPrueba as $rowPruebas) {
@@ -35,10 +36,12 @@ if ($dataPrueba = $prueba->readDeportes()) {
             if ($dataPrueba = $prueba->readPruebaDeportes()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataPrueba as $rowPruebas) {
+                    // Se establece la fuente para los datos de los productos.
+                    $pdf->setFont('Times', '', 11);
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(62, 10, $pdf->encodeString($rowPruebas['nombre_prueba']), 1, 0);
-                    $pdf->cell(62, 10, $pdf->encodeString($rowPruebas['nombre_evento']), 1, 0);
-                    $pdf->cell(62, 10, $pdf->encodeString($rowPruebas['nombre_modalidad']), 1, 1);
+                    $pdf->cell(62, 10, $pdf->encodeString($rowPruebas['nombre_prueba']), 1, 0, 'C');
+                    $pdf->cell(62, 10, $pdf->encodeString($rowPruebas['nombre_evento']), 1, 0, 'C');
+                    $pdf->cell(62, 10, $pdf->encodeString($rowPruebas['nombre_modalidad']), 1, 1, 'C');
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay pruebas del deporte'), 1, 1);
@@ -52,3 +55,4 @@ if ($dataPrueba = $prueba->readDeportes()) {
 }
 // Se llama implícitamente al método footer() y se envía el documento al navegador web.
 $pdf->output('I', 'pruebas.pdf');
+

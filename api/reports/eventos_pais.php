@@ -24,7 +24,7 @@ if ($dataEvento = $evento->readPais()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(120,161,175);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Times', '', 11);
+    $pdf->setFont('Times', 'B', 11);
 
     // Se recorren los registros fila por fila.
     foreach ($dataEvento as $rowEvento) {
@@ -37,11 +37,13 @@ if ($dataEvento = $evento->readPais()) {
             if ($dataEvento = $evento->readEventoPais()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataEvento as $rowEvento) {
+                    // Se establece la fuente para los datos de los productos.
+                    $pdf->setFont('Times', '', 11);
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(40, 20, $pdf->encodeString($rowEvento['nombre_evento']), 1, 0);
-                    $pdf->cell(40, 20, $pdf->encodeString($rowEvento['fecha_evento']), 1, 0);
-                    $pdf->cell(66, 20, $pdf->encodeString($rowEvento['direccion_sede']), 1, 0);
-                    $pdf->cell(40, 20, $pdf->encodeString($rowEvento['nombre']), 1, 1);
+                    $pdf->cell(40, 20, $pdf->encodeString($rowEvento['nombre_evento']), 1, 0, 'C');
+                    $pdf->cell(40, 20, $pdf->encodeString($rowEvento['fecha_evento']), 1, 0, 'C');
+                    $pdf->cell(66, 20, $pdf->encodeString($rowEvento['direccion_sede']), 1, 0, 'C');
+                    $pdf->cell(40, 20, $pdf->encodeString($rowEvento['nombre']), 1, 0, 'C');
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay eventos '), 1, 1);

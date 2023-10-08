@@ -28,7 +28,7 @@ class Report extends FPDF
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
             // Se establece el título del documento (true = utf-8).
-            $this->setTitle('Dashboard - Reporte', true);
+            $this->setTitle('Reportes', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
             $this->setMargins(15, 15, 15);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
@@ -57,21 +57,25 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
-        $this->image('../images/logo-indes.png', 18, 12, 40);
+        $this->image('../images/indes.png', 14, 16, 40); //Mover derecha/izquierda, arriba/abajo, tamaño.
         // Se ubica el título.
         $this->cell(20);
         $this->setFont('Arial', 'B', 20);
-        $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
+        $this->cell(155, 14, $this->encodeString($this->title), 0, 1, 'C');
         // Se ubica la fecha del servidor.
         $this->cell(20);
         $this->setFont('Arial', '', 12);
-        $this->cell(166, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'C');
+        $this->cell(116, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'C');
         // Se ubica la fecha y hora del servidor.
         $this->cell(20);
         $this->setFont('Arial', '', 12);
-        $this->cell(166, 10, 'Hora: ' . date('H:i:s'), 0, 1, 'C');
+        $this->cell(108, 10, 'Hora: ' . date('H:i:s'), 0, 1, 'C');
+        // Se ubica el nombre del usuario que genero el reporte.
+        $this->cell(20);
+        $this->setFont('Arial', 'B', 12);
+        $this->cell(138, 10, 'Reporte generado por: ' . $_SESSION['nombre_usuario'], 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
-        $this->ln(15);
+        $this->ln(10);
     }
 
     /*
