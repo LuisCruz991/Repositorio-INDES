@@ -142,7 +142,7 @@ class atletaqueries {
     // Consulta para obtener la ficha de atleta
     public function readFicha()
     {
-        $sql = "SELECT CONCAT(nombre_atleta, ' ', apellido_atleta) atleta, nacimiento, nombre_genero, CONCAT(estatura, ' M  -  Lbs ', peso) medida, CONCAT(talla_camisa, ' y ', talla_short) tallas, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_responsable ,CONCAT(entrenadores.nombre, '  ', entrenadores.apellido) entrenadores, nombre_federacion
+        $sql = "SELECT CONCAT(nombre_atleta, ' ', apellido_atleta) atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_responsable ,CONCAT(entrenadores.nombre, '  ', entrenadores.apellido) entrenadores, nombre_federacion
         FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
