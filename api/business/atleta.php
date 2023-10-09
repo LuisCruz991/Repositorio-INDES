@@ -192,7 +192,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                // Evento para ejecutar la consulta de las horas cumplidas de un Atleta
+            // Evento para ejecutar la consulta de las horas cumplidas de un Atleta
             case 'horaAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
@@ -204,7 +204,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
-                case 'horaAtleta2':
+            case 'horaAtleta2':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
                 } elseif ($result['dataset'] = $atleta->horasAtleta2()) {
@@ -215,7 +215,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
-                // Evento para ejecutar la consulta sobre los resultados de un atleta
+            // Evento para ejecutar la consulta sobre los resultados de un atleta
             case 'resultadoAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
@@ -227,7 +227,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
-                // Evento para ejecutar la consulta para saber el presupuesto de un atleta
+            // Evento para ejecutar la consulta para saber el presupuesto de un atleta
             case 'presupuestoAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
@@ -239,7 +239,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al leer el atleta';
                 }
                 break;
-                // Evento para ejecutar la consulta y obtener los datos de las marcas de un atleta
+            // Evento para ejecutar la consulta y obtener los datos de las marcas de un atleta
             case 'marcaAtleta':
                 if (!$atleta->setId($_POST['idatleta'])) {
                     $result['exception'] = 'Atleta invalido';
@@ -252,6 +252,27 @@ if (isset($_GET['action'])) {
                 }
             case 'numAtletas':
                 if ($result['dataset'] = $atleta->atletasNum()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'atleta1':
+                if ($result['dataset'] = $atleta->atletaN1()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'atleta2':
+                if ($result['dataset'] = $atleta->atletaN2()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'atleta3':
+                if ($result['dataset'] = $atleta->atletaN3()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
