@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             <!-- Boton para acceder a vista de agenda -->
             <li class="min-w-max">
-              <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownagend"
+              <button id="dropdownMenuIconButton" data-collapse-toggle="dropdownagend"  onclick="const dropdown = new Dropdown(document.getElementById('dropdownagend')).toggle()"
                 class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                   class="w-8 h-8 bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
@@ -298,8 +298,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   </nav>
 </div>
    `;
-    }
+    }else {
+      sweetAlert(3, JSON.exception, false, 'index.html');
   }
+  }else {
+    sweetAlert(3, JSON.exception, false, 'index.html');
+}
 
 
   /*
@@ -396,6 +400,8 @@ PASSWORD_FORM.addEventListener('submit', async (event) => {
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
       // Se cierra la caja de diálogo.
+      SAVE_MODAL.toggle();
+
       // Se muestra un mensaje de éxito.
       sweetAlert(1, JSON.message, true);
   } else {
@@ -462,3 +468,5 @@ async function openProfile() {
   }
   // Se restauran los elementos del formulario.
 }
+
+
