@@ -157,15 +157,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         PROXIMO.textContent = JSON.exception;
     }
-
     // Metodo para cargar el numero de atletas
     if (JSON2.status) {
         // se declara la variable
         NUM.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON2.dataset.forEach(row => {
-        // Se crean y concatenan las tarjetas con los datos de cada producto.
-         NUM.innerHTML += `
+            NUM.innerHTML += `
         <div class="inline-flex">
             <svg fill="currentcolor" class="text-white w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path
@@ -179,15 +177,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         NUM.textContent = JSON.exception;
     }
-
     // Metodo para cargar el numero de atletas
     if (JSON3.status) {
         // se declara la variable
         A1.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON3.dataset.forEach(row => {
-        // Se crean y concatenan las tarjetas con los datos de cada producto.
-        A1.innerHTML += `
+            A1.innerHTML += `
         <div class="w-24 h-10 rounded-r-md border-2 bg-yellow-300 border-yellow-400 mt-3" >
         <h1 class="text-xs" style="color: #171a4a;">${row.nombre}</h1>
         </div>
@@ -198,15 +194,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         A1.textContent = JSON.exception;
     }
-
     // Metodo para cargar el numero de atletas
     if (JSON4.status) {
         // se declara la variable
         A2.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON4.dataset.forEach(row => {
-         // Se crean y concatenan las tarjetas con los datos de cada producto.
-        A2.innerHTML += `
+            A2.innerHTML += `
         <div class="w-20 h-10 rounded-r-md" style="border-color: #C0C0C0; border-width: 2px; background-color: #a9a9a9;">
         <h1 class="text-xs" style="color: #171a4a;">${row.nombre}</h1>
         </div>
@@ -217,15 +211,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         A2.textContent = JSON.exception;
     }
-
     // Metodo para cargar el numero de atletas
     if (JSON5.status) {
         // se declara la variable
         A3.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON5.dataset.forEach(row => {
-        // Se crean y concatenan las tarjetas con los datos de cada producto.
-        A3.innerHTML += `
+            A3.innerHTML += `
         <div class="w-16 h-10 rounded-r-md rounded-b-lg" style="border-color: #CD7F32; border-width: 2px; background-color: #b26e2a;">
         <h1 class="text-xs " style="color: #171a4a;">${row.nombre}</h1>
         </div>
@@ -236,16 +228,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         A3.textContent = JSON.exception;
     }
-
+    //Metodo para ejecutar la solicitud php que cargara las noticias
     fetch(`${API}helpers/news.php`)
         .then(response => response.json())
         .then(data => {
+            // Se define la variable que guardara los datos de una noticia
             let noticias = '';
-            if(data.status === 'ok'){
+            // Si la respuesta es satisfactoria se recorre cada conjunto (array) de datos
+            if (data.status === 'ok') {
                 data.articles.forEach(article => {
-                    if (article.description = null) {
-                        article.description = 'Descripción no disponible';
-                    }
                     noticias += `
                         <div class="mt-3 ml-3 mr-3 mb-10 w-auto h-max bg-gray-50 border-b-2 border-azul-1 shadow-md rounded-md overflow-scroll">
                         <div class="py-2 px-2 min-w-fit h-autoflex justify-center">
@@ -262,13 +253,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     `;
                 });
             } else {
+                // En caso de no haber resultados se muestra un mensaje
                 noticias = '<p class="text-center">No hay noticias que buscar.</p>';
             }
+            //En caso de exito se cargan todas las noticias encontradas 
             document.getElementById('news').innerHTML = noticias;
-        })
+        }) // En caso de que de error se muestra el error en la consola y se muestra un mensaje de error
         .catch(error => {
             console.error('Error fetching the news:', error);
             document.getElementById('news').innerHTML = '<p>Error al buscar noticias.</p>';
-    });
+        });
 
 });
