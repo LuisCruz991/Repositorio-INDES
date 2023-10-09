@@ -147,6 +147,15 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'No hay datos disponibles';
                     }
                 break;
+                //Consulta para mostrar el proximo evento
+                case 'nextEvents':
+                    if ($result['dataset'] = $evento->readNextEvent 
+                    ()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

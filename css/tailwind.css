@@ -1348,6 +1348,12 @@ input:checked + .toggle-bg {
   width: 3.5rem;
 }
 
+.w-16 {
+  width: 4rem;
+
+  
+}
+
 .w-165 {
   width: 70rem;
 }

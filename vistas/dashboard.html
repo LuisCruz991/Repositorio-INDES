@@ -46,14 +46,31 @@
             <!-- Se muestran gráficos de acuerdo con algunos datos disponibles en la base de datos -->
             <div class="flex justify-between">
               <div class="mr-16 ml-2 h-auto w-165 flex justify-between flex-wrap">
+                <!-- Contenedor del proximo evento  -->
                 <div class="w-64 h-44 rounded-xl bg-azul-1 shadow-xl proximo">
-                  <h1 class=" text-center mt-2 text-white">Eventos próximos</h1>
+                  <h1 class="text-center mt-2 text-white font-semibold underline decoration-blue-400">Próximo evento</h1>
+                  <div class="ml-4 grid-flow-col-dense justify-between text-center h-auto mt-5 w-36 text-clip" id="event"></div>                  
                 </div>
+                <!-- Contenedor de los deportes destacados  -->
                 <div class="w-64 h-44 rounded-xl bg-azul-1 shadow-xl destacado">
-                  <h1 class=" text-center mt-2 text-white">Deportes destacados</h1>
+                  <h1 class="text-center mt-2 text-white font-semibold underline decoration-blue-400">Cantidad de atletas</h1>
+                  <div class="ml-4 inline-block justify-center text-center items-center h-auto mt-10 w-24 text-clip" id="total">
+                  </div>                  
                 </div>
+                <!-- Contenedor de los atletas destacados en la ultima competicion  -->
                 <div class="w-64 h-44 rounded-xl bg-azul-1 mr-5 shadow-xl atletas">
-                  <h1 class=" text-center mt-2 text-white">Atletas destacados en la última competición</h1>
+                  <h1 class="text-center mt-2 text-white font-semibold underline decoration-blue-400 ">Atletas destacados</h1>
+                  <div class="grid-flow-col justify-center items-start text-center h-10 mt-2 w-max text-clip" id="top">
+                    <div class="w-28 h-10 rounded-r-md border-2 bg-yellow-300 border-yellow-400 mt-5" >
+                      <h1 class="text-xs" style="color: #171a4a;">Josue hernandez</h1>
+                    </div> 
+                    <div class="w-24 h-10 rounded-r-md" style="border-color: #C0C0C0; border-width: 2px; background-color: #a9a9a9;">
+                      <h1 class="text-xs" style="color: #171a4a;">Josue hernandez</h1>
+                    </div>
+                    <div class="w-20 h-10 rounded-r-md rounded-b-lg" style="border-color: #CD7F32; border-width: 2px; background-color: #b26e2a;">
+                      <h1 class="text-xs " style="color: #171a4a;">Josue hernandez</h1>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- Fila de los graficos  -->

@@ -101,4 +101,16 @@ class EventQueries {
         ORDER BY nombre_evento';
         return Database::getRows($sql);
     }
+
+    
+    //Consulta para obtener loe eventos proximos 
+    public function readNextEvent()
+    {
+        $sql = 'SELECT nombre_evento, logo_evento FROM eventos
+                WHERE fecha_evento >= NOW()
+                ORDER BY ABS(DATEDIFF(fecha_evento, NOW()))
+                LIMIT 1;';
+                return Database::getRows($sql);
+    }
+    
 }

@@ -1,133 +1,152 @@
 <?php
 require_once('../helpers/database.php');
 
-class atletaqueries {
+class atletaqueries
+{
 
-     // Consulta para realizar la operacion "Search"
-     public function searchRows($value)
-     {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, nombre, atletas.clave
+    // Consulta para realizar la operacion "Search"
+    public function searchRows($value)
+    {
+        $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, nombre, atletas.clave
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
          INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
                  WHERE nombre_atleta  LIKE ?';
-         $params = array("%$value%");
-         return Database::getRows($sql, $params);
-     }
- 
-     // Consulta para realizar la operacion "Create"
-     public function createRow()
-     {
-         $sql = 'INSERT INTO atletas(nombre_atleta, apellido_atleta, nacimiento, idgenero, estatura, peso, talla_camisa, talla_short, direccion, dui, celular, telefono_casa, correo, idresponsable, idfederacion, identrenador, clave)
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
+    }
+
+    // Consulta para realizar la operacion "Create"
+    public function createRow()
+    {
+        $sql = 'INSERT INTO atletas(nombre_atleta, apellido_atleta, nacimiento, idgenero, estatura, peso, talla_camisa, talla_short, direccion, dui, celular, telefono_casa, correo, idresponsable, idfederacion, identrenador, clave)
                  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-         $params = array($this->nombre, $this->apellido, $this->nacimiento,$this->genero, $this->estatura, $this->peso,$this->camisa, $this->short, $this->direccion,$this->dui, $this->celular, $this->telefono,$this->correo,$this->responsable, $this->federacion,$this->entrenador, $this->clave);
-         return Database::executeRow($sql, $params);
-     }
-     
-     // Consulta para realizar la operacion "Read"
-     public function readAll()
-     {
-         $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion,nombre_responsable,entrenadores.nombre
+        $params = array($this->nombre, $this->apellido, $this->nacimiento, $this->genero, $this->estatura, $this->peso, $this->camisa, $this->short, $this->direccion, $this->dui, $this->celular, $this->telefono, $this->correo, $this->responsable, $this->federacion, $this->entrenador, $this->clave);
+        return Database::executeRow($sql, $params);
+    }
+
+    // Consulta para realizar la operacion "Read"
+    public function readAll()
+    {
+        $sql = 'SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion,nombre_responsable,entrenadores.nombre
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
          INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)';
-         return Database::getRows($sql);
-     }
+        return Database::getRows($sql);
+    }
 
-     public function readFederaciones()
-     {
-         $sql = 'SELECT idfederacion,nombre_federacion
+    public function readFederaciones()
+    {
+        $sql = 'SELECT idfederacion,nombre_federacion
          FROM federaciones';
-         return Database::getRows($sql);
-     }
+        return Database::getRows($sql);
+    }
 
     //  Consulta para obtener todos los atletas y ordenarlos por federacion
-     public function readAtletasFederacion()
-     {
-         $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, atletas.dui, celular, atletas.correo, nombre_federacion,entrenadores.nombre
+    public function readAtletasFederacion()
+    {
+        $sql = 'SELECT nombre_atleta, apellido_atleta, nacimiento, nombre_genero, atletas.dui, celular, atletas.correo, nombre_federacion,entrenadores.nombre
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
          ORDER BY nombre_federacion';
-         return Database::getRows($sql);
-     }
+        return Database::getRows($sql);
+    }
 
-     public function readGenero()
-     {
-         $sql = 'SELECT idgenero, nombre_genero
+    public function readGenero()
+    {
+        $sql = 'SELECT idgenero, nombre_genero
                  FROM generos';
-         return Database::getRows($sql);
-     }
+        return Database::getRows($sql);
+    }
 
-     public function readEntrenador()
-     {
-         $sql = 'SELECT identrenador, nombre
+    public function readEntrenador()
+    {
+        $sql = 'SELECT identrenador, nombre
                  FROM entrenadores';
-         return Database::getRows($sql);
-     }
+        return Database::getRows($sql);
+    }
 
     //  Consulta para obtener los resultados obtenidos por un atleta 
-     public function resultadoAtleta()
-     {
-         $sql = 'SELECT nombre_prueba, posicion
+    public function resultadoAtleta()
+    {
+        $sql = 'SELECT nombre_prueba, posicion
          FROM records
          INNER JOIN pruebas USING(idprueba)
          WHERE idatleta = ?
          ORDER BY posicion ASC';
-         $params = array($this->id);
-         return Database::getRows($sql, $params);
-     }
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 
-  
- 
-     // Consulta para cargar los datos de un solo registro
-     public function readOne()
-     {
-         $sql = "SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, entrenadores.nombre, atletas.idgenero, idresponsable, identrenador,atletas.idfederacion,CONCAT(nombre_atleta, ' ', apellido_atleta) as nombre_completo
+
+
+    // Consulta para cargar los datos de un solo registro
+    public function readOne()
+    {
+        $sql = "SELECT idatleta,nombre_atleta, apellido_atleta, nacimiento, nombre_genero, estatura, peso, talla_camisa, talla_short, atletas.direccion, atletas.dui, celular, telefono_casa, atletas.correo, nombre_federacion, entrenadores.nombre, atletas.idgenero, idresponsable, identrenador,atletas.idfederacion,CONCAT(nombre_atleta, ' ', apellido_atleta) as nombre_completo
          FROM atletas
          INNER JOIN generos USING(idgenero)
          INNER JOIN responsables USING(idresponsable)
          INNER JOIN federaciones USING(idfederacion)
          INNER JOIN entrenadores USING(identrenador)
          WHERE idatleta = ?";
-         $params = array($this->id);
-         return Database::getRow($sql, $params);
-     }
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
 
 
- 
-     // Consulta para realizar la operacion "Update"
-     public function updateRow()
-     {
-         $sql = 'UPDATE atletas
+
+    // Consulta para realizar la operacion "Update"
+    public function updateRow()
+    {
+        $sql = 'UPDATE atletas
          SET nombre_atleta = ?, apellido_atleta = ?, nacimiento = ?, idgenero = ?, estatura = ?, peso = ?, talla_camisa = ?, talla_short = ?, direccion = ?, dui = ?, celular = ?, telefono_casa = ?, correo = ?, idresponsable = ?, idfederacion = ?, identrenador = ?
          WHERE idatleta = ?';
-         $params = array($this->nombre, $this->apellido, $this->nacimiento,$this->genero, $this->estatura, $this->peso,$this->camisa, $this->short, $this->direccion,$this->dui, $this->celular, $this->telefono,$this->correo, $this->responsable
-         , $this->federacion,$this->entrenador,  $this->id);
-         return Database::executeRow($sql, $params);
-     }
- 
-     // Consulta para realizar la operacion "Delete"
-     public function deleteRow()
-     {
-         $sql = 'DELETE FROM atletas
-         WHERE idatleta = ?';
-         $params = array($this->id);
-         return Database::executeRow($sql, $params);
-     }
+        $params = array(
+            $this->nombre,
+            $this->apellido,
+            $this->nacimiento,
+            $this->genero,
+            $this->estatura,
+            $this->peso,
+            $this->camisa,
+            $this->short,
+            $this->direccion,
+            $this->dui,
+            $this->celular,
+            $this->telefono,
+            $this->correo,
+            $this->responsable
+            ,
+            $this->federacion,
+            $this->entrenador,
+            $this->id
+        );
+        return Database::executeRow($sql, $params);
+    }
 
-     //Creamos la consulta para obtener la cantidad de atletas que pertenecen a un genero 
+    // Consulta para realizar la operacion "Delete"
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM atletas
+         WHERE idatleta = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    //Creamos la consulta para obtener la cantidad de atletas que pertenecen a un genero 
     public function cantidadAtletasGenero()
     {
         $sql = 'SELECT nombre_genero, COUNT(idatleta) cantidad
                 FROM atletas INNER JOIN generos USING(idgenero)
                 GROUP BY nombre_genero ORDER BY cantidad DESC';
-        return Database::getRows($sql);   
+        return Database::getRows($sql);
     }
 
     //Creamos la consulta para obtener la cantidad de atletas que pertenecen a una federacion
@@ -136,7 +155,7 @@ class atletaqueries {
         $sql = 'SELECT nombre_atleta, COUNT(idfederacion) cantidad 
                 FROM atletas INNER JOIN federaciones USING(idfederacion)
                 GROUP BY nombre_federacion ORDER BY cantidad DESC';
-        return Database::getRows($sql);   
+        return Database::getRows($sql);
     }
 
     // Consulta para obtener la ficha de atleta
@@ -160,16 +179,16 @@ class atletaqueries {
                 FROM entrenamientos 
                 WHERE idatleta =  ?';
         $params = array($this->id);
-        return Database::getRows($sql, $params);   
+        return Database::getRows($sql, $params);
     }
 
     public function horasAtleta2()
     {
-         $sql = 'SELECT (hora_cierre - hora_inicio) as horas, fecha_entreno
+        $sql = 'SELECT (hora_cierre - hora_inicio) as horas, fecha_entreno
                 FROM entrenamientos
                 WHERE idatleta = ? ';
-            $params = array($this->id);
-        return Database::getRows($sql, $params);   
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
     }
 
     // Consulta para obtener el presupuesto de un atleta
@@ -179,19 +198,58 @@ class atletaqueries {
                 FROM presupuesto INNER JOIN atletas USING(idatleta) 
                 WHERE idatleta = ?";
         $params = array($this->id);
-        return Database::getRow($sql, $params);   
+        return Database::getRow($sql, $params);
     }
 
     // Consulta para obtener las marcas de un atleta 
-    public function atletaMarcas () 
+    public function atletaMarcas()
     {
-       $sql = "SELECT  marca_obtenida, nombre_prueba 
+        $sql = "SELECT  marca_obtenida, nombre_prueba 
                 FROM records 
                 INNER JOIN pruebas USING (idprueba) 
                 WHERE idatleta = ?";
-       $params = array($this->id);
-       return Database::getRows($sql, $params);   
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
     }
 
-    
+    // Consulta para obtener el numero de atletas
+    public function atletasNum()
+    {
+        $sql = "SELECT COUNT(*) AS 'num' 
+               FROM `atletas`";
+        return Database::getRows($sql);
+    }
+
+
+    // Consulta para obtener el atleta mas destacado
+    public function atletaN1()
+    {
+        $sql = "SELECT nombre_atleta, COUNT(actuaciones_destacadas.posicion) AS num_actuaciones 
+            FROM actuaciones_destacadas 
+            INNER JOIN atletas USING (idatleta) 
+            WHERE posicion <=3 GROUP BY idatleta, nombre_atleta 
+            ORDER BY num_actuaciones DESC LIMIT 1;  ";
+        return Database::getRows($sql);
+    }
+
+    // Consulta para obtener el segundo atleta mas destacado
+    public function atletaN2()
+    {
+        $sql = "SELECT nombre_atleta, COUNT(actuaciones_destacadas.posicion) AS num_actuaciones 
+           FROM actuaciones_destacadas INNER JOIN atletas USING (idatleta) 
+           WHERE posicion <=3 GROUP BY idatleta, nombre_atleta 
+           ORDER BY num_actuaciones DESC LIMIT 1 OFFSET 1;";
+        return Database::getRows($sql);
+    }
+
+    // Consulta para obtener el tercer atleta mas destacado
+    public function atletaN3()
+    {
+        $sql = "SELECT nombre_atleta, COUNT(actuaciones_destacadas.posicion) AS num_actuaciones 
+               FROM actuaciones_destacadas INNER JOIN atletas USING (idatleta) 
+               WHERE posicion <=3 GROUP BY idatleta, nombre_atleta 
+               ORDER BY num_actuaciones DESC LIMIT 1 OFFSET 2;";
+        return Database::getRows($sql);
+    }
+
 }
