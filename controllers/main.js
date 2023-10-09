@@ -3,7 +3,7 @@ const ATLETA_API = 'business/atleta.php';
 const EVENTO_API = 'business/evento.php';
 const RECORDS_API = 'business/record.php';
 const FEDERACIONES_API = 'business/federacion.php';
-
+const API = '../api/';
 
 
 
@@ -236,5 +236,39 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         A3.textContent = JSON.exception;
     }
+
+    fetch(`${API}helpers/news.php`)
+        .then(response => response.json())
+        .then(data => {
+            let noticias = '';
+            if(data.status === 'ok'){
+                data.articles.forEach(article => {
+                    if (article.description = null) {
+                        article.description = 'Descripción no disponible';
+                    }
+                    noticias += `
+                        <div class="mt-3 ml-3 mr-3 mb-10 w-auto h-max bg-gray-50 border-b-2 border-azul-1 shadow-md rounded-md overflow-scroll">
+                        <div class="py-2 px-2 min-w-fit h-autoflex justify-center">
+                          <h1 class="text-center">${article.title}</h1>
+                        </div>
+                        <div class=" flex justify-center ml-2 mr-2 mb-2 max-w-fit max-h-fit">
+                          <img src="${article.urlToImage}" class="rounded-md mb-2 max-w-fit max-h-fit" onerror="this.src='../imagenes/notFound.png'">
+                        </div>
+                        <p class="text-left ml-2 font-overpass">${article.description ? article.description : 'Descripción no disponible'}</p>
+                        <a href="${article.url}"
+                          class="flex justify-center p-4 font-medium text-blue-600 dark:text-blue-500 hover:underline">Leer
+                          más</a>
+                      </div>
+                    `;
+                });
+            } else {
+                noticias = '<p class="text-center">No hay noticias que buscar.</p>';
+            }
+            document.getElementById('news').innerHTML = noticias;
+        })
+        .catch(error => {
+            console.error('Error fetching the news:', error);
+            document.getElementById('news').innerHTML = '<p>Error al buscar noticias.</p>';
+    });
 
 });
