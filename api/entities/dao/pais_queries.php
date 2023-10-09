@@ -8,8 +8,8 @@ class Paisqueries {
      {
          $sql = 'SELECT idpais, nombre_pais, bandera, nombre_continente
                  FROM paises INNER JOIN continentes USING(idcontinente)
-                 WHERE nombre_pais  LIKE ?';
-         $params = array("%$value%");
+                 WHERE nombre_pais  LIKE ? or nombre_continente  LIKE ?';
+         $params = array("%$value%", "%$value%");
          return Database::getRows($sql, $params);
      }
  
