@@ -8,8 +8,8 @@ class PresupuestoQueries {
 {
     $sql = 'SELECT idpresupuesto, estimulos, preparacion_fogues, ayuda_extranjera, equipamiento, otros, patrocinadores, obsevaciones, anual_mensual, nombre_atleta
     FROM presupuesto INNER JOIN categoria_inversion USING(idcateg_inversion)
-                     INNER JOIN atletas USING(idatleta)
-            WHERE nombre_atleta LIKE ? ';
+    INNER JOIN atletas USING(idatleta)
+    WHERE nombre_atleta LIKE ? ';
     $params = array("%$value%");
     return Database::getRows($sql, $params);
 }

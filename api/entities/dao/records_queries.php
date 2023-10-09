@@ -14,9 +14,9 @@ class RecordQueries
         FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
         INNER JOIN atletas USING(idatleta)
         INNER JOIN pruebas USING(idprueba)
-        WHERE marca_obtenida LIKE ? OR nombre_medida LIKE ? OR posicion LIKE ?
+        WHERE marca_obtenida LIKE ? OR nombre_medida LIKE ? OR nombre_atleta LIKE ? OR posicion LIKE ?
         ORDER BY idrecord';
-        $params = array("%$value%", "%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 

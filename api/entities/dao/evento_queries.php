@@ -9,8 +9,8 @@ class EventQueries {
          $sql = 'SELECT idevento, nombre_evento, descripcion, fecha_evento, nombre_pais, direccion_sede, imagen_sede, nombre, bandera
                  FROM eventos INNER JOIN tipo_evento USING(idtipo_evento)
                  INNER JOIN paises USING(idpais)
-                 WHERE nombre_evento  LIKE ?';
-         $params = array("%$value%");
+                 WHERE nombre_evento  LIKE ? or nombre LIKE ?';
+         $params = array("%$value%", "%$value%");
          return Database::getRows($sql, $params);
      }
  

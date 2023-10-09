@@ -9,8 +9,8 @@ class entrenadorqueries {
          $sql = 'SELECT identrenador, nombre, apellido, entrenadores.telefono, nombre_genero, entrenadores.direccion, dui, correo, nombre_federacion
          FROM entrenadores INNER JOIN generos USING(idgenero)
          INNER JOIN federaciones USING(idfederacion)
-         WHERE nombre  LIKE ? or apellido  LIKE ?';
-         $params = array("%$value%", "%$value%" );
+         WHERE nombre  LIKE ? or apellido  LIKE ? or dui  LIKE ?';
+         $params = array("%$value%", "%$value%", "%$value%");
          return Database::getRows($sql, $params);
      }
  

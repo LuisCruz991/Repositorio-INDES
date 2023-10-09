@@ -8,7 +8,7 @@ class FederacionQueries {
      {
          $sql = 'SELECT idfederacion, nombre_federacion, direccion, telefono, logo, nombre_deporte
                  FROM federaciones INNER JOIN deportes USING(iddeporte)
-                 WHERE nombre_federacion LIKE ? or siglas LIKE ? or direccion LIKE ?';
+                 WHERE nombre_federacion LIKE ? or siglas LIKE ? or telefono LIKE ?';
          $params = array("%$value%", "%$value%", "%$value%");
          return Database::getRows($sql, $params);
      }

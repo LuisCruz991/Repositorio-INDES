@@ -12,7 +12,7 @@ class ResponsableQueries
     {
         $sql = ' SELECT idresponsable, nombre_responsable, apellido_responsable, direccion, telefono, dui, oficio, nombre_parentesco
         FROM responsables INNER JOIN parentescos USING (idparentesco)
-        WHERE nombre LIKE ? OR direccion LIKE ? OR telefono LIKE ?
+        WHERE nombre_responsable LIKE ? OR apellido_responsable LIKE ? OR dui LIKE ?
         ORDER BY idresponsable';
         $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);

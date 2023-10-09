@@ -14,9 +14,9 @@ class PruebasQueries
         FROM pruebas INNER JOIN deportes USING (iddeporte)
         INNER JOIN eventos USING(idevento)
         INNER JOIN modalidades_deportivas USING(idmodalidad_deporte)
-        WHERE nombre_prueba LIKE ?
+        WHERE nombre_prueba LIKE ? or nombre_deporte LIKE ?
         ORDER BY idprueba';
-        $params = array("%$value%");
+        $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 

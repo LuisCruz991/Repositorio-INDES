@@ -9,8 +9,8 @@ class SportsQueries
     {
         $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion, 
                  FROM deportes INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
-                 WHERE nombre_deporte  LIKE ?';
-        $params = array("%$value%");
+                 WHERE nombre_deporte  LIKE ? or nombre_clasificacion  LIKE ?';
+        $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 

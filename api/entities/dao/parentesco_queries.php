@@ -6,7 +6,7 @@ class ParentescoQueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT idparentesco,nombre_parentesco
+         $sql = 'SELECT idparentesco, nombre_parentesco
                  FROM parentescos
                  WHERE nombre_parentesco  LIKE ?';
          $params = array("%$value%");
