@@ -85,8 +85,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un continente para el pais';
                 } elseif (!$pais->setContinente($_POST['continente'])) {
                     $result['exception'] = 'Continente no valida';
-                } 
-                elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
+                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     if ($pais->updateRow($data['bandera'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Pais actualizado correctamente';

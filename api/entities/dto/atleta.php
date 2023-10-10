@@ -16,13 +16,19 @@ class Atleta extends AtletaQueries  {
     protected $short = null;
     protected $direccion = null;
     protected $dui = null ;
+    protected $foto = null ;
     protected $celular = null ;
     protected $telefono = null;
     protected $correo = null;
+    protected $pasaporte = null ;
     protected $responsable = null;
     protected $entrenador = null ;
     protected $federacion = null ;
     protected $clave = null ;
+    protected $ruta = '../imagenes/atletas/';
+    protected $ruta2 = '../imagenes/atletas/';
+
+
 
 
 
@@ -131,6 +137,16 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
+        public function setFoto($file)
+        {
+            if (Validator::validateImageFile($file, 2000, 2000)) {
+                $this->foto = Validator::getFileName();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
     public function setCelular($value) {
         if (Validator::validatePhone($value)) {
             $this->celular = $value;
@@ -158,6 +174,15 @@ class Atleta extends AtletaQueries  {
             }    
         }
 
+        public function setPasaporte($file)
+        {
+            if (Validator::validateImageFile($file, 2000, 2000)) {
+                $this->pasaporte = Validator::getFileName();
+                return true;
+            } else {
+                return false;
+            }
+        }
 
     public function setResponsable($value) {
         if (Validator::validateNaturalNumber($value)) {
@@ -239,6 +264,10 @@ class Atleta extends AtletaQueries  {
         return $this->dui;
     }
 
+    public function getFoto() {
+        return $this->foto;
+    }
+
     public function getCelular() {
         return $this->celular;
     }
@@ -249,6 +278,10 @@ class Atleta extends AtletaQueries  {
 
     public function getCorreo() {
         return $this->correo;
+    }
+
+    public function getPasaporte() {
+        return $this->pasaporte;
     }
 
     public function getNombreMadre() {
@@ -265,6 +298,14 @@ class Atleta extends AtletaQueries  {
 
     public function getClave() {
         return $this->clave;
+    }
+
+    public function getruta() {
+        return $this->ruta ;
+    }
+
+    public function getruta2() {
+        return $this->ruta2 ;
     }
     
 

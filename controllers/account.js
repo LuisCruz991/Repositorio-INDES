@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </li>
             <!-- Boton para acceder a atletas -->
             <li class="min-w-max">
-               <button aria-controls="dropdownatleta" data-collapse-toggle="dropdownatleta"  onclick="const dropdown = new Dropdown(document.getElementById('dropdownatleta')).toggle()"
+               <button aria-controls="dropdownatleta" data-collapse-toggle="dropdownatleta"   onclick="toggleDropdown('dropdownatleta')"
                 class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
                 <svg class="h-10  w-10" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <title>run</title>
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </li>
             <!-- Dropdown menu de boton de atletas -->
             <div id="dropdownatleta"
-              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-fit-content dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownatleta">
                 <!-- Boton para acceder a SCRUD de atletas -->
                 <li>
@@ -143,11 +143,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                   <a href="../vistas/parentesco_crud.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Parentescos</a>
                 </li>
+                <li>
+                <button class="block px-4 py-2 dark:hover:text-white">Cancelar</button>
+              </li>
               </ul>
             </div>
             <!-- Boton para acceder a vista de agenda -->
             <li class="min-w-max">
-              <button id="dropdownMenuIconButton" data-collapse-toggle="dropdownagend"  onclick="const dropdown = new Dropdown(document.getElementById('dropdownagend')).toggle()"
+              <button id="dropdownMenuIconButton" data-collapse-toggle="dropdownagend"   onclick="toggleDropdown('dropdownagend')"
                 class="space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                   class="w-8 h-8 bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
@@ -162,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </li>
             <!-- Dropdown menu de boton agenda -->
             <div id="dropdownagend"
-              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-fit-content dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
                 <!-- Boton para acceder al calendario -->
                 <li>
@@ -184,7 +187,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             <!-- Boton para acceder a competencias -->
             <li class="min-w-max">
-              <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdowncomp"
+              <button id="dropdownMenuIconButton" data-collapse-toggle="dropdowncomp"  onclick="toggleDropdown('dropdowncomp')"
                 class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 bi bi-award-fill"
                   viewBox="0 0 16 16">
@@ -197,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </li>
             <!-- Dropdown menu de boton competencias -->
             <div id="dropdowncomp"
-              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-fit-content dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
                 <!-- Boton para acceder al SCRUD de pruebas -->
                 <li>
@@ -216,21 +219,34 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </li>
               </ul>
             </div>
-            <!-- Boton para acceder a administradores -->
+            <!-- Boton para gestionar los paises y los continentes -->
             <li class="min-w-max">
-              <a href="../vistas/admin_crud.html" aria-label="dashboard"
-                class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class=" w-7 h-7 bi bi-house-door-fill"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
-                </svg>
-                <span class=" text-sm font-medium">Administrador</span>
-              </a>
+              <button id="dropdownMenuIconButton" data-collapse-toggle="dropdownP" onclick="toggleDropdown('dropdownP')"
+                class=" mb-7 peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512" fill="currentColor">
+                <path d="M64 32C64 14.3 49.7 0 32 0S0 14.3 0 32V64 368 480c0 17.7 14.3 32 32 32s32-14.3 32-32V352l64.3-16.1c41.1-10.3 84.6-5.5 122.5 13.4c44.2 22.1 95.5 24.8 141.7 7.4l34.7-13c12.5-4.7 20.8-16.6 20.8-30V66.1c0-23-24.2-38-44.8-27.7l-9.6 4.8c-46.3 23.2-100.8 23.2-147.1 0c-35.1-17.6-75.4-22-113.5-12.5L64 48V32z"/></svg>
+                <span class="text-sm  font-medium">Países</span>
+              </button>
             </li>
+            <!-- Dropdown menu de boton Paises -->
+            <div id="dropdownP"
+              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-fit-content dark:bg-gray-700 dark:divide-gray-600">
+              <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
+                <!-- Boton para acceder al SCRUD de Paises -->
+                <li>
+                  <a href="../vistas/paises.html"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Países</a>
+                </li>
+                <!-- Boton para acceder al SCRUD de Continentes -->
+                <li>
+                  <a href="../vistas/continente.html"
+                    class="block px-4 py-2 hover:bg-gray-100  text-red">Continentes</a>
+                </li>
+              </ul>
+            </div>
             <!-- Boton para acceder a deportes -->
             <li class="min-w-max">
-              <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownball"
+              <button id="dropdownMenuIconButton" data-collapse-toggle="dropdownball"  onclick="toggleDropdown('dropdownball')"
                 class=" peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                   class="bi bi-trophy-fill" viewBox="0 0 16 16">
@@ -242,7 +258,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </li>
             <!-- Dropdown menu de boton deportes -->
             <div id="dropdownball"
-              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-fit-content dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
                 <!-- Boton para acceder al SCRUD de federaciones -->
                 <li>
@@ -266,31 +282,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </li>
               </ul>
             </div>
-          <!-- Boton para gestionar los paises y los continentes -->
+            <!-- Boton para acceder a administradores -->
             <li class="min-w-max">
-              <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownP"
-                class=" mb-7 peer space-y-1 bg-azul-3  w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white ">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512" fill="currentColor">
-                <path d="M64 32C64 14.3 49.7 0 32 0S0 14.3 0 32V64 368 480c0 17.7 14.3 32 32 32s32-14.3 32-32V352l64.3-16.1c41.1-10.3 84.6-5.5 122.5 13.4c44.2 22.1 95.5 24.8 141.7 7.4l34.7-13c12.5-4.7 20.8-16.6 20.8-30V66.1c0-23-24.2-38-44.8-27.7l-9.6 4.8c-46.3 23.2-100.8 23.2-147.1 0c-35.1-17.6-75.4-22-113.5-12.5L64 48V32z"/></svg>
-                <span class="text-sm  font-medium">Países</span>
-              </button>
+              <a href="../vistas/admin_crud.html" aria-label="dashboard"
+                class="space-y-1 bg-azul-3 w-[6.5rem] h-[4.8rem] group flex flex-col items-center justify-center rounded-lg  py-1 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class=" w-7 h-7 bi bi-house-door-fill"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+                </svg>
+                <span class=" text-sm font-medium">Administrador</span>
+              </a>
             </li>
-            <!-- Dropdown menu de boton Paises -->
-            <div id="dropdownP"
-              class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-              <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
-                <!-- Boton para acceder al SCRUD de Paises -->
-                <li>
-                  <a href="../vistas/paises.html"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Países</a>
-                </li>
-                <!-- Boton para acceder al SCRUD de Continentes -->
-                <li>
-                  <a href="../vistas/continente.html"
-                    class="block px-4 py-2 hover:bg-gray-100  text-red">Continentes</a>
-                </li>
-              </ul>
-            </div>
           </ul>
         </div>
       </div>
@@ -388,6 +391,11 @@ async function TiempoInactividad() {
     // Redireccionamiento a la pagina de inicio del sistema
     sweetAlert(2, JSON.exception, false, '../vistas/index.html');
   }
+}
+
+function toggleDropdown(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+  dropdown.classList.toggle('hidden');
 }
 
 PASSWORD_FORM.addEventListener('submit', async (event) => {

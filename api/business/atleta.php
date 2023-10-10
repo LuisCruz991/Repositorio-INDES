@@ -89,12 +89,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Direccion del atleta no valido';
                 } elseif (!$atleta->setDUI($_POST['dui'])) {
                     $result['exception'] = 'Dui del atleta no valido';
+                }  elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
+                    $result['exception'] = 'Seleccione una imagen';
+                } elseif (!$atleta->setFoto($_FILES['archivo'])) {
+                    $result['exception'] = Validator::getFileError();
                 } elseif (!$atleta->setCelular($_POST['celular'])) {
                     $result['exception'] = 'Celular del atleta no valido';
                 } elseif (!$atleta->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'telefono del atleta no valido';
                 } elseif (!$atleta->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo del atleta no valido';
+                }  elseif (!is_uploaded_file($_FILES['archivo2']['tmp_name'])) {
+                    $result['exception'] = 'Seleccione una imagen';
+                } elseif (!$atleta->setPasaporte($_FILES['archivo2'])) {
+                    $result['exception'] = Validator::getFileError();
                 } elseif (!isset($_POST['responsable'])) {
                     $result['exception'] = 'Seleccione un responsable';
                 } elseif (!$atleta->setResponsable($_POST['responsable'])) {
@@ -111,7 +119,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Clave del atleta no valido';
                 } elseif ($atleta->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Deporte guardado correctamente';
+                    if (Validator::saveFile($_FILES['archivo'], $atleta->getRuta(), $atleta->getFoto()) && Validator::saveFile($_FILES['archivo2'], $atleta->getRuta(), $atleta->getPasaporte()) ) {
+                        $result['message'] = 'Atleta creado correctamente';
+                    } else {
+                        $result['message'] = 'Atleta guardado, pero no se logró guardar la foto del dui';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -155,6 +167,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Direccion del atleta no valido';
                 } elseif (!$atleta->setDUI($_POST['dui'])) {
                     $result['exception'] = 'Dui del atleta no valido';
+                }elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
+                    if ($atleta->updateRow($data['foto'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Atleta actualizado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                } elseif (!$atleta->setFoto($_FILES['archivo'])) {
+                    $result['exception'] = Validator::getFileError();
+                }elseif (!is_uploaded_file($_FILES['archivo2']['tmp_name'])) {
+                    if ($atleta->updateRow($data['pasaporte'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Atleta actualizado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                } elseif (!$atleta->setPasaporte($_FILES['archivo2'])) {
+                    $result['exception'] = Validator::getFileError();
                 } elseif (!$atleta->setCelular($_POST['celular'])) {
                     $result['exception'] = 'Celular del atleta no valido';
                 } elseif (!$atleta->setTelefono($_POST['telefono'])) {
@@ -175,7 +205,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Entrenador no valida';
                 } elseif ($atleta->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'atleta actualizado exitosamente';
+                    if (Validator::saveFile($_FILES['archivo'], $atleta->getRuta(), $atleta->getFoto()) && Validator::saveFile($_FILES['archivo2'], $atleta->getRuta(), $atleta->getPasaporte()) ) {
+                        $result['message'] = 'Atleta actualizado correctamente';
+                    } else {
+                        $result['message'] = 'Atleta guardado, pero no se logró guardar la foto del dui o la del pasaporte';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
