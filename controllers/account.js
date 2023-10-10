@@ -34,27 +34,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.status) {
       HEADER.innerHTML = `<div class="h-24 container flex flex-wrap items-center justify-between mx-auto" style="background: url(../imagenes/banner/${BANNER});  border-radius: 15px; background-color: rgb(80 87 122);">
     <!-- Titulo de la pagina  -->
-    <h1 class="px-5 font-medium text-white text-4xl">${TITULO}</h1>
+    <h1 class="px-5 font-medium text-white md:text-4xl text-xl">${TITULO}</h1>
     <!-- Opciones del usuario -->
-    <div class="flex items-end md:order-2 mr-5">
-      <button type="button"
-        class="flex mr-4 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-        id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-        data-dropdown-placement="bottom">
+    <div class="relative flex items-end md:order-2 mr-5">
+    <div class flex flex-col> 
+    <button type="button"
+    class="flex mr-4 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+    id="user-menu-button" aria-expanded="false" data-collapse-toggle="user-dropdown" onclick="toggleDropdown('user-dropdown')"
+    data-dropdown-placement="bottom">
         <span class="sr-only">Open user menu</span>
         <!-- Imagen de usuario  -->
         <img class="w-11 h-11  rounded-full" src="../imagenes/img_users/user.jpg" alt="user photo">
       </button>
-      <div class="flex flex-col ml-2 mr-2">
-        <!-- Nombre de usuario  -->
-        <h5 class="font-jakarta text-white">${JSON.username}</h5>
-        <!-- Nivel de usuario  -->
-        <h6 class="font-jakarta text-gray-300">Admin</h6>
-      </div>
       <!-- Dropdown menu -->
-      <div
-        class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-        id="user-dropdown">
+      <div class="z-50 hidden w-fit-content  mt-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute "
+      id="user-dropdown">
         <div class="px-4 py-3">
           <!-- Nombre de usuario  -->
           <span class="block text-sm text-gray-900 dark:text-white">${JSON.username}</span>
@@ -66,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <!-- Acciones del usuario -->
           <li>
              <button onclick="openPassword()" 
-             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cambiar clave</a>
+             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Clave</a>
              </li>
           <li>
           <button onclick="openProfile()" 
@@ -78,7 +72,14 @@ document.addEventListener('DOMContentLoaded', async () => {
           </li>
         </ul>
       </div>
-      <button class="sm:hidden block " id="btn-sidebar"> <img src="../imagenes/logo-indes-recortado.png"
+    </div>
+      <div class="flex flex-col ml-2 mr-2">
+        <!-- Nombre de usuario  -->
+        <h5 class="font-jakarta text-white">${JSON.username}</h5>
+        <!-- Nivel de usuario  -->
+        <h6 class="font-jakarta text-gray-300">Admin</h6>
+      </div>
+      <button onclick="toggleSidebar()" class="sm:hidden block " id="btn-sidebar"> <img src="../imagenes/logo-indes-recortado.png"
           class="w-14" alt=""></button>
     </div>
   </div>
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
 
       SIDE.innerHTML = `<div class="min-h-screen bg-gray-100">
-  <nav class="sidebar sm:block hidden min-h-screen w-36  overflow-hidden border-r  bg-azul-1 hover:shadow-lg">
+  <nav id="side"  class="sidebar sm:block hidden min-h-screen w-36  overflow-hidden border-r  bg-azul-1 hover:shadow-lg">
     <div class="flex h-screen flex-col justify-between mt-12 pb-6">
       <div class="flex flex-col items-center">
         <button id="boton"> <img src="../imagenes/logo-indes-recortado.png" class="w-14" alt=""></button>
@@ -450,6 +451,11 @@ async function openPassword() {
     sweetAlert(2, JSON.exception, false);
   }
   // Se restauran los elementos del formulario.
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('side');
+  sidebar.classList.toggle('hidden');
 }
 
 async function openProfile() {
