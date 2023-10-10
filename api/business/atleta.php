@@ -115,8 +115,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione el entrenador';
                 } elseif (!$atleta->setEntrenador($_POST['entrenador'])) {
                     $result['exception'] = 'Entrenador no valida';
-                } elseif (!$atleta->setClave($_POST['clave'])) {
-                    $result['exception'] = 'Clave del atleta no valido';
                 } elseif ($atleta->createRow()) {
                     $result['status'] = 1;
                     if (Validator::saveFile($_FILES['archivo'], $atleta->getRuta(), $atleta->getFoto()) && Validator::saveFile($_FILES['archivo2'], $atleta->getRuta(), $atleta->getPasaporte()) ) {
@@ -176,6 +174,12 @@ if (isset($_GET['action'])) {
                     }
                 } elseif (!$atleta->setFoto($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
+                } elseif (!$atleta->setCelular($_POST['celular'])) {
+                    $result['exception'] = 'Celular del atleta no valido';
+                } elseif (!$atleta->setTelefono($_POST['telefono'])) {
+                    $result['exception'] = 'telefono del atleta no valido';
+                } elseif (!$atleta->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Correo del atleta no valido';
                 }elseif (!is_uploaded_file($_FILES['archivo2']['tmp_name'])) {
                     if ($atleta->updateRow($data['pasaporte'])) {
                         $result['status'] = 1;
@@ -185,12 +189,6 @@ if (isset($_GET['action'])) {
                     }
                 } elseif (!$atleta->setPasaporte($_FILES['archivo2'])) {
                     $result['exception'] = Validator::getFileError();
-                } elseif (!$atleta->setCelular($_POST['celular'])) {
-                    $result['exception'] = 'Celular del atleta no valido';
-                } elseif (!$atleta->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'telefono del atleta no valido';
-                } elseif (!$atleta->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo del atleta no valido';
                 } elseif (!isset($_POST['responsable'])) {
                     $result['exception'] = 'Seleccione un responsable';
                 } elseif (!$atleta->setResponsable($_POST['responsable'])) {

@@ -144,6 +144,12 @@ async function fillTable(form = null) {
                 ${row.nombre}
 
             </td>
+            <td class="px-6 py-4">
+            <img src="${SERVER_URL}imagenes/atletas/${row.dui_foto}" class="materialboxed"  width="200px" onerror="this.src='../imagenes/notFound.png';">
+            </td>
+            <td class="px-6 py-4">
+            <img src="${SERVER_URL}imagenes/atletas/${row.pasaporte_foto}" class="materialboxed"  width="200px" onerror="this.src='../imagenes/notFound.png';">
+            </td>
             <td>
                 <button data-modal-toggle="save-modal"
                     class="rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline"
@@ -229,6 +235,9 @@ async function openUpdate(id) {
         fillSelect(RESPONSABLE_API, 'readAll', 'responsable', JSON.dataset.idresponsable);
         fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion', JSON.dataset.idfederacion);
         fillSelect(ATLETA_API, 'readEntrenador', 'entrenador', JSON.dataset.identrenador);
+        document.getElementById('archivo').required = false;
+        document.getElementById('archivo2').required = false;
+
         document.getElementById('clave').disabled = true;
     } else {
         sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.

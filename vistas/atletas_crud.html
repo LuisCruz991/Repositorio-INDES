@@ -146,7 +146,7 @@
                                         </div>
                                         <input type="text" id="search" name="search"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="buscar" required>
+                                            placeholder="buscar por nombre, apellido, DUI o responsable" required>
                                     </div>
                                     <button type="submit"
                                         class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -213,21 +213,21 @@
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                     <div class="flex">
                                         <button type="button"
-                                        class="justify-end text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white mr-5"
-                                        data-modal-hide="save-modal">
-                                        <svg aria-hidden="true" class="w-5" fill="currentColor" viewBox="0 0 20 20"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path fill-rule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                        </svg>
-                                        <span class="sr-only">Close modal</span>
-                                      </button>
+                                            class="justify-end text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white mr-5"
+                                            data-modal-hide="save-modal">
+                                            <svg aria-hidden="true" class="w-5" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
                                     </div>
                                     <!-- Modal header -->
                                     <form id="save-form" autocomplete="off">
                                         <div id="title2"></div>
-                                      
+
                                         <div class="grid gap-6 m-5 md:grid-cols-2">
                                             <!-- Campo para ingresar nombre -->
                                             <input type="number" class="hidden" id="ida" name="id">
@@ -379,13 +379,35 @@
 
                                                 </select>
                                             </div>
-
+                                            <!-- Campo para seleccionar la imagen -->
                                             <div>
-                                                <label for="clave"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave</label>
-                                                <input type="password" id="clave" name="clave"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                    placeholder="Clave" required>
+                                                <label
+                                                    class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                                    for="file_input">Selecciona la foto del dui </label>
+                                                <img id="preview" class="rounded-lg max-w-80 bg-gray-300"
+                                                    src="../imagenes/search.png" title="Imagen no disponible."
+                                                    onerror="this.src='../imagenes/notFound.png';">
+                                                <div>
+                                                    <input
+                                                        class="mt-5 block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-blue-600 dark:border-gray-600 dark:placeholder-gray-400"
+                                                        id="archivo" name="archivo" type="file"
+                                                        onchange="Preview(this, 'preview')">
+                                                </div>
+                                            </div>
+                                            <!-- Campo para seleccionar la imagen -->
+                                            <div>
+                                                <label
+                                                    class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                                    for="file_input">Selecciona la foto del pasaporte</label>
+                                                <img id="preview" class="rounded-lg max-w-80 bg-gray-300"
+                                                    src="../imagenes/search.png" title="Imagen no disponible."
+                                                    onerror="this.src='../imagenes/notFound.png';">
+                                                <div>
+                                                    <input
+                                                        class="mt-5 block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-blue-600 dark:border-gray-600 dark:placeholder-gray-400"
+                                                        id="archivo2" name="archivo2" type="file"
+                                                        onchange="Preview(this, 'preview')">
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- Boton para crear registro -->
@@ -454,10 +476,26 @@
                                         <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                                             Entrenador
                                         </th>
-                                        <th scope="col" colspan="2" class="grid-flow-row px-6 normal-case font-poppins text-white py-3">
+                                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                                            <div class="flex">  
+                                                <p class="invisible">HODAAA</p>
+                                                Dui foto
+                                                <p class="invisible">HODAAA</p>
+                                            </div>
+                                          
+                                        </th>
+                                        <th scope="col" class="px-6  normal-case font-poppins text-white py-3">
+                                            <div class="flex">  
+                                                <p class="invisible">HODA</p>
+                                                Foto del pasaporte
+                                                <p class="invisible">HODA</p>
+                                            </div>                                        </th>
+                                        <th scope="col" colspan="2"
+                                            class="grid-flow-row px-6 normal-case font-poppins text-white py-3">
                                             <span>Acciones</span>
                                         </th>
-                                        <th scope="col" colspan="2" class="px-6 normal-case font-poppins text-white py-3">
+                                        <th scope="col" colspan="2"
+                                            class="px-6 normal-case font-poppins text-white py-3">
                                             <span>Reportes</span>
                                         </th>
                                         <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
