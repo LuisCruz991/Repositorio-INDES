@@ -143,9 +143,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                   <a href="../vistas/parentesco_crud.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Parentescos</a>
                 </li>
-                <li>
-                <button class="block px-4 py-2 dark:hover:text-white">Cancelar</button>
-              </li>
               </ul>
             </div>
             <!-- Boton para acceder a vista de agenda -->

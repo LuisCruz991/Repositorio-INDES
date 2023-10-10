@@ -10,9 +10,9 @@
 
 CREATE TABLE `actuaciones_destacadas` (
   `idactuacion` int(11) NOT NULL COMMENT 'Id de la actuación',
-  `posicion` int(11) NOT NULL COMMENT 'Posición obtenida en la actuación. ',
-  `marca_obtenida` varchar(20) NOT NULL COMMENT 'Marca obtenida',
-  `idunidad_medida` int(11) NOT NULL COMMENT 'unidad de medidad de la marca',
+  `posicion` int(11)  NULL COMMENT 'Posición obtenida en la actuación. ',
+  `marca_obtenida` varchar(20)  NULL COMMENT 'Marca obtenida',
+  `idunidad_medida` int(11)  NULL COMMENT 'unidad de medidad de la marca',
   `idprueba` int(11) NOT NULL COMMENT 'Prueba de la actuación ',
   `idatleta` int(11) NOT NULL COMMENT 'atleta de al que le corresponde la actuación ',
   `idusuario` int(11) NOT NULL COMMENT 'Usuario que guardo la actuación '
