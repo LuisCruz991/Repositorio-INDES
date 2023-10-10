@@ -26,18 +26,19 @@ class ParentescoQueries {
      public function readAll()
      {
          $sql = 'SELECT idparentesco,nombre_parentesco
-                 FROM parentescos';
+                 FROM parentescos
+                ORDER BY idparentesco';
          return Database::getRows($sql);
      }
  
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT idparentesco,nombre_parentesco
+         $sql = 'SELECT idparentesco, nombre_parentesco
                  FROM parentescos
                  WHERE idparentesco = ?';
-         $params = array($this->id);
-         return Database::getRow($sql, $params);
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
      }
  
      // Consulta para realizar la operacion "Update"

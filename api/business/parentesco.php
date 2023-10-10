@@ -52,7 +52,7 @@ if (isset($_GET['action'])) {
                 break;
                 // Caso para leer un registro 
             case 'readOne':
-                if (!$parentesco->setId($_POST['id'])) {
+                if (!$parentesco->setId($_POST['idparentesco'])) {
                     $result['exception'] = 'Parentesco no invalido';
                 } elseif ($result['dataset'] = $parentesco->readOne()) {
                     $result['status'] = 1;
@@ -66,27 +66,27 @@ if (isset($_GET['action'])) {
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$parentesco->setId($_POST['id'])) {
-                    $result['exception'] = 'Parentesco invalida';
+                    $result['exception'] = 'Parentesco invalido';
                 } elseif (!$data = $parentesco->readOne()) {
                     $result['exception'] = 'Ocurrió un problema al leer el parentesco';
-                }elseif (!$parentesco->setParentesco($_POST['nombre'])) {
-                    $result['exception'] = 'nombre del parentesco invalida';
+                }elseif (!$parentesco->setParentesco($_POST['parentesco'])) {
+                    $result['exception'] = 'nombre del parentesco invalido';
                 } elseif ($parentesco->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Parentesco actualizada exitosamente';
+                    $result['message'] = 'Parentesco actualizado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
                 // Caso para eliminer registros 
             case 'delete':
-                if (!$parentesco->setId($_POST['id'])) {
+                if (!$parentesco->setId($_POST['idparentesco'])) {
                     $result['exception'] = 'Parentesco invalida';
                 } elseif (!$data = $parentesco->readOne()) {
                     $result['exception'] = 'Ocurrió un problema al leer el parentesco';
                 } elseif ($parentesco->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Parentesco descartada exitosamente';
+                    $result['message'] = 'Parentesco descartado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

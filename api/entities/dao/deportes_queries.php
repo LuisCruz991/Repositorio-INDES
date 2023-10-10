@@ -46,7 +46,7 @@ class SportsQueries
     // Consulta para cargar los datos de un solo registro
     public function readOne()
     {
-        $sql = 'SELECT iddeporte,nombre_deporte, nombre_clasificacion 
+        $sql = 'SELECT iddeporte,nombre_deporte, idclasificacion_deporte 
                 FROM deportes
                 INNER JOIN clasificacion_deporte USING(idclasificacion_deporte)
                  WHERE iddeporte = ?';

@@ -107,6 +107,7 @@ function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se cargan las clasidicaciones del los deportes 
+    fillSelect(DEPORTE_API, 'readAll', 'deporte');
     fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
 
 }

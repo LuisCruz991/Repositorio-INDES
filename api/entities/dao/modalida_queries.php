@@ -26,7 +26,8 @@ class ModalidadQueries {
      public function readAll()
      {
          $sql = 'SELECT idmodalidad_deporte,nombre_modalidad
-                 FROM modalidades_deportivas';
+                 FROM modalidades_deportivas
+                 ORDER BY idmodalidad_deporte';
          return Database::getRows($sql);
      }
  

@@ -128,15 +128,13 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id', id);
-    // // Se abre la caja de diálogo que contiene el formulario.
-    SAVE_MODAL.show();
-    // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
+    FORM.append('idparentesco', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(PARENTESCO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
+        // // Se abre la caja de diálogo que contiene el formulario.
+        SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se inicializan los campos del formulario.
@@ -159,7 +157,7 @@ async function openDelete(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id', id);
+        FORM.append('idparentesco', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(PARENTESCO_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
