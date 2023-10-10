@@ -2,6 +2,8 @@
 const ENTRENAMIENTO_API = 'business/entrenamiento.php';
 const ATLETA_API = 'business/atleta.php';
 const ENTRENADOR_API = 'business/entrenador.php';
+const RESUMEN_API = 'business/resumen.php';
+const USUARIO_API = 'business/usuariocrud.php';
 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -91,6 +93,12 @@ async function fillTable(form = null) {
             <td class="px-6 py-4">
               ${row.nombre}
             </td>
+            <td class="px-6 py-4">
+              ${row.finalizado}
+            </td>
+            <td class="px-6 py-4">
+              ${row.nombre_usuario}
+            </td>
             
             
             <td >
@@ -124,6 +132,8 @@ function openCreate() {
   // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
   fillSelect(ATLETA_API, 'readAll', 'atleta');
   fillSelect(ENTRENADOR_API, 'readAll', 'entrenador');
+  fillSelect(RESUMEN_API, 'readAll', 'resumen');
+  fillSelect(USUARIO_API, 'readAll', 'usuario');
 }
 
 /*
@@ -151,6 +161,8 @@ async function openUpdate(id) {
     document.getElementById('lugar').value = JSON.dataset.lugar_entreno;
     fillSelect(ATLETA_API, 'readAll', 'atleta', JSON.dataset.idatleta);
     fillSelect(ENTRENADOR_API, 'readAll', 'entrenador', JSON.dataset.identrenador);
+    fillSelect(RESUMEN_API, 'readAll', 'resumen', JSON.dataset.idresumen);
+    fillSelect(USUARIO_API, 'readAll', 'usuario', JSON.dataset.idusuario);
     
    
   } else {

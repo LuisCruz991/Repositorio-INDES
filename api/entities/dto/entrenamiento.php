@@ -12,6 +12,8 @@ class Entrenamiento extends EntrenamientoQueries  {
     protected $lugar = null ;
     protected $atleta = null ;
     protected $entrenador = null ;
+    protected $resumen = null ;
+    protected $usuario = null ;
  
 
     public function setId($value)
@@ -84,6 +86,26 @@ class Entrenamiento extends EntrenamientoQueries  {
         }
     }
 
+    public function setResumen($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->resumen = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setUsuario($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->usuario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
     
 
@@ -120,6 +142,16 @@ class Entrenamiento extends EntrenamientoQueries  {
     public function getEntrenador() 
     {
         return $this->entrenador;
+    }
+
+    public function getResumen() 
+    {
+        return $this->resumen;
+    }
+
+    public function getUsuario() 
+    {
+        return $this->usuario;
     }
 
 

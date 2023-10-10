@@ -180,33 +180,16 @@
                       <span class="sr-only">Close modal</span>
                     </button>
                   </div>
-                  <h1 class="text-center">Administrar Eventos</h1>
+                  <h1 class="text-center">Agregar Entrenamiento</h1>
                   <form id="save-form" method="post" autocomplete="off">
                     <div class="grid gap-6 m-5 md:grid-cols-2">
                       <!-- id  -->
                       <input type="text" id="id" name="id"
                         class="hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                      <!-- Campo para ingresar el nombre del evento -->
-                      <div>
-                        <label for="Nombre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del
-                          evento</label>
-                        <input type="text" id="nombre" name="nombre"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Nombre del evento" required>
-                      </div>
-                      <!-- Campo para ingresar la descripcion -->
-                      <div>
-                        <label for="Descripcion"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
-                        <input type="text" id="descripcion" name="descripcion"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Descripcion" required>
-                      </div>
-                      <!-- Campo para seleccionar la fecha del evento -->
+                      <!-- Campo para seleccionar la fecha del entrenamiento -->
                       <div>
                         <label for="fecha"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Entreno</label>
                         <div class="relative max-w-sm">
                           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
@@ -220,28 +203,40 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="yyyy-mm-dd">
                         </div>
-                      </div><!-- Campo para seleccionar el 'pais' de evento -->
-                      <div>
-                        <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pais
-                        </label>
-                        <select id="pais" name="pais"
-                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        </select>
                       </div>
-                      <!-- Campo para ingresar la direccion del evento -->
+                      <!-- Campo para ingresar la hora de inicio -->
                       <div>
-                        <label for="Direccion"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion del
-                          evento</label>
-                        <input type="text" id="direccion" name="direccion"
+                        <label for="Hora"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora de
+                          inicio</label>
+                        <input type="text" id="horaI" name="horaI"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Direccion del evento" required>
+                          placeholder="00:00:00" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" required>
+                      </div>
+                      <!-- Campo para ingresar la hora de cierre -->
+                      <div>
+                        <label for="Hora"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora de
+                          cierre</label>
+                        <input type="text" id="horaC" name="horaC"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="00:00:00" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" required>
+                      </div>
+                      
+                        <!-- Campo para ingresar el lugar de entreno -->
+                      <div>
+                        <label for="Nombre"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lugar de
+                          entrenamiento</label>
+                        <input type="text" id="lugar" name="lugar"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Nombre del evento" required>
                       </div>
                       <!-- Campo para seleccionar el atleta -->
                       <div>
                         <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atleta
                         </label>
-                        <select id="tipo" name="t"
+                        <select id="atleta" name="atleta"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </select>
                       </div>
@@ -250,7 +245,25 @@
                         <label for="company"
                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Entrenador
                         </label>
-                        <select id="tipo" name="t"
+                        <select id="entrenador" name="entrenador"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </select>
+                      </div>
+                       <!-- Campo para seleccionar el resumen -->
+                       <div>
+                        <label for="company"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Resumen
+                        </label>
+                        <select id="resumen" name="resumen"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </select>
+                      </div>
+                       <!-- Campo para seleccionar el usuario -->
+                       <div>
+                        <label for="company"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usuario
+                        </label>
+                        <select id="usuario" name="usuario"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </select>
                       </div>
@@ -295,6 +308,12 @@
                         </th>
                         <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                           Entrenador
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Resumen
+                        </th>
+                        <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                          Usuario
                         </th>
 
                         <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
