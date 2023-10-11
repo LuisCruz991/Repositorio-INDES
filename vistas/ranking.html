@@ -1,0 +1,166 @@
+<!doctype html>
+<!-- Idioma del sitio -->
+<html lang="es">
+
+<head>
+    <!-- Titulo -->
+    <title>Ranking</title>
+    <!-- Definicion de carecteres del sitio -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Css de de tailwind -->
+    <link href="../css/tailwind.css" rel="stylesheet">
+    <!-- Cdn de flowbite -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <!-- Css del proyecto -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <!-- Fuentes del proyecto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;300&family=Plus+Jakarta+Sans&family=Quicksand:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- Fuentes del proyecto -->
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Comienzo del codigo -->
+
+    <div class="flex flex-row">
+        <!-- Comienzo del sidebar -->
+        <div id="sidebar"></div>
+        <!-- Finalizacion del sidebar -->
+
+        <!-- Comienzo del contenido  -->
+        <div class="h-screen w-full overflow-y-auto">
+            <div class="p-4">
+
+                <!-- Comienzo del navbar -->
+                <HEADER class="bg-white border-gray-200 py-2.5 rounded dark:bg-gray-900">
+
+                </HEADER>
+                <!-- Finalizacion del navbar -->
+                <main class="flex flex-col">
+                    <!-- titulo y boton para ordenar el ranking -->
+                    <div class="flex justify-between mt-5">
+                        <h1>Opciones de busqueda</h1>
+                        <button type="submit"
+                            class="px-3 py-1.5 text-sm font-medium text-white bg-blue-700 rounded-full border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Buscar
+                            <span class="sr-only">buscar</span>
+                        </button>
+                    </div>
+                    <!-- opciones de busqueda seleccionadas del ranking -->
+                    <div class="w-full mr-8 h-14 bg-gray-50 rounded-full inline-flex justify-start items-start ">
+                        <div class="mt-2 ml-4 w-fit h-fit rounded-full bg-blue-500">
+                            <h1 class="text-white py-1.5 px-3 underline">dasdfsdfsdf</h1>
+                        </div>
+                        <div class="mt-2 ml-4 w-fit h-fit rounded-full bg-blue-500">
+                            <h1 class="text-white py-1.5 px-3 underline">dasdfsdfsdf</h1>
+                        </div>
+                    </div>
+
+                    <!-- filtro de busqueda por deportes  -->
+                    <div class="mt-10 ml-4 mb-4">
+                        <h1 class="text-xl">Deportes</h1>
+                        <div
+                            class=" w-full mr-8 h-124 mb-8 bg-gray-100 rounded-xl grid-flow-row flex-wrap justify-evenly items-center overflow-hidden ">
+                            <button
+                                class="mt-8 mr-2 ml-4 mb-8 w-96 h-96 bg-azul-1 rounded-lg hover:bg-gray-500 shadow-xl flex-wrap justify-center items-center">
+                                <h1 class="text-4xl text-white mb-8">Basketball</h1>
+                                <img src="../imagenes/elements/deportes/basketball.png"
+                                    onerror="this.src='../imagenes/notFound.png'" class="mx-auto mt-8 w-64 h-64">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- filtro de busqueda por modalidad deportiva  -->
+                    <div class="mt-10 ml-4 mb-4">
+                        <h1 class="text-xl">Modalidades deportivas</h1>
+                        <div
+                            class=" w-full mr-8 h-124 mb-8 bg-gray-100 rounded-xl grid-flow-row flex-wrap justify-evenly items-center overflow-hidden">
+                            <button
+                                class="mt-8 mr-2 ml-4 mb-8 w-96 h-96 bg-azul-1 rounded-lg hover:bg-gray-500 shadow-xl flex-wrap justify-center items-center">
+                                <h1 class="text-4xl text-white mb-8">Basketball 3v3</h1>
+                                <img src="../imagenes/elements/sports/basketball.png"
+                                    onerror="this.src='../imagenes/notFound.png'" class="mx-auto mt-8 w-64 h-64 ">
+                            </button>
+                        </div>
+                    </div>
+
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Posición
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nombre completo
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nacionalidad
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="flex-wrap justify-center items-start h-auto w-full">
+                        <div class="h-20 rounded-xl shadow-xl w-full border-2 border-yellow-300 mb-4 inline-flex items-center justify-start">
+                            <img src="../imagenes/elements/number1.png" alt="" srcset="" class="w-16 mt-3 ml-3">
+                            <h1 class="ml-3 mr-2 text-2xl" style="color: rgb(227, 198, 9);">#1</h1>
+                            <div class="w-56 h-20"></div>
+                            <h1 class="px-6 text-xl ml-8 mr-8">Javier Martinez</h1>
+                            <div class="w-80 h-20"></div>
+                            <h1 class="px-6">El salvador</h1>
+                            <img src="../api/imagenes/banderas/64e2d2d082470.png" class="w-20 h-10" onerror="this.src='../imagenes/notFound.png'">
+                        </div>
+                        <div class="h-20 rounded-xl shadow-xl w-full border-2 mb-4 inline-flex items-center justify-start" style="border-color: #C0C0C0;">
+                            <img src="../imagenes/elements/2nd.png" alt="" srcset="" class="w-20 mb-2.5">
+                            <h1 class="ml-2 mr-2 text-2xl" style="color: #C0C0C0;;">#2</h1>
+                            <div class="w-56 h-20"></div>
+                            <h1 class="px-6 text-xl ml-8 mr-8">Javier Martinez</h1>
+                            <div class="w-80 h-20"></div>
+                            <h1 class="px-6">El salvador</h1>
+                            <img src="../api/imagenes/banderas/64e2d2d082470.png" class="w-20 h-10" onerror="this.src='../imagenes/notFound.png'">
+                        </div>
+                        <div class="h-20 rounded-xl shadow-xl w-full border-2 mb-4 inline-flex items-center justify-start" style="border-color: #CD7F32;">
+                            <img src="../imagenes/elements/3rd.png" alt="" srcset="" class="w-16 mb-5 ml-1">
+                            <h1 class="ml-3 mr-2 text-2xl" style="color: #CD7F32;;">#3</h1>
+                            <div class="w-56 h-20"></div>
+                            <h1 class="px-6 text-xl ml-8 mr-8">Javier Martinez</h1>
+                            <div class="w-80 h-20"></div>
+                            <h1 class="px-6">El salvador</h1>
+                            <img src="../api/imagenes/banderas/64e2d2d082470.png" class="w-20 h-10" onerror="this.src='../imagenes/notFound.png'">
+                        </div>
+                        <div id="rest">
+                            <div class="h-20 rounded-xl shadow-xl w-full border-2  mb-4 inline-flex items-center justify-start">
+                                <h1 class="px-6 text-2xl">#4</h1>
+                                <div class="w-64 h-20"></div>
+                                <h1 class="px-6 text-xl ml-8 mr-8">Javier Martinez</h1>
+                                <div class="w-80 h-20"></div>
+                                <h1 class="px-6">El salvador</h1>
+                                <img src="../api/imagenes/banderas/64e2d2d082470.png" class="w-20 h-10" onerror="this.src='../imagenes/notFound.png'">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </main>
+            </div>
+        </div>
+        <!-- Finalizacion del dashboard -->
+
+    </div>
+    <!-- Finalizacion del codigo -->
+
+    <!-- Js de flowbite -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <!-- Js escenciales -->
+    <script src="../Js/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/account.js"></script>
+
+</body>
+
+</html>

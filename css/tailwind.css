@@ -1308,6 +1308,10 @@ input:checked + .toggle-bg {
   height: 24rem;
 }
 
+.h-124 {
+  height: 28rem;
+}
+
 .h-\[4\.8rem\] {
   height: 4.8rem;
 }
