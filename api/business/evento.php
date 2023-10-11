@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Fecha no valida';
                 }  elseif (!$evento->setTipoEvento($_POST['t'])) {
                     $result['exception'] = 'Categoria no valida';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
+                }  elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$evento->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();

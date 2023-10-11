@@ -1,12 +1,11 @@
 // Constantes para completar las rutas de la API.
 const FEDERACION_API = 'business/federacion.php';
 const DEPORTE_API = 'business/deporte.php';
+
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
 const SAVE_FORM = document.getElementById('save-form');
-// Constante para establecer el título de la modal.
-const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
@@ -32,6 +31,7 @@ SEARCH_FORM.addEventListener('submit', (event) => {
   fillTable(FORM);
 });
 
+
 // Método manejador de eventos para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
   // Se evita recargar la página web después de enviar el formulario.
@@ -46,14 +46,12 @@ SAVE_FORM.addEventListener('submit', async (event) => {
   if (JSON.status) {
     // Se carga nuevamente la tabla para visualizar los cambios.
     fillTable();
-    // Se cierra la caja de diálogo.
     SAVE_MODAL.toggle();
     // Se muestra un mensaje de éxito.
     sweetAlert(1, JSON.message, true);
-
-} else {
+  } else {
     sweetAlert(2, JSON.exception, false);
-}
+  }
 });
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
@@ -88,21 +86,22 @@ async function fillTable(form = null) {
         ${row.telefono}
         </td>
         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        <img src="${SERVER_URL}imagenes/federaciones/${row.imagen_sede}" class="materialboxed" height="100" onerror="this.src='../imagenes/notFound.png';">
+        <img src="${SERVER_URL}imagenes/federaciones/${row.logo}" class="materialboxed" height="100" onerror="this.src='../imagenes/notFound.png';">
         </td>
         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
         ${row.nombre_deporte}
         </td>
+        <td >
+          <button data-modal-toggle = "save-modal" class="rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline" onclick="openUpdate(${row.idfederacion})">
+            Actualizar
+          </button>
         <td class="px-6 py-4">
-          <button onclick="openUpdate(${row.idfederacion})" 
-            class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
-        </td>
-        <td class="px-6 py-4">
-          <button onclick="openDelete(${row.idfederacion})" 
-            class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
+          <button
+            class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline" onclick="openDelete(${row.idfederacion})">
+            Eliminar</a>
+          </button>
         </td>
       </tr>
-
       `;
     });
     // Se muestra un mensaje de acuerdo con el resultado.
@@ -123,7 +122,8 @@ function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(PARENTESCO_API, 'readAll', 'parentesco'); 
+    fillSelect(DEPORTE_API, 'readAll', 'deporte'); 
+    fillSelect(FEDERACION_API, 'readAll', 'federacion');
 }
 
 /*
@@ -134,7 +134,7 @@ function openCreate() {
 async function openUpdate(id) {
   // Se define un objeto con los datos del registro seleccionado.
   const FORM = new FormData();
-  FORM.append('idfederacion', id);
+  FORM.append('id', id);
   // Petición para obtener los datos del registro solicitado.
   const JSON = await dataFetch(FEDERACION_API, 'readOne', FORM);
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -151,6 +151,7 @@ async function openUpdate(id) {
     document.getElementById('direccion').value = JSON.dataset.direccion;
     document.getElementById('telefono').value = JSON.dataset.telefono;
     fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
+    document.getElementById('archivo').required = false;
   // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
   } else {
   sweetAlert(2, JSON.exception, false);
@@ -195,4 +196,3 @@ async function Preview(input, target) {
     img.src = reader.result;
   }
 }
-

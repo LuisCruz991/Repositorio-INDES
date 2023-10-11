@@ -57,7 +57,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($federacion->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $federacion->getRuta(), $federacion->getImagen())) {
+                    if (Validator::saveFile($_FILES['archivo'], $federacion->getRuta(), $federacion->getLogo())) {
                         $result['message'] = 'Federacion creada correctamente';
                     } else {
                         $result['message'] = 'Federacion guardada, pero no se logró guardar el logo';
@@ -68,7 +68,7 @@ if (isset($_GET['action'])) {
                 break;
             // Caso para leer los datos de un unico registro
             case 'readOne':
-                if (!$federacion->setId($_POST['idfederacion'])) {
+                if (!$federacion->setId($_POST['id'])) {
                     $result['exception'] = 'Federacion no valida';
                 } elseif ($result['dataset'] = $federacion->readOne()) {
                     $result['status'] = 1;
@@ -82,7 +82,7 @@ if (isset($_GET['action'])) {
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$federacion->setId($_POST['id'])) {
-                    $result['exception'] = 'Evento no valido';
+                    $result['exception'] = 'Federacion no valido';
                 } elseif (!$data = $federacion->readOne()) {
                     $result['exception'] = 'Federacion no leída correctamente';
                 } elseif (!$federacion->setNombre($_POST['nombre'])) {
@@ -106,7 +106,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($federacion->updateRow($data['logo'])) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $federacion->getRuta(), $federacion->getImagen())) {
+                    if (Validator::saveFile($_FILES['archivo'], $federacion->getRuta(), $federacion->getLogo())) {
                         $result['message'] = 'Federacion actualizada correctamente';
                     } else {
                         $result['message'] = 'No fue posible actualizar la imagen';
@@ -117,16 +117,16 @@ if (isset($_GET['action'])) {
                 break;
             // Caso pra eliminar un registro 
             case 'delete':
-                if (!$federacion->setId($_POST['id'])) {
+                if (!$federacion->setId($_POST['idfederacion'])) {
                     $result['exception'] = 'Federacion no valida';
                 } elseif (!$data = $federacion->readOne()) {
                     $result['exception'] = 'Hubó un error al tratar de leer la federacion';
                 } elseif ($federacion->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($federacion->getRuta(), $data['imagen_sede'])) {
+                    if (Validator::deleteFile($federacion->getRuta(), $data['logo'])) {
+                        $result['message'] = '';
+                    }else {
                         $result['message'] = 'Federacion descartada de forma satisfactoría';
-                    } else {
-                        $result['message'] = 'Ocurrió un problema al tratar de descartar la federacion';
                     }
                 } else {
                     $result['exception'] = Database::getException();

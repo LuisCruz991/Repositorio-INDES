@@ -8,8 +8,7 @@ class FederacionQueries {
      {
          $sql = 'SELECT idfederacion, nombre_federacion, siglas, direccion, telefono, logo, nombre_deporte
                  FROM federaciones INNER JOIN deportes USING(iddeporte)
-                 WHERE nombre_federacion LIKE ? or siglas LIKE ? or telefono LIKE ?
-                 ORDER BY idfederacion';
+                 WHERE nombre_federacion LIKE ? or siglas LIKE ? or telefono LIKE ?';
          $params = array("%$value%", "%$value%", "%$value%");
          return Database::getRows($sql, $params);
      }
@@ -36,7 +35,7 @@ class FederacionQueries {
      public function readOne()
      {
          $sql = 'SELECT idfederacion, nombre_federacion, siglas, direccion, telefono, logo, iddeporte
-                 FROM federaciones
+                 FROM federaciones INNER JOIN deportes USING(iddeporte)
                  WHERE idfederacion = ?';
          $params = array($this->id);
          return Database::getRow($sql, $params);

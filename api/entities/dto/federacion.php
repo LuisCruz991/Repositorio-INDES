@@ -75,8 +75,6 @@ class Federacion extends FederacionQueries  {
     }
 
 
-
-
     public function setDeporte($value) {
         if (Validator::validateNaturalNumber($value)) {
             $this->deporte = $value;

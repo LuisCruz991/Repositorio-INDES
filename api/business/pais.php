@@ -54,7 +54,7 @@ if (isset($_GET['action'])) {
                     if (Validator::saveFile($_FILES['archivo'], $pais->getRuta(), $pais->getBandera())) {
                         $result['message'] = 'Pais creado correctamente';
                     } else {
-                        $result['message'] = 'Pais guardado, pero no se logró guardar la foto de la sede';
+                        $result['message'] = 'Pais guardado, pero no se logró guardar la foto de la bandera';
                     }
                 } else {
                     $result['exception'] = Database::getException();
