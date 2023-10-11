@@ -27,7 +27,7 @@ class Federacion extends FederacionQueries  {
 
     public function setNombre($value)
     {
-        if (Validator::validateString($value, 1,50)) {
+        if (Validator::validateString($value, 1,60)) {
             $this->nombre = $value;
             return true;
         } else {
@@ -38,7 +38,7 @@ class Federacion extends FederacionQueries  {
    
 
     public function setSiglas($value) {
-        if (Validator::validateString($value, 1,50)) {
+        if (Validator::validateString($value, 1,10)) {
         $this->siglas = $value;
         return true;
         } else {
@@ -48,7 +48,7 @@ class Federacion extends FederacionQueries  {
 
 
     public function setDireccion($value) {
-        if (Validator::validateString($value, 1,200)) {
+        if (Validator::validateString($value, 1,250)) {
             $this->direccion = $value;
             return true;
             } else {

@@ -74,6 +74,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Record inexistente';
                 } elseif (!$record->setMarcaObtenida($_POST['marca_obtenida'])) {
                     $result['exception'] = 'Marca incorrecta';
+                }  elseif (!$record->setUnidadMedida($_POST['unidad'])) {
+                    $result['exception'] = 'Unidad de medida incorrecta';
+                }  elseif (!$record->setAtleta($_POST['atleta'])) {
+                    $result['exception'] = 'Atleta incorrecto';
+                }   elseif (!$record->setPrueba($_POST['prueba'])) {
+                    $result['exception'] = 'Prueba incorrecta';
                 }  elseif (!$record->setPosicion($_POST['posicion'])) {
                     $result['exception'] = 'Posicion incorrecta';
                 }  elseif ($record->updateRow()) {

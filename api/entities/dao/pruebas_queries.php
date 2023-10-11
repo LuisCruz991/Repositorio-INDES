@@ -51,9 +51,9 @@ class PruebasQueries
     public function updateRow()
     {
         $sql = 'UPDATE pruebas
-                SET nombre_prueba = ?
+                SET nombre_prueba = ?, hora_inicial = ?, duracion_estimada = ?, iddeporte = ?, idevento = ?, idmodalidad_deporte = ?
                 WHERE idprueba = ?';
-        $params = array($this->nombre, $this->id);
+        $params = array($this->nombre, $this->horaInicio, $this->estimado, $this->deporte, $this->evento, $this->modalidad, $this->id);
         return Database::executeRow($sql, $params);
     }
 

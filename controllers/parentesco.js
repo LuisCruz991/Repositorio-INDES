@@ -4,14 +4,16 @@ const PARENTESCO_API = 'business/parentesco.php';
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
 const SAVE_FORM = document.getElementById('save-form');
+// Constante para establecer el título de la modal.
+const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
+// Inicialización del componente Modal para que funcionen las cajas de diálogo.
 
 // Constante para establecer la modal de guardar.
 const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
-
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,29 +45,15 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
+        // Se cierra la caja de diálogo.
         SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
+
     } else {
         sweetAlert(2, JSON.exception, false);
     }
 });
-
-/*
-*   Función para buscar datos al presionar una tecla.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-function searchRows() {
-    value = document.getElementById('search').value;
-    if (value) {
-        const FORM = new FormData();
-        FORM.append('search', value);
-        fillTable(FORM);
-    } else {
-        fillTable();
-    }
-}
 
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
@@ -86,22 +74,19 @@ async function fillTable(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
-            <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <p class="text-center  w-14 rounded-xl">${row.nombre_parentesco}</p>
+            ${row.nombre_parentesco}
             </td>
-            <td >
-              <button data-modal-toggle = "save-modal" class="rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline" onclick="openUpdate(${row.idmodalidad_deporte})">
-                Actualizar
-              </button>
             <td class="px-6 py-4">
-              <button
-                class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline" onclick="openDelete(${row.idmodalidad_deporte})">
-                Eliminar</a>
-              </button>
+              <button onclick="openUpdate(${row.idparentesco})" 
+                class=" rounded-md w-24 h-8 bg-btnactualizar-color font-medium text-btnactualizar-texto dark:text-blue-500 hover:underline">Actualizar</button>
             </td>
-          </tr>
+            <td class="px-6 py-4">
+              <button onclick="openDelete(${row.idparentesco})" 
+                class=" rounded-md w-24 h-8 bg-red-500 font-medium text-white dark:text-blue-500 hover:underline">Eliminar</button>
+            </td>
+            </tr>
             `;
         });
         RECORDS.textContent = JSON.message;
@@ -116,6 +101,8 @@ async function fillTable(form = null) {
 *   Retorno: ninguno.
 */
 function openCreate() {
+    // Se abre la caja de diálogo que contiene el formulario.
+    
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
 }
@@ -137,9 +124,11 @@ async function openUpdate(id) {
         SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
+        // Se asigna título a la caja de diálogo.
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idparentesco;
         document.getElementById('parentesco').value = JSON.dataset.nombre_parentesco;
+        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
     }

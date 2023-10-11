@@ -1,14 +1,17 @@
 // Constantes para completar las rutas de la API.
 const FEDERACION_API = 'business/federacion.php';
 const DEPORTE_API = 'business/deporte.php';
-
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
 const SAVE_FORM = document.getElementById('save-form');
+// Constante para establecer el título de la modal.
+const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
+
+// Inicialización del componente Modal para que funcionen las cajas de diálogo.
 
 // Constante para establecer la modal de guardar.
 const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
@@ -43,13 +46,14 @@ SAVE_FORM.addEventListener('submit', async (event) => {
   if (JSON.status) {
     // Se carga nuevamente la tabla para visualizar los cambios.
     fillTable();
+    // Se cierra la caja de diálogo.
     SAVE_MODAL.toggle();
-
     // Se muestra un mensaje de éxito.
     sweetAlert(1, JSON.message, true);
-  } else {
+
+} else {
     sweetAlert(2, JSON.exception, false);
-  }
+}
 });
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
@@ -114,10 +118,12 @@ async function fillTable(form = null) {
 *   Retorno: ninguno.
 */
 function openCreate() {
-  // Se restauran los elementos del formulario.
-  SAVE_FORM.reset();
-  // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-  fillSelect(DEPORTE_API, 'readAll', 'deporte');
+  // Se abre la caja de diálogo que contiene el formulario.
+    
+    // Se restauran los elementos del formulario.
+    SAVE_FORM.reset();
+    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
+    fillSelect(PARENTESCO_API, 'readAll', 'parentesco'); 
 }
 
 /*
@@ -128,15 +134,16 @@ function openCreate() {
 async function openUpdate(id) {
   // Se define un objeto con los datos del registro seleccionado.
   const FORM = new FormData();
-  FORM.append('id', id);
+  FORM.append('idfederacion', id);
   // Petición para obtener los datos del registro solicitado.
   const JSON = await dataFetch(FEDERACION_API, 'readOne', FORM);
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
-    // // Se abre la caja de diálogo que contiene el formulario.
+    // Se abre la caja de diálogo que contiene el formulario.
     SAVE_MODAL.show();
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
+    // Se asigna título a la caja de diálogo.
     // Se inicializan los campos del formulario.
     document.getElementById('id').value = JSON.dataset.idfederacion;
     document.getElementById('nombre').value = JSON.dataset.nombre_federacion;
@@ -144,8 +151,9 @@ async function openUpdate(id) {
     document.getElementById('direccion').value = JSON.dataset.direccion;
     document.getElementById('telefono').value = JSON.dataset.telefono;
     fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
+  // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
   } else {
-    sweetAlert(2, JSON.exception, false);
+  sweetAlert(2, JSON.exception, false);
   }
 }
 
@@ -175,6 +183,7 @@ async function openDelete(id) {
     }
   }
 }
+
 // Funcion asincrona para mostrar la imagen seleccionada en el modal. 
 async function Preview(input, target) {
   let file = input.files[0];

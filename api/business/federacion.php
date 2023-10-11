@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$federacion->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion no valida';
                 } elseif (!$federacion->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Direccion del evento no valido';
+                    $result['exception'] = 'Telefono no valido';
                 } elseif (!$federacion->setDeporte($_POST['deporte'])) {
                     $result['exception'] = 'Deporte no valido';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
@@ -68,7 +68,7 @@ if (isset($_GET['action'])) {
                 break;
             // Caso para leer los datos de un unico registro
             case 'readOne':
-                if (!$federacion->setId($_POST['id'])) {
+                if (!$federacion->setId($_POST['idfederacion'])) {
                     $result['exception'] = 'Federacion no valida';
                 } elseif ($result['dataset'] = $federacion->readOne()) {
                     $result['status'] = 1;
@@ -86,13 +86,13 @@ if (isset($_GET['action'])) {
                 } elseif (!$data = $federacion->readOne()) {
                     $result['exception'] = 'Federacion no leída correctamente';
                 } elseif (!$federacion->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrect';
+                    $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$federacion->setSiglas($_POST['siglas'])) {
                     $result['exception'] = 'Siglas no validas';
                 } elseif (!$federacion->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion no valida';
                 } elseif (!$federacion->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Direccion del evento no valido';
+                    $result['exception'] = 'Telefono no valido';
                 } elseif (!$federacion->setDeporte($_POST['deporte'])) {
                     $result['exception'] = 'Deporte no valido';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
@@ -117,7 +117,7 @@ if (isset($_GET['action'])) {
                 break;
             // Caso pra eliminar un registro 
             case 'delete':
-                if (!$federacion->setId($_POST['idfederacion'])) {
+                if (!$federacion->setId($_POST['id'])) {
                     $result['exception'] = 'Federacion no valida';
                 } elseif (!$data = $federacion->readOne()) {
                     $result['exception'] = 'Hubó un error al tratar de leer la federacion';

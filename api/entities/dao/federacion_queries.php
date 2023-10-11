@@ -6,9 +6,10 @@ class FederacionQueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT idfederacion, nombre_federacion, direccion, telefono, logo, nombre_deporte
+         $sql = 'SELECT idfederacion, nombre_federacion, siglas, direccion, telefono, logo, nombre_deporte
                  FROM federaciones INNER JOIN deportes USING(iddeporte)
-                 WHERE nombre_federacion LIKE ? or siglas LIKE ? or telefono LIKE ?';
+                 WHERE nombre_federacion LIKE ? or siglas LIKE ? or telefono LIKE ?
+                 ORDER BY idfederacion';
          $params = array("%$value%", "%$value%", "%$value%");
          return Database::getRows($sql, $params);
      }
@@ -16,8 +17,8 @@ class FederacionQueries {
      // Consulta para realizar la operacion "Create"
      public function createRow()
      {
-         $sql = 'INSERT INTO federaciones(nombre_federacion , siglas, direccion, telefono, logo, iddeporte)
-                 VALUES(?,?,?,?,?,?,?,?,?)';
+         $sql = 'INSERT INTO federaciones(nombre_federacion, siglas, direccion, telefono, logo, iddeporte)
+                 VALUES(?,?,?,?,?,?)';
          $params = array($this->nombre, $this->siglas, $this->direccion, $this->telefono, $this->logo, $this->deporte);
          return Database::executeRow($sql, $params);
      }
@@ -25,26 +26,17 @@ class FederacionQueries {
      // Consulta para realizar la operacion "Read"
      public function readAll()
      {
-         $sql = 'SELECT idfederacion, nombre_federacion ,  direccion, telefono, logo, nombre_deporte, siglas
-                 FROM federaciones INNER JOIN deportes USING(iddeporte)';
+         $sql = 'SELECT idfederacion, nombre_federacion, siglas, direccion, telefono, logo, nombre_deporte 
+                 FROM federaciones INNER JOIN deportes USING(iddeporte)
+                 ORDER BY idfederacion';
          return Database::getRows($sql);
      }
-
-    //  Consulta para leer los deportes de las federaciones 
-     public function readDeporte()
-     {
-         $sql = 'SELECT idfederacion, nombre_federacion , siglas, direccion, telefono, logo, nombre_deporte
-                 FROM federaciones INNER JOIN deportes USING(iddeporte)';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-     }
- 
  
      // Consulta para cargar los datos de un solo registro
      public function readOne()
      {
-         $sql = 'SELECT idfederacion, nombre_federacion , siglas, direccion, telefono, logo, iddeporte
-                 FROM federaciones INNER JOIN deportes USING(iddeporte)
+         $sql = 'SELECT idfederacion, nombre_federacion, siglas, direccion, telefono, logo, iddeporte
+                 FROM federaciones
                  WHERE idfederacion = ?';
          $params = array($this->id);
          return Database::getRow($sql, $params);
@@ -57,7 +49,7 @@ class FederacionQueries {
 
          $sql = 'UPDATE federaciones  
                  SET  nombre_federacion = ?, siglas = ?, direccion = ?, telefono = ?, logo = ?, iddeporte = ?
-                 WHERE idevento = ?';
+                 WHERE idfederacion = ?';
          $params = array($this->nombre, $this->siglas, $this->direccion, $this->telefono, $this->logo, $this->deporte, $this->id);
          return Database::executeRow($sql, $params);
      }

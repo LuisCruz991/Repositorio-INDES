@@ -8,16 +8,16 @@ class AdminQueries
      // Consulta para realizar la operacion "Search"
     public function searchRows($value)
     {
-        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario
-        WHERE nombre_usuario LIKE ? ';   
-        $params = array("%$value%");
+        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, acceso
+        WHERE nombre_usuario LIKE ? or acceso LIKE ?';   
+        $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     // Consulta para realizar la operacion "Read"
     public function readAll()
     {
-        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario
+        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, acceso
         FROM administradores
         ORDER BY idadministrador';
         return Database::getRows($sql);
@@ -26,7 +26,7 @@ class AdminQueries
      // Consulta para cargar los datos de un solo registro
     public function readOne()
     {
-        $sql = 'SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, idgenero
+        $sql = 'SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, acceso
                 FROM administradores
                 WHERE idadministrador = ?';
         $params = array($this->id);
@@ -41,22 +41,13 @@ class AdminQueries
         $params = array($this->nombre, $this->correo, $_SESSION['idadministrador']);
         return Database::executeRow($sql, $params);
     }
- 
- 
-    //  Consulta para leer los generos de administradores
-    public function readGenero()
-     {
-         $sql = 'SELECT idgenero, nombre_genero
-                 FROM generos';
-         return Database::getRows($sql);
-     }
 
      // Consulta para realizar la operacion "Create"
     public function createRow()
     {
-        $sql = 'INSERT INTO administradores(nombre_usuario, clave_usuario, correo_usuario, idgenero)
+        $sql = 'INSERT INTO administradores(nombre_usuario, clave_usuario, correo_usuario, acceso)
                 VALUES(?,?,?,?)';
-        $params = array($this->nombre, $this->clave, $this->correo, $this->genero);
+        $params = array($this->nombre, $this->clave, $this->correo, $this->acceso);
         return Database::executeRow($sql, $params);
     }
 
@@ -65,9 +56,9 @@ class AdminQueries
     {
        
         $sql = 'UPDATE administradores
-                SET nombre_usuario =  ?, clave_usuario = ?, idgenero = ?, correo_usuario = ?
+                SET nombre_usuario =  ?, clave_usuario = ?, correo_usuario = ?, acceso = ?
                 WHERE idadministrador = ?';
-        $params = array($this->nombre, $this->clave, $this->genero, $this->correo, $this->id);
+        $params = array($this->nombre, $this->clave, $this->correo, $this->acceso, $this->id);
         return Database::executeRow($sql, $params);
     }
 

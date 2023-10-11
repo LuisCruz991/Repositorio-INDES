@@ -49,11 +49,11 @@ class RecordQueries
     }
 
     public function updateRow()
-    {  
+    {
         $sql = 'UPDATE records
-                SET marca_obtenida = ?, posicion = ?
+                SET marca_obtenida = ?, idunidad_medida = ?, idatleta = ?, idprueba = ?, posicion = ?
                 WHERE idrecord = ?';
-        $params = array($this->marca_obtenida, $this->posicion, $this->id);
+        $params = array($this->marca_obtenida, $this->unidad, $this->atleta, $this->prueba, $this->posicion, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -63,36 +63,6 @@ class RecordQueries
                 WHERE idrecord = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
-    }
-
-    public function readUnidadMedida()
-    {
-        $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
-                WHERE unidades_medidas = ? 
-                ORDER BY idrecord';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-    }
-
-    public function readAtletas()
-    {
-        $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN atletas USING (idatleta)
-                WHERE atletas = ? 
-                ORDER BY idrecord';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-    }
-
-    public function readPruebas()
-    {
-        $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN pruebas USING (idprueba)
-                WHERE pruebas = ? 
-                ORDER BY idrecord';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
     }
 
     public function readAtletasTitulos()

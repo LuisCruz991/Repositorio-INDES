@@ -48,9 +48,9 @@ class ResponsableQueries
     {
        
         $sql = 'UPDATE responsables
-                SET nombre_responsable = ?, nombre_responsable = ?, direccion = ?, telefono = ?, dui = ?, oficio = ?
+                SET nombre_responsable = ?, apellido_responsable = ?, direccion = ?, telefono = ?, dui = ?, oficio = ?, idparentesco = ?
                 WHERE idresponsable = ?';
-        $params = array($this->nombre, $this->apellido, $this->direccion, $this->telefono, $this->dui, $this->oficio, $this->id);
+        $params = array($this->nombre, $this->apellido, $this->direccion, $this->telefono, $this->dui, $this->oficio, $this->parentesco, $this->id);
         return Database::executeRow($sql, $params);
     }
 

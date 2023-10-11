@@ -41,7 +41,7 @@ if (isset($_GET['action'])) {
                 // Caso pra ingresar datos
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$parentesco->setParentesco($_POST['nombre'])) {
+                if (!$parentesco->setParentesco($_POST['parentesco'])) {
                     $result['exception'] = 'Parentesco no valida';
                 } elseif ($parentesco->createRow()) {
                     $result['status'] = 1;

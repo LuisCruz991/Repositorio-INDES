@@ -127,8 +127,7 @@ function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(PARENTESCO_API, 'readAll', 'parentesco');
-    
+    fillSelect(PARENTESCO_API, 'readAll', 'parentesco'); 
 }
 
 /*

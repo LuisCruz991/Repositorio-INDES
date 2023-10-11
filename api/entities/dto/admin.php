@@ -10,10 +10,10 @@ class Admin extends AdminQueries
     protected $id = null;
     protected $nombre = null;
     protected $clave = null;
-    protected $genero = null;
     protected $correo = null;
     protected $intentos = null;
     protected $acceso = null;
+    protected $fecha = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -47,20 +47,30 @@ class Admin extends AdminQueries
             return false;
         }
     }
-    
-    public function setGenero($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->genero = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function setCorreo($value) {
         if (Validator::validateEmail($value)) {
             $this->correo = $value;
+            return true;
+            } else {
+                return false;
+            }    
+        }
+
+    public function setFecha($value) {
+        if (Validator::validateDate($value)) {
+            $this->fecha = $value;
+            return true;
+            } else {
+                return false;
+            }    
+        }
+
+        
+
+    public function setAcceso($value) {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->acceso = $value;
             return true;
             } else {
                 return false;
@@ -88,13 +98,16 @@ class Admin extends AdminQueries
         return $this->clave;
     }
 
-    public function getGenero()
-    {
-        return $this->genero;
-    }
-
     public function getCorreo() {
         return $this->correo;
+    }
+
+    public function getFecha() {
+        return $this->fecha;
+    }
+
+    public function getAcceso() {
+        return $this->acceso;
     }
 
     
