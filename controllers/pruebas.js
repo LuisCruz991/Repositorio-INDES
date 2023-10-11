@@ -157,7 +157,7 @@ async function openUpdate(id) {
         document.getElementById('estimado').value = JSON.dataset.duracion_estimada;
         fillSelect(DEPORTE_API, 'readAll', 'deporte', JSON.dataset.iddeporte);
         fillSelect(EVENTO_API, 'readAll', 'evento', JSON.dataset.idevento);
-        fillSelect(MODALIDAD_API, 'readAll', 'modalidad', JSON.dataset.idmodalidad);
+        fillSelect(MODALIDAD_API, 'readAll', 'modalidad', JSON.dataset.idmodalidad_deporte);
 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {

@@ -131,9 +131,9 @@ if (isset($_GET['action'])) {
                 }  elseif ($evento->deleteRow()) {
                     $result['status'] = 1;
                     if (Validator::deleteFile($evento->getRuta(), $data['imagen_sede'])) {
-                        $result['message'] = 'Evento descartado de forma satisfactoría';
+                        $result['message'] = '';
                     } else {
-                        $result['message'] = 'Ocurrió un problema al tratar de descartar el evento';
+                        $result['message'] = 'Evento descartado de forma satisfactoría';
                     }
                 } else {
                     $result['exception'] = Database::getException();

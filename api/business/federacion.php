@@ -46,7 +46,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$federacion->setSiglas($_POST['siglas'])) {
                     $result['exception'] = 'Siglas no validas';
                 } elseif (!$federacion->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Pais no valido';
+                    $result['exception'] = 'Direccion no valida';
                 } elseif (!$federacion->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Direccion del evento no valido';
                 } elseif (!$federacion->setDeporte($_POST['deporte'])) {
@@ -90,7 +90,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$federacion->setSiglas($_POST['siglas'])) {
                     $result['exception'] = 'Siglas no validas';
                 } elseif (!$federacion->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Pais no valido';
+                    $result['exception'] = 'Direccion no valida';
                 } elseif (!$federacion->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Direccion del evento no valido';
                 } elseif (!$federacion->setDeporte($_POST['deporte'])) {
