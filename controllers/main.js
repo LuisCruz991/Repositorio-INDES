@@ -261,7 +261,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }) // En caso de que de error se muestra el error en la consola y se muestra un mensaje de error
         .catch(error => {
             console.error('Error fetching the news:', error);
-            document.getElementById('news').innerHTML = '<p>Error al buscar noticias.</p>';
+            document.getElementById('news').innerHTML = '<p class="text-center mt-5">Error al buscar noticias.</p>';
         });
-
 });
