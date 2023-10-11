@@ -15,7 +15,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             // Caso pra leer todos los registros de la tabla
             case 'readAll':
-                if ($result['dataset'] = $pais->readAll()) {
+                if ($result['dataset'] = $usuario->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'La tabla cuenta con ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
@@ -24,12 +24,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+
+                case 'readTipo':
+                    if ($result['dataset'] = $usuario->readTipo()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;
                 // Caso para usar el buscador 
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $pais->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $usuario->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
@@ -41,20 +51,28 @@ if (isset($_GET['action'])) {
                 // Caso para realizar la insercion de datos
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pais->setPais($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre del Pais incorrecto';
-                } elseif (!$pais->setContinente($_POST['continente'])) {
-                    $result['exception'] = 'Descripcion no valida';
-                }  elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
+                if (!$usuario->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre del Usuario incorrecto';
+                } elseif (!$usuario->setClave($_POST['Clave'])) {
+                    $result['exception'] = 'Clave no valida';
+                } elseif (!$usuario->setCorreo($_POST['correp'])) {
+                    $result['exception'] = 'Correo no valida';
+                } elseif (!$usuario->setTipo($_POST['tipo'])) {
+                    $result['exception'] = 'Tipo de usuario no valido';
+                } elseif (!$usuario->setIntentos($_POST['intentos'])) {
+                    $result['exception'] = 'Intentos no validos';
+                } elseif (!$usuario->setAcceso($_POST['acceso'])) {
+                    $result['exception'] = 'Acceso no valida';
+                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$pais->setImagen($_FILES['archivo'])) {
+                } elseif (!$usuario->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
-                } elseif ($pais->createRow()) {
+                } elseif ($usuario->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $pais->getRuta(), $pais->getBandera())) {
-                        $result['message'] = 'Pais creado correctamente';
+                    if (Validator::saveFile($_FILES['archivo'], $usuario->getRuta(), $usuario->getImagen())) {
+                        $result['message'] = 'Usuario creado correctamente';
                     } else {
-                        $result['message'] = 'Pais guardado, pero no se logró guardar la foto de la sede';
+                        $result['message'] = 'Usuario guardado, pero no se logró guardar la foto';
                     }
                 } else {
                     $result['exception'] = Database::getException();
@@ -62,43 +80,51 @@ if (isset($_GET['action'])) {
                 break;
                 // Caso para leer los datos de un unico registro
             case 'readOne':
-                if (!$pais->setId($_POST['id'])) {
-                    $result['exception'] = 'Pais no valido';
-                } elseif ($result['dataset'] = $pais->readOne()) {
+                if (!$usuario->setId($_POST['id'])) {
+                    $result['exception'] = 'Usuario no validO';
+                } elseif ($result['dataset'] = $usuario->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Pais inexistente';
+                    $result['exception'] = 'Usuario inexistente';
                 }
                 break;
                 // Caso para realizar la operacion de actualizar un registro 
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pais->setId($_POST['id'])) {
-                    $result['exception'] = 'Pais no valido';
-                } elseif (!$data = $pais->readOne()) {
-                    $result['exception'] = 'Pais no leído correctamente';
-                } elseif (!$pais->setPais($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre del pais incorrecto';
-                }  elseif (!isset($_POST['continente'])) {
-                    $result['exception'] = 'Seleccione un continente para el pais';
-                } elseif (!$pais->setContinente($_POST['continente'])) {
-                    $result['exception'] = 'Continente no valida';
+                if (!$usuario->setId($_POST['id'])) {
+                    $result['exception'] = 'Usuario  no validU';
+                } elseif (!$data = $usuario->readOne()) {
+                    $result['exception'] = 'Usuario no leído correctamente';
+                } elseif (!$usuario->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre del usuario incorrecto';
+                }  elseif (!$usuario->setClave($_POST['clave'])) {
+                    $result['exception'] = 'Clave incorrecta';
+                } elseif (!$usuario->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Correo del usuario incorrecto';
+                } elseif (!$usuario->setIntentos($_POST['intentos'])) {
+                    $result['exception'] = 'Intentos no valido';
+                } elseif (!$usuario->setAcceso($_POST['acceso'])) {
+                    $result['exception'] = 'Acceso incorrecto';
+                } elseif (!isset($_POST['tipo'])) {
+                    $result['exception'] = 'Seleccione un tipo de usuario';
+                } elseif (!$usuario->setTipo($_POST['tipo'])) {
+                    $result['exception'] = 'Tipo de usuario no valido';
                 } 
                 elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($pais->updateRow($data['bandera'])) {
+                    if ($usuario->updateRow($data['imagen'])) {
                         $result['status'] = 1;
-                        $result['message'] = 'Pais actualizado correctamente';
+                        $result['message'] = 'Usuario actualizado correctamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }
-                } elseif (!$pais->setImagen($_FILES['archivo'])) {
+                } elseif (!$usuario->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
-                } elseif ($pais->updateRow($data['bandera'])) {
+                } elseif ($usuario->updateRow($data['imagen'])) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $pais->getRuta(), $pais->getBandera())) {
-                        $result['message'] = 'Pais actualizado correctamente';
+                    if (Validator::saveFile($_FILES['archivo'], $usuario->getRuta(), $usuario->getImagen())) {
+                        $result['message'] = 'Usuario actualizado correctamente';
                     } else {
                         $result['message'] = 'No fue posible actualizar la imagen';
                     }
@@ -108,16 +134,16 @@ if (isset($_GET['action'])) {
                 break;
                 // Caso pra eliminar un registro 
             case 'delete':
-                if (!$pais->setId($_POST['id'])) {
-                    $result['exception'] = 'Pais no valido';
-                }elseif (!$data = $pais->readOne()) {
-                    $result['exception'] = 'Hubó un error al tratar de leer el pais';
-                }  elseif ($pais->deleteRow()) {
+                if (!$usuario->setId($_POST['id'])) {
+                    $result['exception'] = 'Usuario no valido';
+                }elseif (!$data = $usuario->readOne()) {
+                    $result['exception'] = 'Hubó un error al tratar de leer el usuario';
+                }  elseif ($usuario->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($pais->getRuta(), $data['bandera'])) {
-                        $result['message'] = 'Pais descartado de forma satisfactoría';
+                    if (Validator::deleteFile($usuario->getRuta(), $data['imagen'])) {
+                        $result['message'] = 'Usuario descartado de forma satisfactoría';
                     } else {
-                        $result['message'] = 'Ocurrió un problema al tratar de descartar el pais';
+                        $result['message'] = 'Ocurrió un problema al tratar de descartar el usuario';
                     }
                 } else {
                     $result['exception'] = Database::getException();
