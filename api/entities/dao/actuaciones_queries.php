@@ -33,8 +33,9 @@ class ActuacionesQueries
 
     public function readOne()
     {
-        $sql = 'SELECT idactuacion, posicion,marca_obtenida, idunidad_medida, idatleta, idprueba
+        $sql = 'SELECT idactuacion, posicion,marca_obtenida, idunidad_medida, idatleta, idprueba, nombre_atleta
                 FROM actuaciones_destacadas 
+                INNER JOIN atletas USING(idatleta)
                 WHERE idactuacion = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);

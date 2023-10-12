@@ -126,6 +126,8 @@ function openCreate() {
     fillSelect(UNIDAD_API, 'readAll', 'unidad');
     fillSelect(ATLETA_API, 'readAll', 'atleta');
     fillSelect(PRUEBA_API, 'readAll', 'prueba');
+    document.getElementById('title2').innerHTML = '<h1 class="text-center mt-5">Agregar actuacion</h1>';
+
 }
 
 /*
@@ -143,6 +145,7 @@ async function openUpdate(id) {
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         SAVE_MODAL.show();
+        document.getElementById('title2').innerHTML = `<h1 class="text-center py-8">Actualizar datos de:${JSON.dataset.nombre_atleta}</h1 > ` ;
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
