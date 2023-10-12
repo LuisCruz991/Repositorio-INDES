@@ -1,6 +1,3 @@
-// Constantes para completar las rutas de la API.
-const ADMIN_API = 'business/admin.php';
-const GENERO_API = 'business/.php';
 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -73,19 +70,12 @@ async function fillTable(form = null) {
     const JSON = await dataFetch(ADMIN_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            (row.acceso) ? estado = 'true' : estado = 'false';
             TBODY_ROWS.innerHTML += `
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td class="w-4 p-4">
-              <div class="flex items-center">
-                <input id="checkbox-table-search-1" type="checkbox"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-              </div>
-            </td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             ${row.nombre_usuario}
             </td>
@@ -93,9 +83,10 @@ async function fillTable(form = null) {
             ${row.correo_usuario}
             </td>
             <td class="px-6 py-4">
-            ${row.nombre_genero}
-
-
+            ${row.intentos_fallidos}
+            </td>
+            <td class="px-6 py-4">
+            ${estado}
             </td>
             <td class="px-6 py-4">
               <button onclick="openUpdate(${row.idadministrador})" 
@@ -128,7 +119,12 @@ function openCreate() {
     SAVE_FORM.reset();
     // Se asigna el título a la caja de diálogo.
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(ADMIN_API, 'readGenero', 'genero');
+    document.getElementById('codigo').disabled = false;
+    document.getElementById('confirmar').disabled = false;
+    document.getElementById('title2').innerHTML = '<h1 class="text-center mt-5">Agregar admin</h1>';
+    document.getElementById('acceso').disabled = true;
+
+
 
 
 }
@@ -148,15 +144,26 @@ async function openUpdate(id) {
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         SAVE_MODAL.show();
+        document.getElementById('title2').innerHTML = `<h1 class="text-center py-8">Actualizar datos de:${JSON.dataset.nombre_usuario}</h1 > ` ;
+        document.getElementById('estado').innerHTML = ` <input id="acceso" name="acceso" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Acceso</label>` ;
+
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
+
+      
         // Se asigna el título para la caja de diálogo (modal).
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idadministrador;
         document.getElementById('nombre').value = JSON.dataset.nombre_usuario;
         document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('clave').value = JSON.dataset.clave_usuario;
-        fillSelect(ADMIN_API, 'readGenero', 'genero', JSON.dataset.idgenero);
+        document.getElementById('codigo').disabled = true;
+        document.getElementById('confirmar').disabled = true;
+        if (JSON.dataset.acceso) {
+            document.getElementById('acceso').checked = true;
+        } else {
+            document.getElementById('acceso').checked = false;
+        }
 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
@@ -191,3 +198,28 @@ async function openDelete(id) {
     }
 }
 
+function mostrarContraseniaSignUp() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const passwordInput = document.getElementById('confirmar');
+    const passwordButton = document.getElementById('password-visibles');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = "text";
+        passwordButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="black" class="bi ml-2 h-10 w-10 bi-eye-slash-fill" viewBox="0 0 16 16">
+        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+      </svg>` ;
+    }
+    else {
+        passwordInput.type = 'password';
+        passwordButton.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" fill="black" class="ml-2 w-10 h-10  bi bi-eye-fill" viewBox="0 0 16 16">
+        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+      </svg>` ;
+
+    }
+
+    
+
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
