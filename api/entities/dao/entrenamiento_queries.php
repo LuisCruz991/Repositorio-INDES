@@ -6,12 +6,12 @@ class EntrenamientoQueries {
      // Consulta para realizar la operacion "Search"
      public function searchRows($value)
      {
-         $sql = 'SELECT identrenamiento, fecha_entreno, hora_inicio, hora_cierre, lugar_entreno, nombre_atleta, nombre, finalizado, 
-                 FROM entrenamientos INNER JOIN atletas USING(idatleta)
-                 INNER JOIN entrenadores USING(identrenador)
-                 INNER JOIN resumen_entrenamiento USING(idresumen)
-                 WHERE lugar_estreno  LIKE ?';
-         $params = array("%$value%");
+         $sql = 'SELECT entrenamientos.identrenamiento, fecha_entreno, hora_inicio, hora_cierre, lugar_entreno, nombre_atleta, nombre, finalizado
+                 FROM entrenamientos INNER JOIN atletas ON entrenamientos.idatleta = atletas.idatleta
+                INNER JOIN entrenadores ON entrenamientos.identrenador = entrenadores.identrenador
+                INNER JOIN resumen_entrenamiento ON entrenamientos.idresumen = resumen_entrenamiento.idresumen
+                 WHERE lugar_entreno  LIKE ? or nombre_atleta LIKE ?';
+         $params = array("%$value%", "%$value%");
          return Database::getRows($sql, $params);
      }
  
@@ -91,7 +91,7 @@ class EntrenamientoQueries {
          $sql = 'UPDATE entrenamientos  
                  SET  fecha_entreno = ?, hora_inicio = ?, hora_cierre = ?, lugar_entreno = ?, idatleta = ?, identrenador = ?, idresumen = ?
                  WHERE identrenamiento = ?';
-         $params = array($this->fecha, $this->horaInicio, $this->horaCierre, $this->lugar, $this->atleta, $this->entrenador, $this->resumen);
+         $params = array($this->fecha, $this->horaInicio, $this->horaCierre, $this->lugar, $this->atleta, $this->entrenador, $this->resumen, $this->id );
          return Database::executeRow($sql, $params);
      }
  

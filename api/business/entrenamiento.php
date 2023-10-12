@@ -61,7 +61,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un resumen';
                 } elseif (!$entrenamiento->setResumen($_POST['resumen'])) {
                     $result['exception'] = 'Resumen no valido';
-                } else {
+                } elseif ($entrenamiento->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Entrenamiento creado exitosamente';
+                }else {
                     $result['exception'] = Database::getException();
                 }
                 break;
@@ -104,7 +107,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un resumen';
                 } elseif (!$entrenamiento->setResumen($_POST['resumen'])) {
                     $result['exception'] = 'Resumen no valido';
-                }  else {
+                }  elseif ($entrenamiento->updateRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Entrenamiento actualizado exitosamente';
+                } else {
                     $result['exception'] = Database::getException();
                 }
                 break;

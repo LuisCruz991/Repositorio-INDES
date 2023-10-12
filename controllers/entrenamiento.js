@@ -43,14 +43,14 @@ SAVE_FORM.addEventListener('submit', async (event) => {
   const JSON = await dataFetch(ENTRENAMIENTO_API, action, FORM);
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
-    // Se carga nuevamente la tabla para visualizar los cambios.
-    fillTable();
-    SAVE_MODAL.toggle();
-
-    // Se muestra un mensaje de éxito.
-    sweetAlert(1, JSON.message, true);
+      // Se carga nuevamente la tabla para visualizar los cambios.
+      fillTable();
+      // Se cierra la caja de diálogo.
+      SAVE_MODAL.toggle();
+      // Se muestra un mensaje de éxito.
+      sweetAlert(1, JSON.message, true);
   } else {
-    sweetAlert(2, JSON.exception, false);
+      sweetAlert(2, JSON.exception, false);
   }
 });
 /*
@@ -130,6 +130,7 @@ function openCreate() {
   fillSelect(ATLETA_API, 'readAll', 'atleta');
   fillSelect(ENTRENADOR_API, 'readAll', 'entrenador');
   fillSelect(RESUMEN_API, 'readAll', 'resumen');
+
 
 }
 
