@@ -54,12 +54,18 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$admin->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre del administrador no valido';
-                }  elseif (!$admin->setClave($_POST['clave'])) {
-                    $result['exception'] = 'Clave no valida';
-                } elseif (!isset($_POST['genero'])) {
-                    $result['exception'] = 'Seleccione un genero';
                 } elseif (!$admin->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo del administrador no valido';
+                } elseif ($_POST['codigo'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves diferentes';
+                }elseif ($_POST['nombre'] == $_POST['confirmar']) {
+                    $result['exception'] = 'Eliga una clave mas segura';
+                }elseif ($_POST['correo'] == $_POST['confirmar']) {
+                    $result['exception'] = 'Eliga una clave mas segura';
+                } elseif (!preg_match('/[^a-zA-Z\d]/', $_POST['confirmar'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif (!$admin->setClave($_POST['codigo'])) {
+                    $result['exception'] = Validator::getPasswordError();
                 } elseif ($admin->createRow()) {
                 $result['status'] = 1;
                 $result['message'] = 'administrador guardada correctamente';
@@ -88,15 +94,11 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Ocurrió un problema al leer el administrador';
                     } elseif (!$admin->setNombre($_POST['nombre'])) {
                         $result['exception'] = 'Nombre del administrador no valido';
-                    }  elseif (!$admin->setClave($_POST['clave'])) {
-                        $result['exception'] = 'Clave no valida';
-                    } elseif (!isset($_POST['genero'])) {
-                        $result['exception'] = 'Seleccione un genero';
-                    } elseif (!$admin->setGenero($_POST['genero'])) {
-                        $result['exception'] = 'Genero no valido';
-                    } elseif (!$admin->setCorreo($_POST['correo'])) {
+                    }elseif (!$admin->setCorreo($_POST['correo'])) {
                         $result['exception'] = 'Correo del administrador no valido';
-                    } elseif ($admin->updateRow()) {
+                    }elseif (!$admin->setAcceso(isset($_POST['acceso']) ? 1 : 0)) {
+                        $result['exception'] = 'Acceso incorrecto';
+                    }   elseif ($admin->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Administrador actualizado exitosamente';
                     } else {

@@ -179,6 +179,7 @@
                   </button>
                 </div>   
                   <form id="save-form" autocomplete="off">
+                    <div id="title2"></div>
 
                     <div class="grid gap-6 m-5 md:grid-cols-2">
                       <!-- Campo para ingresar nombre -->
@@ -203,23 +204,31 @@
 
                       <!-- Campo para ingresar clave -->
                       <div>
-                        <label for="clave"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave</label>
-                        <input type="password" id="clave" name="clave"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Clave" required>
-                      </div>
-
-                      <!-- Campo para seleccionar genero -->
-                      <div>
-                        <label for="genero" class=" mt-5 
-                          block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genero</label>
-                        <select id="genero" name="genero"
-                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                        </select>
-                      </div>
-
+                        <label for="codigo"
+                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave</label>
+                        <input type="password" name="codigo" id="codigo" placeholder="••••••••"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label for="confirmar"
+                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave confimar</label>
+                            <div class="flex">
+                        <input type="password" name="confirmar" id="confirmar" placeholder="••••••••"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required>
+                            <a id="password-visibles" onclick="mostrarContraseniaSignUp()">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="black"
+                                    class="ml-2 w-10 h-10  bi bi-eye-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                    <path
+                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="estado" class="mb-10 flex">
+                    </div>
                     </div>
 
                     <!-- Boton para crear registro -->
@@ -233,7 +242,7 @@
           </div>
 
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full p-5 text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
                 <tr id="records"></tr>
@@ -245,6 +254,9 @@
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Correo
+                    </th>
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Intentos
                     </th>
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
                       Estado

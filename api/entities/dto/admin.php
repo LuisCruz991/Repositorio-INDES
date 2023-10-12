@@ -38,10 +38,11 @@ class Admin extends AdminQueries
         }
     }
 
+  
     public function setClave($value)
     {
-        if (Validator::validateString($value, 1, 200)) {
-            $this->clave = $value;
+        if (Validator::validatePassword($value)) {
+            $this->clave = password_hash($value, PASSWORD_DEFAULT);
             return true;
         } else {
             return false;
@@ -69,7 +70,7 @@ class Admin extends AdminQueries
         
 
     public function setAcceso($value) {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateBoolean($value)) {
             $this->acceso = $value;
             return true;
             } else {
