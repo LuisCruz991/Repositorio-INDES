@@ -223,6 +223,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                   <a href="../vistas/unidad_crud.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Unidades</a>
                 </li>
+                <li>
+                <a href="../vistas/actuaciones_crud.html"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Actuaciones destacadas</a>
+              </li>
               </ul>
             </div>
             <!-- Boton para gestionar los paises y los continentes -->

@@ -8,8 +8,10 @@ class AdminQueries
      // Consulta para realizar la operacion "Search"
     public function searchRows($value)
     {
-        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, acceso
-        WHERE nombre_usuario LIKE ? or acceso LIKE ?';   
+        $sql = 'SELECT nombre_usuario, correo_usuario, intentos_fallidos,acceso
+        FROM administradores 
+        WHERE nombre_usuario LIKE ? or correo_usuario LIKE ?
+        ORDER BY nombre_usuario';   
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -17,7 +19,7 @@ class AdminQueries
     // Consulta para realizar la operacion "Read"
     public function readAll()
     {
-        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario, acceso
+        $sql = ' SELECT idadministrador, nombre_usuario, clave_usuario, correo_usuario ,intentos_fallidos,acceso
         FROM administradores
         ORDER BY idadministrador';
         return Database::getRows($sql);
@@ -45,9 +47,9 @@ class AdminQueries
      // Consulta para realizar la operacion "Create"
     public function createRow()
     {
-        $sql = 'INSERT INTO administradores(nombre_usuario, clave_usuario, correo_usuario, acceso)
-                VALUES(?,?,?,?)';
-        $params = array($this->nombre, $this->clave, $this->correo, $this->acceso);
+        $sql = 'INSERT INTO administradores(nombre_usuario, clave_usuario, correo_usuario)
+                VALUES(?,?,?)';
+        $params = array($this->nombre, $this->clave, $this->correo);
         return Database::executeRow($sql, $params);
     }
 
@@ -56,9 +58,9 @@ class AdminQueries
     {
        
         $sql = 'UPDATE administradores
-                SET nombre_usuario =  ?, clave_usuario = ?, correo_usuario = ?, acceso = ?
+                SET nombre_usuario =  ?,  correo_usuario = ?, acceso = ?
                 WHERE idadministrador = ?';
-        $params = array($this->nombre, $this->clave, $this->correo, $this->acceso, $this->id);
+        $params = array($this->nombre, $this->correo, $this->acceso, $this->id);
         return Database::executeRow($sql, $params);
     }
 

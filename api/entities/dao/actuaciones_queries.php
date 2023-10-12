@@ -10,8 +10,8 @@ class ActuacionesQueries
     */
     public function searchRows($value)
     {
-        $sql = ' SELECT idrecord, marca_obtenida, nombre_medida, nombre_atleta, nombre_prueba, posicion
-        FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
+        $sql = ' SELECT idactuacion,posicion, marca_obtenida, nombre_medida, nombre_atleta, nombre_prueba
+        FROM actuaciones_destacadas INNER JOIN unidades_medidas USING (idunidad_medida)
         INNER JOIN atletas USING(idatleta)
         INNER JOIN pruebas USING(idprueba)
         WHERE marca_obtenida LIKE ? OR nombre_medida LIKE ? OR nombre_atleta LIKE ? OR posicion LIKE ?
@@ -23,82 +23,53 @@ class ActuacionesQueries
  
     public function readAll()
     {
-        $sql = ' SELECT idactuacion, posicion,marca_obtenida, nombre_medida, nombre_atleta, nombre_prueba, nombre_usuario
-        FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
+        $sql = ' SELECT idactuacion, posicion, marca_obtenida, nombre_medida, nombre_prueba, nombre_atleta
+        FROM actuaciones_destacadas INNER JOIN unidades_medidas USING (idunidad_medida)
         INNER JOIN atletas USING(idatleta)
         INNER JOIN pruebas USING(idprueba)
-        ORDER BY idrecord';
+        ORDER BY idactuacion';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT idrecord, marca_obtenida, idunidad_medida, idatleta, idprueba, posicion
-                FROM records 
-                WHERE idrecord = ?';
+        $sql = 'SELECT idactuacion, posicion,marca_obtenida, idunidad_medida, idatleta, idprueba, nombre_atleta
+                FROM actuaciones_destacadas 
+                INNER JOIN atletas USING(idatleta)
+                WHERE idactuacion = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO records(marca_obtenida, idunidad_medida, idatleta, idprueba, posicion)
+        $sql = 'INSERT INTO actuaciones_destacadas( posicion,marca_obtenida, idunidad_medida, idatleta, idprueba)
                 VALUES(?,?,?,?,?)';
-        $params = array($this->marca_obtenida, $this->unidad, $this->atleta, $this->prueba, $this->posicion);
+        $params = array( $this->posicion,$this->marca_obtenida, $this->unidad, $this->atleta, $this->prueba);
         return Database::executeRow($sql, $params);
     }
 
     public function updateRow()
-    {  
-        $sql = 'UPDATE records
-                SET marca_obtenida = ?, posicion = ?
-                WHERE idrecord = ?';
-        $params = array($this->marca_obtenida, $this->posicion, $this->id);
+    {
+        $sql = 'UPDATE actuaciones_destacadas
+                SET  posicion = ?, marca_obtenida = ?, idunidad_medida = ?, idatleta = ?, idprueba = ?
+                WHERE idactuacion = ?';
+        $params = array($this->posicion, $this->marca_obtenida, $this->unidad, $this->atleta, $this->prueba, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM records
-                WHERE idrecord = ?';
+        $sql = 'DELETE FROM actuaciones_destacadas
+                WHERE idactuacion = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 
-    public function readUnidadMedida()
-    {
-        $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN unidades_medidas USING (idunidad_medida)
-                WHERE unidades_medidas = ? 
-                ORDER BY idrecord';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-    }
-
-    public function readAtletas()
-    {
-        $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN atletas USING (idatleta)
-                WHERE atletas = ? 
-                ORDER BY idrecord';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-    }
-
-    public function readPruebas()
-    {
-        $sql = 'SELECT idrecord, marca_obtenida, posicion
-                FROM records INNER JOIN pruebas USING (idprueba)
-                WHERE pruebas = ? 
-                ORDER BY idrecord';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
-    }
-
     public function readAtletasTitulos()
      {
-         $sql = 'SELECT nombre_atleta, COUNT(idrecord) as  cantidad
-         FROM records
+         $sql = 'SELECT nombre_atleta, COUNT(idactuacion) as  cantidad
+         FROM actuaciones_destacadas
          INNER JOIN atletas USING(idatleta)
         GROUP BY nombre_atleta
          ORDER BY cantidad DESC LIMIT 5';
