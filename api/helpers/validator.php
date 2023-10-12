@@ -62,6 +62,8 @@ class Validator
         }
     }
 
+
+
     /*
     *   Método para validar un archivo de imagen.
     *   Parámetros: $file (archivo de un formulario), $maxWidth (ancho máximo para la imagen) y $maxHeigth (alto máximo para la imagen).

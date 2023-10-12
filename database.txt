@@ -189,7 +189,7 @@ CREATE TABLE `entrenamientos` (
   `idatleta` int(11) NOT NULL COMMENT 'Numero del atleta',
   `identrenador` int(11) NOT NULL COMMENT 'Nombre del entrenador responsable del entrenamiento',
   `idresumen` int(11) NOT NULL COMMENT 'Resumen mensual al que pertenece',
-  `idusuario` int(11) NOT NULL COMMENT 'Nombre del usuario que ingreso el entrenamiento'
+  `idusuario` int(11)  NULL COMMENT 'Nombre del usuario que ingreso el entrenamiento'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -418,7 +418,7 @@ INSERT INTO `responsables` (`idresponsable`, `nombre_responsable`, `apellido_res
 
 CREATE TABLE `resumen_entrenamiento` (
   `idresumen` int(11) NOT NULL COMMENT 'id del resumen mensual',
-  `horas_planficadas` int(11) NOT NULL COMMENT 'Horas planificadas por entrenar del atleta(mensualmente)',
+  `horas_planificadas` int(11) NOT NULL COMMENT 'Horas planificadas por entrenar del atleta(mensualmente)',
   `horas_entrenadas` int(11) DEFAULT NULL COMMENT 'Horas entrenadas del atleta(mensualmente)',
   `finalizado` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Estado, si el resumen fue finalizado o se encuentra activo, 0 es activo y 1 es finalizado',
   `fecha_finalizacion` date DEFAULT NULL COMMENT 'Fecha de finalizacion del resumen'
@@ -913,7 +913,6 @@ ALTER TABLE `entrenadores`
 ALTER TABLE `entrenamientos`
   ADD CONSTRAINT `entrenador_entrenamiento` FOREIGN KEY (`identrenador`) REFERENCES `entrenadores` (`identrenador`),
   ADD CONSTRAINT `entrenamiento_atleta` FOREIGN KEY (`idatleta`) REFERENCES `atletas` (`idatleta`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `entrenamiento_entrenador` FOREIGN KEY (`identrenamiento`) REFERENCES `entrenadores` (`identrenador`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `entrenamiento_usuario` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`idusuario`),
   ADD CONSTRAINT `entrenamientos_resumen` FOREIGN KEY (`idresumen`) REFERENCES `resumen_entrenamiento` (`idresumen`);
 

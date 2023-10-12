@@ -61,10 +61,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un resumen';
                 } elseif (!$entrenamiento->setResumen($_POST['resumen'])) {
                     $result['exception'] = 'Resumen no valido';
-                } elseif (!isset($_POST['resumen'])) {
-                    $result['exception'] = 'Seleccione un usuario';
-                } elseif (!$entrenamiento->setUsuario($_POST['usuario'])) {
-                    $result['exception'] = 'Usuario no valido';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -108,10 +104,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un resumen';
                 } elseif (!$entrenamiento->setResumen($_POST['resumen'])) {
                     $result['exception'] = 'Resumen no valido';
-                }elseif (!isset($_POST['usuario'])) {
-                    $result['exception'] = 'Seleccione un usuario';
-                } elseif (!$entrenamiento->setUsuario($_POST['usuario'])) {
-                    $result['exception'] = 'Usuario no valido';
                 }  else {
                     $result['exception'] = Database::getException();
                 }

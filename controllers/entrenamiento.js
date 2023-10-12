@@ -3,7 +3,7 @@ const ENTRENAMIENTO_API = 'business/entrenamiento.php';
 const ATLETA_API = 'business/atleta.php';
 const ENTRENADOR_API = 'business/entrenador.php';
 const RESUMEN_API = 'business/resumen.php';
-const USUARIO_API = 'business/usuariocrud.php';
+
 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -12,7 +12,6 @@ const SAVE_FORM = document.getElementById('save-form');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-
 // Constante para establecer la modal de guardar.
 const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
@@ -76,7 +75,7 @@ async function fillTable(form = null) {
             <tr
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <p class="text-base">${row.fecha_estreno}</p>
+              <p class="text-base">${row.fecha_entreno}</p>
             </th>
             <td class="px-6 py-4">
             ${row.hora_inicio}
@@ -85,7 +84,7 @@ async function fillTable(form = null) {
              ${row.hora_cierre}
             </td>
             <td class="px-6 py-4">
-              ${row.lugar}
+              ${row.lugar_entreno}
             </td>
             <td class=" px-6 py-4">
               ${row.nombre_atleta}</td>
@@ -96,9 +95,7 @@ async function fillTable(form = null) {
             <td class="px-6 py-4">
               ${row.finalizado}
             </td>
-            <td class="px-6 py-4">
-              ${row.nombre_usuario}
-            </td>
+            
             
             
             <td >
@@ -133,7 +130,7 @@ function openCreate() {
   fillSelect(ATLETA_API, 'readAll', 'atleta');
   fillSelect(ENTRENADOR_API, 'readAll', 'entrenador');
   fillSelect(RESUMEN_API, 'readAll', 'resumen');
-  fillSelect(USUARIO_API, 'readAll', 'usuario');
+
 }
 
 /*
@@ -162,7 +159,7 @@ async function openUpdate(id) {
     fillSelect(ATLETA_API, 'readAll', 'atleta', JSON.dataset.idatleta);
     fillSelect(ENTRENADOR_API, 'readAll', 'entrenador', JSON.dataset.identrenador);
     fillSelect(RESUMEN_API, 'readAll', 'resumen', JSON.dataset.idresumen);
-    fillSelect(USUARIO_API, 'readAll', 'usuario', JSON.dataset.idusuario);
+    
     
    
   } else {

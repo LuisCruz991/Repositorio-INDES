@@ -144,6 +144,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                   <a href="../vistas/parentesco_crud.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Parentescos</a>
                 </li>
+                <li>
+                  <a href="../vistas/resumen_crud.html"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Resumen</a>
+                </li>
+                <li>
+                  <a href="../vistas/entrenamiento_crud.html"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Entrenamientos</a>
+                </li>
               </ul>
             </div>
             <!-- Boton para acceder a vista de agenda -->
