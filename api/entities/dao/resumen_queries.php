@@ -8,8 +8,8 @@ class Resumenqueries {
      {
          $sql = 'SELECT idresumen, horas_planificadas, horas_entrenadas, finalizado, fecha_finalizacion
                  FROM resumen_entrenamiento
-                 WHERE finalizado  LIKE ? ';
-         $params = array("%$value%", "%$value%");
+                 WHERE fecha_finalizacion  LIKE ? ';
+         $params = array("%$value%");
          return Database::getRows($sql, $params);
      }
  
