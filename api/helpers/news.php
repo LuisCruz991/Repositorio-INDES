@@ -1,5 +1,5 @@
 <?php
-$apiKey = '1748d28b014d44089660a08c1af3f018'; // Reemplaza esto con tu API Key
+$apiKey = '105ad4b200a74b17b550ebf75983ed01'; // Reemplaza esto con tu API Key
 $keyword = 'Olympics AND "Tokyo 2020" AND "Olympic Games" OR "Paris 2024"'; // Palabra clave para buscar noticias relacionadas
 $pageSize = '15';
 $page = '1';
