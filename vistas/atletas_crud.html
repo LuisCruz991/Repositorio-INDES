@@ -175,7 +175,7 @@
                         <!-- Boton para agregar atleta -->
 
                         <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
-                            class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
+                            class="py-1 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline ">Agregar</a>
                         </a>
 
                         <!-- Modal para la grafica parametrizado -->
@@ -399,14 +399,14 @@
                                                 <label
                                                     class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                                     for="file_input">Selecciona la foto del pasaporte</label>
-                                                <img id="preview" class="rounded-lg max-w-80 bg-gray-300"
+                                                <img id="pre" class="rounded-lg max-w-80 bg-gray-300"
                                                     src="../imagenes/search.png" title="Imagen no disponible."
                                                     onerror="this.src='../imagenes/notFound.png';">
                                                 <div>
                                                     <input
                                                         class="mt-5 block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-blue-600 dark:border-gray-600 dark:placeholder-gray-400"
                                                         id="archivo2" name="archivo2" type="file"
-                                                        onchange="Preview(this, 'preview')">
+                                                        onchange="Preview(this, 'pre')">
                                                 </div>
                                             </div>
                                         </div>

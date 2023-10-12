@@ -197,7 +197,7 @@ async function fillTable(form = null) {
     } else {
         sweetAlert(4, JSON.exception, true);
     }
-}
+};
 // Preparar el formulario al momento de insertar un registro.
 function openCreate() {
     // Abrir la caja de diálogo que contiene el formulario.
@@ -207,7 +207,7 @@ function openCreate() {
     fillSelect(ENTRENADOR_API, 'readFederacion', 'federacion');
     fillSelect(ATLETA_API, 'readEntrenador', 'entrenador');
     document.getElementById('title2').innerHTML = '<h1 class="text-center mt-5">Agregar atleta</h1>';
-}
+};
 
 // Preparar el formulario al momento de actualizar un registro.
 async function openUpdate(id) {
@@ -242,7 +242,7 @@ async function openUpdate(id) {
     } else {
         sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
     }
-}
+};
 
 // Eliminar un registro.
 async function openDelete(id) {
@@ -258,7 +258,7 @@ async function openDelete(id) {
             sweetAlert(2, JSON.exception, false); // Mostrar un mensaje de error.
         }
     }
-}
+};
 
 
 /*
@@ -271,7 +271,7 @@ function openReport() {
     const PATH = new URL(`${SERVER_URL}reports/lista_atletas.php`);
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
-}
+};
 
 // Funcion asincrona para generar un grafico de las horas entrenadas de una atleta
 async function graficoPastelHoras(id) {
@@ -355,7 +355,7 @@ async function graficoPastelHoras(id) {
         console.log(JSON4.exception);
     }
 
-}
+};
 
 function openReport2(id) {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
@@ -365,7 +365,7 @@ function openReport2(id) {
 
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
-}
+};
 
 
 // Funcion para abrir el reporte de las horas cumplidas de entrenamiento de un atleta
@@ -376,4 +376,16 @@ function openHoras(id) {
     PATH.searchParams.append('idatleta', id);
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
-}
+};
+
+// Funcion asincrona para mostrar la imagen seleccionada en el modal. 
+async function Preview(input, target) {
+    let file = input.files[0];
+    let reader = new FileReader();
+  
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      let img = document.getElementById(target);
+      img.src = reader.result;
+    }
+};
