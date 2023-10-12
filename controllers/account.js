@@ -173,11 +173,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div id="dropdownagend"
               class="z-10 hidden bg-azul-opaco divide-y divide-gray-100 rounded-lg shadow w-fit-content dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-sm text-white-700 text-red" aria-labelledby="dropdownMenuIconButton">
-                <!-- Boton para acceder al calendario -->
-                <li>
-                  <a href="../vistas/agenda.html"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Calendario</a>
-                </li>
                 <!-- Boton para acceder al SCRUD de eventos -->
                 <li>
                   <a href="../vistas/eventos_crud.html"
@@ -227,6 +222,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <a href="../vistas/actuaciones_crud.html"
                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Actuaciones destacadas</a>
               </li>
+              <li>
+              <a href="../vistas/ranking.html"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ranking</a>
+            </li>
               </ul>
             </div>
             <!-- Boton para gestionar los paises y los continentes -->
