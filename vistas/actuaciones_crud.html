@@ -4,7 +4,7 @@
 
 <head>
   <!-- Titulo -->
-  <title>Administradores</title>
+  <title>Actuaciones</title>
   <!-- Definicion de carecteres del sitio -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,7 +124,7 @@
                       clip-rule="evenodd"></path>
                   </svg>
                 </div>
-                <form method="post" class="flex items-center" id="search-form">
+                <form method="post" class="flex items-center" id="search-form" autocomplete="off">
                   <label for="search-form" class="sr-only">buscar</label>
                   <div class="relative w-full">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -137,7 +137,7 @@
                     </div>
                     <input type="text" id="search" name="search"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="bucar por nombre de usuario o correo" required>
+                      placeholder="Buscar por marcas, medida, atleta o posicion" required>
                   </div>
                   <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -146,14 +146,14 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
-                    <span onclick="logOut()" class="sr-only">buscar</span>
+                    <span class="sr-only">buscar</span>
                   </button>
                 </form>
               </div>
             </div>
 
 
-            <!-- Boton para agregar atleta -->
+            <!-- Boton para agregar records -->
 
             <a onclick="window.openCreate()" data-modal-target="save-modal" data-modal-toggle="save-modal"
               class="mt-2 text-sm rounded-md w-24 h-8 bg-gray-500 font-medium text-white dark:text-blue-500 text-center hover:underline">Agregar</a>
@@ -167,70 +167,71 @@
                   <!-- Modal header -->
                   <div class="flex">
                     <button type="button"
-                    class="justify-end text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white mr-5"
-                    data-modal-hide="save-modal">
-                    <svg aria-hidden="true" class="w-5" fill="currentColor" viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                  </button>
-                </div>   
-                  <form id="save-form" autocomplete="off">
-                    <div id="title2"></div>
+                      class="justify-end text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white mr-5"
+                      data-modal-hide="save-modal">
+                      <svg aria-hidden="true" class="w-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                    </button>
+                  </div>
+                  <form id="save-form" method="post" autocomplete="off">
 
                     <div class="grid gap-6 m-5 md:grid-cols-2">
                       <!-- Campo para ingresar nombre -->
                       <input class="hidden" type="number" id="id" name="id">
-
                       <div>
-                        <label for="nombre"
-                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                        <input type="text" id="nombre" name="nombre"
+                        <!-- Campo para ingresar una posicion en la tabla -->
+                        <label for="posicion"
+                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posicion</label>
+                        <input type="number" id="posicion" name="posicion"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Nombre" required>
+                          placeholder="Posicion" required min="1">
                       </div>
 
-                      <!-- Campo para ingresar correo -->
                       <div>
-                        <label for="correo"
-                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
-                        <input type="email" id="correo" name="correo"
+                        <!-- Campo para ingresar una marca obtenida en la tabla -->
+                        <label for="marca_obtenida"
+                          class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca
+                          obtenida</label>
+                        <input type="number" id="marca_obtenida" name="marca_obtenida" step="0.01" min="0.00"
+                          max="100000.00" required
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="example@gmail.com" required>
+                          placeholder="Marca obtenida" required>
+                      </div>
+                     
+                      <div>
+                        <!-- Campo para ingresar una unidad de medida en la tabla -->
+                        <label for="unidad"
+                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unidad</label>
+                        <select id="unidad" name="unidad"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                        </select>
+                      </div>
+                      <div>
+                        <!-- Campo para ingresar un atleta en la tabla -->
+                        <label for="atleta"
+                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atleta</label>
+                        <select id="atleta" name="atleta"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                        </select>
+                      </div>
+                      <div>
+                        <!-- Campo para ingresar una prueba en la tabla -->
+                        <label for="prueba"
+                          class="mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prueba</label>
+                        <select id="prueba" name="prueba"
+                          class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                        </select>
                       </div>
 
-                      <!-- Campo para ingresar clave -->
-                      <div>
-                        <label for="codigo"
-                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave</label>
-                        <input type="password" name="codigo" id="codigo" placeholder="••••••••"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required>
                     </div>
-                    <div>
-                        <label for="confirmar"
-                        class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Clave confimar</label>
-                            <div class="flex">
-                        <input type="password" name="confirmar" id="confirmar" placeholder="••••••••"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required>
-                            <a id="password-visibles" onclick="mostrarContraseniaSignUp()">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="black"
-                                    class="ml-2 w-10 h-10  bi bi-eye-fill" viewBox="0 0 16 16">
-                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                                    <path
-                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div id="estado" class="mb-10 flex">
-                    </div>
-                    </div>
-
                     <!-- Boton para crear registro -->
                     <button type="submit"
                       class="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar
@@ -242,36 +243,51 @@
           </div>
 
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full p-5 text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <!-- Titulos de la tabla -->
               <thead class="text-xs text-gray-700 uppercase bg-azul-3 dark:bg-gray-700 dark:text-gray-400">
                 <tr id="records"></tr>
                 <tr>
                   <!-- Titulos de la tabla -->
                   <div class="titulos-tabla-crud  bg-azul-3">
+                    <!-- Campo de posicion en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Nombre
+                      Posicion
                     </th>
+
+                    <!-- Campo de marca obtenida en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Correo
+                      Marca obtenida
                     </th>
+
+                    <!-- Campo de unidad de medida en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Intentos
+                      Unidad de medida
                     </th>
+
+                    <!-- Campo de atleta en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
-                      Estado
+                      Atleta
                     </th>
+
+                    <!-- Campo de prueba en la tabla -->
+                    <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
+                      Prueba
+                    </th>
+
+
+
+                    <!-- Campo de actualizar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
+                    <!-- Campo de eliminar en la tabla -->
                     <th scope="col" class="px-6 normal-case font-poppins text-white py-3">
 
                     </th>
                   </div>
                 </tr>
               </thead>
-              <!-- Titulos de la tabla -->
-
               <!-- Datos de la tabla -->
               <tbody id="tbody-rows">
               </tbody>
@@ -292,11 +308,10 @@
 
   <!-- Js de flowbite -->
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-  <script src="../js/script.js"></script>
   <script src="../Js/sweetalert.min.js"></script>
   <script src="../controllers/components.js"></script>
   <script src="../controllers/account.js"></script>
-  <script src="../controllers/admin.js"></script>
+  <script src="../controllers/actuaciones.js"></script>
 
 
 
