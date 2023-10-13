@@ -147,8 +147,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             PROXIMO.innerHTML += `
             <div>
                 <p class="text-white mb-2 text-sm">${row.nombre_evento}</p>
-                <img src="${SERVER_URL}/imagenes/eventos/logos/${row.logo_evento}" onerror="this.src='../imagenes/notFound.png'"
-                    class="h-10 mx-auto">
+                <!-- <img src="${SERVER_URL}/imagenes/eventos/logos/${row.logo_evento}" onerror="this.src='../imagenes/notFound.png'"
+                    class="h-10 mx-auto"> -->
             </div>
             `;
         });
@@ -261,6 +261,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }) // En caso de que de error se muestra el error en la consola y se muestra un mensaje de error
         .catch(error => {
             console.error('Error fetching the news:', error);
-            document.getElementById('news').innerHTML = '<p class="text-center mt-5">Error al buscar noticias.</p>';
+            document.getElementById('news').innerHTML = '<p class="text-center mt-5">No es posible mostrar noticias</p>';
         });
 });

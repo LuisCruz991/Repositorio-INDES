@@ -3,12 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>404</title>
-    <!-- Css de de tailwind -->
-    <link href="/Repositorio-INDES/css/tailwind.css" rel="stylesheet">
     <!-- Cdn de flowbite -->
     <link href="/Repositorio-INDES/node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
     <!-- Css del proyecto -->
-    <link rel="stylesheet" href="/Repositorio-INDES/css/estilos.css">
+    <link rel="stylesheet" href="/Repositorio-INDES/css/404.css">
     <!-- Fuentes del proyecto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,40 +17,46 @@
 </head>
 
 <body class="login-body">
-    <!--Inicio del Login -->
-    <div>
-        <div class="w-32 mt-5 ml-4">
-            <img class="w-20" src="/Repositorio-INDES/imagenes/logo-indes-recortado.png" alt="">
-        </div>
-        <div class="mt-2  mb-10 md:flex items-center  justify-center lg:py-0 ">
-            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white w-124">
-            </a>
-            <div
-                class="bg-azul-1 rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700 error cont">
-                <div class="p-6 space-y-4 md:space-y-6 sm:p-8 flex justify-center">
-                    <!-- Titulo -->
-                    <h1
-                        class="text-5xl font-medium leading-tight tracking-tight text-center text-white md:text-2xl dark:text-white ">
-                        ¡Oops ha ocurrido un error!
-                    </h1>
-                    <img class="h-9 ml-4" src="/Repositorio-INDES/imagenes/elements/warning.png" alt="">
-                </div>
-                <div class="flex items-center">
-                    <h1
-                        class="text-4xl font-overpass leading-tight tracking-tight text-white md:text-2xl dark:text-white ml-10">
-                        La página a la que estás tratando de acceder no existe.
-                    </h1>
-                    <img class="h-72 text-end ml-10 mr-8" src="/Repositorio-INDES/imagenes/ilustrations/403_404.png" alt="">
-                </div>
+    <div class="box">
+        <div class="box__ghost">
+          <div class="symbol"></div>
+          <div class="symbol"></div>
+          <div class="symbol"></div>
+          <div class="symbol"></div>
+          <div class="symbol"></div>
+          <div class="symbol"></div>
+          
+          <div class="box__ghost-container">
+            <div class="box__ghost-eyes">
+              <div class="box__eye-left"></div>
+              <div class="box__eye-right"></div>
             </div>
-            <!--Finalizacion del Login -->
-
-            <!-- logo del INDES -->
+            <div class="box__ghost-bottom">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="box__ghost-shadow"></div>
         </div>
-    </div>
+        
+        <div class="box__description">
+          <div class="box__description-container">
+            <div class="box__description-title">oops!</div>
+            <div class="box__description-text">La página a la que estás tratando de acceder no existe.</div>
+          </div>
+          
+          <a href="/Repositorio-INDES/vistas/" target="_blank" class="box__button">Volver al incio</a>
+          
+        </div>
+        
+      </div>
 
     <!-- Script de flowbite  -->
     <script src="/Repositorio-INDES/node_modules/flowbite/dist/flowbite.min.js"></script>
+
 </body>
 
 </html>

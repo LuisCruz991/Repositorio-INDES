@@ -1,11 +1,8 @@
 <?php
 $apiKey = '105ad4b200a74b17b550ebf75983ed01'; // Reemplaza esto con tu API Key
 $keyword = 'Olympics AND "Tokyo 2020" AND "Olympic Games" OR "Paris 2024"'; // Palabra clave para buscar noticias relacionadas
-$pageSize = '15';
-$page = '1';
-$sortBy = 'relevancy' ;
 
-$url = "https://newsapi.org/v2/everything?q={$keyword}&pageSize={$pageSize}&page={$page}&sortBy={$sortBy}&apiKey={$apiKey}";
+$url = "https://newsapi.org/v2/everything?q={$keyword}&apiKey={$apiKey}";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
