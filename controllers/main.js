@@ -21,7 +21,7 @@ A2 = document.getElementById('n2');
 A3 = document.getElementById('n3');
 
 
-
+AUTEN = new Modal(document.getElementById('auten-modal'));
 
 
 /*
@@ -126,6 +126,10 @@ async function graficoPastelFederaciones() {
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
+    sweetAlert(4, 'Te debes atenticar para poder continuar', true);
+    AUTEN.show();
+    
+
     // Constante que guarda el resultado de ejecutuar la consulta
     const JSON = await dataFetch(EVENTO_API, 'nextEvents');
     // Constante que guarda el resultado de ejecutuar la consulta
