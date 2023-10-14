@@ -102,7 +102,7 @@ async function fillTable(form = null) {
               </button>
                 </td>
                 <td class="px-6 py-4">
-                <button title="Ver datos del entrenador/a" onclick="openReport2(${row.identrenador})"
+                <button title="Ver datos del entrenador/a" onclick="openReport(${row.identrenador})"
                     class="items-center p-2.5 ml-2 w-15 text-xl font-medium text-white bg-blue-500 rounded-lg border border-green-400 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-400 dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" fill="currentColor">
                         <path
